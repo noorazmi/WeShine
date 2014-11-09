@@ -2,6 +2,8 @@ package com.game.views;
 
 import java.util.LinkedList;
 
+import com.game.utils.UtilityMethods;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -50,10 +52,52 @@ public class MazeGame1View extends ImageView implements OnTouchListener{
 	    }
 
 	  @Override
-	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-		// TODO Auto-generated method stub
-		super.onSizeChanged(w, h, oldw, oldh);
-	}
+	  protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+
+	      int desiredWidth = 550;
+	      int desiredHeight = 250;
+
+	      int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+	      int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+	      int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+	      int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+	      
+	      int ww = UtilityMethods.getPixelsFromDp(getContext(), 550);
+	      int hh = UtilityMethods.getPixelsFromDp(getContext(), 250);
+
+	      int width;
+	      int height;
+
+	      //Measure Width
+	      if (widthMode == MeasureSpec.EXACTLY) {
+	          //Must be this size
+	          width = widthSize;
+	      } else if (widthMode == MeasureSpec.AT_MOST) {
+	          //Can't be bigger than...
+	          width = Math.min(desiredWidth, widthSize);
+	      } else {
+	          //Be whatever you want
+	          width = desiredWidth;
+	      }
+
+	      //Measure Height
+	      if (heightMode == MeasureSpec.EXACTLY) {
+	          //Must be this size
+	          height = heightSize;
+	      } else if (heightMode == MeasureSpec.AT_MOST) {
+	          //Can't be bigger than...
+	          height = Math.min(desiredHeight, heightSize);
+	      } else {
+	          //Be whatever you want
+	          height = desiredHeight;
+	      }
+
+	      //MUST CALL THIS
+	      //setMeasuredDimension(width, height);
+	      setMeasuredDimension(ww, hh);
+	  }
+	  
+	  
 	    private float mX, mY;
 	    private static final float TOUCH_TOLERANCE = 4;
 
