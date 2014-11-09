@@ -8,9 +8,23 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.game.weshine.MainActivity$PlaceholderFragment" >
 
-    <TextView
+   <!--  <com.game.views.Maze1GameView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" /> -->
+
+    <com.game.views.Maze1GameView
+        android:id="@+id/Maze1GameView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/maze1_background"/>
+
+    <ImageView
+        android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/maze1_overlay" />
+
 
 </RelativeLayout>

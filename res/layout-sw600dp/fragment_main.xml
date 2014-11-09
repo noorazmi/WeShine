@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:gravity="center_vertical|center_horizontal">
+
+   <!--  <com.game.views.Maze1GameView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" /> -->
+
+	<com.game.views.Maze1GameView
+        android:id="@+id/Maze1GameView1"
+        android:layout_width="700dp"
+        android:layout_height="525dp"
+        android:src="@drawable/maze1_background"/>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="700dp"
+        android:layout_height="525dp"
+        android:src="@drawable/maze1_overlay" />
+
+    
+
+</RelativeLayout>
