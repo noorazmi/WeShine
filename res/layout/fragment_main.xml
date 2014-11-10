@@ -25,4 +25,13 @@
         android:scaleType="fitXY"
         android:src="@drawable/maze1_overlay" />
 
+    <ImageView
+        android:id="@+id/birdsView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/maze1_background"
+        android:layout_alignTop="@+id/maze1_background"
+        android:layout_marginLeft="136dp"
+        android:layout_marginTop="42dp" />
+
 </RelativeLayout>
