@@ -54,6 +54,7 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
+		
 		for (Path p : paths) {
 			canvas.drawPath(p, mPaint);
 		}
