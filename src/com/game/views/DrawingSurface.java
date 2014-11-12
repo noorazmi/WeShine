@@ -155,6 +155,7 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 		mPath = new Path();
 		paths.add(mPath);
 		onTouchEndEvent(isTouchedBlue && isTouchedGreen && isRightPath);
+		
 	}
 
 	@Override
@@ -221,21 +222,19 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 	}
 
 	private void setPathInfo(int x, int y) {
-		
-		
-		
-//		if (isRightPath == false) {
-//			return;
-//		}
+		if (isRightPath == false) {
+			Logger.debug(TAG, "Wrong path!!");
+			return;
+		}
 		int touchColor = getHotspotColor((int) x, (int) y);
 		Logger.debug(TAG, "touchColor:"+touchColor);
 		
-		if (ColorTool.closeMatch(Color.RED, touchColor, tolerance)) {
-			if(isTouchedBlue == true){
+		if (ColorTool.closeMatch(Color.WHITE, touchColor, tolerance)) {
+			if(isTouchedBlue == true && isTouchedGreen == false){
 				isRightPath = false;
 			}
 			//isTouchedRed = true;
-			Logger.debug(ConstantValues.APP_TAG, "Touch color RED"+" x= "+x +" y="+y);
+			Logger.debug(ConstantValues.APP_TAG, "Touch color WHITE"+" x= "+x +" y="+y);
 		} else if (ColorTool.closeMatch(Color.GREEN, touchColor, tolerance)) {
 			isTouchedGreen = true;
 			Logger.debug(ConstantValues.APP_TAG, "Touch color GREEN");

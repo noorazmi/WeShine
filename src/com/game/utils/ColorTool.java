@@ -30,35 +30,39 @@ public class ColorTool {
 	 */
 
 	public static boolean closeMatch(int color1, int color2, int tolerance) {
-		if ((int) Math.abs(Color.red(color1) - Color.red(color2)) > tolerance)
+		if ((int) Math.abs(Color.red(color1) - Color.red(color2)) > tolerance) {
 			return false;
-		if ((int) Math.abs(Color.green(color1) - Color.green(color2)) > tolerance)
+		}
+		if ((int) Math.abs(Color.green(color1) - Color.green(color2)) > tolerance) {
 			return false;
-		if ((int) Math.abs(Color.blue(color1) - Color.blue(color2)) > tolerance)
+		}
+		if ((int) Math.abs(Color.blue(color1) - Color.blue(color2)) > tolerance) {
 			return false;
+		}
 		return true;
 	}
 
-//	/**
-//	 * Get the color from the hotspot image at point x-y.
-//	 * 
-//	 */
-//	public int getHotspotColor(ImageView imgView, int x, int y, Context context) {
-//		// ImageView img = (ImageView) findViewById(hotspotId);
-//		if (imgView == null) {
-//			Logger.debug(TAG, "Hot spot image not found");
-//			return 0;
-//		} else {
-//			imgView.setDrawingCacheEnabled(true);
-//			Bitmap hotspots = Bitmap.createBitmap(imgView.getDrawingCache());
-//			if (hotspots == null) {
-//				Logger.debug(TAG, "Hot spot bitmap was not created");
-//				return 0;
-//			} else {
-//				imgView.setDrawingCacheEnabled(false);
-//				return hotspots.getPixel(x, y);
-//			}
-//		}
-//	}
+	// /**
+	// * Get the color from the hotspot image at point x-y.
+	// *
+	// */
+	// public int getHotspotColor(ImageView imgView, int x, int y, Context
+	// context) {
+	// // ImageView img = (ImageView) findViewById(hotspotId);
+	// if (imgView == null) {
+	// Logger.debug(TAG, "Hot spot image not found");
+	// return 0;
+	// } else {
+	// imgView.setDrawingCacheEnabled(true);
+	// Bitmap hotspots = Bitmap.createBitmap(imgView.getDrawingCache());
+	// if (hotspots == null) {
+	// Logger.debug(TAG, "Hot spot bitmap was not created");
+	// return 0;
+	// } else {
+	// imgView.setDrawingCacheEnabled(false);
+	// return hotspots.getPixel(x, y);
+	// }
+	// }
+	// }
 
 }
