@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" android:gravity="center">
+
+    <LinearLayout
+        android:id="@+id/e"
+        android:layout_width="500dp"
+        android:layout_height="500dp" 
+        android:background="#ffff00"
+        android:gravity="center">
+
+        <com.game.views.MazeGame1View
+            android:layout_width="400dp"
+            android:layout_height="300dp"
+            android:background="#00ffff" />
+        
+    </LinearLayout>
+
+</LinearLayout>

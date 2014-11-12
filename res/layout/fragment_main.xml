@@ -1,32 +1,3 @@
-<!-- <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-
-    <com.game.views.MazeGame1View
-        android:id="@+id/maze1_background"
-        android:layout_width="600dp"
-        android:layout_height="300dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:scaleType="fitXY"
-        android:src="@drawable/maze1_background1" />
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="600dp"
-        android:layout_height="300dp"
-        android:layout_alignBottom="@id/maze1_background"
-        android:layout_alignEnd="@id/maze1_background"
-        android:layout_alignLeft="@id/maze1_background"
-        android:layout_alignRight="@id/maze1_background"
-        android:layout_alignStart="@id/maze1_background"
-        android:layout_alignTop="@id/maze1_background"
-        android:scaleType="fitXY"
-        android:src="@drawable/maze1_overlay" />
-
-</RelativeLayout>
- -->
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/my_frame"
@@ -49,3 +20,14 @@
         android:src="@drawable/maze1_overlay" />
 
 </FrameLayout>
+
+   <!--  <ImageView
+        android:id="@+id/birdsView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/maze1_background"
+        android:layout_alignTop="@+id/maze1_background"
+        android:layout_marginLeft="136dp"
+        android:layout_marginTop="42dp" /> -->
+
+
