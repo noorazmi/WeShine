@@ -2,7 +2,13 @@ package com.game.views;
 
 import java.util.LinkedList;
 
+import com.game.utils.ColorTool;
+import com.game.utils.ConstantValues;
+import com.game.utils.Logger;
+import com.game.weshine.R;
+
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -28,6 +34,20 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 
 	// Last point when the user separated his finger from the screen.
 	private Point mEndPoint;
+
+	// For a right path, isTouchedBlue = true, isTouchedRed = false and
+	// isTouchedGreen = true at the end of the user finger drag.
+	private boolean isTouchedBlue = false;
+	//private boolean isTouchedRed = false;
+	private boolean isTouchedGreen = false;
+
+	private int tolerance = 25;
+
+	// Note : after isTouchedBlue = true and before isTouchedGreen = true, any
+	// time if isTouchedRed value becomed isTouchedRed = true the isRightPath
+	// will always be
+	// isRightPath = false
+	private boolean isRightPath = true;
 
 	public DrawingSurface(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -123,6 +143,7 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 			mX = x;
 			mY = y;
 		}
+		setPathInfo((int) x, (int) y);
 	}
 
 	private void touch_up() {
@@ -132,6 +153,7 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 		// kill this so we don't double draw
 		mPath = new Path();
 		paths.add(mPath);
+		onTouchEndEvent(isTouchedBlue && isTouchedGreen && isRightPath);
 	}
 
 	@Override
@@ -143,18 +165,17 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 		case MotionEvent.ACTION_DOWN:
 			touch_start(x, y);
 			mStartPoint.set((int) x, (int) y);
-			Log.d(TAG, "ACTION_DOWN: x:"+x+" y:"+y);
+			Log.d(ConstantValues.APP_TAG, "ACTION_DOWN: x:" + x + " y:" + y);
 			invalidate();
 			break;
 		case MotionEvent.ACTION_MOVE:
-			Log.d(TAG, "ACTION_MOVE: x:"+x+" y:"+y);
+			Log.d(ConstantValues.APP_TAG, "ACTION_MOVE: x:" + x + " y:" + y);
 			touch_move(x, y);
 			invalidate();
 			break;
 		case MotionEvent.ACTION_UP:
-			Log.d(TAG, "ACTION_UP: x:"+x+" y:"+y);
+			Log.d(ConstantValues.APP_TAG, "ACTION_UP: x:" + x + " y:" + y);
 			mEndPoint.set((int) x, (int) y);
-			onTouchEndEvent(mEndPoint);
 			touch_up();
 			invalidate();
 			break;
@@ -165,19 +186,64 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 
 	/**
 	 * Returns the starting point of touch
+	 * 
 	 * @return Point
 	 */
 	public Point getTouchStartPoint() {
 		return mStartPoint;
 	}
-	
+
 	/**
 	 * Returns the point where the user pull his figer from the screen
+	 * 
 	 * @return Point
 	 */
-	public Point getTouchEndPoint(){
+	public Point getTouchEndPoint() {
 		return mEndPoint;
 	}
-	
-	abstract protected void onTouchEndEvent(Point endPoint);
+
+	/**
+	 * Get the color from the hotspot image at point x-y.
+	 * 
+	 */
+	public int getHotspotColor(int x, int y) {
+
+		setDrawingCacheEnabled(true);
+		Bitmap hotspots = Bitmap.createBitmap(getDrawingCache());
+		if (hotspots == null) {
+			Logger.debug(ConstantValues.APP_TAG, "Hot spot bitmap was not created");
+			return 0;
+		} else {
+			setDrawingCacheEnabled(false);
+			return hotspots.getPixel(x, y);
+		}
+	}
+
+	private void setPathInfo(int x, int y) {
+		
+		
+		
+//		if (isRightPath == false) {
+//			return;
+//		}
+		int touchColor = getHotspotColor((int) x, (int) y);
+		Logger.debug(TAG, "touchColor:"+touchColor);
+		
+		if (ColorTool.closeMatch(Color.RED, touchColor, tolerance)) {
+			if(isTouchedBlue == true){
+				isRightPath = false;
+			}
+			//isTouchedRed = true;
+			Logger.debug(ConstantValues.APP_TAG, "Touch color RED"+" x= "+x +" y="+y);
+		} else if (ColorTool.closeMatch(Color.GREEN, touchColor, tolerance)) {
+			isTouchedGreen = true;
+			Logger.debug(ConstantValues.APP_TAG, "Touch color GREEN");
+		} else if (ColorTool.closeMatch(Color.BLUE, touchColor, tolerance)) {
+			Logger.debug(ConstantValues.APP_TAG, "Touch color BLUE");
+			isTouchedBlue = true;
+		}
+
+	}
+
+	abstract protected void onTouchEndEvent(boolean isSuccess);
 }
