@@ -2,11 +2,6 @@ package com.game.views;
 
 import java.util.LinkedList;
 
-import com.game.utils.ColorTool;
-import com.game.utils.ConstantValues;
-import com.game.utils.Logger;
-import com.game.weshine.R;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -21,6 +16,11 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 
+import com.game.listeners.OnGameEndListener;
+import com.game.utils.ColorTool;
+import com.game.utils.ConstantValues;
+import com.game.utils.Logger;
+
 public abstract class DrawingSurface extends ImageView implements OnTouchListener {
 
 	public String TAG = getClass().getName();
@@ -28,6 +28,8 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 	private Path mPath;
 	private Paint mPaint;
 	private LinkedList<Path> paths = new LinkedList<Path>();
+	//GameEndListener instance to invoke the onGameEnd method
+	protected OnGameEndListener mGameEndListener;
 
 	// first Touch point of the user
 	private Point mStartPoint;
@@ -245,5 +247,9 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 
 	}
 
+	public void setOnGameEndListener(OnGameEndListener gameEndListener){
+		this.mGameEndListener = gameEndListener;
+	}
 	abstract protected void onTouchEndEvent(boolean isSuccess);
+	
 }

@@ -6,14 +6,14 @@
     android:background="#ffff00" >
 
      <com.game.views.MazeGame1View
-        android:id="@+id/maze1_background"
+        android:id="@+id/maze1GameSurface"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitCenter"
         android:src="@drawable/maze1_background1" />
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/maze1BackgroundLayer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitCenter"

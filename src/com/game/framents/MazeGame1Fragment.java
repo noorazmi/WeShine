@@ -1,36 +1,30 @@
 package com.game.framents;
 
+import com.game.listeners.OnGameEndListener;
+import com.game.views.DrawingSurface;
+import com.game.weshine.MainActivity;
 import com.game.weshine.R;
-import com.game.weshine.R.layout;
 
-import android.app.Fragment;
-import android.graphics.drawable.AnimationDrawable;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-
-public class MazeGame1Fragment  extends Fragment{
+public class MazeGame1Fragment  extends BaseFragment implements OnGameEndListener{
 	
-	 public MazeGame1Fragment() {
-		 
-		
-		 
-     }
+	
+	@Override
+	protected int getFragmentLayoutId() {
+		return R.layout.maze_game1;
+	}
 
-     @Override
-     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-             Bundle savedInstanceState) {
-         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-//         ImageView mBirdsView = (ImageView) rootView.findViewById(R.id.birdsView);
-//         mBirdsView.setBackgroundResource(R.drawable.birds_animation);
-//         AnimationDrawable birdsAnimation;
-//         
-//         birdsAnimation = (AnimationDrawable) mBirdsView.getBackground();
-//         birdsAnimation.start();
-         return rootView;
-     }
+	@Override
+	public void onResume() {
+		super.onResume();
+		DrawingSurface drawingSurface = (DrawingSurface) getFragmentView().findViewById(R.id.maze1GameSurface);
+		drawingSurface.setOnGameEndListener(this);
+	}
+	
+	@Override
+	public void onGameEnd(boolean isSuccessful) {
+		if(isSuccessful){
+		  ((MainActivity)getActivity()).attachGameEndVideoFragment(getArguments());
+		}
+	}
 
-     
 }

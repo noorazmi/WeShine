@@ -53,25 +53,6 @@ public class UtilityMethods {
 	public static final Point getPointPXToDP(int x, int y, Context context){
 		return new Point((int)UtilityMethods.convertPixelsToDp(x, context), (int)UtilityMethods.convertPixelsToDp(y, context));
 	}
-
-	
-	/**
-	 * Returns the validation rectangle width in pixels
-	 * @param context
-	 * @return width of the validation rectangle in pixels
-	 */
-	public static final int getValidationRectWidthInPX(Context context){
-		return (int) convertDpToPixel(ConstantValues.VALIDATION_RECTANGLE_WIDTH_IN_DP, context);
-	}
-	
-	/**
-	 * Returns the validation rectangle height in pixels
-	 * @param context
-	 * @return height of the validation rectangle in pixels
-	 */
-	public static final int getValidationRectHeightInPX(Context context){
-		return (int) convertDpToPixel(ConstantValues.VALIDATION_RECTANGLE_HEIGHT_IN_DP, context);
-	}
 	
 	
 	/**
