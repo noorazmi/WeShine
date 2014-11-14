@@ -3,31 +3,38 @@
     android:id="@+id/my_frame"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#ffff00" >
-
+    android:background="#ffff00" > 
      <com.game.views.MazeGame1View
-        android:id="@+id/maze1GameSurface"
+        android:id="@+id/mazeGame1_gameSurface"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitCenter"
         android:src="@drawable/maze1_background1" />
 
     <ImageView
-        android:id="@+id/maze1BackgroundLayer"
+        android:id="@+id/mazeGame1_backgroundLayer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitCenter"
         android:src="@drawable/maze1_overlay" />
 
-</FrameLayout>
-
-   <!--  <ImageView
-        android:id="@+id/birdsView"
+    <ImageView
+        android:id="@+id/mazeGame1_terrificImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/terrific1" 
+        android:scaleType="fitCenter"
+        android:visibility="invisible"/>
+    
+    <ImageView
+        android:id="@+id/mazeGame1_birdsImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/maze1_background"
-        android:layout_alignTop="@+id/maze1_background"
-        android:layout_marginLeft="136dp"
-        android:layout_marginTop="42dp" /> -->
+        android:layout_marginLeft="@dimen/bird_animation_left_margin"
+        android:layout_marginTop="@dimen/bird_animation_top_margin"
+        android:src="@drawable/birds16" />
+
+</FrameLayout>
+
 
 

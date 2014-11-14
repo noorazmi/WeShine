@@ -3,7 +3,6 @@ package com.game.views;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import com.game.listeners.OnGameEndListener;
 import com.game.utils.Logger;
 
 public class MazeGame1View extends DrawingSurface{
