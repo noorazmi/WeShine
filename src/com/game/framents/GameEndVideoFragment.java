@@ -25,7 +25,7 @@ public class GameEndVideoFragment extends BaseFragment implements MediaPlayer.On
 		// Displays a video file.
 		View v = getFragmentView();
 		VideoView mVideoView = (VideoView) v.findViewById(R.id.videoview);
-		String uriPath = "android.resource://com.game.weshine/" + R.raw.maze1_video;
+		String uriPath = "android.resource://com.game.weshine/" + R.raw.maze1_end_video;
 		Uri uri = Uri.parse(uriPath);
 		mVideoView.setVideoURI(uri);
 		mVideoView.requestFocus();
