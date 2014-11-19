@@ -25,6 +25,8 @@ public class AnimationUtil {
 	public static void performAnimation(View view, AnimType animType, AnimationListener animationListener) {
 		if (animType == AnimType.ZOOM_IN) {
 			playZoomInAnimation(view, animationListener);
+		}else if(animType == AnimType.ZOOM_OUT){
+			playZoomOutAnimation(view, animationListener);
 		}
 
 	}
@@ -45,10 +47,17 @@ public class AnimationUtil {
 		frameAnimation.start();
 	}
 
-	// Performs zooming/scaling animation
+	// Performs zoom in/scale up animation
 	private static void playZoomInAnimation(View view, AnimationListener animationListener) {
 		// load the animation
 		Animation animation = AnimationUtils.loadAnimation(WeShineApp.getInstance(), R.anim.zoom_in);
+		animation.setAnimationListener(animationListener);
+		view.startAnimation(animation);
+	}
+	
+	// Performs zoom out/scale down animation
+	private static void playZoomOutAnimation(View view, AnimationListener animationListener){
+		Animation animation = AnimationUtils.loadAnimation(WeShineApp.getInstance(), R.anim.zoom_out);
 		animation.setAnimationListener(animationListener);
 		view.startAnimation(animation);
 	}

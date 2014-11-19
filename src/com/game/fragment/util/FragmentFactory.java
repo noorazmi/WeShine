@@ -11,7 +11,8 @@ import com.game.weshine.MainActivity;
 public class FragmentFactory {
 
 	public static void attachGameEndVideoFragment(Activity activity, Bundle bundle) {
-		FragmentHelper.replaceFragmentWithDefaultAnimation(new WeakReference<MainActivity>((MainActivity) activity), new GameEndVideoFragment(), null, FragmentTag.FragmentGameEndVideo.getTag());
+		//FragmentHelper.replaceFragment(new WeakReference<MainActivity>((MainActivity) activity), new GameEndVideoFragment(), null, FragmentTag.FragmentGameEndVideo.getTag());
+		FragmentHelper.addFragmentOnBackStack(new WeakReference<MainActivity>((MainActivity) activity), new GameEndVideoFragment(), null, FragmentTag.FragmentGameEndVideo.getTag());
 	}
 	
 

@@ -1,6 +1,5 @@
 package com.game.framents;
 
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
@@ -14,6 +13,9 @@ import com.game.weshine.R;
 
 public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener, AnimationListener {
 
+	//Drawing surface to draw the path on
+	private DrawingSurface mDrawingSurface;
+	
 	@Override
 	protected int getFragmentLayoutId() {
 		return R.layout.maze_game1;
@@ -22,8 +24,8 @@ public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener
 	@Override
 	public void onResume() {
 		super.onResume();
-		DrawingSurface drawingSurface = (DrawingSurface) getFragmentView().findViewById(R.id.mazeGame1_gameSurface);
-		drawingSurface.setOnGameEndListener(this);
+		mDrawingSurface = (DrawingSurface) getFragmentView().findViewById(R.id.mazeGame1_gameSurface);
+		mDrawingSurface.setOnGameEndListener(this);
 		setAnimatedBirdsView();
 		setAnimatedSunView();
 	}
@@ -40,22 +42,39 @@ public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener
 	public void onGameEnd(boolean isSuccessful) {
 		if (isSuccessful) {
 			AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame1_terrificImageView), AnimType.ZOOM_IN, this);
+		}else{
+			//Reset the view and let the user try to draw right path again.
+			resetDrawingSurface();
 		}
 	}
 
 	@Override
 	public void onAnimationStart(Animation animation) {
-		((ImageView) getFragmentView().findViewById(R.id.mazeGame1_terrificImageView)).setVisibility(View.VISIBLE);
+		//((ImageView) getFragmentView().findViewById(R.id.mazeGame1_terrificImageView)).setVisibility(View.VISIBLE);
 	}
 
 	@Override
 	public void onAnimationEnd(Animation animation) {
-
+		
+		
 		((MainActivity) getActivity()).attachGameEndVideoFragment(getArguments());
+		AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame1_terrificImageView), AnimType.ZOOM_OUT, null);
+		resetDrawingSurface();
+		
+		
 	}
 
+	
+	
 	@Override
 	public void onAnimationRepeat(Animation animation) {
 	}
 
+	/**
+	 * Resets the drawing surface. Every the paths drawn on the surface will be erased.
+	 */
+	private void resetDrawingSurface(){
+		mDrawingSurface.reset();
+	}
+	
 }

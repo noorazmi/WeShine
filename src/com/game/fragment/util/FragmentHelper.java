@@ -11,7 +11,7 @@ import com.game.utils.Logger;
 import com.game.weshine.R;
 
 public class FragmentHelper {
-	public static void replaceFragmentWithDefaultAnimation(WeakReference<?> activity, Fragment fragment, Bundle datas, String fragTag) {
+	public static void replaceFragment(WeakReference<?> activity, Fragment fragment, Bundle datas, String fragTag) {
 		if (activity.get() != null && !((Activity) activity.get()).isFinishing()) {
 			FragmentTransaction transaction = ((Activity) activity.get()).getFragmentManager().beginTransaction();
 			if (datas != null) {
@@ -25,4 +25,23 @@ public class FragmentHelper {
 			transaction.commitAllowingStateLoss();
 		}
 	}
+	
+	public static void addFragmentOnBackStack(WeakReference<?> activity, Fragment fragment, Bundle datas, String fragTag) {
+		if (activity.get() != null && !((Activity) activity.get()).isFinishing()) {
+			FragmentTransaction transaction = ((Activity) activity.get()).getFragmentManager().beginTransaction();
+			if (datas != null) {
+				fragment.setArguments(datas);
+			}
+			//We don't need any animation for video view after game end
+			//transaction.setCustomAnimations(R.animator.fragment_slide_right_enter, R.animator.fragment_slide_left_exit, 0, 0);
+			Logger.debug("test", "goto : Total Fragment count : " + ((Activity) activity.get()).getFragmentManager().getBackStackEntryCount());
+			transaction.add(((Activity) activity.get()).findViewById(R.id.container).getId(), fragment, fragTag);
+			transaction.addToBackStack(fragTag);
+			transaction.show(fragment);
+			transaction.commitAllowingStateLoss();
+		}
+	}
+	
+	
+	
 }

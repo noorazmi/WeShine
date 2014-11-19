@@ -27,20 +27,14 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 	private Canvas mCanvas;
 	private Path mPath;
 	private Paint mPaint;
-	private LinkedList<Path> paths = new LinkedList<Path>();
-	//GameEndListener instance to invoke the onGameEnd method
+	private LinkedList<Path> paths ;
+	// GameEndListener instance to invoke the onGameEnd method
 	protected OnGameEndListener mGameEndListener;
-
-	// first Touch point of the user
-	private Point mStartPoint;
-
-	// Last point when the user separated his finger from the screen.
-	private Point mEndPoint;
 
 	// For a right path, isTouchedBlue = true, isTouchedRed = false and
 	// isTouchedGreen = true at the end of the user finger drag.
 	private boolean isTouchedBlue = false;
-	//private boolean isTouchedRed = false;
+	// private boolean isTouchedRed = false;
 	private boolean isTouchedGreen = false;
 
 	private int tolerance = 25;
@@ -56,6 +50,14 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 		setFocusable(true);
 		setFocusableInTouchMode(true);
 		setOnTouchListener(this);
+		init();
+	}
+
+	/**
+	 * Initialize the view drawing objects
+	 */
+	private void init() {
+		
 		mPaint = new Paint();
 		mPaint.setAntiAlias(true);
 		mPaint.setDither(true);
@@ -65,18 +67,20 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 		mPaint.setStrokeCap(Paint.Cap.ROUND);
 		mPaint.setStrokeWidth(6);
 		mCanvas = new Canvas();
+		paths = new LinkedList<Path>();
 		mPath = new Path();
 		paths.add(mPath);
 
-		mStartPoint = new Point(-1, -1);
-		mEndPoint = new Point(-1, -1);
-
+		// Set path tracking boolean
+		isTouchedBlue = false;
+		isTouchedGreen = false;
+		isRightPath = true;
 	}
 
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		
+
 		for (Path p : paths) {
 			canvas.drawPath(p, mPaint);
 		}
@@ -157,7 +161,7 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 		mPath = new Path();
 		paths.add(mPath);
 		onTouchEndEvent(isTouchedBlue && isTouchedGreen && isRightPath);
-		
+
 	}
 
 	@Override
@@ -168,7 +172,6 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_DOWN:
 			touch_start(x, y);
-			mStartPoint.set((int) x, (int) y);
 			Log.d(ConstantValues.APP_TAG, "ACTION_DOWN: x:" + x + " y:" + y);
 			invalidate();
 			break;
@@ -179,7 +182,6 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 			break;
 		case MotionEvent.ACTION_UP:
 			Log.d(ConstantValues.APP_TAG, "ACTION_UP: x:" + x + " y:" + y);
-			mEndPoint.set((int) x, (int) y);
 			touch_up();
 			invalidate();
 			break;
@@ -188,23 +190,6 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 
 	}
 
-	/**
-	 * Returns the starting point of touch
-	 * 
-	 * @return Point
-	 */
-	public Point getTouchStartPoint() {
-		return mStartPoint;
-	}
-
-	/**
-	 * Returns the point where the user pull his figer from the screen
-	 * 
-	 * @return Point
-	 */
-	public Point getTouchEndPoint() {
-		return mEndPoint;
-	}
 
 	/**
 	 * Get the color from the hotspot image at point x-y.
@@ -229,14 +214,14 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 			return;
 		}
 		int touchColor = getHotspotColor((int) x, (int) y);
-		Logger.debug(TAG, "touchColor:"+touchColor);
-		
+		Logger.debug(TAG, "touchColor:" + touchColor);
+
 		if (ColorTool.closeMatch(Color.WHITE, touchColor, tolerance)) {
-			if(isTouchedBlue == true && isTouchedGreen == false){
+			if (isTouchedBlue == true && isTouchedGreen == false) {
 				isRightPath = false;
 			}
-			//isTouchedRed = true;
-			Logger.debug(ConstantValues.APP_TAG, "Touch color WHITE"+" x= "+x +" y="+y);
+			// isTouchedRed = true;
+			Logger.debug(ConstantValues.APP_TAG, "Touch color WHITE" + " x= " + x + " y=" + y);
 		} else if (ColorTool.closeMatch(Color.GREEN, touchColor, tolerance)) {
 			isTouchedGreen = true;
 			Logger.debug(ConstantValues.APP_TAG, "Touch color GREEN");
@@ -247,9 +232,18 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 
 	}
 
-	public void setOnGameEndListener(OnGameEndListener gameEndListener){
+	public void setOnGameEndListener(OnGameEndListener gameEndListener) {
 		this.mGameEndListener = gameEndListener;
 	}
+
 	abstract protected void onTouchEndEvent(boolean isSuccess);
-	
+
+	/**
+	 * Resets the view in fresh state.
+	 */
+	public void reset() {
+		init();
+		invalidate();
+	}
+
 }

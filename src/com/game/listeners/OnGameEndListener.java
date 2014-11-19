@@ -6,5 +6,9 @@ package com.game.listeners;
  *
  */
 public interface OnGameEndListener {
+	/**
+	 * Will be called when the user stops drawing path.
+	 * @param isSuccessful true if the user drew a right path
+	 */
 	public abstract void onGameEnd(boolean isSuccessful);
 }

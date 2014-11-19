@@ -5,10 +5,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.VideoView;
+import android.media.MediaPlayer;
 
 import com.game.weshine.R;
 
-public class GameEndVideoFragment extends BaseFragment{
+public class GameEndVideoFragment extends BaseFragment implements MediaPlayer.OnCompletionListener {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -28,12 +29,19 @@ public class GameEndVideoFragment extends BaseFragment{
 		Uri uri = Uri.parse(uriPath);
 		mVideoView.setVideoURI(uri);
 		mVideoView.requestFocus();
+		mVideoView.setOnCompletionListener(this);
 		mVideoView.start();
 	}
 	
 	@Override
 	protected int getFragmentLayoutId() {
 		return R.layout.game_end_video_fragment;
+	}
+
+	@Override
+	public void onCompletion(MediaPlayer mp) {
+		//Video complete now pop the video fragment
+		getFragmentManager().popBackStack();
 	}
 
 }
