@@ -1,4 +1,5 @@
-package com.game.framents;
+
+    package com.game.framents;
 
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
