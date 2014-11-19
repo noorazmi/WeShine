@@ -1,10 +1,12 @@
 package com.game.fragment.util;
 
 import com.game.framents.GameEndVideoFragment;
+import com.game.framents.MazeGame1Fragment;
 
 public enum FragmentTag {
 	
-	FragmentGameEndVideo(GameEndVideoFragment.class.getSimpleName());
+	FragmentGameEndVideo(GameEndVideoFragment.class.getSimpleName()),
+	FragmentMazeGame1(MazeGame1Fragment.class.getSimpleName());
 	
     private String fragmentTag;
 	private FragmentTag(String fragmentTag) {
