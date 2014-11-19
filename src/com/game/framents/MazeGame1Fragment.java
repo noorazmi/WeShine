@@ -25,7 +25,7 @@ public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener
 	@Override
 	public void onResume() {
 		super.onResume();
-		mDrawingSurface = (DrawingSurface) getFragmentView().findViewById(R.id.mazeGame1_gameSurface);
+		mDrawingSurface = (DrawingSurface) getFragmentView().findViewById(R.id.mazeGame1_middleImageView);
 		mDrawingSurface.setOnGameEndListener(this);
 		setAnimatedBirdsView();
 		setAnimatedSunView();

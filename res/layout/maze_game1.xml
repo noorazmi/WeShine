@@ -1,40 +1,50 @@
-
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/my_frame"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#ffff00" > 
-     <com.game.views.MazeGame1View
-        android:id="@+id/mazeGame1_gameSurface"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/maze1_background1" />
+    android:background="#ffff00" >
 
     <ImageView
-        android:id="@+id/mazeGame1_backgroundLayer"
+        android:id="@+id/mazeGame1_bottomImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitCenter"
-        android:src="@drawable/maze1_overlay" />
+        android:src="@drawable/maze1_bottom_img" />
+
+    <com.game.views.MazeGame1View
+        android:id="@+id/mazeGame1_middleImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/maze1_middle_img" />
+
+    <ImageView
+        android:id="@+id/mazeGame1_topImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/maze1_top_img" />
 
     <ImageView
         android:id="@+id/mazeGame1_terrificImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/terrific1" 
         android:scaleType="fitCenter"
-        android:visibility="invisible"/>
-    
+        android:src="@drawable/terrific1"
+        android:visibility="invisible" />
+
     <ImageView
         android:id="@+id/mazeGame1_birdsImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/bird_animation_left_margin"
-        android:layout_marginTop="@dimen/bird_animation_top_margin"
+         android:layout_gravity="top|left"
         android:src="@drawable/birds16" />
 
+    <ImageView
+        android:id="@+id/mazeGame1_sunImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:src="@drawable/maze1sun_0" />
+
 </FrameLayout>
-
-
-

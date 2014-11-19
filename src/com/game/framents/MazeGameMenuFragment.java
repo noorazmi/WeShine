@@ -8,7 +8,6 @@ import com.game.view.adapter.ImageViewPagerAdapter;
 import com.game.weshine.MainActivity;
 import com.game.weshine.R;
 
-
 public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItemClickListener {
 
 	@Override
@@ -18,40 +17,19 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
 		ImageViewPagerAdapter adapter = new ImageViewPagerAdapter(getActivity());
 		adapter.setOnMazeMenuItemClickListener(this);
 		viewPager.setAdapter(adapter);
-		
+
 	}
-	
+
 	@Override
 	protected int getFragmentLayoutId() {
 		return R.layout.maze_game_menu;
 	}
-	
-	
+
 	@Override
 	public void onGameMenuItemClick(int level) {
 
-		Logger.toast("clicked position:"+level, getActivity());
-		((MainActivity)getActivity()).AttachGameFragment(level);
-//		switch (level) {
-//		case 0:
-//			
-//			break;
-//		case 1:
-//
-//			break;
-//		case 2:
-//
-//			break;
-//		case 3:
-//
-//			break;
-//		case 4:
-//
-//			break;
-//
-//		default:
-//			break;
-//		}
+		Logger.toast("clicked position:" + level, getActivity());
+		((MainActivity) getActivity()).AttachGameFragment(level);
 	}
 
 }
