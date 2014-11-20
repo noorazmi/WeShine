@@ -35,15 +35,30 @@
 
     <ImageView
         android:id="@+id/mazeGame2_birdsImageView"
-        android:layout_width="100dp"
-        android:layout_height="93dp"
-        android:layout_gravity="top|left"
-        android:layout_marginLeft="10dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right" />
 
     <ImageView
         android:id="@+id/mazeGame2_sunImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|right" />
+        android:layout_gravity="top|left" 
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"/>
+    <ImageView
+        android:id="@+id/mazeGame2_redShipImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left" 
+        android:layout_marginLeft="40dp"/>
+
+    <ImageView
+        android:id="@+id/mazeGame2_greenShipImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right" 
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="30dp"/>
 
 </FrameLayout>

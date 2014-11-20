@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.VideoView;
 import android.media.MediaPlayer;
 
+import com.game.utils.ConstantValues;
 import com.game.weshine.R;
 
 public class GameEndVideoFragment extends BaseFragment implements MediaPlayer.OnCompletionListener {
@@ -25,7 +26,7 @@ public class GameEndVideoFragment extends BaseFragment implements MediaPlayer.On
 		// Displays a video file.
 		View v = getFragmentView();
 		VideoView mVideoView = (VideoView) v.findViewById(R.id.videoview);
-		String uriPath = "android.resource://com.game.weshine/" + R.raw.maze1_end_video;
+		String uriPath = ConstantValues.BASE_RESOURCE_PATH + getArguments().getInt(ConstantValues.VIDEO_FILE_NAME);
 		Uri uri = Uri.parse(uriPath);
 		mVideoView.setVideoURI(uri);
 		mVideoView.requestFocus();

@@ -1,0 +1,44 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/my_frame"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffff00" >
+
+    <ImageView
+        android:id="@+id/mazeGame3_bottomImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/maze3_bottom_img" />
+
+    <com.game.views.MazeGame1View
+        android:id="@+id/mazeGame3_middleImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/maze3_middle_img" />
+
+    <ImageView
+        android:id="@+id/mazeGame3_topImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/maze3_top_img" />
+
+    <ImageView
+        android:id="@+id/mazeGame3_wellDoneImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/well_done"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/mazeGame3_sunImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|left" 
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"/>
+
+</FrameLayout>

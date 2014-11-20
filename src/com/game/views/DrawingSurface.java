@@ -35,6 +35,7 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 	private boolean isTouchedBlue = false;
 	private boolean isTouchedGreen = false;
 	private boolean isTouchedBlack = false;
+	private boolean isTouchedWhite = false;
 
 	private int tolerance = 25;
 
@@ -109,7 +110,7 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 		// kill this so we don't double draw
 		mPath = new Path();
 		paths.add(mPath);
-		onTouchEndEvent(isTouchedBlue && isTouchedGreen && isTouchedBlack);
+		onTouchEndEvent(isTouchedBlue && isTouchedGreen && isTouchedBlack && isTouchedWhite);
 
 	}
 
@@ -170,6 +171,8 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 			isTouchedBlue = true;
 		} else if (ColorTool.closeMatch(Color.BLACK, touchColor, tolerance)) {
 			isTouchedBlack = true;
+		}else if (ColorTool.closeMatch(Color.WHITE, touchColor, tolerance)){
+			isTouchedWhite = true;
 		}
 
 	}
@@ -190,6 +193,13 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 	public void reset() {
 		init();
 		invalidate();
+	}
+	
+	/**
+	 * Three colors Green, Blue and Black will be on every maze level. White color will be present on Maze level 2, 3, 4 and 5. So in case of MazeGame1Fragment, we have to set it true because the right path will check all colors eg Red, green, black and white.
+	 */
+	public void setIsTouchedWhite(boolean status){
+		isTouchedWhite = status;
 	}
 
 }

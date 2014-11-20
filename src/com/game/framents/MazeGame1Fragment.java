@@ -1,6 +1,7 @@
 
     package com.game.framents;
 
+import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import com.game.listeners.OnGameEndListener;
 import com.game.util.animation.AnimType;
 import com.game.util.animation.AnimationUtil;
+import com.game.utils.ConstantValues;
 import com.game.views.DrawingSurface;
 import com.game.weshine.MainActivity;
 import com.game.weshine.R;
@@ -28,6 +30,7 @@ public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener
 		mDrawingSurface = (DrawingSurface) getFragmentView().findViewById(R.id.mazeGame1_middleImageView);
 		mDrawingSurface.setOnGameEndListener(this);
 		mDrawingSurface.setHotSpotImageView((ImageView)getFragmentView().findViewById(R.id.mazeGame1_bottomImageView));
+		mDrawingSurface.setIsTouchedWhite(true);
 		setAnimatedBirdsView();
 		setAnimatedSunView();
 	}
@@ -57,7 +60,12 @@ public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener
 	@Override
 	public void onAnimationEnd(Animation animation) {
 		((MainActivity) getActivity()).popTopFragment();
-		((MainActivity) getActivity()).attachGameEndVideoFragment(getArguments());
+		Bundle bundle = getArguments();
+		if(bundle == null){
+			bundle = new Bundle();
+		}
+		bundle.putInt(ConstantValues.VIDEO_FILE_NAME, R.raw.maze1_end_video);
+		((MainActivity) getActivity()).attachGameEndVideoFragment(bundle);
 		AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame1_terrificImageView), AnimType.ZOOM_OUT, null);
 		resetDrawingSurface();
 	}

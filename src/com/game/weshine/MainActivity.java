@@ -25,6 +25,15 @@ public class MainActivity extends Activity {
 		case ConstantValues.GAME_LEVEL_1:
 			FragmentFactory.attachGameLevelTwoFragment(this, null);
 			break;
+		case ConstantValues.GAME_LEVEL_2:
+			FragmentFactory.attachGameLevelThreeFragment(this, null);
+			break;
+		case ConstantValues.GAME_LEVEL_3:
+			FragmentFactory.attachGameLevelFourFragment(this, null);
+			break;
+		case ConstantValues.GAME_LEVEL_4:
+			FragmentFactory.attachGameLevelFiveFragment(this, null);
+			break;
 
 		default:
 			break;
@@ -32,7 +41,7 @@ public class MainActivity extends Activity {
 	}
 	
 	public void attachGameEndVideoFragment(Bundle bundle) {
-		FragmentFactory.attachGameEndVideoFragment(this, null);
+		FragmentFactory.attachGameEndVideoFragment(this, bundle);
 	}
 
 	/**

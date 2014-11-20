@@ -13,48 +13,33 @@ import com.game.views.DrawingSurface;
 import com.game.weshine.MainActivity;
 import com.game.weshine.R;
 
-public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener, AnimationListener {
+public class MazeGame5Fragment extends BaseFragment implements OnGameEndListener, AnimationListener {
 
 	// Drawing surface to draw the path on
 	private DrawingSurface mDrawingSurface;
 
 	@Override
 	protected int getFragmentLayoutId() {
-		return R.layout.maze_game2;
+		return R.layout.maze_game5;
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
-		mDrawingSurface = (DrawingSurface) getFragmentView().findViewById(R.id.mazeGame2_middleImageView);
+		mDrawingSurface = (DrawingSurface) getFragmentView().findViewById(R.id.mazeGame5_middleImageView);
 		mDrawingSurface.setOnGameEndListener(this);
-		mDrawingSurface.setHotSpotImageView((ImageView) getFragmentView().findViewById(R.id.mazeGame2_bottomImageView));
-		setAnimatedBirdsView();
+		mDrawingSurface.setHotSpotImageView((ImageView) getFragmentView().findViewById(R.id.mazeGame5_bottomImageView));
 		setAnimatedSunView();
-		setAnimationGreenShipView();
-		setAnimationRedShipView();
-	}
-
-	private void setAnimatedBirdsView() {
-		AnimationUtil.performFrameAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame2_birdsImageView), R.drawable.maze2_birds_animation);
 	}
 
 	private void setAnimatedSunView() {
-		AnimationUtil.performFrameAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame2_sunImageView), R.drawable.sun_animation);
-	}
-
-	private void setAnimationGreenShipView() {
-		AnimationUtil.performFrameAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame2_greenShipImageView), R.drawable.maze2_green_ship_animation);
-	}
-
-	private void setAnimationRedShipView() {
-		AnimationUtil.performFrameAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame2_redShipImageView), R.drawable.maze2_red_ship_animation);
+		AnimationUtil.performFrameAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame5_sunImageView), R.drawable.maze5_sun_animation);
 	}
 
 	@Override
 	public void onGameEnd(boolean isSuccessful) {
 		if (isSuccessful) {
-			AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame2_fabulusImageView), AnimType.ZOOM_IN, this);
+			AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame5_excellentImageView), AnimType.ZOOM_IN, this);
 		} else {
 			// Reset the view and let the user try to draw right path again.
 			resetDrawingSurface();
@@ -72,9 +57,9 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 		if (bundle == null) {
 			bundle = new Bundle();
 		}
-		bundle.putInt(ConstantValues.VIDEO_FILE_NAME, R.raw.maze2_end_video);
+		bundle.putInt(ConstantValues.VIDEO_FILE_NAME, R.raw.maze5_end_video);
 		((MainActivity) getActivity()).attachGameEndVideoFragment(bundle);
-		AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame2_fabulusImageView), AnimType.ZOOM_OUT, null);
+		AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame5_excellentImageView), AnimType.ZOOM_OUT, null);
 		resetDrawingSurface();
 	}
 
