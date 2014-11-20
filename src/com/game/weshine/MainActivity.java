@@ -14,18 +14,16 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		if (savedInstanceState == null) {
-			// getFragmentManager().beginTransaction().add(R.id.container, new
-			// MazeGame1Fragment()).commit();
 			getFragmentManager().beginTransaction().add(R.id.container, new MazeGameMenuFragment()).commit();
-			// getFragmentManager().beginTransaction()
-			// .add(R.id.container, new GameEndVideoFragment())
-			// .commit();
 		}
 	}
 	public void AttachGameFragment(int gameLevel){
 		switch (gameLevel) {
 		case ConstantValues.GAME_LEVEL_0:
 			FragmentFactory.attachGameLevelOneFragment(this, null);
+			break;
+		case ConstantValues.GAME_LEVEL_1:
+			FragmentFactory.attachGameLevelTwoFragment(this, null);
 			break;
 
 		default:
@@ -37,6 +35,12 @@ public class MainActivity extends Activity {
 		FragmentFactory.attachGameEndVideoFragment(this, null);
 	}
 
+	/**
+	 * Pops the top fragment from the fragemnt stack
+	 */
+	public void popTopFragment(){
+		FragmentFactory.popTopFragment(this);
+	}
 	
 
 }

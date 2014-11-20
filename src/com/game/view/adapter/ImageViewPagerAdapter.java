@@ -1,8 +1,6 @@
 package com.game.view.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,7 +8,6 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.game.listeners.OnMazeMenuItemClickListener;
 import com.game.weshine.R;
@@ -37,12 +34,6 @@ public class ImageViewPagerAdapter extends PagerAdapter implements OnClickListen
 	@Override
 	public Object instantiateItem(ViewGroup container, int position) {
 
-		TextView textView = new TextView(context);
-		textView.setTextColor(Color.WHITE);
-		textView.setTextSize(30);
-		textView.setTypeface(Typeface.DEFAULT_BOLD);
-		textView.setText(String.valueOf(position));
-
 		ImageView imageView = new ImageView(context);
 		imageView.setImageResource(menuImages[position]);
 		LayoutParams imageParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
@@ -52,7 +43,6 @@ public class ImageViewPagerAdapter extends PagerAdapter implements OnClickListen
 		layout.setOrientation(LinearLayout.VERTICAL);
 		LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 		layout.setLayoutParams(layoutParams);
-		layout.addView(textView);
 		imageView.setTag(String.valueOf(position));
 		layout.addView(imageView);
 		imageView.setOnClickListener(this);

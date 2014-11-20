@@ -27,8 +27,6 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
 
 	@Override
 	public void onGameMenuItemClick(int level) {
-
-		Logger.toast("clicked position:" + level, getActivity());
 		((MainActivity) getActivity()).AttachGameFragment(level);
 	}
 

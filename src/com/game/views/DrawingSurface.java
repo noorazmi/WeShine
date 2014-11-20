@@ -8,7 +8,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.Point;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -27,23 +26,19 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 	private Canvas mCanvas;
 	private Path mPath;
 	private Paint mPaint;
-	private LinkedList<Path> paths ;
+	private LinkedList<Path> paths;
 	// GameEndListener instance to invoke the onGameEnd method
 	protected OnGameEndListener mGameEndListener;
 
-	// For a right path, isTouchedBlue = true, isTouchedRed = false and
-	// isTouchedGreen = true at the end of the user finger drag.
+	// For a right path, isTouchedBlue = true, isTouchedRed = true and
+	// isTouchedGreen = true when the user removes the finger from the screen.
 	private boolean isTouchedBlue = false;
-	// private boolean isTouchedRed = false;
 	private boolean isTouchedGreen = false;
+	private boolean isTouchedBlack = false;
 
 	private int tolerance = 25;
 
-	// Note : after isTouchedBlue = true and before isTouchedGreen = true, any
-	// time if isTouchedRed value becomed isTouchedRed = true the isRightPath
-	// will always be
-	// isRightPath = false
-	private boolean isRightPath = true;
+	private ImageView bottomImageView;
 
 	public DrawingSurface(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -57,7 +52,7 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 	 * Initialize the view drawing objects
 	 */
 	private void init() {
-		
+
 		mPaint = new Paint();
 		mPaint.setAntiAlias(true);
 		mPaint.setDither(true);
@@ -65,7 +60,7 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 		mPaint.setStyle(Paint.Style.STROKE);
 		mPaint.setStrokeJoin(Paint.Join.ROUND);
 		mPaint.setStrokeCap(Paint.Cap.ROUND);
-		mPaint.setStrokeWidth(6);
+		mPaint.setStrokeWidth(ConstantValues.STROKE_WIDTH);
 		mCanvas = new Canvas();
 		paths = new LinkedList<Path>();
 		mPath = new Path();
@@ -74,7 +69,7 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 		// Set path tracking boolean
 		isTouchedBlue = false;
 		isTouchedGreen = false;
-		isRightPath = true;
+		isTouchedBlack = false;
 	}
 
 	@Override
@@ -85,52 +80,6 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 			canvas.drawPath(p, mPaint);
 		}
 	}
-
-	// @Override
-	// protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-	//
-	// int desiredWidth = 550;
-	// int desiredHeight = 250;
-	//
-	// int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-	// int widthSize = MeasureSpec.getSize(widthMeasureSpec);
-	// int heightMode = MeasureSpec.getMode(heightMeasureSpec);
-	// int heightSize = MeasureSpec.getSize(heightMeasureSpec);
-	//
-	// int ww = UtilityMethods.getPixelsFromDp(getContext(), 550);
-	// int hh = UtilityMethods.getPixelsFromDp(getContext(), 250);
-	//
-	// int width;
-	// int height;
-	//
-	// // Measure Width
-	// if (widthMode == MeasureSpec.EXACTLY) {
-	// // Must be this size
-	// width = widthSize;
-	// } else if (widthMode == MeasureSpec.AT_MOST) {
-	// // Can't be bigger than...
-	// width = Math.min(desiredWidth, widthSize);
-	// } else {
-	// // Be whatever you want
-	// width = desiredWidth;
-	// }
-	//
-	// // Measure Height
-	// if (heightMode == MeasureSpec.EXACTLY) {
-	// // Must be this size
-	// height = heightSize;
-	// } else if (heightMode == MeasureSpec.AT_MOST) {
-	// // Can't be bigger than...
-	// height = Math.min(desiredHeight, heightSize);
-	// } else {
-	// // Be whatever you want
-	// height = desiredHeight;
-	// }
-	//
-	// // MUST CALL THIS
-	// // setMeasuredDimension(width, height);
-	// setMeasuredDimension(ww, hh);
-	// }
 
 	private float mX, mY;
 	private static final float TOUCH_TOLERANCE = 4;
@@ -160,7 +109,7 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 		// kill this so we don't double draw
 		mPath = new Path();
 		paths.add(mPath);
-		onTouchEndEvent(isTouchedBlue && isTouchedGreen && isRightPath);
+		onTouchEndEvent(isTouchedBlue && isTouchedGreen && isTouchedBlack);
 
 	}
 
@@ -190,50 +139,47 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 
 	}
 
-
 	/**
 	 * Get the color from the hotspot image at point x-y.
 	 * 
 	 */
 	public int getHotspotColor(int x, int y) {
 
-		setDrawingCacheEnabled(true);
-		Bitmap hotspots = Bitmap.createBitmap(getDrawingCache());
+		if (bottomImageView == null) {
+			Log.d(TAG, "Please set hotspot imageVeiw first");
+			return 0;
+		}
+		bottomImageView.setDrawingCacheEnabled(true);
+		Bitmap hotspots = Bitmap.createBitmap(bottomImageView.getDrawingCache());
 		if (hotspots == null) {
-			Logger.debug(ConstantValues.APP_TAG, "Hot spot bitmap was not created");
+			Logger.debug(ConstantValues.APP_TAG, "Hot spot bitmap was not created.");
 			return 0;
 		} else {
-			setDrawingCacheEnabled(false);
+			bottomImageView.setDrawingCacheEnabled(false);
 			return hotspots.getPixel(x, y);
 		}
 	}
 
 	private void setPathInfo(int x, int y) {
-		if (isRightPath == false) {
-			Logger.debug(TAG, "Wrong path!!");
-			return;
-		}
 		int touchColor = getHotspotColor((int) x, (int) y);
 		Logger.debug(TAG, "touchColor:" + touchColor);
 
-		if (ColorTool.closeMatch(Color.WHITE, touchColor, tolerance)) {
-			if (isTouchedBlue == true && isTouchedGreen == false) {
-				isRightPath = false;
-			}
-			// isTouchedRed = true;
-			Logger.debug(ConstantValues.APP_TAG, "Touch color WHITE" + " x= " + x + " y=" + y);
-		} else if (ColorTool.closeMatch(Color.GREEN, touchColor, tolerance)) {
+		if (ColorTool.closeMatch(Color.GREEN, touchColor, tolerance)) {
 			isTouchedGreen = true;
-			Logger.debug(ConstantValues.APP_TAG, "Touch color GREEN");
 		} else if (ColorTool.closeMatch(Color.BLUE, touchColor, tolerance)) {
-			Logger.debug(ConstantValues.APP_TAG, "Touch color BLUE");
 			isTouchedBlue = true;
+		} else if (ColorTool.closeMatch(Color.BLACK, touchColor, tolerance)) {
+			isTouchedBlack = true;
 		}
 
 	}
 
 	public void setOnGameEndListener(OnGameEndListener gameEndListener) {
 		this.mGameEndListener = gameEndListener;
+	}
+
+	public void setHotSpotImageView(ImageView hotSpotImageView) {
+		this.bottomImageView = hotSpotImageView;
 	}
 
 	abstract protected void onTouchEndEvent(boolean isSuccess);

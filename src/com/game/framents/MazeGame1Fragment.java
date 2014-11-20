@@ -27,6 +27,7 @@ public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener
 		super.onResume();
 		mDrawingSurface = (DrawingSurface) getFragmentView().findViewById(R.id.mazeGame1_middleImageView);
 		mDrawingSurface.setOnGameEndListener(this);
+		mDrawingSurface.setHotSpotImageView((ImageView)getFragmentView().findViewById(R.id.mazeGame1_bottomImageView));
 		setAnimatedBirdsView();
 		setAnimatedSunView();
 	}
@@ -36,7 +37,7 @@ public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener
 	}
 	
 	private void setAnimatedSunView(){
-		
+		AnimationUtil.performFrameAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame1_sunImageView), R.drawable.sun_animation);
 	}
 	
 	@Override
@@ -51,21 +52,15 @@ public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener
 
 	@Override
 	public void onAnimationStart(Animation animation) {
-		//((ImageView) getFragmentView().findViewById(R.id.mazeGame1_terrificImageView)).setVisibility(View.VISIBLE);
 	}
 
 	@Override
 	public void onAnimationEnd(Animation animation) {
-		
-		
+		((MainActivity) getActivity()).popTopFragment();
 		((MainActivity) getActivity()).attachGameEndVideoFragment(getArguments());
 		AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame1_terrificImageView), AnimType.ZOOM_OUT, null);
 		resetDrawingSurface();
-		
-		
 	}
-
-	
 	
 	@Override
 	public void onAnimationRepeat(Animation animation) {

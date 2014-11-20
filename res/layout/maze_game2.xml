@@ -5,43 +5,43 @@
     android:background="#ffff00" >
 
     <ImageView
-        android:id="@+id/mazeGame1_bottomImageView"
+        android:id="@+id/mazeGame2_bottomImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        android:src="@drawable/maze1_bottom_img" />
+        android:src="@drawable/maze2_bottom_img" />
 
     <com.game.views.MazeGame1View
-        android:id="@+id/mazeGame1_middleImageView"
+        android:id="@+id/mazeGame2_middleImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        android:src="@drawable/maze1_middle_img" />
+        android:src="@drawable/maze2_middle_img" />
 
     <ImageView
-        android:id="@+id/mazeGame1_topImageView"
+        android:id="@+id/mazeGame2_topImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        android:src="@drawable/maze1_top_img" />
+        android:src="@drawable/maze2_top_img" />
 
     <ImageView
-        android:id="@+id/mazeGame1_terrificImageView"
+        android:id="@+id/mazeGame2_fabulusImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitCenter"
-        android:src="@drawable/terrific1"
+        android:src="@drawable/fabulous"
         android:visibility="invisible" />
 
     <ImageView
-        android:id="@+id/mazeGame1_birdsImageView"
+        android:id="@+id/mazeGame2_birdsImageView"
         android:layout_width="100dp"
         android:layout_height="93dp"
-         android:layout_gravity="top|left" 
-         android:layout_marginLeft="10dp"/>
+        android:layout_gravity="top|left"
+        android:layout_marginLeft="10dp" />
 
     <ImageView
-        android:id="@+id/mazeGame1_sunImageView"
+        android:id="@+id/mazeGame2_sunImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|right" />

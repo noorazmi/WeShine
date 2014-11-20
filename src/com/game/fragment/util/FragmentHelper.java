@@ -42,6 +42,10 @@ public class FragmentHelper {
 		}
 	}
 	
+	public static void popTopFragment(WeakReference<?> activity){
+		((Activity) activity.get()).getFragmentManager().popBackStack();
+	}
+	
 	
 	
 }

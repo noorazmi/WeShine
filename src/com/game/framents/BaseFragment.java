@@ -33,4 +33,6 @@ public abstract class BaseFragment extends Fragment{
 	//Returns the layout id which will be attached to the fragment as view
 	protected abstract int getFragmentLayoutId();
 	
+	
+	
 }
