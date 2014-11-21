@@ -30,12 +30,16 @@ public class MazeGame3Fragment extends BaseFragment implements OnGameEndListener
 		mDrawingSurface.setOnGameEndListener(this);
 		mDrawingSurface.setHotSpotImageView((ImageView) getFragmentView().findViewById(R.id.mazeGame3_bottomImageView));
 		setAnimatedSunView();
+		setAnimatinCarView();
 	}
 
 	private void setAnimatedSunView() {
-		AnimationUtil.performFrameAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame3_sunImageView), R.drawable.sun_animation);
+		AnimationUtil.performFrameAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame3_sunImageView), R.drawable.maze3_sun_animation);
 	}
 
+	private void setAnimatinCarView(){
+		AnimationUtil.performFrameAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame3_carImageView), R.drawable.maze3_car_animation);
+	}
 	@Override
 	public void onGameEnd(boolean isSuccessful) {
 		if (isSuccessful) {

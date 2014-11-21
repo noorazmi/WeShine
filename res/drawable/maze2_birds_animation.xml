@@ -3,100 +3,106 @@
     android:oneshot="false" >
 
     <item
-        android:drawable="@drawable/maze2_birds1"
+        android:drawable="@drawable/maze2birds1"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds2"
+        android:drawable="@drawable/maze2birds2"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds3"
+        android:drawable="@drawable/maze2birds3"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds4"
+        android:drawable="@drawable/maze2birds4"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds5"
+        android:drawable="@drawable/maze2birds5"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds6"
+        android:drawable="@drawable/maze2birds6"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds7"
+        android:drawable="@drawable/maze2birds7"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds8"
+        android:drawable="@drawable/maze2birds8"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds9"
+        android:drawable="@drawable/maze2birds9"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds10"
+        android:drawable="@drawable/maze2birds10"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds11"
+        android:drawable="@drawable/maze2birds11"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds12"
+        android:drawable="@drawable/maze2birds12"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds13"
+        android:drawable="@drawable/maze2birds13"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds14"
+        android:drawable="@drawable/maze2birds14"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds15"
+        android:drawable="@drawable/maze2birds15"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds16"
+        android:drawable="@drawable/maze2birds16"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds17"
+        android:drawable="@drawable/maze2birds17"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds18"
+        android:drawable="@drawable/maze2birds18"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds19"
+        android:drawable="@drawable/maze2birds19"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds20"
+        android:drawable="@drawable/maze2birds20"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds21"
+        android:drawable="@drawable/maze2birds21"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds22"
+        android:drawable="@drawable/maze2birds22"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds23"
+        android:drawable="@drawable/maze2birds23"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds24"
+        android:drawable="@drawable/maze2birds24"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds25"
+        android:drawable="@drawable/maze2birds25"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds26"
+        android:drawable="@drawable/maze2birds26"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds27"
+        android:drawable="@drawable/maze2birds27"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds28"
+        android:drawable="@drawable/maze2birds28"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds29"
+        android:drawable="@drawable/maze2birds29"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds30"
+        android:drawable="@drawable/maze2birds30"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds31"
+        android:drawable="@drawable/maze2birds31"
         android:duration="@integer/birds_animation_frame_duration"/>
     <item
-        android:drawable="@drawable/maze2_birds32"
+        android:drawable="@drawable/maze2birds32"
+        android:duration="@integer/birds_animation_frame_duration"/>
+     <item
+        android:drawable="@drawable/maze2birds33"
+        android:duration="@integer/birds_animation_frame_duration"/>
+      <item
+        android:drawable="@drawable/maze2birds34"
         android:duration="@integer/birds_animation_frame_duration"/>
 
 </animation-list>

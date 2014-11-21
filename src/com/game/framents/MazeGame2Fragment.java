@@ -40,7 +40,7 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 	}
 
 	private void setAnimatedSunView() {
-		AnimationUtil.performFrameAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame2_sunImageView), R.drawable.sun_animation);
+		AnimationUtil.performFrameAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame2_sunImageView), R.drawable.maze2_sun_animation);
 	}
 
 	private void setAnimationGreenShipView() {

@@ -33,7 +33,7 @@ public class MazeGame4Fragment extends BaseFragment implements OnGameEndListener
 	}
 
 	private void setAnimatedSunView() {
-		AnimationUtil.performFrameAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame4_sunImageView), R.drawable.sun_animation);
+		AnimationUtil.performFrameAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame4_sunImageView), R.drawable.maze4_sun_animation);
 	}
 
 	@Override

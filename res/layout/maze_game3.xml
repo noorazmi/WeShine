@@ -26,19 +26,26 @@
         android:src="@drawable/maze3_top_img" />
 
     <ImageView
-        android:id="@+id/mazeGame3_wellDoneImageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitCenter"
-        android:src="@drawable/well_done"
-        android:visibility="invisible" />
-
-    <ImageView
         android:id="@+id/mazeGame3_sunImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|left" 
         android:layout_marginTop="50dp"
         android:layout_marginLeft="20dp"/>
+    
+     <ImageView
+        android:id="@+id/mazeGame3_carImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal" 
+        android:layout_marginBottom="10dp"/>
+    
+    <ImageView
+        android:id="@+id/mazeGame3_wellDoneImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/well_done"
+        android:visibility="invisible" />
 
 </FrameLayout>
