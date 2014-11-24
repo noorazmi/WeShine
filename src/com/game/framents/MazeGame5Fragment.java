@@ -30,6 +30,7 @@ public class MazeGame5Fragment extends BaseFragment implements OnGameEndListener
 		mDrawingSurface.setOnGameEndListener(this);
 		mDrawingSurface.setHotSpotImageView((ImageView) getFragmentView().findViewById(R.id.mazeGame5_bottomImageView));
 		setAnimatedSunView();
+		startAudioSound(R.raw.maze5_ondraw);
 	}
 
 	private void setAnimatedSunView() {

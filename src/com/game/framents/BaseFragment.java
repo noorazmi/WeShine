@@ -53,8 +53,8 @@ public abstract class BaseFragment extends Fragment implements OnCompletionListe
 	public void onCompletion(MediaPlayer mp) {
 		if (mp != null) {
 			mp.release();
-			onAudioComplete(mAudioFileId);
 		}
+		onAudioComplete(mAudioFileId);
 	}
 
 	

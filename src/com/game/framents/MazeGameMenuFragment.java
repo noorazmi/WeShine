@@ -10,13 +10,14 @@ import com.game.weshine.R;
 
 public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItemClickListener {
 
+	private ViewPager mViewPager;
 	@Override
 	public void onResume() {
 		super.onResume();
-		ViewPager viewPager = (ViewPager) getFragmentView().findViewById(R.id.game_menu_view_pager);
+		mViewPager = (ViewPager) getFragmentView().findViewById(R.id.game_menu_view_pager);
 		ImageViewPagerAdapter adapter = new ImageViewPagerAdapter(getActivity());
 		adapter.setOnMazeMenuItemClickListener(this);
-		viewPager.setAdapter(adapter);
+		mViewPager.setAdapter(adapter);
 
 	}
 
@@ -29,11 +30,13 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
 	public void onGameMenuItemClick(int level) {
 		((MainActivity) getActivity()).AttachGameFragment(level);
 	}
-
+	
 	@Override
 	protected void onAudioComplete(int audioFileId) {
-		// TODO Auto-generated method stub
-		
 	}
+	
+    public void setCurrentMenuItem(int level){
+    	mViewPager.setCurrentItem(level);
+    }
 
 }

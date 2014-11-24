@@ -8,6 +8,7 @@ import android.widget.VideoView;
 import android.media.MediaPlayer;
 
 import com.game.utils.ConstantValues;
+import com.game.weshine.MainActivity;
 import com.game.weshine.R;
 
 public class GameEndVideoFragment extends BaseFragment implements MediaPlayer.OnCompletionListener {
@@ -42,7 +43,10 @@ public class GameEndVideoFragment extends BaseFragment implements MediaPlayer.On
 	@Override
 	public void onCompletion(MediaPlayer mp) {
 		//Video complete now pop the video fragment
+		mp = null;
 		getFragmentManager().popBackStack();
+		((MainActivity) getActivity()).openNextLevel();;
+		
 	}
 
 	@Override

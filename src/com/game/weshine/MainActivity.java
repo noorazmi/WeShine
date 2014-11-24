@@ -9,15 +9,20 @@ import com.game.utils.ConstantValues;
 
 public class MainActivity extends Activity {
 
+	private MazeGameMenuFragment mMazeGameMenuFragment;
+	private int currentGameLevel = ConstantValues.GAME_LEVEL_0;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		if (savedInstanceState == null) {
-			getFragmentManager().beginTransaction().add(R.id.container, new MazeGameMenuFragment()).commit();
+			mMazeGameMenuFragment = new MazeGameMenuFragment();
+			getFragmentManager().beginTransaction().add(R.id.container, mMazeGameMenuFragment).commit();
 		}
 	}
 	public void AttachGameFragment(int gameLevel){
+		currentGameLevel = gameLevel;
 		switch (gameLevel) {
 		case ConstantValues.GAME_LEVEL_0:
 			FragmentFactory.attachGameLevelOneFragment(this, null);
@@ -40,9 +45,17 @@ public class MainActivity extends Activity {
 		}
 	}
 	
+	public void openNextLevel(){
+		AttachGameFragment(currentGameLevel);
+	}
+	
 	public void attachGameEndVideoFragment(Bundle bundle) {
 		FragmentFactory.attachGameEndVideoFragment(this, bundle);
+		if(currentGameLevel < ConstantValues.GAME_LEVEL_4){
+			mMazeGameMenuFragment.setCurrentMenuItem(++currentGameLevel);
+		}
 	}
+	
 
 	/**
 	 * Pops the top fragment from the fragemnt stack
