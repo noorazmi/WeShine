@@ -46,7 +46,10 @@ public class MainActivity extends Activity {
 	}
 	
 	public void openNextLevel(){
-		AttachGameFragment(currentGameLevel);
+		if(currentGameLevel < ConstantValues.GAME_LEVEL_4){
+			AttachGameFragment(currentGameLevel);
+		}
+		
 	}
 	
 	public void attachGameEndVideoFragment(Bundle bundle) {

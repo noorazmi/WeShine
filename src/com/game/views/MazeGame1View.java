@@ -13,12 +13,6 @@ public class MazeGame1View extends DrawingSurface {
 
 	@Override
 	protected void onTouchEndEvent(boolean isSuccess) {
-//		if (isSuccess) {
-//			Logger.toast("Congratulations ! Successfull", getContext());
-//		} else {
-//			Logger.toast("You failed! Try again", getContext());
-//		}
-
 		if (mGameEndListener != null) {
 			mGameEndListener.onGameEnd(isSuccess);
 		}

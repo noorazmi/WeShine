@@ -14,10 +14,12 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 
+import com.game.app.WeShineApp;
 import com.game.listeners.OnGameEndListener;
 import com.game.utils.ColorTool;
 import com.game.utils.ConstantValues;
 import com.game.utils.Logger;
+import com.game.utils.UtilityMethods;
 
 public abstract class DrawingSurface extends ImageView implements OnTouchListener {
 
@@ -60,7 +62,7 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 		mPaint.setStyle(Paint.Style.STROKE);
 		mPaint.setStrokeJoin(Paint.Join.ROUND);
 		mPaint.setStrokeCap(Paint.Cap.ROUND);
-		mPaint.setStrokeWidth(ConstantValues.STROKE_WIDTH);
+		mPaint.setStrokeWidth(UtilityMethods.convertDpToPixel(ConstantValues.STROKE_WIDTH, WeShineApp.getInstance()));
 		mCanvas = new Canvas();
 		paths = new LinkedList<Path>();
 		mPath = new Path();

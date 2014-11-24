@@ -50,7 +50,7 @@ public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener
 			AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame1_terrificImageView), AnimType.ZOOM_IN, this);
 		} else {
 			// Reset the view and let the user try to draw right path again.
-			resetDrawingSurface();
+			//resetDrawingSurface();
 		}
 	}
 
@@ -69,7 +69,7 @@ public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener
 		bundle.putInt(ConstantValues.VIDEO_FILE_NAME, R.raw.maze1_end_video);
 		((MainActivity) getActivity()).attachGameEndVideoFragment(bundle);
 		AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame1_terrificImageView), AnimType.ZOOM_OUT, null);
-		resetDrawingSurface();
+		//resetDrawingSurface();
 	}
 
 	@Override
@@ -80,15 +80,15 @@ public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener
 	 * Resets the drawing surface. Every the paths drawn on the surface will be
 	 * erased.
 	 */
-	private void resetDrawingSurface() {
-		mDrawingSurface.reset();
-	}
+//	private void resetDrawingSurface() {
+//		mDrawingSurface.reset();
+//	}
 
 	@Override
 	protected void onAudioComplete(int audioFileId) {
 		switch (audioFileId) {
 		case R.raw.maze1_ondraw:
-			startAudioSound(R.raw.maze1);
+			//startAudioSound(R.raw.maze1);
 			break;
 
 		default:
