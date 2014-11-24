@@ -9,7 +9,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -108,9 +107,14 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 		// commit the path to our offscreen
 		mCanvas.drawPath(mPath, mPaint);
 		// kill this so we don't double draw
-		mPath = new Path();
-		paths.add(mPath);
 		onTouchEndEvent(isTouchedBlue && isTouchedGreen && isTouchedBlack && isTouchedWhite);
+		//mPath = new Path();
+		//paths.add(mPath);
+		if(!isTouchedBlue || !isTouchedGreen || !isTouchedBlack || !isTouchedWhite){
+			reset();
+		}
+		
+		
 
 	}
 
@@ -122,16 +126,16 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_DOWN:
 			touch_start(x, y);
-			Log.d(ConstantValues.APP_TAG, "ACTION_DOWN: x:" + x + " y:" + y);
+			Logger.debug(ConstantValues.APP_TAG, "ACTION_DOWN: x:" + x + " y:" + y);
 			invalidate();
 			break;
 		case MotionEvent.ACTION_MOVE:
-			Log.d(ConstantValues.APP_TAG, "ACTION_MOVE: x:" + x + " y:" + y);
+			Logger.debug(ConstantValues.APP_TAG, "ACTION_MOVE: x:" + x + " y:" + y);
 			touch_move(x, y);
 			invalidate();
 			break;
 		case MotionEvent.ACTION_UP:
-			Log.d(ConstantValues.APP_TAG, "ACTION_UP: x:" + x + " y:" + y);
+			Logger.debug(ConstantValues.APP_TAG, "ACTION_UP: x:" + x + " y:" + y);
 			touch_up();
 			invalidate();
 			break;
@@ -147,7 +151,7 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 	public int getHotspotColor(int x, int y) {
 
 		if (bottomImageView == null) {
-			Log.d(TAG, "Please set hotspot imageVeiw first");
+			Logger.debug(TAG, "Please set hotspot imageVeiw first");
 			return 0;
 		}
 		bottomImageView.setDrawingCacheEnabled(true);
@@ -162,16 +166,19 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 	}
 
 	private void setPathInfo(int x, int y) {
+		if(isTouchedGreen && isTouchedBlue && isTouchedBlack && isTouchedWhite){
+			return;
+		}
 		int touchColor = getHotspotColor((int) x, (int) y);
 		Logger.debug(TAG, "touchColor:" + touchColor);
 
-		if (ColorTool.closeMatch(Color.GREEN, touchColor, tolerance)) {
+		if ( !isTouchedGreen && ColorTool.closeMatch(Color.GREEN, touchColor, tolerance)) {
 			isTouchedGreen = true;
-		} else if (ColorTool.closeMatch(Color.BLUE, touchColor, tolerance)) {
+		} else if (!isTouchedBlue && ColorTool.closeMatch(Color.BLUE, touchColor, tolerance)) {
 			isTouchedBlue = true;
-		} else if (ColorTool.closeMatch(Color.BLACK, touchColor, tolerance)) {
+		} else if (!isTouchedBlack && ColorTool.closeMatch(Color.BLACK, touchColor, tolerance)) {
 			isTouchedBlack = true;
-		}else if (ColorTool.closeMatch(Color.WHITE, touchColor, tolerance)){
+		}else if (!isTouchedWhite && ColorTool.closeMatch(Color.WHITE, touchColor, tolerance)){
 			isTouchedWhite = true;
 		}
 
