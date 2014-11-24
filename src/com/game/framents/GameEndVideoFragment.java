@@ -45,4 +45,8 @@ public class GameEndVideoFragment extends BaseFragment implements MediaPlayer.On
 		getFragmentManager().popBackStack();
 	}
 
+	@Override
+	protected void onAudioComplete(int audioFileId) {
+	}
+
 }

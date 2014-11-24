@@ -48,6 +48,7 @@ public class MazeGame5Fragment extends BaseFragment implements OnGameEndListener
 
 	@Override
 	public void onAnimationStart(Animation animation) {
+		startAudioSound(R.raw.excellent);
 	}
 
 	@Override
@@ -73,6 +74,18 @@ public class MazeGame5Fragment extends BaseFragment implements OnGameEndListener
 	 */
 	private void resetDrawingSurface() {
 		mDrawingSurface.reset();
+	}
+
+	@Override
+	protected void onAudioComplete(int audioFileId) {
+		switch (audioFileId) {
+		case R.raw.maze5_ondraw:
+			startAudioSound(R.raw.maze5);
+			break;
+
+		default:
+			break;
+		}
 	}
 
 }

@@ -30,4 +30,10 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
 		((MainActivity) getActivity()).AttachGameFragment(level);
 	}
 
+	@Override
+	protected void onAudioComplete(int audioFileId) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

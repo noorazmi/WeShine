@@ -31,6 +31,7 @@ public class MazeGame3Fragment extends BaseFragment implements OnGameEndListener
 		mDrawingSurface.setHotSpotImageView((ImageView) getFragmentView().findViewById(R.id.mazeGame3_bottomImageView));
 		setAnimatedSunView();
 		setAnimatinCarView();
+		startAudioSound(R.raw.maze3_ondraw);
 	}
 
 	private void setAnimatedSunView() {
@@ -52,6 +53,7 @@ public class MazeGame3Fragment extends BaseFragment implements OnGameEndListener
 
 	@Override
 	public void onAnimationStart(Animation animation) {
+		startAudioSound(R.raw.well_done);
 	}
 
 	@Override
@@ -77,6 +79,18 @@ public class MazeGame3Fragment extends BaseFragment implements OnGameEndListener
 	 */
 	private void resetDrawingSurface() {
 		mDrawingSurface.reset();
+	}
+
+	@Override
+	protected void onAudioComplete(int audioFileId) {
+		switch (audioFileId) {
+		case R.raw.maze3_ondraw:
+			startAudioSound(R.raw.maze3);
+			break;
+
+		default:
+			break;
+		}
 	}
 
 }

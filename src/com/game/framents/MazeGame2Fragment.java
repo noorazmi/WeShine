@@ -33,6 +33,7 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 		setAnimatedSunView();
 		setAnimationGreenShipView();
 		setAnimationRedShipView();
+		startAudioSound(R.raw.maze2_ondraw);
 	}
 
 	private void setAnimatedBirdsView() {
@@ -63,6 +64,7 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 
 	@Override
 	public void onAnimationStart(Animation animation) {
+		startAudioSound(R.raw.fabulus);
 	}
 
 	@Override
@@ -88,6 +90,19 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 	 */
 	private void resetDrawingSurface() {
 		mDrawingSurface.reset();
+	}
+
+	@Override
+	protected void onAudioComplete(int audioFileId) {
+		switch (audioFileId) {
+		case R.raw.maze2_ondraw:
+			startAudioSound(R.raw.maze2);
+			break;
+
+		default:
+			break;
+		}
+		
 	}
 
 }

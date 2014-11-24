@@ -30,6 +30,7 @@ public class MazeGame4Fragment extends BaseFragment implements OnGameEndListener
 		mDrawingSurface.setOnGameEndListener(this);
 		mDrawingSurface.setHotSpotImageView((ImageView) getFragmentView().findViewById(R.id.mazeGame4_bottomImageView));
 		setAnimatedSunView();
+		startAudioSound(R.raw.maze4_ondraw);
 	}
 
 	private void setAnimatedSunView() {
@@ -48,6 +49,7 @@ public class MazeGame4Fragment extends BaseFragment implements OnGameEndListener
 
 	@Override
 	public void onAnimationStart(Animation animation) {
+		startAudioSound(R.raw.super_sound);
 	}
 
 	@Override
@@ -73,6 +75,18 @@ public class MazeGame4Fragment extends BaseFragment implements OnGameEndListener
 	 */
 	private void resetDrawingSurface() {
 		mDrawingSurface.reset();
+	}
+
+	@Override
+	protected void onAudioComplete(int audioFileId) {
+		switch (audioFileId) {
+		case R.raw.maze4_ondraw:
+			startAudioSound(R.raw.maze4);
+			break;
+
+		default:
+			break;
+		}		
 	}
 
 }
