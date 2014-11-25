@@ -55,7 +55,9 @@ public class MainActivity extends Activity {
 	public void attachGameEndVideoFragment(Bundle bundle) {
 		FragmentFactory.attachGameEndVideoFragment(this, bundle);
 		if(currentGameLevel < ConstantValues.GAME_LEVEL_4){
-			mMazeGameMenuFragment.setCurrentMenuItem(++currentGameLevel);
+			if(mMazeGameMenuFragment != null){
+				mMazeGameMenuFragment.setCurrentMenuItem(++currentGameLevel);
+			}
 		}
 	}
 	

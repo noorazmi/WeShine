@@ -12,7 +12,7 @@ public class Logger {
 	
 	public static void debug(String tag, String message) {
 		if (ConstantValues.APP_DEBUG) {
-			Log.d(tag, ConstantValues.APP_TAG+message);
+			Log.e(tag, ConstantValues.APP_TAG+message);
 		}
 	}
 

@@ -1,7 +1,11 @@
 package com.game.utils;
 
+import com.game.pojo.FloatPoint;
+
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Path;
+import android.graphics.PathMeasure;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
@@ -43,27 +47,50 @@ public class UtilityMethods {
 		float dp = px / (metrics.densityDpi / 160f);
 		return dp;
 	}
-	
+
 	/**
-	 * Returns a Point which x and y values are in dp  
-	 * @param x x value in px
-	 * @param y y value in px
+	 * Returns a Point which x and y values are in dp
+	 * 
+	 * @param x
+	 *            x value in px
+	 * @param y
+	 *            y value in px
 	 * @return Point which x and y Values are in dp
 	 */
-	public static final Point getPointPXToDP(int x, int y, Context context){
-		return new Point((int)UtilityMethods.convertPixelsToDp(x, context), (int)UtilityMethods.convertPixelsToDp(y, context));
+	public static final Point getPointPXToDP(int x, int y, Context context) {
+		return new Point((int) UtilityMethods.convertPixelsToDp(x, context), (int) UtilityMethods.convertPixelsToDp(y, context));
 	}
-	
-	
+
 	/**
 	 * Validates if a Point falls under the boundary of passed ValidationRegion
+	 * 
 	 * @param validationRegion
 	 * @param machingPoint
 	 * @return true if the point falls under the provided ValidationRegion
 	 */
-	
-	public static final  boolean isMachingRegion( Rect validationRegion, Point machingPoint){
+
+	public static final boolean isMachingRegion(Rect validationRegion, Point machingPoint) {
 		return validationRegion.contains(machingPoint.x, machingPoint.y);
 	}
-	
+
+	public static FloatPoint[] getPoints(Path path, int count) {
+		FloatPoint[] pointArray = new FloatPoint[count];
+		PathMeasure pm = new PathMeasure(path, false);
+		float length = pm.getLength();
+		float distance = 0f;
+		float speed = length / count;
+		int counter = 0;
+		float[] aCoordinates = new float[2];
+
+		while ((distance < length) && (counter < count)) {
+			// get point from the path
+			pm.getPosTan(distance, aCoordinates, null);
+			pointArray[counter] = new FloatPoint(aCoordinates[0], aCoordinates[1]);
+			counter++;
+			distance = distance + speed;
+		}
+
+		return pointArray;
+	}
+
 }
