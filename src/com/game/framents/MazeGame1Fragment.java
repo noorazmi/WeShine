@@ -88,7 +88,7 @@ public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener
 	protected void onAudioComplete(int audioFileId) {
 		switch (audioFileId) {
 		case R.raw.maze1_ondraw:
-			//startAudioSound(R.raw.maze1);
+			startAudioSound(R.raw.maze1);
 			break;
 
 		default:

@@ -44,22 +44,22 @@ public abstract class BaseFragment extends Fragment implements OnCompletionListe
 
 	protected void startAudioSound(int audioFileId) {
 
-//		String uriPath = ConstantValues.BASE_RESOURCE_PATH + audioFileId;
-//		mAudioFileId = audioFileId;
-//		Uri uri = Uri.parse(uriPath);
-//		MediaPlayer mediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
-//		mediaPlayer.setOnCompletionListener(this);
-//		mediaPlayer.start();
+		String uriPath = ConstantValues.BASE_RESOURCE_PATH + audioFileId;
+		mAudioFileId = audioFileId;
+		Uri uri = Uri.parse(uriPath);
+		MediaPlayer mediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
+		mediaPlayer.setOnCompletionListener(this);
+		mediaPlayer.start();
 		
-		 SoundPool soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
-		 int soundID = soundPool.load(getActivity(), R.raw.maze1, 1);
-		 AudioManager audioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
-         float actualVolume = (float) audioManager
-                 .getStreamVolume(AudioManager.STREAM_MUSIC);
-         float maxVolume = (float) audioManager
-                 .getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-         float volume = actualVolume / maxVolume;
-		 soundPool.play(soundID, volume, volume, 1, 0, 1f);
+//		 SoundPool soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+//		 int soundID = soundPool.load(getActivity(), R.raw.maze1, 1);
+//		 AudioManager audioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
+//         float actualVolume = (float) audioManager
+//                 .getStreamVolume(AudioManager.STREAM_MUSIC);
+//         float maxVolume = (float) audioManager
+//                 .getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+//         float volume = actualVolume / maxVolume;
+//		 soundPool.play(soundID, volume, volume, 1, 0, 1f);
 		
 
 	}
