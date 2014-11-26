@@ -45,7 +45,12 @@ public class GameEndVideoFragment extends BaseFragment implements MediaPlayer.On
 		//Video complete now pop the video fragment
 		mp = null;
 		getFragmentManager().popBackStack();
-		((MainActivity) getActivity()).openNextLevel();;
+		
+		if(getArguments().getInt(ConstantValues.VIDEO_FILE_NAME) == R.raw.maze5_end_video){
+			//If we are in the fifth level of game, don't try to add other level. The game is over.
+			return;
+		}
+		((MainActivity) getActivity()).openNextLevel();
 		
 	}
 

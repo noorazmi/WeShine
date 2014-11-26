@@ -46,7 +46,7 @@ public class MainActivity extends Activity {
 	}
 	
 	public void openNextLevel(){
-		if(currentGameLevel < ConstantValues.GAME_LEVEL_4){
+		if(currentGameLevel <= ConstantValues.GAME_LEVEL_4){
 			AttachGameFragment(currentGameLevel);
 		}
 		

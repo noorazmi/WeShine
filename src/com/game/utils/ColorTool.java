@@ -1,9 +1,6 @@
 package com.game.utils;
 
-import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.widget.ImageView;
 
 /**
  * A class with methods to help with colors. (Only one method so far.)
@@ -11,8 +8,6 @@ import android.widget.ImageView;
  */
 
 public class ColorTool {
-
-	private String TAG = ColorTool.class.getName();
 
 	/**
 	 * Return true if the two colors are a pretty good match. To be a good
@@ -41,28 +36,4 @@ public class ColorTool {
 		}
 		return true;
 	}
-
-	// /**
-	// * Get the color from the hotspot image at point x-y.
-	// *
-	// */
-	// public int getHotspotColor(ImageView imgView, int x, int y, Context
-	// context) {
-	// // ImageView img = (ImageView) findViewById(hotspotId);
-	// if (imgView == null) {
-	// Logger.debug(TAG, "Hot spot image not found");
-	// return 0;
-	// } else {
-	// imgView.setDrawingCacheEnabled(true);
-	// Bitmap hotspots = Bitmap.createBitmap(imgView.getDrawingCache());
-	// if (hotspots == null) {
-	// Logger.debug(TAG, "Hot spot bitmap was not created");
-	// return 0;
-	// } else {
-	// imgView.setDrawingCacheEnabled(false);
-	// return hotspots.getPixel(x, y);
-	// }
-	// }
-	// }
-
 }
