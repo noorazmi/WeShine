@@ -1,11 +1,8 @@
 package com.game.framents;
 
 import android.app.Fragment;
-import android.content.Context;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
-import android.media.SoundPool;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,7 +11,6 @@ import android.view.ViewGroup;
 
 import com.game.app.WeShineApp;
 import com.game.utils.ConstantValues;
-import com.game.weshine.R;
 
 /**
  * Base Fragment for all fragment in the app.

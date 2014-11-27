@@ -11,7 +11,7 @@ import com.game.utils.ConstantValues;
 import com.game.weshine.MainActivity;
 import com.game.weshine.R;
 
-public class GameEndVideoFragment extends BaseFragment implements MediaPlayer.OnCompletionListener {
+public class GameEndVideoFragment extends BaseFragment{
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
