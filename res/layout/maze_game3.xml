@@ -38,7 +38,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal" 
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="@dimen/maze3_car_right_margin"/>
     
     <ImageView
         android:id="@+id/mazeGame3_wellDoneImageView"

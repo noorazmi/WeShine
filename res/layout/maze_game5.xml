@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|right" 
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="70dp"/>
+        android:layout_marginTop="@dimen/maze5_sun_top_margin"
+        android:layout_marginRight="@dimen/maze5_sun_right_margin"/>
 
 </FrameLayout>
