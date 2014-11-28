@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="integer" name="birds_animation_frame_duration">200</item>
+    <item type="integer" name="birds_animation_frame_duration">100</item>
     <item type="integer" name="maze1sun_animation_frame_duration">200</item>
+    <item type="integer" name="ship_green_animation_frame_duration">150</item>
+    <item type="integer" name="ship_red_animation_frame_duration">150</item>
 </resources>

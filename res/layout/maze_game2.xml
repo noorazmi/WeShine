@@ -36,14 +36,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|left" 
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="10dp"/>-
+        android:layout_marginTop="@dimen/maze2_sun_top_margin"
+        android:layout_marginLeft="@dimen/maze2_sun_left_margin"/>-
     <ImageView
         android:id="@+id/mazeGame2_redShipImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|left" 
-        android:layout_marginLeft="40dp"/>
+        android:layout_marginLeft="@dimen/maze2_red_boat_left_margin"/>
 
     <ImageView
         android:id="@+id/mazeGame2_greenShipImageView"

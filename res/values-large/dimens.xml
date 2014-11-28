@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="maze2_red_boat_left_margin">65dp</dimen>
+    <dimen name="maze2_sun_left_margin">10dp</dimen>
+    <dimen name="maze2_sun_top_margin">40dp</dimen>
+    
+</resources>
