@@ -4,8 +4,8 @@
     <dimen name="maze2_sun_left_margin">10dp</dimen>
     <dimen name="maze2_sun_top_margin">40dp</dimen>
     <dimen name="maze3_car_right_margin">20dp</dimen>
-    <dimen name="maze4_sun_right_margin">90dp</dimen>
-    <dimen name="maze4_sun_top_margin">17dp</dimen>
+    <dimen name="maze4_sun_right_margin">98dp</dimen>
+    <dimen name="maze4_sun_top_margin">22dp</dimen>
     <dimen name="maze5_sun_right_margin">70dp</dimen>
     <dimen name="maze5_sun_top_margin">3dp</dimen>
     <dimen name="maze1_sun_right_margin">40dp</dimen>

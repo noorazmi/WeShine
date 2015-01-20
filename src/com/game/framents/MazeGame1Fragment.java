@@ -1,14 +1,19 @@
 package com.game.framents;
 
+import android.graphics.drawable.ScaleDrawable;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 
+import com.game.app.WeShineApp;
 import com.game.listeners.OnGameEndListener;
 import com.game.util.animation.AnimType;
 import com.game.util.animation.AnimationUtil;
 import com.game.utils.ConstantValues;
+import com.game.utils.Logger;
+import com.game.utils.UtilityMethods;
 import com.game.views.DrawingSurface;
 import com.game.weshine.MainActivity;
 import com.game.weshine.R;
@@ -41,6 +46,23 @@ public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener
 	}
 
 	private void setAnimatedSunView() {
+		int screenSize = UtilityMethods.getScreenSizeInInches(WeShineApp.getInstance());
+		Logger.error(getTag(), "size%%%%%%%%%%@@@@@@@@************::"+screenSize);
+		ImageView imageView = (ImageView) getFragmentView().findViewById(R.id.mazeGame1_sunImageView);
+		LayoutParams params = (LayoutParams) imageView.getLayoutParams();
+		if(screenSize >= 10){
+			params.width = (int) UtilityMethods.convertDpToPixel(190, WeShineApp.getInstance());
+			params.height = (int) UtilityMethods.convertDpToPixel(192, WeShineApp.getInstance());
+		}else if(screenSize >= 7){
+			params.width = (int) UtilityMethods.convertDpToPixel(140, WeShineApp.getInstance());
+			params.height = (int) UtilityMethods.convertDpToPixel(148, WeShineApp.getInstance());
+		}else {
+			params.width = (int) UtilityMethods.convertDpToPixel(80, WeShineApp.getInstance());
+			params.height = (int) UtilityMethods.convertDpToPixel(80, WeShineApp.getInstance());
+		}
+		
+		// existing height is ok as is, no need to edit it
+		imageView.setLayoutParams(params);
 		AnimationUtil.performFrameAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame1_sunImageView), R.drawable.sun_animation);
 	}
 

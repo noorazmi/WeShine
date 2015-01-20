@@ -4,11 +4,15 @@ import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
+import android.widget.FrameLayout.LayoutParams;
 
+import com.game.app.WeShineApp;
 import com.game.listeners.OnGameEndListener;
 import com.game.util.animation.AnimType;
 import com.game.util.animation.AnimationUtil;
 import com.game.utils.ConstantValues;
+import com.game.utils.Logger;
+import com.game.utils.UtilityMethods;
 import com.game.views.DrawingSurface;
 import com.game.weshine.MainActivity;
 import com.game.weshine.R;
@@ -35,10 +39,47 @@ public class MazeGame3Fragment extends BaseFragment implements OnGameEndListener
 	}
 
 	private void setAnimatedSunView() {
+		
+		int screenSize = UtilityMethods.getScreenSizeInInches(WeShineApp.getInstance());
+		ImageView imageView = (ImageView) getFragmentView().findViewById(R.id.mazeGame3_sunImageView);
+		LayoutParams params = (LayoutParams) imageView.getLayoutParams();
+		if(screenSize >= 10){
+			params.width = (int) UtilityMethods.convertDpToPixel(198, WeShineApp.getInstance());
+			params.height = (int) UtilityMethods.convertDpToPixel(198, WeShineApp.getInstance());
+			params.topMargin = (int) UtilityMethods.convertDpToPixel(50, WeShineApp.getInstance());
+			params.leftMargin = (int) UtilityMethods.convertDpToPixel(70, WeShineApp.getInstance());
+		}else if(screenSize >= 7){
+			params.width = (int) UtilityMethods.convertDpToPixel(150, WeShineApp.getInstance());
+			params.height = (int) UtilityMethods.convertDpToPixel(155, WeShineApp.getInstance());
+			params.topMargin = (int) UtilityMethods.convertDpToPixel(31, WeShineApp.getInstance());
+			params.leftMargin = (int) UtilityMethods.convertDpToPixel(70, WeShineApp.getInstance());
+		}else {
+			params.width = (int) UtilityMethods.convertDpToPixel(82, WeShineApp.getInstance());
+			params.height = (int) UtilityMethods.convertDpToPixel(82, WeShineApp.getInstance());
+			params.topMargin = (int) UtilityMethods.convertDpToPixel(20, WeShineApp.getInstance());
+			params.leftMargin = (int) UtilityMethods.convertDpToPixel(40, WeShineApp.getInstance());
+		}
+		
 		AnimationUtil.performFrameAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame3_sunImageView), R.drawable.maze3_sun_animation);
 	}
 
 	private void setAnimatinCarView(){
+		
+		int screenSize = UtilityMethods.getScreenSizeInInches(WeShineApp.getInstance());
+		ImageView imageView = (ImageView) getFragmentView().findViewById(R.id.mazeGame3_carImageView);
+		LayoutParams params = (LayoutParams) imageView.getLayoutParams();
+		if(screenSize >= 10){
+			params.width = (int) UtilityMethods.convertDpToPixel(405, WeShineApp.getInstance());
+			params.height = (int) UtilityMethods.convertDpToPixel(314, WeShineApp.getInstance());
+		}else if(screenSize >= 7){
+			params.width = (int) UtilityMethods.convertDpToPixel(325, WeShineApp.getInstance());
+			params.height = (int) UtilityMethods.convertDpToPixel(252, WeShineApp.getInstance());
+			params.rightMargin = (int) UtilityMethods.convertDpToPixel(40, WeShineApp.getInstance());
+			params.bottomMargin = (int) UtilityMethods.convertDpToPixel(-20, WeShineApp.getInstance());
+		}else {
+			params.width = (int) UtilityMethods.convertDpToPixel(155, WeShineApp.getInstance());
+			params.height = (int) UtilityMethods.convertDpToPixel(120, WeShineApp.getInstance());
+		}
 		AnimationUtil.performFrameAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame3_carImageView), R.drawable.maze3_car_animation);
 	}
 	@Override

@@ -8,8 +8,12 @@ import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.os.Build;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
+import android.view.Display;
+import android.view.WindowManager;
 
 public class UtilityMethods {
 
@@ -92,5 +96,54 @@ public class UtilityMethods {
 
 		return pointArray;
 	}
+	
+	
+	
+	public static int getScreenSizeInInches(Context context)
+	{
+		WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+	    Display display = windowManager.getDefaultDisplay();
+	    DisplayMetrics displayMetrics = new DisplayMetrics();
+	    display.getMetrics(displayMetrics);
 
+
+	    // since SDK_INT = 1;
+	    int mWidthPixels = displayMetrics.widthPixels;
+	    int mHeightPixels = displayMetrics.heightPixels;
+
+	    // includes window decorations (statusbar bar/menu bar)
+	    if (Build.VERSION.SDK_INT >= 14 && Build.VERSION.SDK_INT < 17)
+	    {
+	        try
+	        {
+	            mWidthPixels = (Integer) Display.class.getMethod("getRawWidth").invoke(display);
+	            mHeightPixels = (Integer) Display.class.getMethod("getRawHeight").invoke(display);
+	        }
+	        catch (Exception ignored)
+	        {
+	        }
+	    }
+
+	    // includes window decorations (statusbar bar/menu bar)
+	    if (Build.VERSION.SDK_INT >= 17)
+	    {
+	        try
+	        {
+	            Point realSize = new Point();
+	            Display.class.getMethod("getRealSize", Point.class).invoke(display, realSize);
+	            mWidthPixels = realSize.x;
+	            mHeightPixels = realSize.y;
+	        }
+	        catch (Exception ignored)
+	        {
+	        }
+	    }
+	    
+	    double x = Math.pow(mWidthPixels/displayMetrics.xdpi,2);
+	    double y = Math.pow(mHeightPixels/displayMetrics.ydpi,2);
+	    double screenInches = Math.sqrt(x+y);
+	    Log.d("debug","Screen inches : " + screenInches);
+	    
+	    return (int) screenInches;
+	}
 }
