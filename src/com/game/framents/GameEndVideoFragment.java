@@ -8,7 +8,7 @@ import android.widget.VideoView;
 import android.media.MediaPlayer;
 
 import com.game.utils.ConstantValues;
-import com.game.weshine.MainActivity;
+import com.game.weshine.MazeActivity;
 import com.game.weshine.R;
 
 public class GameEndVideoFragment extends BaseFragment{
@@ -50,7 +50,7 @@ public class GameEndVideoFragment extends BaseFragment{
 			//If we are in the fifth level of game, don't try to add other level. The game is over.
 			return;
 		}
-		((MainActivity) getActivity()).openNextLevel();
+		((MazeActivity) getActivity()).openNextLevel();
 		
 	}
 

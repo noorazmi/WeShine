@@ -4,5 +4,7 @@
     <string name="app_name">WeShine</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="sun_catcher">Sun Catcher</string>
+    <string name="maze">Maze</string>
 
 </resources>

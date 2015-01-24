@@ -14,7 +14,7 @@ import com.game.utils.ConstantValues;
 import com.game.utils.Logger;
 import com.game.utils.UtilityMethods;
 import com.game.views.DrawingSurface;
-import com.game.weshine.MainActivity;
+import com.game.weshine.MazeActivity;
 import com.game.weshine.R;
 
 public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener, AnimationListener {
@@ -46,7 +46,7 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 
 	private void setAnimatedSunView() {
 		
-		int screenSize = UtilityMethods.getScreenSizeInInches(WeShineApp.getInstance());
+		double screenSize = UtilityMethods.getScreenSizeInInches(WeShineApp.getInstance());
 		Logger.error(getTag(), "size%%%%%%%%%%@@@@@@@@************::"+screenSize);
 		ImageView imageView = (ImageView) getFragmentView().findViewById(R.id.mazeGame2_sunImageView);
 		LayoutParams params = (LayoutParams) imageView.getLayoutParams();
@@ -55,7 +55,7 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 			params.height = (int) UtilityMethods.convertDpToPixel(198, WeShineApp.getInstance());
 			params.topMargin = (int) UtilityMethods.convertDpToPixel(60, WeShineApp.getInstance());
 			params.leftMargin = (int) UtilityMethods.convertDpToPixel(20, WeShineApp.getInstance());
-		}else if(screenSize >= 7){
+		}else if(screenSize >= 6.9){
 			params.width = (int) UtilityMethods.convertDpToPixel(153, WeShineApp.getInstance());
 			params.height = (int) UtilityMethods.convertDpToPixel(159, WeShineApp.getInstance());
 			params.topMargin = (int) UtilityMethods.convertDpToPixel(40, WeShineApp.getInstance());
@@ -71,7 +71,7 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 	}
 
 	private void setAnimationGreenShipView() {
-		int screenSize = UtilityMethods.getScreenSizeInInches(WeShineApp.getInstance());
+		double screenSize = UtilityMethods.getScreenSizeInInches(WeShineApp.getInstance());
 		ImageView imageView = (ImageView) getFragmentView().findViewById(R.id.mazeGame2_greenShipImageView);
 		LayoutParams params = (LayoutParams) imageView.getLayoutParams();
 		if(screenSize >= 10){
@@ -79,7 +79,7 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 			params.height = (int) UtilityMethods.convertDpToPixel(390, WeShineApp.getInstance());
 			params.bottomMargin = (int) UtilityMethods.convertDpToPixel(5, WeShineApp.getInstance());
 			params.rightMargin = (int) UtilityMethods.convertDpToPixel(50, WeShineApp.getInstance());
-		}else if(screenSize >= 7){
+		}else if(screenSize >= 6.9){
 			params.width = (int) UtilityMethods.convertDpToPixel(154, WeShineApp.getInstance());
 			params.height = (int) UtilityMethods.convertDpToPixel(265, WeShineApp.getInstance());
 			params.bottomMargin = (int) UtilityMethods.convertDpToPixel(8, WeShineApp.getInstance());
@@ -94,7 +94,7 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 	}
 
 	private void setAnimationRedShipView() {
-		int screenSize = UtilityMethods.getScreenSizeInInches(WeShineApp.getInstance());
+		double screenSize = UtilityMethods.getScreenSizeInInches(WeShineApp.getInstance());
 		ImageView imageView = (ImageView) getFragmentView().findViewById(R.id.mazeGame2_redShipImageView);
 		LayoutParams params = (LayoutParams) imageView.getLayoutParams();
 		if(screenSize >= 10){
@@ -102,7 +102,7 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 			params.height = (int) UtilityMethods.convertDpToPixel(300, WeShineApp.getInstance());
 			params.bottomMargin = (int) UtilityMethods.convertDpToPixel(0, WeShineApp.getInstance());
 			params.leftMargin = (int) UtilityMethods.convertDpToPixel(110, WeShineApp.getInstance());
-		}else if(screenSize >= 7){
+		}else if(screenSize >= 6.9){
 			params.width = (int) UtilityMethods.convertDpToPixel(88, WeShineApp.getInstance());
 			params.height = (int) UtilityMethods.convertDpToPixel(205, WeShineApp.getInstance());
 			params.bottomMargin = (int) UtilityMethods.convertDpToPixel(0, WeShineApp.getInstance());
@@ -133,13 +133,13 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 
 	@Override
 	public void onAnimationEnd(Animation animation) {
-		((MainActivity) getActivity()).popTopFragment();
+		((MazeActivity) getActivity()).popTopFragment();
 		Bundle bundle = getArguments();
 		if (bundle == null) {
 			bundle = new Bundle();
 		}
 		bundle.putInt(ConstantValues.VIDEO_FILE_NAME, R.raw.maze2_end_video);
-		((MainActivity) getActivity()).attachGameEndVideoFragment(bundle);
+		((MazeActivity) getActivity()).attachGameEndVideoFragment(bundle);
 		AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame2_fabulusImageView), AnimType.ZOOM_OUT, null);
 		resetDrawingSurface();
 	}

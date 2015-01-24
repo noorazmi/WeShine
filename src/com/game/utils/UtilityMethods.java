@@ -99,7 +99,7 @@ public class UtilityMethods {
 	
 	
 	
-	public static int getScreenSizeInInches(Context context)
+	public static double getScreenSizeInInches(Context context)
 	{
 		WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
 	    Display display = windowManager.getDefaultDisplay();
@@ -144,6 +144,6 @@ public class UtilityMethods {
 	    double screenInches = Math.sqrt(x+y);
 	    Log.d("debug","Screen inches : " + screenInches);
 	    
-	    return (int) screenInches;
+	    return  screenInches;
 	}
 }

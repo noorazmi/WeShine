@@ -5,7 +5,7 @@ import android.support.v4.view.ViewPager;
 import com.game.listeners.OnMazeMenuItemClickListener;
 import com.game.utils.Logger;
 import com.game.view.adapter.ImageViewPagerAdapter;
-import com.game.weshine.MainActivity;
+import com.game.weshine.MazeActivity;
 import com.game.weshine.R;
 
 public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItemClickListener {
@@ -28,7 +28,7 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
 
 	@Override
 	public void onGameMenuItemClick(int level) {
-		((MainActivity) getActivity()).AttachGameFragment(level);
+		((MazeActivity) getActivity()).AttachGameFragment(level);
 	}
 	
 	@Override

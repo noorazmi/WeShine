@@ -15,7 +15,7 @@ import com.game.utils.ConstantValues;
 import com.game.utils.Logger;
 import com.game.utils.UtilityMethods;
 import com.game.views.DrawingSurface;
-import com.game.weshine.MainActivity;
+import com.game.weshine.MazeActivity;
 import com.game.weshine.R;
 
 public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener, AnimationListener {
@@ -46,14 +46,14 @@ public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener
 	}
 
 	private void setAnimatedSunView() {
-		int screenSize = UtilityMethods.getScreenSizeInInches(WeShineApp.getInstance());
+		double screenSize = UtilityMethods.getScreenSizeInInches(WeShineApp.getInstance());
 		Logger.error(getTag(), "size%%%%%%%%%%@@@@@@@@************::"+screenSize);
 		ImageView imageView = (ImageView) getFragmentView().findViewById(R.id.mazeGame1_sunImageView);
 		LayoutParams params = (LayoutParams) imageView.getLayoutParams();
 		if(screenSize >= 10){
 			params.width = (int) UtilityMethods.convertDpToPixel(190, WeShineApp.getInstance());
 			params.height = (int) UtilityMethods.convertDpToPixel(192, WeShineApp.getInstance());
-		}else if(screenSize >= 7){
+		}else if(screenSize >= 6.9){
 			params.width = (int) UtilityMethods.convertDpToPixel(140, WeShineApp.getInstance());
 			params.height = (int) UtilityMethods.convertDpToPixel(148, WeShineApp.getInstance());
 		}else {
@@ -83,13 +83,13 @@ public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener
 
 	@Override
 	public void onAnimationEnd(Animation animation) {
-		((MainActivity) getActivity()).popTopFragment();
+		((MazeActivity) getActivity()).popTopFragment();
 		Bundle bundle = getArguments();
 		if (bundle == null) {
 			bundle = new Bundle();
 		}
 		bundle.putInt(ConstantValues.VIDEO_FILE_NAME, R.raw.maze1_end_video);
-		((MainActivity) getActivity()).attachGameEndVideoFragment(bundle);
+		((MazeActivity) getActivity()).attachGameEndVideoFragment(bundle);
 		AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame1_terrificImageView), AnimType.ZOOM_OUT, null);
 		//resetDrawingSurface();
 	}

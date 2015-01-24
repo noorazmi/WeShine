@@ -7,7 +7,7 @@ import com.game.fragment.util.FragmentFactory;
 import com.game.framents.MazeGameMenuFragment;
 import com.game.utils.ConstantValues;
 
-public class MainActivity extends Activity {
+public class MazeActivity extends Activity {
 
 	private MazeGameMenuFragment mMazeGameMenuFragment;
 	private int currentGameLevel = ConstantValues.GAME_LEVEL_0;
@@ -15,7 +15,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_maze);
 		if (savedInstanceState == null) {
 			mMazeGameMenuFragment = new MazeGameMenuFragment();
 			getFragmentManager().beginTransaction().add(R.id.container, mMazeGameMenuFragment).commit();
