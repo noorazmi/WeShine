@@ -1,9 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
-    android:background="@drawable/sun_catcher_bg">
-    
+    android:background="@drawable/sun_catcher_bg"
+    android:orientation="vertical" >
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/sunCatcher_sunImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/maze2_sun_top_margin" />
+
+    <ImageView
+        android:id="@+id/sunCatcher_lakeImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|bottom"
+        android:layout_marginTop="@dimen/maze2_sun_top_margin" />
+
+    <ImageView
+        android:id="@+id/sunCatcher_batteryImageView"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_gravity="top|right"
+        android:src="@drawable/battery" />
+
+    <TextView
+        android:id="@+id/sunCatcher_circleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:background="@drawable/circle"
+        android:gravity="center"
+        android:text="25"
+        android:textColor="#ff0000"
+        android:textStyle="bold" />
+
+    <AbsoluteLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <ImageView
+            android:id="@+id/sunCatcher_golfCarImageView"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal|bottom"
+            android:src="@drawable/golf_car" />
+    </AbsoluteLayout>
+
+</FrameLayout>

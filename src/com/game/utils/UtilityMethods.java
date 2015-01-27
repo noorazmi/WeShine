@@ -1,7 +1,6 @@
 package com.game.utils;
 
-import com.game.pojo.FloatPoint;
-
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Path;
@@ -14,6 +13,8 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.Display;
 import android.view.WindowManager;
+
+import com.game.pojo.FloatPoint;
 
 public class UtilityMethods {
 
@@ -145,5 +146,23 @@ public class UtilityMethods {
 	    Log.d("debug","Screen inches : " + screenInches);
 	    
 	    return  screenInches;
+	}
+	
+	public static int getScreenWidth(Activity activity){
+		Display display = activity.getWindowManager().getDefaultDisplay();
+		Point size = new Point();
+		display.getSize(size);
+		//int width = size.x;
+		//int height = size.y;
+		return size.x;
+	}
+	
+	public static int getScreenHeight(Activity activity){
+		Display display = activity.getWindowManager().getDefaultDisplay();
+		Point size = new Point();
+		display.getSize(size);
+		//int width = size.x;
+		//int height = size.y;
+		return size.y;
 	}
 }
