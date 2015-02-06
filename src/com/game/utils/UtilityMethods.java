@@ -1,5 +1,7 @@
 package com.game.utils;
 
+import java.util.Random;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -165,4 +167,16 @@ public class UtilityMethods {
 		//int height = size.y;
 		return size.y;
 	}
+	
+	/**
+	 * 
+	 * @param min
+	 * @param max
+	 * @return int Random number in a rang of min and mix inclusive
+	 */
+	public static int getRandomInt(int min, int max){
+		Random random = new Random();
+		return random.nextInt(max - min + 1) + min;
+	}
+	
 }

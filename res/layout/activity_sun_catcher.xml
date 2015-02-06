@@ -5,15 +5,24 @@
     android:background="@drawable/sun_catcher_bg"
     android:orientation="vertical" >
 
-    <ImageView
+    <!--
+         <ImageView
         android:id="@+id/sunCatcher_sunImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/maze2_sun_top_margin" />
+    -->
 
     <ImageView
         android:id="@+id/sunCatcher_lakeImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|bottom"
+        android:layout_marginTop="@dimen/maze2_sun_top_margin" />
+
+    <ImageView
+        android:id="@+id/sunCatcher_birdImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left|bottom"
@@ -39,15 +48,34 @@
 
     <AbsoluteLayout
         android:id="@+id/mainLayout"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/sunCatcher_sunImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/sunCatcher_raysImageView"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:src="@drawable/rays1" />
 
         <ImageView
             android:id="@+id/sunCatcher_golfCarImageView"
             android:layout_width="150dp"
             android:layout_height="100dp"
-            android:layout_gravity="center_horizontal|bottom"
             android:src="@drawable/golf_car" />
     </AbsoluteLayout>
+    <LinearLayout android:id="@+id/sunCatcher_batteryFullImageView" android:layout_width="match_parent" 
+        android:layout_height="match_parent" 
+        android:gravity="center"
+        android:visibility="gone">
+        <ImageView  android:layout_width="wrap_content" 
+            android:layout_height="wrap_content"
+            android:src="@drawable/batteryfull"/>
+    </LinearLayout>
+    
 
 </FrameLayout>
