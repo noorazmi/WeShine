@@ -6,12 +6,14 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.graphics.Rect;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -58,9 +60,21 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 	private final int BATTERY_50_HIT_COUNT = 20;
 	private final int BATTERY_75_HIT_COUNT = 30;
 	private final int BATTERY_100_HIT_COUNT = 40;
-	private int rayHitMargin;
+	private final int RAY_ONE = 1;
+	private final int RAY_TWO = 2;
+	private final int RAY_THREE = 3;
+	private final int RAY_FOUR = 4;
+	private final int RAY_FIVE = 5;
+	private int leftRayHitMargin;
+	private int rightRayHitMargin;
 	private int SCREEN_WIDTH;
 	private int SCREEN_HEIGHT;
+	private ImageView starImageView;
+	private int currentRayNumber;
+	private int golfCarHalfWidth;
+	private int golfCarWith;
+	private MediaPlayer backgroundMusicMediaPlayer;
+	private int sunWidth;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +93,8 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 		setGolfCarImageView();
 		setLakeImageView();
 		setBirdImageView();
-		startAudioSound(R.raw.sun_cather_music);
+		// startAudioSoundBackground(R.raw.sun_cather_music);
+		startBackgroundMusic();
 		timerText = (TextView) findViewById(R.id.sunCatcher_circleTextView);
 		betteryView = (ImageView) findViewById(R.id.sunCatcher_batteryImageView);
 		raysImageView = (ImageView) findViewById(R.id.sunCatcher_raysImageView);
@@ -91,6 +106,9 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 				if (remainingMilliSecs == 58) {
 					startAudioSound(R.raw.catchupthesun);
 				}
+				if(remainingMilliSecs == 1){
+					raysImageView.setVisibility(View.INVISIBLE);
+				}
 				timerText.setText("" + remainingMilliSecs);
 			}
 
@@ -98,8 +116,11 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 				timerText.setText("" + 0);
 				if (rayHitCount >= BATTERY_100_HIT_COUNT) {
 					betteryView.setImageResource(R.drawable.battery100);
-					(findViewById(R.id.sunCatcher_batteryFullImageView)).setVisibility(View.VISIBLE);
+					(findViewById(R.id.sunCatcher_batteryFullLinearLayout)).setVisibility(View.VISIBLE);
 					startAudioSound(R.raw.battery_full_thankyou);
+				}else{
+					(findViewById(R.id.sunCatcher_gameOverLinearLayout)).setVisibility(View.VISIBLE);
+					startAudioSound(R.raw.game_over);
 				}
 
 			}
@@ -109,11 +130,12 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 		new CountDownTimer(60000, 1000) {
 
 			public void onTick(long millisUntilFinished) {
-				// int remainingMilliSecs = (int) millisUntilFinished / 1000;
+				detectSunrayAndCarCollision();
 				raysAnimation(UtilityMethods.getRandomInt(1, 5));
 			}
 
 			public void onFinish() {
+				
 			}
 		}.start();
 	}
@@ -123,49 +145,284 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 		Logger.error(TAG, "size%%%%%%%%%%@@@@@@@@************::" + screenSize);
 		AbsoluteLayout.LayoutParams params = (AbsoluteLayout.LayoutParams) sunImageView.getLayoutParams();
 		if (screenSize >= 9.4) {
-			int sunWidth = (int) UtilityMethods.convertDpToPixel(153, WeShineApp.getInstance());
+			sunWidth = (int) UtilityMethods.convertDpToPixel(153, WeShineApp.getInstance());
 			params.width = sunWidth;
 			int sunHeight = (int) UtilityMethods.convertDpToPixel(159, WeShineApp.getInstance());
 			params.height = sunHeight;
-			xFromPosSunRay = SCREEN_WIDTH/2 - sunWidth/2;
-			yFromPosSunRay = (int) UtilityMethods.convertDpToPixel(50, WeShineApp.getInstance());
-			params.x = xFromPosSunRay;
-			params.y = yFromPosSunRay;
-			yFromPosSunRay = yFromPosSunRay + sunHeight/2;
+			params.x = SCREEN_WIDTH / 2 - sunWidth / 2;
+			params.y = (int) UtilityMethods.convertDpToPixel(50, WeShineApp.getInstance());
 		} else if (screenSize >= 6.9) {
-			int sunWidth = (int) UtilityMethods.convertDpToPixel(153, WeShineApp.getInstance());
+//			sunWidth = (int) UtilityMethods.convertDpToPixel(140, WeShineApp.getInstance());
+//			params.width = sunWidth;
+//			int sunHeight = (int) UtilityMethods.convertDpToPixel(146, WeShineApp.getInstance());
+//			params.height = sunHeight;
+//			xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2;
+//			yFromPosSunRay = (int) UtilityMethods.convertDpToPixel(50, WeShineApp.getInstance());
+//			params.x = xFromPosSunRay;
+//			params.y = yFromPosSunRay;
+//			yFromPosSunRay = yFromPosSunRay + sunHeight / 2;
+//			xFromPosSunRay = xFromPosSunRay - (int) UtilityMethods.convertDpToPixel(50, WeShineApp.getInstance());
+			
+			sunWidth = (int) UtilityMethods.convertDpToPixel(140, WeShineApp.getInstance());
 			params.width = sunWidth;
-			int sunHeight = (int) UtilityMethods.convertDpToPixel(159, WeShineApp.getInstance());
+			int sunHeight = (int) UtilityMethods.convertDpToPixel(146, WeShineApp.getInstance());
 			params.height = sunHeight;
-			xFromPosSunRay = SCREEN_WIDTH/2 - sunWidth/2;
-			//xToPosSunRay = xFromPosSunRay + sunImageView.getWidth() / 2;
-			yFromPosSunRay = (int) UtilityMethods.convertDpToPixel(50, WeShineApp.getInstance());
-			params.x = xFromPosSunRay;
-			params.y = yFromPosSunRay;
-			yFromPosSunRay = yFromPosSunRay + sunHeight/2;
+			params.x = SCREEN_WIDTH / 2 - sunWidth / 2;
+			params.y = (int) UtilityMethods.convertDpToPixel(40, WeShineApp.getInstance());
 		} else {
 			params.width = (int) UtilityMethods.convertDpToPixel(82, WeShineApp.getInstance());
 			params.height = (int) UtilityMethods.convertDpToPixel(82, WeShineApp.getInstance());
 		}
-		Log.d(TAG, "WIDTH****:"+SCREEN_WIDTH);
+		Log.d(TAG, "WIDTH****:" + SCREEN_WIDTH);
 		// existing height is ok as is, no need to edit it
 		sunImageView.setLayoutParams(params);
 		AnimationUtil.performFrameAnimation(sunImageView, R.drawable.maze2_sun_animation);
+	}
+
+	private void setGolfCarImageView() {
+		ImageView imageView = (ImageView) findViewById(R.id.sunCatcher_golfCarImageView);
+		AbsoluteLayout.LayoutParams params = (AbsoluteLayout.LayoutParams) imageView.getLayoutParams();
+		// int carWidth;
+		if (screenSize >= 9.4) {
+			golfCarWith = (int) UtilityMethods.convertDpToPixel(200, WeShineApp.getInstance());
+			params.width = golfCarWith;
+			params.height = (int) UtilityMethods.convertDpToPixel(200, WeShineApp.getInstance());
+			xPositionGolfCar = SCREEN_WIDTH / 3;
+			params.x = xPositionGolfCar;
+			yPositionGolfCar = (int) (SCREEN_HEIGHT - UtilityMethods.convertDpToPixel(250, WeShineApp.getInstance()));
+			params.y = yPositionGolfCar;
+			yToPosSunRay = yPositionGolfCar - 30;
+		} else if (screenSize >= 6.9) {
+			golfCarWith = (int) UtilityMethods.convertDpToPixel(170, WeShineApp.getInstance());
+			params.width = golfCarWith;
+			params.height = (int) UtilityMethods.convertDpToPixel(170, WeShineApp.getInstance());
+			xPositionGolfCar = SCREEN_WIDTH / 3;
+			params.x = xPositionGolfCar;
+			yPositionGolfCar = (int) (SCREEN_HEIGHT - UtilityMethods.convertDpToPixel(195, WeShineApp.getInstance()));
+			params.y = yPositionGolfCar;
+			yToPosSunRay = yPositionGolfCar - (int)UtilityMethods.convertDpToPixel(10, WeShineApp.getInstance());
+		} else {
+			golfCarWith = (int) UtilityMethods.convertDpToPixel(200, WeShineApp.getInstance());
+			params.width = golfCarWith;
+			params.height = (int) UtilityMethods.convertDpToPixel(200, WeShineApp.getInstance());
+			xPositionGolfCar = (int) UtilityMethods.convertDpToPixel(UtilityMethods.getScreenWidth(this) / 3, WeShineApp.getInstance());
+			params.x = xPositionGolfCar;
+			yPositionGolfCar = (int) UtilityMethods.convertDpToPixel(UtilityMethods.getScreenHeight(this) - 390, WeShineApp.getInstance());
+			params.y = yPositionGolfCar;
+			yToPosSunRay = yPositionGolfCar;
+		}
+
+		golfCarHalfWidth = golfCarWith / 2;
+	}
+
+	private void raysAnimation(int rayNumber) {
+		int oneSixScreen = SCREEN_WIDTH / 6;
+		currentRayNumber = rayNumber;
+		if (screenSize >= 9.4) {
+			yFromPosSunRay = (int) UtilityMethods.convertDpToPixel(180, WeShineApp.getInstance());
+		}else if (screenSize >= 6.9) {
+			yFromPosSunRay = (int) UtilityMethods.convertDpToPixel(155, WeShineApp.getInstance());
+		}
+		switch (currentRayNumber) {
+		case RAY_ONE:
+			raysImageView.setImageResource(R.drawable.rays1);
+			if (screenSize >= 9.4) {
+				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 - (int) UtilityMethods.convertDpToPixel(45, WeShineApp.getInstance());
+				xToPosSunRay = 1 * oneSixScreen;
+			}else if (screenSize >= 6.9) {
+				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 - (int) UtilityMethods.convertDpToPixel(48, WeShineApp.getInstance());
+				xToPosSunRay = 1 * oneSixScreen;
+			}
+			break;
+		case RAY_TWO:
+			raysImageView.setImageResource(R.drawable.rays2);
+			if (screenSize >= 9.4) {
+				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 - (int) UtilityMethods.convertDpToPixel(15, WeShineApp.getInstance());
+				xToPosSunRay = 2 * oneSixScreen;
+			}else if (screenSize >= 6.9) {
+				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 - (int) UtilityMethods.convertDpToPixel(22, WeShineApp.getInstance());
+				xToPosSunRay = 2 * oneSixScreen;
+			}
+
+			break;
+		case RAY_THREE:
+			raysImageView.setImageResource(R.drawable.rays3);
+			if (screenSize >= 9.4) {
+				xToPosSunRay = 3 * oneSixScreen - sunWidth / 2 + 20;
+				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 + (int) UtilityMethods.convertDpToPixel(5, WeShineApp.getInstance());
+			}else if (screenSize >= 6.9) {
+				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 + (int) UtilityMethods.convertDpToPixel(2, WeShineApp.getInstance());
+				xToPosSunRay = 3 * oneSixScreen - sunWidth / 2 + (int) UtilityMethods.convertDpToPixel(2, WeShineApp.getInstance());;
+			}
+
+			break;
+		case RAY_FOUR:
+			raysImageView.setImageResource(R.drawable.rays4);
+			if (screenSize >= 9.4) {
+				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 + (int) UtilityMethods.convertDpToPixel(35, WeShineApp.getInstance());
+				xToPosSunRay = 4 * oneSixScreen;
+			}else if (screenSize >= 6.9) {
+				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 + (int) UtilityMethods.convertDpToPixel(35, WeShineApp.getInstance());
+				xToPosSunRay = 4 * oneSixScreen;
+			}
+			break;
+		case RAY_FIVE:
+			raysImageView.setImageResource(R.drawable.rays5);
+			if (screenSize >= 9.4) {
+				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 + (int) UtilityMethods.convertDpToPixel(45, WeShineApp.getInstance());
+				xToPosSunRay = 5 * oneSixScreen;
+			}else if (screenSize >= 6.9) {
+				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 + (int) UtilityMethods.convertDpToPixel(45, WeShineApp.getInstance());
+				xToPosSunRay = 5 * oneSixScreen - (int) UtilityMethods.convertDpToPixel(50, WeShineApp.getInstance());
+			}
+			break;
+
+		default:
+			break;
+		}
+
+		AnimationSet replaceAnimation = new AnimationSet(false);
+		TranslateAnimation trans = new TranslateAnimation(0, xFromPosSunRay, TranslateAnimation.ABSOLUTE, xToPosSunRay, 0, yFromPosSunRay, TranslateAnimation.ABSOLUTE, yToPosSunRay);
+		trans.setDuration(1000);
+		replaceAnimation.addAnimation(trans);
+		replaceAnimation.setAnimationListener(new Animation.AnimationListener() {
+
+			@Override
+			public void onAnimationStart(Animation animation) {
+			}
+
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+			}
+
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				// detectSunrayAndCarCollision();
+			}
+		});
+
+		// start our animation
+		raysImageView.startAnimation(replaceAnimation);
+
+	}
+
+	private void detectSunrayAndCarCollision() {
+		boolean isCollision = false;
+		int marginLeft = 0;
+		int margingRight = 0;
+		if (currentRayNumber == RAY_THREE) {
+			marginLeft = (int) UtilityMethods.convertDpToPixel(40, WeShineApp.getInstance());
+			margingRight = (int) UtilityMethods.convertDpToPixel(95, WeShineApp.getInstance());
+		} else if (currentRayNumber == RAY_FOUR) {
+			marginLeft = (int) UtilityMethods.convertDpToPixel(80, WeShineApp.getInstance());
+			margingRight = (int) UtilityMethods.convertDpToPixel(95, WeShineApp.getInstance());
+		}else if (currentRayNumber == RAY_FIVE) {
+			marginLeft = (int) UtilityMethods.convertDpToPixel(80, WeShineApp.getInstance());
+			margingRight = (int) UtilityMethods.convertDpToPixel(95, WeShineApp.getInstance());
+		}
+		if ((xToPosSunRay >= (xPositionGolfCar - golfCarHalfWidth - marginLeft) && xToPosSunRay <= (xPositionGolfCar + golfCarHalfWidth - margingRight))) {
+			isCollision = true;
+		}
+		Log.d(TAG, "ray:" + currentRayNumber + " CarHalfWidth:" + golfCarHalfWidth + " xToPosRay: " + xToPosSunRay + " xGolfCar:" + xPositionGolfCar + " minX:" + (xPositionGolfCar - golfCarHalfWidth) + " maxX" + (xPositionGolfCar + golfCarHalfWidth) + " colli:" + isCollision);
+		if (isCollision) {
+			performStarsAnimation();
+			Log.d(TAG, "detected collision*******:" + rayHitCount);
+			++rayHitCount;
+			if (rayHitCount == BATTERY_25_HIT_COUNT) {
+				betteryView.setImageResource(R.drawable.battery25);
+				startAudioSound(R.raw.well_done);
+			} else if (rayHitCount == BATTERY_50_HIT_COUNT) {
+				betteryView.setImageResource(R.drawable.battery50);
+				startAudioSound(R.raw.perfect);
+			} else if (rayHitCount == BATTERY_75_HIT_COUNT) {
+				betteryView.setImageResource(R.drawable.battery75);
+				startAudioSound(R.raw.super_sound);
+			}
+
+		}
+	}
+
+	@Override
+	/**
+	 * NOTE:  Had significant problems when I tried to react to ACTION_MOVE on letterView.   Kept getting alternating (X,Y) 
+	 * locations of the motion events, which caused the letter to flicker and move back and forth.  The only solution I could 
+	 * find was to determine when the user had touched down on the letter, then process moves in the ACTION_MOVE 
+	 * associated with the mainLayout.
+	 */
+	public boolean onTouch(View v, MotionEvent event) {
+		boolean eventConsumed = true;
+		int x = (int) event.getX();
+		int y = (int) event.getY();
+		// Log.d(TAG, " xToPosSunRay: " + xToPosSunRay+" xPositionGolfCar:" +
+		// xPositionGolfCar );
+
+		int action = event.getAction();
+		if (action == MotionEvent.ACTION_DOWN) {
+			if (v == letterView) {
+				dragging = true;
+				eventConsumed = false;
+			}
+		} else if (action == MotionEvent.ACTION_UP) {
+			dragging = false;
+			eventConsumed = false;
+
+		} else if (action == MotionEvent.ACTION_MOVE) {
+			if (v != letterView) {
+				if (dragging) {
+					xPositionGolfCar = x;
+					setAbsoluteLocationCentered(letterView, x, yPositionGolfCar);
+				}
+			}
+		}
+
+		return eventConsumed;
+
+	}
+
+	private void setAbsoluteLocationCentered(View v, int x, int y) {
+		setAbsoluteLocation(v, x - v.getWidth() / 2, y);
+
+	}
+
+	private void setAbsoluteLocation(View v, int x, int y) {
+		AbsoluteLayout.LayoutParams alp = (AbsoluteLayout.LayoutParams) v.getLayoutParams();
+		alp.x = x;
+		alp.y = y;
+		v.setLayoutParams(alp);
+	}
+
+	/**
+	 * Will be invoked when the sun ray hit the car.
+	 */
+	private void performStarsAnimation() {
+		starImageView = (ImageView) findViewById(R.id.sunCatcher_starsImageView);
+		starImageView.setVisibility(View.VISIBLE);
+		AbsoluteLayout.LayoutParams params = (AbsoluteLayout.LayoutParams) starImageView.getLayoutParams();
+		params.x = xToPosSunRay;
+		params.y = yToPosSunRay + 30;
+		starImageView.setLayoutParams(params);
+
+		final AnimationDrawable myAnimationDrawable = (AnimationDrawable) starImageView.getDrawable();
+		myAnimationDrawable.setOneShot(true);
+		myAnimationDrawable.setVisible(true, true);
+		if (!myAnimationDrawable.isRunning()) {
+			myAnimationDrawable.start();
+		}
 	}
 
 	private void setBatteryImageView() {
 		ImageView imageView = (ImageView) findViewById(R.id.sunCatcher_batteryImageView);
 		LayoutParams params = (LayoutParams) imageView.getLayoutParams();
 		if (screenSize >= 9.4) {
-			params.width = (int) UtilityMethods.convertDpToPixel(129, WeShineApp.getInstance());
-			params.height = (int) UtilityMethods.convertDpToPixel(300, WeShineApp.getInstance());
-			params.bottomMargin = (int) UtilityMethods.convertDpToPixel(0, WeShineApp.getInstance());
-			params.leftMargin = (int) UtilityMethods.convertDpToPixel(110, WeShineApp.getInstance());
+			params.width = (int) UtilityMethods.convertDpToPixel(250, WeShineApp.getInstance());
+			params.height = (int) UtilityMethods.convertDpToPixel(133, WeShineApp.getInstance());
+			params.topMargin = (int) UtilityMethods.convertDpToPixel(50, WeShineApp.getInstance());
+			params.rightMargin = (int) UtilityMethods.convertDpToPixel(20, WeShineApp.getInstance());
 		} else if (screenSize >= 6.9) {
-			params.width = (int) UtilityMethods.convertDpToPixel(100, WeShineApp.getInstance());
-			params.height = (int) UtilityMethods.convertDpToPixel(60, WeShineApp.getInstance());
-			params.topMargin = (int) UtilityMethods.convertDpToPixel(30, WeShineApp.getInstance());
-			params.rightMargin = (int) UtilityMethods.convertDpToPixel(60, WeShineApp.getInstance());
+			params.width = (int) UtilityMethods.convertDpToPixel(180, WeShineApp.getInstance());
+			params.height = (int) UtilityMethods.convertDpToPixel(96, WeShineApp.getInstance());
+			params.topMargin = (int) UtilityMethods.convertDpToPixel(35, WeShineApp.getInstance());
+			params.rightMargin = (int) UtilityMethods.convertDpToPixel(10, WeShineApp.getInstance());
 		} else {
 			params.width = (int) UtilityMethods.convertDpToPixel(50, WeShineApp.getInstance());
 			params.height = (int) UtilityMethods.convertDpToPixel(116, WeShineApp.getInstance());
@@ -178,15 +435,16 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 		TextView imageView = (TextView) findViewById(R.id.sunCatcher_circleTextView);
 		LayoutParams params = (LayoutParams) imageView.getLayoutParams();
 		if (screenSize >= 9.4) {
-			params.width = (int) UtilityMethods.convertDpToPixel(100, WeShineApp.getInstance());
-			params.height = (int) UtilityMethods.convertDpToPixel(99, WeShineApp.getInstance());
-			params.topMargin = (int) UtilityMethods.convertDpToPixel(30, WeShineApp.getInstance());
-			params.rightMargin = (int) UtilityMethods.convertDpToPixel(250, WeShineApp.getInstance());
+			params.width = (int) UtilityMethods.convertDpToPixel(125, WeShineApp.getInstance());
+			params.height = (int) UtilityMethods.convertDpToPixel(123, WeShineApp.getInstance());
+			params.topMargin = (int) UtilityMethods.convertDpToPixel(55, WeShineApp.getInstance());
+			params.rightMargin = (int) UtilityMethods.convertDpToPixel(290, WeShineApp.getInstance());
 		} else if (screenSize >= 6.9) {
-			params.width = (int) UtilityMethods.convertDpToPixel(80, WeShineApp.getInstance());
-			params.height = (int) UtilityMethods.convertDpToPixel(80, WeShineApp.getInstance());
-			params.topMargin = (int) UtilityMethods.convertDpToPixel(15, WeShineApp.getInstance());
-			params.rightMargin = (int) UtilityMethods.convertDpToPixel(170, WeShineApp.getInstance());
+			params.width = (int) UtilityMethods.convertDpToPixel(103, WeShineApp.getInstance());
+			params.height = (int) UtilityMethods.convertDpToPixel(102, WeShineApp.getInstance());
+			params.topMargin = (int) UtilityMethods.convertDpToPixel(32, WeShineApp.getInstance());
+			params.rightMargin = (int) UtilityMethods.convertDpToPixel(200, WeShineApp.getInstance());
+			imageView.setTextSize(TypedValue.COMPLEX_UNIT_SP,22);
 		} else {
 			params.width = (int) UtilityMethods.convertDpToPixel(50, WeShineApp.getInstance());
 			params.height = (int) UtilityMethods.convertDpToPixel(116, WeShineApp.getInstance());
@@ -196,41 +454,34 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 
 	}
 
-	private void setGolfCarImageView() {
-		ImageView imageView = (ImageView) findViewById(R.id.sunCatcher_golfCarImageView);
-		AbsoluteLayout.LayoutParams params = (AbsoluteLayout.LayoutParams) imageView.getLayoutParams();
-		int carWidth;
-		if (screenSize >= 9.4) {
-			carWidth = (int) UtilityMethods.convertDpToPixel(200, WeShineApp.getInstance());
-			params.width = carWidth;
-			params.height = (int) UtilityMethods.convertDpToPixel(200, WeShineApp.getInstance());
-			xPositionGolfCar = SCREEN_WIDTH / 3;
-			params.x = xPositionGolfCar;
-			yPositionGolfCar = (int) (SCREEN_HEIGHT - UtilityMethods.convertDpToPixel(250, WeShineApp.getInstance()));
-			params.y = yPositionGolfCar;
-			yToPosSunRay = yPositionGolfCar;
-		} else if (screenSize >= 6.9) {
-			carWidth = (int) UtilityMethods.convertDpToPixel(200, WeShineApp.getInstance());
-			params.width = carWidth;
-			params.height = (int) UtilityMethods.convertDpToPixel(200, WeShineApp.getInstance());
-			xPositionGolfCar = SCREEN_WIDTH / 3;
-			params.x = xPositionGolfCar;
-			yPositionGolfCar = (int) (SCREEN_HEIGHT - UtilityMethods.convertDpToPixel(390, WeShineApp.getInstance()));
-			params.y = yPositionGolfCar;
-			yToPosSunRay = yPositionGolfCar;
-		} else {
-			carWidth = (int) UtilityMethods.convertDpToPixel(200, WeShineApp.getInstance());
-			params.width = carWidth;
-			params.height = (int) UtilityMethods.convertDpToPixel(200, WeShineApp.getInstance());
-			xPositionGolfCar = (int) UtilityMethods.convertDpToPixel(UtilityMethods.getScreenWidth(this) / 3, WeShineApp.getInstance());
-			params.x = xPositionGolfCar;
-			yPositionGolfCar = (int) UtilityMethods.convertDpToPixel(UtilityMethods.getScreenHeight(this) - 390, WeShineApp.getInstance());
-			params.y = yPositionGolfCar;
-			yToPosSunRay = yPositionGolfCar;
-		}
+	private void startBackgroundMusic() {
 
-		rayHitMargin = carWidth / 2;
-		Log.d(TAG, "rayHitMargin***" + rayHitMargin);
+		String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.sun_cather_music;
+		// mAudioFileId = R.raw.sun_cather_music;
+		Uri uri = Uri.parse(uriPath);
+		backgroundMusicMediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
+		backgroundMusicMediaPlayer.setOnCompletionListener(new MediaListener());
+		backgroundMusicMediaPlayer.start();
+	}
+
+	protected void startAudioSound(int audioFileId) {
+
+		String uriPath = ConstantValues.BASE_RESOURCE_PATH + audioFileId;
+		mAudioFileId = audioFileId;
+		Uri uri = Uri.parse(uriPath);
+		mediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
+		mediaPlayer.setOnCompletionListener(new MediaListener());
+		mediaPlayer.start();
+	}
+
+	class MediaListener implements OnCompletionListener {
+
+		@Override
+		public void onCompletion(MediaPlayer mp) {
+			if (mp != null) {
+				mp.release();
+			}
+		}
 
 	}
 
@@ -313,178 +564,42 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 
 	}
 
-	private void raysAnimation(int rayNumber) {
-		// xToPosSunRay = 0;
-		int oneSixScreen = SCREEN_WIDTH / 6; 
-		switch (rayNumber) {
-		case 1:
-			raysImageView.setImageResource(R.drawable.rays1);
-			xToPosSunRay = 1*oneSixScreen;
-			break;
-		case 2:
-			raysImageView.setImageResource(R.drawable.rays2);
-			xToPosSunRay = 2*oneSixScreen;
-
-			break;
-		case 3:
-			raysImageView.setImageResource(R.drawable.rays3);
-			xToPosSunRay = 3*oneSixScreen;
-
-			break;
-		case 4:
-			raysImageView.setImageResource(R.drawable.rays4);
-			xToPosSunRay = 4*oneSixScreen;
-			break;
-		case 5:
-			raysImageView.setImageResource(R.drawable.rays5);
-			xToPosSunRay = 5*oneSixScreen;
-			break;
-
-		default:
-			break;
-		}
-
-		AnimationSet replaceAnimation = new AnimationSet(false);
-		// Log.d(TAG, "xFromPosSunRay::" + xFromPosSunRay + " yFromPosSunRay:" +
-		// yFromPosSunRay);
-		TranslateAnimation trans = new TranslateAnimation(0, xFromPosSunRay, TranslateAnimation.ABSOLUTE, xToPosSunRay, 0, yFromPosSunRay, TranslateAnimation.ABSOLUTE, yToPosSunRay);
-		trans.setDuration(1000);
-		replaceAnimation.addAnimation(trans);
-		replaceAnimation.setAnimationListener(new Animation.AnimationListener() {
-
-			@Override
-			public void onAnimationStart(Animation animation) {
-			}
-
-			@Override
-			public void onAnimationRepeat(Animation animation) {
-			}
-
-			@Override
-			public void onAnimationEnd(Animation animation) {
-				detectSunrayAndCarCollision();
-			}
-		});
-
-		// start our animation
-		raysImageView.startAnimation(replaceAnimation);
-
-	}
-
-	@Override
-	/**
-	 * NOTE:  Had significant problems when I tried to react to ACTION_MOVE on letterView.   Kept getting alternating (X,Y) 
-	 * locations of the motion events, which caused the letter to flicker and move back and forth.  The only solution I could 
-	 * find was to determine when the user had touched down on the letter, then process moves in the ACTION_MOVE 
-	 * associated with the mainLayout.
-	 */
-	public boolean onTouch(View v, MotionEvent event) {
-		boolean eventConsumed = true;
-		int x = (int) event.getX();
-		int y = (int) event.getY();
-		xPositionGolfCar = x;
-		Log.d(TAG, "xPositionGolfCar:" + xPositionGolfCar + " xToPosSunRay: " + xToPosSunRay);
-
-		int action = event.getAction();
-		if (action == MotionEvent.ACTION_DOWN) {
-			if (v == letterView) {
-				dragging = true;
-				eventConsumed = false;
-			}
-		} else if (action == MotionEvent.ACTION_UP) {
-
-			dragging = false;
-			eventConsumed = false;
-
-		} else if (action == MotionEvent.ACTION_MOVE) {
-			if (v != letterView) {
-				if (dragging) {
-					setAbsoluteLocationCentered(letterView, x, yPositionGolfCar);
-				}
-			}
-		}
-
-		return eventConsumed;
-
-	}
-
-	private void setAbsoluteLocationCentered(View v, int x, int y) {
-		setAbsoluteLocation(v, x - v.getWidth() / 2, y);
-
-	}
-
-	private void setAbsoluteLocation(View v, int x, int y) {
-		AbsoluteLayout.LayoutParams alp = (AbsoluteLayout.LayoutParams) v.getLayoutParams();
-		alp.x = x;
-		alp.y = y;
-		v.setLayoutParams(alp);
-	}
-
-	protected void startAudioSound(int audioFileId) {
-
-		String uriPath = ConstantValues.BASE_RESOURCE_PATH + audioFileId;
-		mAudioFileId = audioFileId;
-		Uri uri = Uri.parse(uriPath);
-		mediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
-		mediaPlayer.setOnCompletionListener(new MediaListener());
-		mediaPlayer.start();
-	}
-
-	class MediaListener implements OnCompletionListener {
-
-		@Override
-		public void onCompletion(MediaPlayer mp) {
-			if (mp != null) {
-				mp.release();
-			}
-		}
-
-	}
-
-	private void detectSunrayAndCarCollision() {
-		if (xPositionGolfCar >= xToPosSunRay - rayHitMargin && xPositionGolfCar <= xToPosSunRay + rayHitMargin) {
-
-			Log.d(TAG, "detected collision*******:" + rayHitCount);
-			rayHitCount++;
-			if (rayHitCount == BATTERY_25_HIT_COUNT) {
-				betteryView.setImageResource(R.drawable.battery25);
-				startAudioSound(R.raw.well_done);
-			} else if (rayHitCount == BATTERY_50_HIT_COUNT) {
-				betteryView.setImageResource(R.drawable.battery50);
-				startAudioSound(R.raw.perfect);
-			} else if (rayHitCount == BATTERY_75_HIT_COUNT) {
-				betteryView.setImageResource(R.drawable.battery75);
-				startAudioSound(R.raw.super_sound);
-			}
-
-		}
-	}
-
 	@Override
 	protected void onResume() {
 		setAnimatedSunView();
+		backgroundMusicMediaPlayer.start();
 		super.onResume();
 	}
 
 	@Override
 	protected void onRestart() {
-		mediaPlayer.start();
 		super.onRestart();
 	}
 
 	@Override
-	protected void onPause() {
-		if (mediaPlayer.isPlaying()) {
-			mediaPlayer.pause();
+	protected void onStop() {
+		if (backgroundMusicMediaPlayer != null) {
+			try {
+				backgroundMusicMediaPlayer.pause();
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			}
 		}
-
-		super.onPause();
+		super.onStop();
 	}
 
 	@Override
 	protected void onDestroy() {
-		mediaPlayer.stop();
-		mediaPlayer.release();
+		if (backgroundMusicMediaPlayer != null) {
+			if (backgroundMusicMediaPlayer != null) {
+				try {
+					backgroundMusicMediaPlayer.release();
+				} catch (IllegalStateException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
 		super.onDestroy();
 	}
 

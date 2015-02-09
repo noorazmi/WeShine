@@ -44,6 +44,7 @@
         android:gravity="center"
         android:text="25"
         android:textColor="#ff0000"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <AbsoluteLayout
@@ -54,7 +55,7 @@
         <ImageView
             android:id="@+id/sunCatcher_sunImageView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <ImageView
             android:id="@+id/sunCatcher_raysImageView"
@@ -67,15 +68,39 @@
             android:layout_width="150dp"
             android:layout_height="100dp"
             android:src="@drawable/golf_car" />
+
+        <ImageView
+            android:id="@+id/sunCatcher_starsImageView"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:src="@drawable/stars_animation_drawable"
+            android:visibility="invisible" />
     </AbsoluteLayout>
-    <LinearLayout android:id="@+id/sunCatcher_batteryFullImageView" android:layout_width="match_parent" 
-        android:layout_height="match_parent" 
+
+    <LinearLayout
+        android:id="@+id/sunCatcher_batteryFullLinearLayout" 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:visibility="gone">
-        <ImageView  android:layout_width="wrap_content" 
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/sunCatcher_batteryFullImageView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/batteryfull"/>
+            android:src="@drawable/batteryfull" />
     </LinearLayout>
-    
+    <LinearLayout
+        android:id="@+id/sunCatcher_gameOverLinearLayout" 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gameover" />
+    </LinearLayout>
 
 </FrameLayout>

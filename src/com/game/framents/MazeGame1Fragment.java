@@ -50,7 +50,7 @@ public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener
 		Logger.error(getTag(), "size%%%%%%%%%%@@@@@@@@************::"+screenSize);
 		ImageView imageView = (ImageView) getFragmentView().findViewById(R.id.mazeGame1_sunImageView);
 		LayoutParams params = (LayoutParams) imageView.getLayoutParams();
-		if(screenSize >= 10){
+		if(screenSize >= 9.4){
 			params.width = (int) UtilityMethods.convertDpToPixel(190, WeShineApp.getInstance());
 			params.height = (int) UtilityMethods.convertDpToPixel(192, WeShineApp.getInstance());
 		}else if(screenSize >= 6.9){
