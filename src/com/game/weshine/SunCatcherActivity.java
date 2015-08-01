@@ -65,8 +65,6 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 	private final int RAY_THREE = 3;
 	private final int RAY_FOUR = 4;
 	private final int RAY_FIVE = 5;
-	private int leftRayHitMargin;
-	private int rightRayHitMargin;
 	private int SCREEN_WIDTH;
 	private int SCREEN_HEIGHT;
 	private ImageView starImageView;
@@ -106,7 +104,7 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 				if (remainingMilliSecs == 58) {
 					startAudioSound(R.raw.catchupthesun);
 				}
-				if(remainingMilliSecs == 1){
+				if (remainingMilliSecs == 1) {
 					raysImageView.setVisibility(View.INVISIBLE);
 				}
 				timerText.setText("" + remainingMilliSecs);
@@ -118,7 +116,7 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 					betteryView.setImageResource(R.drawable.battery100);
 					(findViewById(R.id.sunCatcher_batteryFullLinearLayout)).setVisibility(View.VISIBLE);
 					startAudioSound(R.raw.battery_full_thankyou);
-				}else{
+				} else {
 					(findViewById(R.id.sunCatcher_gameOverLinearLayout)).setVisibility(View.VISIBLE);
 					startAudioSound(R.raw.game_over);
 				}
@@ -135,7 +133,7 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 			}
 
 			public void onFinish() {
-				
+
 			}
 		}.start();
 	}
@@ -150,19 +148,8 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 			int sunHeight = (int) UtilityMethods.convertDpToPixel(159, WeShineApp.getInstance());
 			params.height = sunHeight;
 			params.x = SCREEN_WIDTH / 2 - sunWidth / 2;
-			params.y = (int) UtilityMethods.convertDpToPixel(50, WeShineApp.getInstance());
+			params.y = (int) UtilityMethods.convertDpToPixel(115, WeShineApp.getInstance());
 		} else if (screenSize >= 6.9) {
-//			sunWidth = (int) UtilityMethods.convertDpToPixel(140, WeShineApp.getInstance());
-//			params.width = sunWidth;
-//			int sunHeight = (int) UtilityMethods.convertDpToPixel(146, WeShineApp.getInstance());
-//			params.height = sunHeight;
-//			xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2;
-//			yFromPosSunRay = (int) UtilityMethods.convertDpToPixel(50, WeShineApp.getInstance());
-//			params.x = xFromPosSunRay;
-//			params.y = yFromPosSunRay;
-//			yFromPosSunRay = yFromPosSunRay + sunHeight / 2;
-//			xFromPosSunRay = xFromPosSunRay - (int) UtilityMethods.convertDpToPixel(50, WeShineApp.getInstance());
-			
 			sunWidth = (int) UtilityMethods.convertDpToPixel(140, WeShineApp.getInstance());
 			params.width = sunWidth;
 			int sunHeight = (int) UtilityMethods.convertDpToPixel(146, WeShineApp.getInstance());
@@ -170,8 +157,12 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 			params.x = SCREEN_WIDTH / 2 - sunWidth / 2;
 			params.y = (int) UtilityMethods.convertDpToPixel(40, WeShineApp.getInstance());
 		} else {
-			params.width = (int) UtilityMethods.convertDpToPixel(82, WeShineApp.getInstance());
-			params.height = (int) UtilityMethods.convertDpToPixel(82, WeShineApp.getInstance());
+			sunWidth = (int) UtilityMethods.convertDpToPixel(85, WeShineApp.getInstance());
+			params.width = sunWidth;
+			int sunHeight = (int) UtilityMethods.convertDpToPixel(89, WeShineApp.getInstance());
+			params.height = sunHeight;
+			params.x = SCREEN_WIDTH / 2 - sunWidth / 2;
+			params.y = (int) UtilityMethods.convertDpToPixel(10, WeShineApp.getInstance());
 		}
 		Log.d(TAG, "WIDTH****:" + SCREEN_WIDTH);
 		// existing height is ok as is, no need to edit it
@@ -184,9 +175,9 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 		AbsoluteLayout.LayoutParams params = (AbsoluteLayout.LayoutParams) imageView.getLayoutParams();
 		// int carWidth;
 		if (screenSize >= 9.4) {
-			golfCarWith = (int) UtilityMethods.convertDpToPixel(200, WeShineApp.getInstance());
+			golfCarWith = (int) UtilityMethods.convertDpToPixel(270, WeShineApp.getInstance());
 			params.width = golfCarWith;
-			params.height = (int) UtilityMethods.convertDpToPixel(200, WeShineApp.getInstance());
+			params.height = (int) UtilityMethods.convertDpToPixel(270, WeShineApp.getInstance());
 			xPositionGolfCar = SCREEN_WIDTH / 3;
 			params.x = xPositionGolfCar;
 			yPositionGolfCar = (int) (SCREEN_HEIGHT - UtilityMethods.convertDpToPixel(250, WeShineApp.getInstance()));
@@ -200,16 +191,16 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 			params.x = xPositionGolfCar;
 			yPositionGolfCar = (int) (SCREEN_HEIGHT - UtilityMethods.convertDpToPixel(195, WeShineApp.getInstance()));
 			params.y = yPositionGolfCar;
-			yToPosSunRay = yPositionGolfCar - (int)UtilityMethods.convertDpToPixel(10, WeShineApp.getInstance());
+			yToPosSunRay = yPositionGolfCar - (int) UtilityMethods.convertDpToPixel(10, WeShineApp.getInstance());
 		} else {
-			golfCarWith = (int) UtilityMethods.convertDpToPixel(200, WeShineApp.getInstance());
+			golfCarWith = (int) UtilityMethods.convertDpToPixel(105, WeShineApp.getInstance());
 			params.width = golfCarWith;
-			params.height = (int) UtilityMethods.convertDpToPixel(200, WeShineApp.getInstance());
-			xPositionGolfCar = (int) UtilityMethods.convertDpToPixel(UtilityMethods.getScreenWidth(this) / 3, WeShineApp.getInstance());
+			params.height = (int) UtilityMethods.convertDpToPixel(105, WeShineApp.getInstance());
+			xPositionGolfCar = SCREEN_WIDTH / 3;
 			params.x = xPositionGolfCar;
-			yPositionGolfCar = (int) UtilityMethods.convertDpToPixel(UtilityMethods.getScreenHeight(this) - 390, WeShineApp.getInstance());
+			yPositionGolfCar = (int) (SCREEN_HEIGHT - UtilityMethods.convertDpToPixel(130, WeShineApp.getInstance()));
 			params.y = yPositionGolfCar;
-			yToPosSunRay = yPositionGolfCar;
+			yToPosSunRay = yPositionGolfCar - (int) UtilityMethods.convertDpToPixel(30, WeShineApp.getInstance());
 		}
 
 		golfCarHalfWidth = golfCarWith / 2;
@@ -219,61 +210,88 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 		int oneSixScreen = SCREEN_WIDTH / 6;
 		currentRayNumber = rayNumber;
 		if (screenSize >= 9.4) {
-			yFromPosSunRay = (int) UtilityMethods.convertDpToPixel(180, WeShineApp.getInstance());
-		}else if (screenSize >= 6.9) {
+			yFromPosSunRay = (int) UtilityMethods.convertDpToPixel(245, WeShineApp.getInstance());
+		} else if (screenSize >= 6.9) {
 			yFromPosSunRay = (int) UtilityMethods.convertDpToPixel(155, WeShineApp.getInstance());
+		} else {
+			yFromPosSunRay = (int) UtilityMethods.convertDpToPixel(80, WeShineApp.getInstance());
 		}
 		switch (currentRayNumber) {
 		case RAY_ONE:
-			raysImageView.setImageResource(R.drawable.rays1);
 			if (screenSize >= 9.4) {
+				raysImageView.setImageResource(R.drawable.rays1);
 				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 - (int) UtilityMethods.convertDpToPixel(45, WeShineApp.getInstance());
 				xToPosSunRay = 1 * oneSixScreen;
-			}else if (screenSize >= 6.9) {
+			} else if (screenSize >= 6.9) {
+				raysImageView.setImageResource(R.drawable.rays1_medium);
 				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 - (int) UtilityMethods.convertDpToPixel(48, WeShineApp.getInstance());
 				xToPosSunRay = 1 * oneSixScreen;
+			} else {
+				raysImageView.setImageResource(R.drawable.rays1_small);
+				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 - (int) UtilityMethods.convertDpToPixel(87, WeShineApp.getInstance());
+				xToPosSunRay = 1 * oneSixScreen - (int) UtilityMethods.convertDpToPixel(60, WeShineApp.getInstance());
 			}
 			break;
 		case RAY_TWO:
-			raysImageView.setImageResource(R.drawable.rays2);
 			if (screenSize >= 9.4) {
+				raysImageView.setImageResource(R.drawable.rays2);
 				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 - (int) UtilityMethods.convertDpToPixel(15, WeShineApp.getInstance());
 				xToPosSunRay = 2 * oneSixScreen;
-			}else if (screenSize >= 6.9) {
+			} else if (screenSize >= 6.9) {
+				raysImageView.setImageResource(R.drawable.rays2_medium);
 				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 - (int) UtilityMethods.convertDpToPixel(22, WeShineApp.getInstance());
 				xToPosSunRay = 2 * oneSixScreen;
+			} else {
+				raysImageView.setImageResource(R.drawable.rays2_small);
+				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 - (int) UtilityMethods.convertDpToPixel(60, WeShineApp.getInstance());
+				xToPosSunRay = 2 * oneSixScreen - (int) UtilityMethods.convertDpToPixel(47, WeShineApp.getInstance());
 			}
 
 			break;
 		case RAY_THREE:
-			raysImageView.setImageResource(R.drawable.rays3);
 			if (screenSize >= 9.4) {
+				raysImageView.setImageResource(R.drawable.rays3);
 				xToPosSunRay = 3 * oneSixScreen - sunWidth / 2 + 20;
 				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 + (int) UtilityMethods.convertDpToPixel(5, WeShineApp.getInstance());
-			}else if (screenSize >= 6.9) {
+			} else if (screenSize >= 6.9) {
+				raysImageView.setImageResource(R.drawable.rays3_medium);
 				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 + (int) UtilityMethods.convertDpToPixel(2, WeShineApp.getInstance());
-				xToPosSunRay = 3 * oneSixScreen - sunWidth / 2 + (int) UtilityMethods.convertDpToPixel(2, WeShineApp.getInstance());;
+				xToPosSunRay = 3 * oneSixScreen - sunWidth / 2 + (int) UtilityMethods.convertDpToPixel(2, WeShineApp.getInstance());
+			} else {
+				raysImageView.setImageResource(R.drawable.rays3_small);
+				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 - (int) UtilityMethods.convertDpToPixel(30, WeShineApp.getInstance());
+				xToPosSunRay = 3 * oneSixScreen - sunWidth / 2 - (int) UtilityMethods.convertDpToPixel(20, WeShineApp.getInstance());
 			}
 
 			break;
 		case RAY_FOUR:
-			raysImageView.setImageResource(R.drawable.rays4);
 			if (screenSize >= 9.4) {
+				raysImageView.setImageResource(R.drawable.rays4);
 				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 + (int) UtilityMethods.convertDpToPixel(35, WeShineApp.getInstance());
 				xToPosSunRay = 4 * oneSixScreen;
-			}else if (screenSize >= 6.9) {
+			} else if (screenSize >= 6.9) {
+				raysImageView.setImageResource(R.drawable.rays4_medium);
 				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 + (int) UtilityMethods.convertDpToPixel(35, WeShineApp.getInstance());
 				xToPosSunRay = 4 * oneSixScreen;
+			} else {
+				raysImageView.setImageResource(R.drawable.rays4_small);
+				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 + (int) UtilityMethods.convertDpToPixel(2, WeShineApp.getInstance());
+				xToPosSunRay = 4 * oneSixScreen- (int) UtilityMethods.convertDpToPixel(40, WeShineApp.getInstance());
 			}
 			break;
 		case RAY_FIVE:
-			raysImageView.setImageResource(R.drawable.rays5);
 			if (screenSize >= 9.4) {
+				raysImageView.setImageResource(R.drawable.rays5);
 				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 + (int) UtilityMethods.convertDpToPixel(45, WeShineApp.getInstance());
 				xToPosSunRay = 5 * oneSixScreen;
-			}else if (screenSize >= 6.9) {
+			} else if (screenSize >= 6.9) {
+				raysImageView.setImageResource(R.drawable.rays5_medium);
 				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 + (int) UtilityMethods.convertDpToPixel(45, WeShineApp.getInstance());
 				xToPosSunRay = 5 * oneSixScreen - (int) UtilityMethods.convertDpToPixel(50, WeShineApp.getInstance());
+			} else {
+				raysImageView.setImageResource(R.drawable.rays5_small);
+				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 + (int) UtilityMethods.convertDpToPixel(20, WeShineApp.getInstance());
+				xToPosSunRay = 5 * oneSixScreen - (int) UtilityMethods.convertDpToPixel(40, WeShineApp.getInstance());
 			}
 			break;
 
@@ -310,15 +328,56 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 		boolean isCollision = false;
 		int marginLeft = 0;
 		int margingRight = 0;
-		if (currentRayNumber == RAY_THREE) {
-			marginLeft = (int) UtilityMethods.convertDpToPixel(40, WeShineApp.getInstance());
-			margingRight = (int) UtilityMethods.convertDpToPixel(95, WeShineApp.getInstance());
+		if (currentRayNumber == RAY_ONE) {
+			if (screenSize >= 9.4) {
+			} else if (screenSize >= 6.9) {
+			} else {
+				marginLeft = (int) UtilityMethods.convertDpToPixel(40, WeShineApp.getInstance());
+				margingRight = (int) UtilityMethods.convertDpToPixel(80, WeShineApp.getInstance());
+			}
+		} else if (currentRayNumber == RAY_TWO) {
+			if (screenSize >= 9.4) {
+			} else if (screenSize >= 6.9) {
+			} else {
+				marginLeft = (int) UtilityMethods.convertDpToPixel(35, WeShineApp.getInstance());
+				margingRight = (int) UtilityMethods.convertDpToPixel(80, WeShineApp.getInstance());
+			}
+
+		} else if (currentRayNumber == RAY_THREE) {
+			if (screenSize >= 9.4) {
+				marginLeft = (int) UtilityMethods.convertDpToPixel(40, WeShineApp.getInstance());
+				margingRight = (int) UtilityMethods.convertDpToPixel(95, WeShineApp.getInstance());
+			} else if (screenSize >= 6.9) {
+				marginLeft = (int) UtilityMethods.convertDpToPixel(40, WeShineApp.getInstance());
+				margingRight = (int) UtilityMethods.convertDpToPixel(95, WeShineApp.getInstance());
+			} else {
+				marginLeft = (int) UtilityMethods.convertDpToPixel(60, WeShineApp.getInstance());
+				margingRight = (int) UtilityMethods.convertDpToPixel(95, WeShineApp.getInstance());
+			}
 		} else if (currentRayNumber == RAY_FOUR) {
-			marginLeft = (int) UtilityMethods.convertDpToPixel(80, WeShineApp.getInstance());
-			margingRight = (int) UtilityMethods.convertDpToPixel(95, WeShineApp.getInstance());
-		}else if (currentRayNumber == RAY_FIVE) {
-			marginLeft = (int) UtilityMethods.convertDpToPixel(80, WeShineApp.getInstance());
-			margingRight = (int) UtilityMethods.convertDpToPixel(95, WeShineApp.getInstance());
+			if (screenSize >= 9.4) {
+				marginLeft = (int) UtilityMethods.convertDpToPixel(80, WeShineApp.getInstance());
+				margingRight = (int) UtilityMethods.convertDpToPixel(95, WeShineApp.getInstance());
+			} else if (screenSize >= 6.9) {
+				marginLeft = (int) UtilityMethods.convertDpToPixel(80, WeShineApp.getInstance());
+				margingRight = (int) UtilityMethods.convertDpToPixel(95, WeShineApp.getInstance());
+			} else {
+				marginLeft = (int) UtilityMethods.convertDpToPixel(80, WeShineApp.getInstance());
+				margingRight = (int) UtilityMethods.convertDpToPixel(95, WeShineApp.getInstance());
+			}
+			
+		} else if (currentRayNumber == RAY_FIVE) {
+			if (screenSize >= 9.4) {
+				marginLeft = (int) UtilityMethods.convertDpToPixel(80, WeShineApp.getInstance());
+				margingRight = (int) UtilityMethods.convertDpToPixel(95, WeShineApp.getInstance());
+			} else if (screenSize >= 6.9) {
+				marginLeft = (int) UtilityMethods.convertDpToPixel(80, WeShineApp.getInstance());
+				margingRight = (int) UtilityMethods.convertDpToPixel(95, WeShineApp.getInstance());
+			} else {
+				marginLeft = (int) UtilityMethods.convertDpToPixel(105, WeShineApp.getInstance());
+				margingRight = (int) UtilityMethods.convertDpToPixel(95, WeShineApp.getInstance());
+			}
+			
 		}
 		if ((xToPosSunRay >= (xPositionGolfCar - golfCarHalfWidth - marginLeft) && xToPosSunRay <= (xPositionGolfCar + golfCarHalfWidth - margingRight))) {
 			isCollision = true;
@@ -424,10 +483,10 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 			params.topMargin = (int) UtilityMethods.convertDpToPixel(35, WeShineApp.getInstance());
 			params.rightMargin = (int) UtilityMethods.convertDpToPixel(10, WeShineApp.getInstance());
 		} else {
-			params.width = (int) UtilityMethods.convertDpToPixel(50, WeShineApp.getInstance());
-			params.height = (int) UtilityMethods.convertDpToPixel(116, WeShineApp.getInstance());
-			params.bottomMargin = (int) UtilityMethods.convertDpToPixel(0, WeShineApp.getInstance());
-			params.leftMargin = (int) UtilityMethods.convertDpToPixel(47, WeShineApp.getInstance());
+			params.width = (int) UtilityMethods.convertDpToPixel(125, WeShineApp.getInstance());
+			params.height = (int) UtilityMethods.convertDpToPixel(67, WeShineApp.getInstance());
+			params.topMargin = (int) UtilityMethods.convertDpToPixel(15, WeShineApp.getInstance());
+			params.rightMargin = (int) UtilityMethods.convertDpToPixel(2, WeShineApp.getInstance());
 		}
 	}
 
@@ -437,19 +496,20 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 		if (screenSize >= 9.4) {
 			params.width = (int) UtilityMethods.convertDpToPixel(125, WeShineApp.getInstance());
 			params.height = (int) UtilityMethods.convertDpToPixel(123, WeShineApp.getInstance());
-			params.topMargin = (int) UtilityMethods.convertDpToPixel(55, WeShineApp.getInstance());
-			params.rightMargin = (int) UtilityMethods.convertDpToPixel(290, WeShineApp.getInstance());
+			params.topMargin = (int) UtilityMethods.convertDpToPixel(35, WeShineApp.getInstance());
+			params.leftMargin = (int) UtilityMethods.convertDpToPixel(50, WeShineApp.getInstance());
 		} else if (screenSize >= 6.9) {
 			params.width = (int) UtilityMethods.convertDpToPixel(103, WeShineApp.getInstance());
 			params.height = (int) UtilityMethods.convertDpToPixel(102, WeShineApp.getInstance());
-			params.topMargin = (int) UtilityMethods.convertDpToPixel(32, WeShineApp.getInstance());
-			params.rightMargin = (int) UtilityMethods.convertDpToPixel(200, WeShineApp.getInstance());
-			imageView.setTextSize(TypedValue.COMPLEX_UNIT_SP,22);
+			params.topMargin = (int) UtilityMethods.convertDpToPixel(30, WeShineApp.getInstance());
+			params.leftMargin = (int) UtilityMethods.convertDpToPixel(30, WeShineApp.getInstance());
+			imageView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
 		} else {
-			params.width = (int) UtilityMethods.convertDpToPixel(50, WeShineApp.getInstance());
-			params.height = (int) UtilityMethods.convertDpToPixel(116, WeShineApp.getInstance());
-			params.bottomMargin = (int) UtilityMethods.convertDpToPixel(0, WeShineApp.getInstance());
-			params.leftMargin = (int) UtilityMethods.convertDpToPixel(47, WeShineApp.getInstance());
+			params.width = (int) UtilityMethods.convertDpToPixel(70, WeShineApp.getInstance());
+			params.height = (int) UtilityMethods.convertDpToPixel(70, WeShineApp.getInstance());
+			params.topMargin = (int) UtilityMethods.convertDpToPixel(0, WeShineApp.getInstance());
+			params.leftMargin = (int) UtilityMethods.convertDpToPixel(5, WeShineApp.getInstance());
+			imageView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
 		}
 
 	}
@@ -499,10 +559,10 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 			params.leftMargin = (int) UtilityMethods.convertDpToPixel(0, WeShineApp.getInstance());
 			params.bottomMargin = (int) UtilityMethods.convertDpToPixel(90, WeShineApp.getInstance());
 		} else {
-			params.width = (int) UtilityMethods.convertDpToPixel(50, WeShineApp.getInstance());
-			params.height = (int) UtilityMethods.convertDpToPixel(116, WeShineApp.getInstance());
-			params.bottomMargin = (int) UtilityMethods.convertDpToPixel(0, WeShineApp.getInstance());
-			params.leftMargin = (int) UtilityMethods.convertDpToPixel(47, WeShineApp.getInstance());
+			params.width = (int) UtilityMethods.convertDpToPixel(200, WeShineApp.getInstance());
+			params.height = (int) UtilityMethods.convertDpToPixel(149, WeShineApp.getInstance());
+			params.leftMargin = (int) UtilityMethods.convertDpToPixel(0, WeShineApp.getInstance());
+			params.bottomMargin = (int) UtilityMethods.convertDpToPixel(50, WeShineApp.getInstance());
 		}
 
 		AnimationUtil.performFrameAnimation((ImageView) findViewById(R.id.sunCatcher_lakeImageView), R.drawable.lake_animation);
@@ -524,9 +584,9 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 			params.bottomMargin = (int) UtilityMethods.convertDpToPixel(230, WeShineApp.getInstance());
 		} else {
 			params.width = (int) UtilityMethods.convertDpToPixel(50, WeShineApp.getInstance());
-			params.height = (int) UtilityMethods.convertDpToPixel(116, WeShineApp.getInstance());
-			params.bottomMargin = (int) UtilityMethods.convertDpToPixel(0, WeShineApp.getInstance());
-			params.leftMargin = (int) UtilityMethods.convertDpToPixel(47, WeShineApp.getInstance());
+			params.height = (int) UtilityMethods.convertDpToPixel(57, WeShineApp.getInstance());
+			params.leftMargin = (int) UtilityMethods.convertDpToPixel(0, WeShineApp.getInstance());
+			params.bottomMargin = (int) UtilityMethods.convertDpToPixel(160, WeShineApp.getInstance());
 		}
 
 		AnimationUtil.performFrameAnimation((ImageView) findViewById(R.id.sunCatcher_birdImageView), R.drawable.sun_catcher_bird_animation);
@@ -538,8 +598,8 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 			toX = toX - (int) UtilityMethods.convertDpToPixel(80, WeShineApp.getInstance());
 			birdMarginTop = (int) UtilityMethods.convertDpToPixel(120, WeShineApp.getInstance());
 		} else {
-			toX = toX - (int) UtilityMethods.convertDpToPixel(10, WeShineApp.getInstance());
-			birdMarginTop = (int) UtilityMethods.convertDpToPixel(120, WeShineApp.getInstance());
+			toX = toX - (int) UtilityMethods.convertDpToPixel(60, WeShineApp.getInstance());
+			birdMarginTop = (int) UtilityMethods.convertDpToPixel(100, WeShineApp.getInstance());
 		}
 		birdFlyAnimation(toX, birdMarginTop);
 

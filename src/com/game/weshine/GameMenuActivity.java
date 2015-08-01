@@ -15,6 +15,7 @@ public class GameMenuActivity extends Activity implements OnClickListener{
 		setContentView(R.layout.game_menu_activity);
 		((Button)findViewById(R.id.sun_catcher_button)).setOnClickListener(this);;
 		((Button)findViewById(R.id.maze_button)).setOnClickListener(this);;
+		((Button)findViewById(R.id.baloon_button)).setOnClickListener(this);;
 	}
 
 	@Override
@@ -27,6 +28,10 @@ public class GameMenuActivity extends Activity implements OnClickListener{
 			break;
 		case R.id.maze_button:
 			intent = new Intent(this, MazeActivity.class);
+			startActivity(intent);
+			break;
+		case R.id.baloon_button:
+			intent = new Intent(this, BaloonActivity.class);
 			startActivity(intent);
 			break;
 

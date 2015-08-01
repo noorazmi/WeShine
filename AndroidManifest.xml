@@ -9,24 +9,34 @@
         android:targetSdkVersion="21" />
 
     <application
+        android:name="com.game.app.WeShineApp"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.Holo.Light.NoActionBar" 
-        android:name="com.game.app.WeShineApp"
-        android:largeHeap="true">
+        android:largeHeap="true"
+        android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         <activity
             android:name=".GameMenuActivity"
-            android:label="@string/app_name" 
-            android:screenOrientation="landscape">
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.game.weshine.MazeActivity" android:screenOrientation="landscape"></activity>
-         <activity android:name="com.game.weshine.SunCatcherActivity" android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".MazeActivity"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name=".SunCatcherActivity"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name=".BaloonActivity"
+            android:label="@string/title_activity_baloon" android:screenOrientation="landscape"  >
+        </activity>
     </application>
 
 </manifest>

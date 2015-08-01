@@ -39,7 +39,7 @@
         android:id="@+id/sunCatcher_circleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|right"
+        android:layout_gravity="top|left"
         android:background="@drawable/circle"
         android:gravity="center"
         android:text="25"
