@@ -3,10 +3,9 @@ package com.game.framents;
 import android.support.v4.view.ViewPager;
 
 import com.game.listeners.OnMazeMenuItemClickListener;
-import com.game.utils.Logger;
 import com.game.view.adapter.ImageViewPagerAdapter;
-import com.game.weshine.MazeActivity;
-import com.game.weshine.R;
+import com.moderneng.R;
+import com.moderneng.activities.MazeActivity;
 
 public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItemClickListener {
 

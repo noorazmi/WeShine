@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.game.listeners.OnMazeMenuItemClickListener;
-import com.game.weshine.R;
+import com.moderneng.R;
 
 public class ImageViewPagerAdapter extends PagerAdapter implements OnClickListener {
 	private Context context;

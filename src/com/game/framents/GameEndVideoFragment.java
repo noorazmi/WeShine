@@ -1,15 +1,15 @@
 package com.game.framents;
 
 import android.graphics.PixelFormat;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.VideoView;
-import android.media.MediaPlayer;
 
 import com.game.utils.ConstantValues;
-import com.game.weshine.MazeActivity;
-import com.game.weshine.R;
+import com.moderneng.R;
+import com.moderneng.activities.MazeActivity;
 
 public class GameEndVideoFragment extends BaseFragment{
 

@@ -11,7 +11,7 @@ import com.game.framents.MazeGame2Fragment;
 import com.game.framents.MazeGame3Fragment;
 import com.game.framents.MazeGame4Fragment;
 import com.game.framents.MazeGame5Fragment;
-import com.game.weshine.MazeActivity;
+import com.moderneng.activities.MazeActivity;
 
 public class FragmentFactory {
 

@@ -12,13 +12,13 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 
-import com.game.app.WeShineApp;
 import com.game.listeners.OnGameEndListener;
 import com.game.pojo.FloatPoint;
 import com.game.utils.ColorTool;
 import com.game.utils.ConstantValues;
 import com.game.utils.Logger;
 import com.game.utils.UtilityMethods;
+import com.moderneng.WeShineApp;
 
 public abstract class DrawingSurface extends ImageView implements OnTouchListener {
 

@@ -3,10 +3,9 @@ package com.game.framents;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
 import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
 
-import com.game.app.WeShineApp;
 import com.game.listeners.OnGameEndListener;
 import com.game.util.animation.AnimType;
 import com.game.util.animation.AnimationUtil;
@@ -14,8 +13,9 @@ import com.game.utils.ConstantValues;
 import com.game.utils.Logger;
 import com.game.utils.UtilityMethods;
 import com.game.views.DrawingSurface;
-import com.game.weshine.MazeActivity;
-import com.game.weshine.R;
+import com.moderneng.R;
+import com.moderneng.WeShineApp;
+import com.moderneng.activities.MazeActivity;
 
 public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener, AnimationListener {
 

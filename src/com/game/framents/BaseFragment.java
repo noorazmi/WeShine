@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.game.app.WeShineApp;
 import com.game.utils.ConstantValues;
+import com.moderneng.WeShineApp;
 
 /**
  * Base Fragment for all fragment in the app.

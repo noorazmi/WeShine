@@ -8,7 +8,7 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 
 import com.game.utils.Logger;
-import com.game.weshine.R;
+import com.moderneng.R;
 
 public class FragmentHelper {
 	public static void replaceFragment(WeakReference<?> activity, Fragment fragment, Bundle datas, String fragTag) {

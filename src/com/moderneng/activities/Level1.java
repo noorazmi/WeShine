@@ -1,0 +1,451 @@
+package com.moderneng.activities;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.android.model.Gamemusic;
+import com.example.solarenegy.playaudio;
+import com.moderneng.R;
+
+public class Level1 extends Activity implements OnClickListener,
+		AnimationListener {
+	ImageView plate1, cart1, blue1, blue2, cart2, plate2, clockani, textimg;
+	private Animation animation1;
+	private Animation animation2;
+	int id;
+	View v1, v2;
+	int count = 0, clickcount = 0;
+	private boolean isBackOfCardShowing = true;
+	private Boolean isface = false;
+	int gamecount = 0;
+	playaudio clock;
+	Gamemusic findsame;
+	TextView tv;
+	RelativeLayout textlay;
+	AnimationDrawable clockanimation;
+	CountDownTimer t;
+	ScaleAnimation scal,scal1;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		getWindow().setFlags(
+				WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
+				WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
+		setContentView(R.layout.level1);
+		animation1 = AnimationUtils.loadAnimation(this, R.anim.tomid);
+		animation1.setAnimationListener(this);
+		animation2 = AnimationUtils.loadAnimation(this, R.anim.toend);
+		animation2.setAnimationListener(this);
+		clockani = (ImageView) findViewById(R.id.clock);
+		clockani.setBackgroundResource(R.drawable.clock);
+		clockanimation = (AnimationDrawable) clockani.getBackground();
+		clockanimation.start();
+		tv = (TextView) findViewById(R.id.time);
+		scal = new ScaleAnimation(0, 1f, 0, 1f,
+				Animation.RELATIVE_TO_SELF, (float) 0.5,
+				Animation.RELATIVE_TO_SELF, (float) 0.5);
+		scal.setDuration(1000);
+		scal.setFillAfter(true);
+		scal1 = new ScaleAnimation(0, 1f, 0, 1f,
+				Animation.RELATIVE_TO_SELF, (float) 0.5,
+				Animation.RELATIVE_TO_SELF, (float) 0.5);
+		scal1.setDuration(1000);
+		scal1.setFillAfter(true);
+		scal.setAnimationListener(this);
+		textlay = (RelativeLayout) findViewById(R.id.textlay);
+		textimg = (ImageView) findViewById(R.id.congrat);
+		plate1 = (ImageView) findViewById(R.id.plate1);
+		cart1 = (ImageView) findViewById(R.id.cart1);
+		blue1 = (ImageView) findViewById(R.id.blue1);
+		plate2 = (ImageView) findViewById(R.id.plate2);
+		cart2 = (ImageView) findViewById(R.id.cart2);
+		blue2 = (ImageView) findViewById(R.id.blue2);
+		findsame = new Gamemusic(getApplicationContext(), R.raw.samecard);
+		findsame.start();
+		new Handler().postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				clock = new playaudio(getApplicationContext(), R.raw.clocksound);
+				clock.start();
+				// tv.setText("15");
+			}
+		}, 800);
+		ImageView v = new ImageView(this);
+		plate1.setAnimation(animation1);
+		plate2.setAnimation(animation1);
+		cart1.setAnimation(animation1);
+		cart2.setAnimation(animation1);
+		blue1.setAnimation(animation1);
+		blue2.setAnimation(animation1);
+		plate1.startAnimation(animation1);
+		plate2.startAnimation(animation1);
+		cart1.startAnimation(animation1);
+		cart2.startAnimation(animation1);
+		blue1.startAnimation(animation1);
+		blue2.startAnimation(animation1);
+		t = new CountDownTimer(30000, 1000) {
+
+			@Override
+			public void onTick(long millisUntilFinished) {
+				// TODO Auto-generated method stub
+				int millisecond = (int) (millisUntilFinished / 1000);
+				tv.setText("" + millisecond);
+			}
+
+			@Override
+			public void onFinish() {
+				// TODO Auto-generated method stub
+				tv.setText("0");
+				clock.stop();
+				clockanimation.stop();
+				findsame = new Gamemusic(getApplicationContext(),
+						R.raw.gameover);
+				findsame.start();
+				textimg.setImageResource(R.drawable.p1_gameover);
+				textimg.setAnimation(scal1);
+				scal1.start();
+				textlay.setVisibility(View.VISIBLE);
+				plate1.setOnClickListener(null);
+				cart1.setOnClickListener(null);
+				blue1.setOnClickListener(null);
+				plate2.setOnClickListener(null);
+				cart2.setOnClickListener(null);
+				blue2.setOnClickListener(null);
+			}
+		}.start();
+
+		/*
+		 * new Handler().postDelayed(new Runnable() {
+		 * 
+		 * @Override public void run() { // TODO Auto-generated method stub if
+		 * (isface == false) { clock.stop(); clockanimation.stop(); findsame =
+		 * new Gamemusic(getApplicationContext(), R.raw.gameover);
+		 * findsame.start(); textimg.setImageResource(R.drawable.gameover);
+		 * textlay.setVisibility(View.VISIBLE);
+		 * 
+		 * plate1.setOnClickListener(null); cart1.setOnClickListener(null);
+		 * blue1.setOnClickListener(null); plate2.setOnClickListener(null);
+		 * cart2.setOnClickListener(null); blue2.setOnClickListener(null); } }
+		 * }, 30000);
+		 */
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		id = v.getId();
+		clickcount++;
+		if (clickcount == 1) {
+			v1 = v;
+			v1.setAnimation(animation1);
+			v1.startAnimation(animation1);
+		} else if (clickcount == 2) {
+			v2 = v;
+			v2.setAnimation(animation1);
+			v2.startAnimation(animation1);
+		}
+	}
+
+	@Override
+	public void onAnimationEnd(Animation animation) {
+		// TODO Auto-generated method stub
+		if(animation==scal){
+			t.cancel();
+		new Handler().postDelayed(new Runnable() {
+				
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					Intent i = new Intent(Level1.this, Mlevel2.class);
+					startActivity(i);
+					finish();
+				}
+			}, 2500);
+		
+		}
+		if (count == 0) {
+			if (animation == animation1) {
+				plate1.setImageResource(R.drawable.plate);
+				plate2.setImageResource(R.drawable.plate);
+				cart1.setImageResource(R.drawable.cgolf);
+				cart2.setImageResource(R.drawable.cgolf);
+				blue1.setImageResource(R.drawable.cblue);
+				blue2.setImageResource(R.drawable.cblue);
+				new Handler().postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						plate1.startAnimation(animation2);
+						plate2.startAnimation(animation2);
+						cart1.startAnimation(animation2);
+						cart2.startAnimation(animation2);
+						blue1.startAnimation(animation2);
+						blue2.startAnimation(animation2);
+						// tv.setText("20");
+					}
+				}, 1800);
+			}
+			if (animation == animation2) {
+				plate1.setImageResource(R.drawable.front);
+				plate2.setImageResource(R.drawable.front);
+				cart1.setImageResource(R.drawable.front);
+				cart2.setImageResource(R.drawable.front);
+				blue1.setImageResource(R.drawable.front);
+				blue2.setImageResource(R.drawable.front);
+				count++;
+				plate1.setOnClickListener(this);
+				cart1.setOnClickListener(this);
+				blue1.setOnClickListener(this);
+				plate2.setOnClickListener(this);
+				cart2.setOnClickListener(this);
+				blue2.setOnClickListener(this);
+			}
+
+		}
+		if (clickcount == 1) {
+			if (animation == animation1) {
+				if (v1.getId() == R.id.plate1) {
+					plate1.setImageResource(R.drawable.plate);
+					findsame = new Gamemusic(getApplicationContext(),
+							R.raw.solars);
+					findsame.start();
+				} else if (v1.getId() == R.id.plate2) {
+					plate2.setImageResource(R.drawable.plate);
+					findsame = new Gamemusic(getApplicationContext(),
+							R.raw.solars);
+					findsame.start();
+				} else if (v1.getId() == R.id.cart1) {
+					cart1.setImageResource(R.drawable.cgolf);
+					findsame = new Gamemusic(getApplicationContext(),
+							R.raw.golfs);
+					findsame.start();
+				} else if (v1.getId() == R.id.cart2) {
+					cart2.setImageResource(R.drawable.cgolf);
+					findsame = new Gamemusic(getApplicationContext(),
+							R.raw.golfs);
+					findsame.start();
+				} else if (v1.getId() == R.id.blue1) {
+					blue1.setImageResource(R.drawable.cblue);
+					findsame = new Gamemusic(getApplicationContext(),
+							R.raw.greens);
+					findsame.start();
+				} else if (v1.getId() == R.id.blue2) {
+					blue2.setImageResource(R.drawable.cblue);
+					findsame = new Gamemusic(getApplicationContext(),
+							R.raw.greens);
+					findsame.start();
+				}
+				// isface = true;
+			}
+		} else if (clickcount == 2) {
+			if (animation == animation1) {
+				if (v2.getId() == R.id.plate1) {
+					plate1.setImageResource(R.drawable.plate);
+					findsame = new Gamemusic(getApplicationContext(),
+							R.raw.solars);
+					findsame.start();
+				} else if (v2.getId() == R.id.plate2) {
+					plate2.setImageResource(R.drawable.plate);
+					findsame = new Gamemusic(getApplicationContext(),
+							R.raw.solars);
+					findsame.start();
+				} else if (v2.getId() == R.id.cart1) {
+					cart1.setImageResource(R.drawable.cgolf);
+					findsame = new Gamemusic(getApplicationContext(),
+							R.raw.golfs);
+					findsame.start();
+				} else if (v2.getId() == R.id.cart2) {
+					cart2.setImageResource(R.drawable.cgolf);
+					findsame = new Gamemusic(getApplicationContext(),
+							R.raw.golfs);
+					findsame.start();
+				} else if (v2.getId() == R.id.blue1) {
+					blue1.setImageResource(R.drawable.cblue);
+					findsame = new Gamemusic(getApplicationContext(),
+							R.raw.greens);
+					findsame.start();
+				} else if (v2.getId() == R.id.blue2) {
+					blue2.setImageResource(R.drawable.cblue);
+					findsame = new Gamemusic(getApplicationContext(),
+							R.raw.greens);
+					findsame.start();
+				}
+
+			} else if (clickcount == 2) {
+				if (animation == animation2) {
+					ImageView img1 = (ImageView) v1;
+					ImageView img2 = (ImageView) v2;
+					img1.setImageResource(R.drawable.front);
+					img2.setImageResource(R.drawable.front);
+					clickcount = 0;
+				}
+			
+			}
+			new Handler().postDelayed(new Runnable() {
+
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+
+					if ((v1.getId() == R.id.plate1 && v2.getId() == R.id.plate2)
+							|| v2.getId() == R.id.plate1
+							&& v1.getId() == R.id.plate2) {
+						findsame = new Gamemusic(getApplicationContext(),
+								R.raw.p2drop);
+						findsame.start();
+						gamecount++;
+						isface = true;
+						v1.setVisibility(View.INVISIBLE);
+						v2.setVisibility(View.INVISIBLE);
+						clickcount = 0;
+
+					} else if ((v1.getId() == R.id.cart1 && v2.getId() == R.id.cart2)
+							|| v2.getId() == R.id.cart1
+							&& v1.getId() == R.id.cart2) {
+						findsame = new Gamemusic(getApplicationContext(),
+								R.raw.p2drop);
+						findsame.start();
+						gamecount++;
+						clickcount = 0;
+						v1.setVisibility(View.INVISIBLE);
+						v2.setVisibility(View.INVISIBLE);
+						isface = true;
+
+					} else if ((v1.getId() == R.id.blue1 && v2.getId() == R.id.blue2)
+							|| v2.getId() == R.id.blue1
+							&& v1.getId() == R.id.blue2) {
+						findsame = new Gamemusic(getApplicationContext(),
+								R.raw.p2drop);
+						findsame.start();
+						isface = true;
+						gamecount++;
+						v1.setVisibility(View.INVISIBLE);
+						v2.setVisibility(View.INVISIBLE);
+						clickcount = 0;
+
+					} else {
+						ImageView img1 = (ImageView) v1;
+						ImageView img2 = (ImageView) v2;
+						findsame = new Gamemusic(getApplicationContext(),
+								R.raw.wrongs);
+						findsame.start();
+						img1.setImageResource(R.drawable.front);
+						img2.setImageResource(R.drawable.front);
+						clickcount = 0;
+						isface = false;
+						gamecount = gamecount;
+					}
+
+				}
+
+			}, 900);
+			new Handler().postDelayed(new Runnable() {
+
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					if (gamecount == 3) {
+						if (isface == true) {
+							clock.stop();
+							textlay.bringToFront();
+							textlay.setVisibility(View.VISIBLE);
+							textimg.setImageResource(R.drawable.welldone1);
+							textimg.setAnimation(scal);
+							findsame = new Gamemusic(getApplicationContext(), R.raw.welldonesound);
+							findsame.start();
+						}
+					}
+				}
+			}, 2000);
+		}
+
+	}
+
+	@Override
+	public void onAnimationRepeat(Animation arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onAnimationStart(Animation animation) {
+		// TODO Auto-generated method stub
+		if (count == 0) {
+			if (animation == animation1) {
+				plate1.setImageResource(R.drawable.front);
+				plate2.setImageResource(R.drawable.front);
+				cart1.setImageResource(R.drawable.front);
+				cart2.setImageResource(R.drawable.front);
+				blue1.setImageResource(R.drawable.front);
+				blue2.setImageResource(R.drawable.front);
+			}
+			if (animation == animation2) {
+				plate1.setImageResource(R.drawable.front);
+				plate2.setImageResource(R.drawable.front);
+				cart1.setImageResource(R.drawable.front);
+				cart2.setImageResource(R.drawable.front);
+				blue1.setImageResource(R.drawable.front);
+				blue2.setImageResource(R.drawable.front);
+			}
+			if (clickcount == 1) {
+				if (animation == animation1) {
+					ImageView v = (ImageView) v1;
+					v.setImageResource(R.drawable.front);
+				}
+			} else if (clickcount == 2) {
+				if (animation == animation1) {
+					ImageView v = (ImageView) v2;
+					v.setImageResource(R.drawable.front);
+				} else if (animation == animation2) {
+					ImageView imgv1 = (ImageView) v1;
+					ImageView imgv2 = (ImageView) v2;
+					imgv1.setImageResource(R.drawable.front);
+					imgv2.setImageResource(R.drawable.front);
+				}
+			} else if (clickcount > 2) {
+				if (animation == animation2) {
+					ImageView v = (ImageView) v1;
+					v.setImageResource(R.drawable.front);
+				}
+			}
+		}
+	}
+
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		clock.pause();
+		t.cancel();
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		clock.stop();
+		t.cancel();
+
+	}
+
+}

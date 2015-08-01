@@ -7,8 +7,8 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import com.game.app.WeShineApp;
-import com.game.weshine.R;
+import com.moderneng.R;
+import com.moderneng.WeShineApp;
 
 public class AnimationUtil {
 
