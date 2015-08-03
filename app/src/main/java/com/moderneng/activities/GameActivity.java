@@ -78,8 +78,10 @@ public class GameActivity extends Activity implements OnTouchListener {
 				nextimage = 2;
 			}else if (ct.closeMatch(Color.MAGENTA, touchcolor, tolerence)) {
 				nextimage = 3;
-			}else if(ct.closeMatch(Color.RED, touchcolor, tolerence)){
+			}else if(ct.closeMatch(Color.BLACK, touchcolor, tolerence)){
 				nextimage = 4;
+			}else if(ct.closeMatch(Color.YELLOW, touchcolor, tolerence)){
+				nextimage = 5;
 			}
 			if (currentResource == nextimage) {
 				nextimage = -1;
@@ -125,6 +127,20 @@ public class GameActivity extends Activity implements OnTouchListener {
 				  // mp.pause();
 				Intent memory = new Intent(getApplicationContext(),
 						Mmain.class);
+				memory.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(memory);
+				front.setOnTouchListener(null);
+			}if (nextimage == 4) {
+				// mp.pause();
+				Intent memory = new Intent(getApplicationContext(),
+						SunCatcherActivity.class);
+				memory.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(memory);
+				front.setOnTouchListener(null);
+			}if (nextimage == 5) {
+				// mp.pause();
+				Intent memory = new Intent(getApplicationContext(),
+						BaloonActivity.class);
 				memory.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(memory);
 				front.setOnTouchListener(null);
