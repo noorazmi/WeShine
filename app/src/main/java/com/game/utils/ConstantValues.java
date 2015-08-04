@@ -1,7 +1,10 @@
 package com.game.utils;
 
+import com.moderneng.WeShineApp;
+
 public interface ConstantValues {
-	public static final String BASE_RESOURCE_PATH = "android.resource://com.game.weshine/";
+	//public static final String BASE_RESOURCE_PATH = "android.resource://com.moderneng/";
+	public static final String BASE_RESOURCE_PATH = "android.resource://"+ WeShineApp.getInstance().getPackageName()+"/";
 	public static final String VIDEO_FILE_NAME = "VIDEO_FILE_NAME";
 	public static final String APP_TAG = "[WeShine]";
 	public static final boolean APP_DEBUG = true;

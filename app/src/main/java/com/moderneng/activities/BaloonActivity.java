@@ -6,7 +6,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.net.Uri;
@@ -872,9 +871,9 @@ public class BaloonActivity extends Activity {
 	}
 
 	private void startBellSound() {
-		//String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.bell_sound;
-		//Uri uri = Uri.parse(uriPath);
-		MediaPlayer mediaPlayer = MediaPlayer.create(WeShineApp.getInstance(),  R.raw.bell_sound);
+		String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.bell_sound;
+		Uri uri = Uri.parse(uriPath);
+		MediaPlayer mediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
 		mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
 
 			@Override
@@ -1051,9 +1050,9 @@ public class BaloonActivity extends Activity {
 
 	private void startBackgroundMusic() {
 
-		//String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.sun_cather_music;
-		//Uri uri = Uri.parse(uriPath);
-		backgroundMusicMediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), R.raw.sun_cather_music);
+		String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.sun_cather_music;
+		Uri uri = Uri.parse(uriPath);
+		backgroundMusicMediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
 		backgroundMusicMediaPlayer.setOnCompletionListener(new OnCompletionListener() {
 			@Override
 			public void onCompletion(MediaPlayer mp) {
@@ -1062,15 +1061,13 @@ public class BaloonActivity extends Activity {
 				}
 			}
 		});
-		backgroundMusicMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-		backgroundMusicMediaPlayer.setLooping(false);
 		backgroundMusicMediaPlayer.start();
 	}
 
 	protected void startAudioSound(int audioFileId) {
-		//String uriPath = ConstantValues.BASE_RESOURCE_PATH + audioFileId;
-		//Uri uri = Uri.parse(uriPath);
-		MediaPlayer mediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), audioFileId);
+		String uriPath = ConstantValues.BASE_RESOURCE_PATH + audioFileId;
+		Uri uri = Uri.parse(uriPath);
+		MediaPlayer mediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
 		mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
 			@Override
 			public void onCompletion(MediaPlayer mp) {
@@ -1134,7 +1131,7 @@ public class BaloonActivity extends Activity {
 //			 setCarPanelImageView(CAR_PANEL_2);
 //			 setCarPanelImageView(CAR_PANEL_3);
 //			 setCarPanelImageView(CAR_PANEL_4);
-//			 
+//
 //			 currentPanel = POLE_PANEL_1;
 //			 setPolePanelImageView(R.drawable.pole_panel1);
 //			 currentBatteryPanel = BATTERY_PANEL_1;
@@ -1144,16 +1141,16 @@ public class BaloonActivity extends Activity {
 //			 currentPanel = POLE_PANEL_2;
 //			 setPolePanelImageView(R.drawable.pole_panel2);
 //			 //setCarPanelImageView(CAR_PANEL_2);
-//			
+//
 //			 currentBatteryPanel = BATTERY_PANEL_2;
 //			 setPoleBatteryImageView(R.drawable.pole_battery);
 //			 }
 //			 if (scoreCounter == 15) {
-//			
+//
 //			  //setCarPanelImageView(CAR_PANEL_3);
 //			 }
 //			 if (scoreCounter == 20) {
-//			
+//
 //			  //setCarPanelImageView(CAR_PANEL_4);
 //			 }
 			if (scoreCounter == 35) {
@@ -1208,9 +1205,9 @@ public class BaloonActivity extends Activity {
 	}
 
 	private void playPerfectSound() {
-		//String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.perfect;
-		//Uri uri = Uri.parse(uriPath);
-		perfectPlayer = MediaPlayer.create(this, R.raw.perfect);
+		String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.perfect;
+		Uri uri = Uri.parse(uriPath);
+		perfectPlayer = MediaPlayer.create(this, uri);
 		perfectPlayer.setOnCompletionListener(new OnCompletionListener() {
 
 			@Override
@@ -1224,9 +1221,9 @@ public class BaloonActivity extends Activity {
 	}
 
 	private void playGoodJobSound() {
-		//String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.goodjob;
-		//Uri uri = Uri.parse(uriPath);
-		goodJobPlayer = MediaPlayer.create(this, R.raw.goodjob);
+		String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.goodjob;
+		Uri uri = Uri.parse(uriPath);
+		goodJobPlayer = MediaPlayer.create(this, uri);
 		goodJobPlayer.setOnCompletionListener(new OnCompletionListener() {
 
 			@Override
@@ -1240,9 +1237,9 @@ public class BaloonActivity extends Activity {
 	}
 
 	private void playPopBalloon() {
-		//String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.pop_the_balloons;
-		//Uri uri = Uri.parse(uriPath);
-		popBalloonPlayer = MediaPlayer.create(this, R.raw.pop_the_balloons);
+		String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.pop_the_balloons;
+		Uri uri = Uri.parse(uriPath);
+		popBalloonPlayer = MediaPlayer.create(this, uri);
 		popBalloonPlayer.setOnCompletionListener(new OnCompletionListener() {
 
 			@Override
@@ -1251,16 +1248,14 @@ public class BaloonActivity extends Activity {
 				popBalloonPlayer = null;
 			}
 		});
-		popBalloonPlayer.setLooping(false);
-		backgroundMusicMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 		popBalloonPlayer.start();
 
 	}
 
 	private void playSuperSound() {
-		//String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.super_sound;
-		//Uri uri = Uri.parse(uriPath);
-		superPlayer = MediaPlayer.create(this,  R.raw.super_sound);
+		String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.super_sound;
+		Uri uri = Uri.parse(uriPath);
+		superPlayer = MediaPlayer.create(this, uri);
 		superPlayer.setOnCompletionListener(new OnCompletionListener() {
 
 			@Override
@@ -1269,16 +1264,14 @@ public class BaloonActivity extends Activity {
 				superPlayer = null;
 			}
 		});
-		superPlayer.setLooping(false);
-		superPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 		superPlayer.start();
 
 	}
 
 	private void playFabulousSound() {
-		//String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.fabulous;
-		//Uri uri = Uri.parse(uriPath);
-		fabulousPlayer = MediaPlayer.create(this, R.raw.fabulous);
+		String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.fabulous;
+		Uri uri = Uri.parse(uriPath);
+		fabulousPlayer = MediaPlayer.create(this, uri);
 		fabulousPlayer.setOnCompletionListener(new OnCompletionListener() {
 
 			@Override
@@ -1287,16 +1280,14 @@ public class BaloonActivity extends Activity {
 				fabulousPlayer = null;
 			}
 		});
-		fabulousPlayer.setLooping(false);
-		fabulousPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 		fabulousPlayer.start();
 
 	}
 
 	private void playGreatSound() {
-		//String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.great;
-		//Uri uri = Uri.parse(uriPath);
-		greatPlayer = MediaPlayer.create(this, R.raw.great);
+		String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.great;
+		Uri uri = Uri.parse(uriPath);
+		greatPlayer = MediaPlayer.create(this, uri);
 		greatPlayer.setOnCompletionListener(new OnCompletionListener() {
 
 			@Override
@@ -1305,16 +1296,14 @@ public class BaloonActivity extends Activity {
 				greatPlayer = null;
 			}
 		});
-		greatPlayer.setLooping(false);
-		greatPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 		greatPlayer.start();
 
 	}
 
 	private void playExcellentSound() {
-		//String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.excellent;
-		//Uri uri = Uri.parse(uriPath);
-		excellentPlayer = MediaPlayer.create(this, R.raw.excellent);
+		String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.excellent;
+		Uri uri = Uri.parse(uriPath);
+		excellentPlayer = MediaPlayer.create(this, uri);
 		excellentPlayer.setOnCompletionListener(new OnCompletionListener() {
 
 			@Override
@@ -1323,16 +1312,14 @@ public class BaloonActivity extends Activity {
 				excellentPlayer = null;
 			}
 		});
-		excellentPlayer.setLooping(false);
-		excellentPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 		excellentPlayer.start();
 
 	}
 
 	private void playWelldoneSound() {
-		//String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.well_done;
-		//Uri uri = Uri.parse(uriPath);
-		welldonePlayer = MediaPlayer.create(this, R.raw.well_done);
+		String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.well_done;
+		Uri uri = Uri.parse(uriPath);
+		welldonePlayer = MediaPlayer.create(this, uri);
 		welldonePlayer.setOnCompletionListener(new OnCompletionListener() {
 
 			@Override
@@ -1341,8 +1328,6 @@ public class BaloonActivity extends Activity {
 				welldonePlayer = null;
 			}
 		});
-		welldonePlayer.setLooping(false);
-		welldonePlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 		welldonePlayer.start();
 
 	}
@@ -1423,10 +1408,10 @@ public class BaloonActivity extends Activity {
 
 	private void playBalloonSound() {
 
-		//String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.balloon_sound;
-		//Uri uri = Uri.parse(uriPath);
+		String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.balloon_sound;
+		Uri uri = Uri.parse(uriPath);
 		if (currentPopPlayer == BALOON_POP_PLAYER1) {
-			popPlayer2 = MediaPlayer.create(WeShineApp.getInstance(), R.raw.balloon_sound);
+			popPlayer2 = MediaPlayer.create(WeShineApp.getInstance(), uri);
 			popPlayer2.start();
 			currentPopPlayer = BALOON_POP_PLAYER2;
 			if (popPlayer5 != null) {
@@ -1434,7 +1419,7 @@ public class BaloonActivity extends Activity {
 				popPlayer5 = null;
 			}
 		} else if (currentPopPlayer == BALOON_POP_PLAYER2) {
-			popPlayer3 = MediaPlayer.create(WeShineApp.getInstance(), R.raw.balloon_sound);
+			popPlayer3 = MediaPlayer.create(WeShineApp.getInstance(), uri);
 			popPlayer3.start();
 			currentPopPlayer = BALOON_POP_PLAYER3;
 			if (popPlayer1 != null) {
@@ -1442,7 +1427,7 @@ public class BaloonActivity extends Activity {
 				popPlayer1 = null;
 			}
 		} else if (currentPopPlayer == BALOON_POP_PLAYER3) {
-			popPlayer4 = MediaPlayer.create(WeShineApp.getInstance(), R.raw.balloon_sound);
+			popPlayer4 = MediaPlayer.create(WeShineApp.getInstance(), uri);
 			popPlayer4.start();
 			currentPopPlayer = BALOON_POP_PLAYER4;
 			if (popPlayer2 != null) {
@@ -1450,7 +1435,7 @@ public class BaloonActivity extends Activity {
 				popPlayer2 = null;
 			}
 		} else if (currentPopPlayer == BALOON_POP_PLAYER4) {
-			popPlayer5 = MediaPlayer.create(WeShineApp.getInstance(), R.raw.balloon_sound);
+			popPlayer5 = MediaPlayer.create(WeShineApp.getInstance(), uri);
 			popPlayer5.start();
 			currentPopPlayer = BALOON_POP_PLAYER5;
 			if (popPlayer3 != null) {
@@ -1458,7 +1443,7 @@ public class BaloonActivity extends Activity {
 				popPlayer3 = null;
 			}
 		} else if (currentPopPlayer == BALOON_POP_PLAYER5) {
-			popPlayer1 = MediaPlayer.create(WeShineApp.getInstance(), R.raw.balloon_sound);
+			popPlayer1 = MediaPlayer.create(WeShineApp.getInstance(), uri);
 			popPlayer1.start();
 			currentPopPlayer = BALOON_POP_PLAYER1;
 			if (popPlayer4 != null) {

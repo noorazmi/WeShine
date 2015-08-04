@@ -10,9 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="877f6382-d077-49cd-9c07-57798f7bd2e9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/BaloonActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/BaloonActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/GameActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/GameActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/game/framents/BaseFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/game/framents/BaseFragment.java" />
     </list>
     <ignored path="WeShine.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,43 +31,52 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GameActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/GameActivity.java">
+      <file leaf-file-name="MazeActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MazeActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="199" column="6" selection-start-line="199" selection-start-column="6" selection-end-line="199" selection-end-column="6" />
+              <caret line="56" column="35" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="playaudio.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/solarenegy/playaudio.java">
+      <file leaf-file-name="FragmentFactory.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/game/fragment/util/FragmentFactory.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="29" selection-start-line="16" selection-start-column="8" selection-end-line="17" selection-end-column="29" />
+              <caret line="39" column="119" selection-start-line="39" selection-start-column="119" selection-end-line="39" selection-end-column="119" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BaloonActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/BaloonActivity.java">
+      <file leaf-file-name="GameEndVideoFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/game/framents/GameEndVideoFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.2636817">
-              <caret line="1228" column="62" selection-start-line="1228" selection-start-column="62" selection-end-line="1228" selection-end-column="62" />
-              <folding>
-                <element signature="e#36374#36489#0" expanded="true" />
-                <element signature="e#36488#36489#0" expanded="true" />
-                <element signature="e#44893#45036#0" expanded="true" />
-                <element signature="e#45035#45036#0" expanded="true" />
-                <element signature="e#50702#50854#0" expanded="true" />
-                <element signature="e#50853#50854#0" expanded="true" />
-                <element signature="e#51574#51732#0" expanded="true" />
-                <element signature="e#51731#51732#0" expanded="true" />
-                <element signature="e#54224#54378#0" expanded="true" />
-                <element signature="e#54377#54378#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.5625">
+              <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MazeGame1Fragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGame1Fragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="90" column="48" selection-start-line="90" selection-start-column="48" selection-end-line="90" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/game/framents/BaseFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="45" column="90" selection-start-line="45" selection-start-column="90" selection-end-line="45" selection-end-column="90" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1403,8 +1410,10 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/game/fragment/util/FragmentHelper.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/SunCatcherActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/GameActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/BaloonActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/GameActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/game/framents/BaseFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/game/framents/GameEndVideoFragment.java" />
       </list>
     </option>
   </component>
@@ -1927,7 +1936,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37722132" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22796352" sideWeight="0.49030694" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22796352" sideWeight="0.49030694" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2184,14 +2193,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/GameActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="199" column="6" selection-start-line="199" selection-start-column="6" selection-end-line="199" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/solarenegy/playaudio.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2202,20 +2203,68 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/BaloonActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.2636817">
+        <state vertical-scroll-proportion="50.555557">
           <caret line="1228" column="62" selection-start-line="1228" selection-start-column="62" selection-end-line="1228" selection-end-column="62" />
           <folding>
-            <element signature="e#36374#36489#0" expanded="true" />
-            <element signature="e#36488#36489#0" expanded="true" />
-            <element signature="e#44893#45036#0" expanded="true" />
-            <element signature="e#45035#45036#0" expanded="true" />
-            <element signature="e#50702#50854#0" expanded="true" />
-            <element signature="e#50853#50854#0" expanded="true" />
-            <element signature="e#51574#51732#0" expanded="true" />
-            <element signature="e#51731#51732#0" expanded="true" />
-            <element signature="e#54224#54378#0" expanded="true" />
-            <element signature="e#54377#54378#0" expanded="true" />
+            <element signature="e#36374#36489#0" expanded="false" />
+            <element signature="e#36488#36489#0" expanded="false" />
+            <element signature="e#44893#45036#0" expanded="false" />
+            <element signature="e#45035#45036#0" expanded="false" />
+            <element signature="e#50702#50854#0" expanded="false" />
+            <element signature="e#50853#50854#0" expanded="false" />
+            <element signature="e#51574#51732#0" expanded="false" />
+            <element signature="e#51731#51732#0" expanded="false" />
+            <element signature="e#54224#54378#0" expanded="false" />
+            <element signature="e#54377#54378#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/GameActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.023809524">
+          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/game/framents/BaseFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="90" selection-start-line="45" selection-start-column="90" selection-end-line="45" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGame1Fragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="90" column="48" selection-start-line="90" selection-start-column="48" selection-end-line="90" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MazeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="35" selection-start-line="56" selection-start-column="35" selection-end-line="56" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/game/fragment/util/FragmentFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="119" selection-start-line="39" selection-start-column="119" selection-end-line="39" selection-end-column="119" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/game/framents/GameEndVideoFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5625">
+          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
