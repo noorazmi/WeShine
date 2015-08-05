@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/mainlay"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/p1bg" >
+    android:layout_height="match_parent" >
 
     <RelativeLayout
         android:id="@+id/contentlay"
@@ -89,9 +88,10 @@
 
         <ImageView
             android:id="@+id/pdragv"
-            android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:src="@drawable/img1" />
+            android:layout_width="fill_parent"
+            android:src="@drawable/img1"/>
+
     </RelativeLayout>
 
 </RelativeLayout>

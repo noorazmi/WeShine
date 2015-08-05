@@ -50,7 +50,7 @@ public class puzzle3 extends Activity {
 	}
 		p3lay = (RelativeLayout) findViewById(R.id.mainlay);
 		p3lay.setBackgroundResource(R.drawable.p3bg);	
-		mp = new playaudio(getApplicationContext(), R.layout.puzzle3);
+		mp = new playaudio(getApplicationContext(), R.raw.puzzle3);
 		mp.start();
 		p3imgv1 = (ImageView) findViewById(R.id.ltop);
 		p3imgv2 = (ImageView) findViewById(R.id.lmiddle);

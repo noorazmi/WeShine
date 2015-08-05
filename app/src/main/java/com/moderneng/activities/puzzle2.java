@@ -210,13 +210,12 @@ public class puzzle2 extends Activity {
 				} else if (count == 8) {
 				
 					  count++;
-					   Intent ipuzzle2 = new Intent(puzzle2.this,
-								Videoplay.class);
+					   Intent videoPlayActivity = new Intent(puzzle2.this, Videoplay.class);
 						int id=R.raw.puzzle2a;
-						ipuzzle2.putExtra("vid", id);
-						ipuzzle2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						videoPlayActivity.putExtra("vid", id);
+						videoPlayActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						puzzle2.this.finish();
-						startActivity(ipuzzle2);
+						startActivity(videoPlayActivity);
 		
 				}
 				break;

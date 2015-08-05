@@ -108,11 +108,11 @@
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>
-        <!--<activity-->
-            <!--android:name="com.moderneng.activities.puzzle2e2"-->
-            <!--android:configChanges="orientation|navigation|screenLayout"-->
-            <!--android:screenOrientation="landscape" >-->
-        <!--</activity>-->
+        <activity
+            android:name="com.moderneng.activities.puzzle2"
+            android:configChanges="orientation|navigation|screenLayout"
+            android:screenOrientation="landscape" >
+        </activity>
         <activity
             android:name="com.moderneng.activities.puzzle3"
             android:configChanges="orientation|navigation|screenLayout"
