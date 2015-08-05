@@ -166,7 +166,7 @@ public class match3 extends Activity {
 					count++;
 					Intent imatch4 = new Intent(match3.this,
 								Videoplay.class);
-						int id=R.layout.match3;
+						int id=R.raw.match3;
 						imatch4.putExtra("vid", id);
 						startActivity(imatch4);
 						finish();

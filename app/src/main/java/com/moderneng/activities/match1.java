@@ -162,7 +162,7 @@ public class match1 extends Activity {
 					   count++;
 					   Intent imatch1 = new Intent(match1.this,
 								Videoplay.class);
-						int id=R.layout.match1;
+						int id=R.raw.match1;
 						imatch1.putExtra("vid", id);
 						imatch1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						startActivity(imatch1);	
