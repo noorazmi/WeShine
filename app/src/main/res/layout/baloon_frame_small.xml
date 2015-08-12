@@ -64,7 +64,7 @@
            android:layout_marginLeft="137dp"
            android:layout_marginTop="45dp"
            android:onClick="onBaloonClick"
-           android:src="@drawable/red"
+           android:src="@drawable/baloon_red"
            android:tag="@string/play_five" />
 
       <ImageView
@@ -86,7 +86,7 @@
          android:layout_marginLeft="215dp"
          android:layout_marginTop="32dp"
          android:onClick="onBaloonClick"
-         android:src="@drawable/red"
+         android:src="@drawable/baloon_red"
          android:tag="@string/play_five" />
 
        <ImageView
@@ -141,7 +141,7 @@
            android:layout_marginLeft="400dp"
            android:layout_marginTop="41dp"
            android:onClick="onBaloonClick"
-           android:src="@drawable/red"
+           android:src="@drawable/baloon_red"
            android:tag="@string/play_five" />
 
 </FrameLayout>

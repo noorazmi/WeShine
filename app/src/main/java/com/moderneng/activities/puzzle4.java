@@ -271,13 +271,16 @@ Boolean play=true;
 					p4dragv.setVisibility(View.VISIBLE);
 				}else if(count==8){
 					 count++;
-					   Intent ipuzzle4 = new Intent(puzzle4.this,
-								Videoplay.class);
-						int id=R.raw.puzzle4a;
-						ipuzzle4.putExtra("vid", id);
-						ipuzzle4.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-						puzzle4.this.finish();
-						startActivity(ipuzzle4);
+//					   Intent ipuzzle4 = new Intent(puzzle4.this,
+//								Videoplay.class);
+//						int id=R.raw.puzzle4a;
+//						ipuzzle4.putExtra("vid", id);
+//						ipuzzle4.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//						puzzle4.this.finish();
+//						startActivity(ipuzzle4);
+
+					Intent intent = new Intent(puzzle4.this, BalloonAnimationActivity.class);
+					startActivityForResult(intent, 100);
 		
 				}
 				break;
@@ -288,6 +291,15 @@ Boolean play=true;
 			return true;
 		}
 	
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		Intent intent =new Intent(this,puzzle5.class);
+		startActivity(intent);
+		finish();
+
 	}
 	private class smallanim extends View{
 	     Context ctx1;

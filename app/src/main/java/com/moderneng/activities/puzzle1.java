@@ -43,7 +43,6 @@ public class puzzle1 extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -282,13 +281,14 @@ public class puzzle1 extends Activity {
 					dragimg.setVisibility(View.VISIBLE);
 				} else if (count == 8) {
 					   count++;
-					   Intent ipuzzle1 = new Intent(puzzle1.this,
-								Videoplay.class);
-						int id=R.raw.puzzle1a;
-						ipuzzle1.putExtra("vid", id);
-						ipuzzle1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-						puzzle1.this.finish();
-						startActivity(ipuzzle1);	
+//					    Intent ipuzzle1 = new Intent(puzzle1.this, Videoplay.class);
+//						int id=R.raw.puzzle1a;
+//						ipuzzle1.putExtra("vid", id);
+//						ipuzzle1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//						puzzle1.this.finish();
+//						startActivity(ipuzzle1);
+					Intent intent = new Intent(puzzle1.this, BalloonAnimationActivity.class);
+					startActivityForResult(intent, 100);
 		
 				}
 			default:
@@ -308,7 +308,6 @@ public class puzzle1 extends Activity {
 
 		public smallanim(Context context) {
 			super(context);
-			// TODO Auto-generated constructor stub
 			ctx1 = context;
 			smstar1 = Splash.sstar1;
 			smstar2 = Splash.sstar2;
@@ -323,7 +322,6 @@ public class puzzle1 extends Activity {
 
 		@Override
 		protected void onDraw(Canvas canvas) {
-			// TODO Auto-generated method stub
 			super.onDraw(canvas);
 
 			if (smcount <= 15) {
@@ -385,21 +383,18 @@ public class puzzle1 extends Activity {
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
 		mp3.pause();
 	}
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
 		super.onResume();
 		mp3.start();
 	}
 
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
 		// mp4.stop();
 		mp3.stop();
@@ -407,8 +402,16 @@ public class puzzle1 extends Activity {
 
 	@Override
 	protected void onRestart() {
-		// TODO Auto-generated method stub
 		super.onRestart();
 		mp3.start();
 	}
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Intent intent =new Intent(this,puzzle2.class);
+        startActivity(intent);
+        finish();
+
+    }
 }

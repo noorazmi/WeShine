@@ -38,6 +38,7 @@ public class Mlevel3 extends Activity implements OnClickListener,
 	playaudio clock;
 	RelativeLayout textl;
 	ScaleAnimation gameover, scale1;
+	private boolean isGameWon = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -87,21 +88,30 @@ public class Mlevel3 extends Activity implements OnClickListener,
 				// TODO Auto-generated method stub
 				tv.setText("0");
 				clockanim.stop();
-				textl.setVisibility(View.VISIBLE);
-				textimage.setAnimation(gameover);
-				gameover.start();
-				// clockanim.stop();
-				findsame = new Gamemusic(getApplicationContext(),
-						R.raw.gameover);
-				findsame.start();
-				tc1.setOnClickListener(null);
-				tc2.setOnClickListener(null);
-				tc3.setOnClickListener(null);
-				bc1.setOnClickListener(null);
-				bc2.setOnClickListener(null);
-				bc3.setOnClickListener(null);
-				bc4.setOnClickListener(null);
-				bc5.setOnClickListener(null);
+				if(!isGameWon){
+
+					findsame = new Gamemusic(getApplicationContext(), R.raw.gameover);
+					findsame.setOnCompleteListener(new Gamemusic.OnCompleteListener() {
+						@Override
+						public void onComplete() {
+							finish();
+						}
+					});
+
+					textl.setVisibility(View.VISIBLE);
+					textimage.setAnimation(gameover);
+					gameover.start();
+					findsame.start();
+					tc1.setOnClickListener(null);
+					tc2.setOnClickListener(null);
+					tc3.setOnClickListener(null);
+					bc1.setOnClickListener(null);
+					bc2.setOnClickListener(null);
+					bc3.setOnClickListener(null);
+					bc4.setOnClickListener(null);
+					bc5.setOnClickListener(null);
+				}
+
 			}
 		}.start();
 		g = new RandomNumberGenerator(8);
@@ -367,7 +377,7 @@ public class Mlevel3 extends Activity implements OnClickListener,
 
 					@Override
 					public void run() {
-						// TODO Auto-generated method stub
+						isGameWon = true;
 						clock.pause();
 						t.cancel();
 						clockanim.stop();
@@ -505,7 +515,6 @@ public class Mlevel3 extends Activity implements OnClickListener,
 
 	@Override
 	public void onBackPressed() {
-		// TODO Auto-generated method stub
 		super.onBackPressed();
 		t.cancel();
 		clock.pause();

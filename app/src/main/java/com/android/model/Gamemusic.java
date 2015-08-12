@@ -12,6 +12,8 @@ public class Gamemusic {
 
 	Context c;
 
+	private OnCompleteListener mOnCompleteListener;
+
 	public Gamemusic(Context ctx, int id) {
 		this.c = ctx;
 		mp = new MediaPlayer();
@@ -21,7 +23,9 @@ public class Gamemusic {
 
 			@Override
 			public void onCompletion(MediaPlayer mp) {
-				// TODO Auto-generated method stub
+				if(mOnCompleteListener != null){
+					mOnCompleteListener.onComplete();
+				}
 				mp.reset();
 				mp.release();
 			}
@@ -57,4 +61,13 @@ public class Gamemusic {
 	public void release() {
 		mp.release();
 	}
+
+	public void setOnCompleteListener(OnCompleteListener onCompleteListener){
+		this.mOnCompleteListener = onCompleteListener;
+	}
+
+	public static interface OnCompleteListener{
+		void onComplete();
+	}
+
 }

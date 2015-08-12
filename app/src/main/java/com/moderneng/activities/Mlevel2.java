@@ -38,8 +38,10 @@ public class Mlevel2 extends Activity implements OnClickListener,
 	ScaleAnimation gameover, scale1;
 	Boolean gamefinish = false;
 	int nomatch = 0;
+    private boolean isGameWon = false;
 
-	@Override
+
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
@@ -95,32 +97,38 @@ public class Mlevel2 extends Activity implements OnClickListener,
 
 			@Override
 			public void onFinish() {
-				// TODO Auto-generated method stub
 				tv.setText("0");
 				clock.stop();
-				ucard1.setOnClickListener(null);
-				mcard1.setOnClickListener(null);
-				ucard2.setOnClickListener(null);
-				mcard2.setOnClickListener(null);
-				ucard3.setOnClickListener(null);
-				mcard3.setOnClickListener(null);
-				ucard4.setOnClickListener(null);
-				mcard4.setOnClickListener(null);
-				ucard5.setOnClickListener(null);
-				mcard5.setOnClickListener(null);
-				textlay.setVisibility(View.VISIBLE);
-				textv.setAnimation(gameover);
-				gameover.start();
 				clockanim.stop();
-				findsame = new Gamemusic(getApplicationContext(),
-						R.raw.gameover);
-				findsame.start();
+				findsame = new Gamemusic(getApplicationContext(), R.raw.gameover);
+				findsame.setOnCompleteListener(new Gamemusic.OnCompleteListener() {
+                    @Override
+                    public void onComplete() {
+                        finish();
+                    }
+                });
+                if(!isGameWon){
+                    findsame.start();
+                    ucard1.setOnClickListener(null);
+                    mcard1.setOnClickListener(null);
+                    ucard2.setOnClickListener(null);
+                    mcard2.setOnClickListener(null);
+                    ucard3.setOnClickListener(null);
+                    mcard3.setOnClickListener(null);
+                    ucard4.setOnClickListener(null);
+                    mcard4.setOnClickListener(null);
+                    ucard5.setOnClickListener(null);
+                    mcard5.setOnClickListener(null);
+                    textlay.setVisibility(View.VISIBLE);
+                    textv.setAnimation(gameover);
+                    gameover.start();
+                }
+
 			}
 		}.start();
 		new Handler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				clock = new playaudio(getApplicationContext(), R.raw.clocksound);
 				clock.start();
 			}
@@ -417,6 +425,7 @@ public class Mlevel2 extends Activity implements OnClickListener,
 					// TODO Auto-generated method stub
 					if (nomatch == 5) {
 						if (gamefinish == true) {
+                            isGameWon = true;
 							clock.stop();
 							textlay.bringToFront();
 							textlay.setVisibility(View.VISIBLE);

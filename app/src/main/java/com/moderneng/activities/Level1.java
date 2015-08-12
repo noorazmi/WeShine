@@ -40,6 +40,7 @@ public class Level1 extends Activity implements OnClickListener,
 	AnimationDrawable clockanimation;
 	CountDownTimer t;
 	ScaleAnimation scal,scal1;
+    private boolean isGameWon = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -84,7 +85,6 @@ public class Level1 extends Activity implements OnClickListener,
 		new Handler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				clock = new playaudio(getApplicationContext(), R.raw.clocksound);
 				clock.start();
 				// tv.setText("15");
@@ -107,30 +107,36 @@ public class Level1 extends Activity implements OnClickListener,
 
 			@Override
 			public void onTick(long millisUntilFinished) {
-				// TODO Auto-generated method stub
 				int millisecond = (int) (millisUntilFinished / 1000);
 				tv.setText("" + millisecond);
 			}
 
 			@Override
 			public void onFinish() {
-				// TODO Auto-generated method stub
 				tv.setText("0");
 				clock.stop();
 				clockanimation.stop();
-				findsame = new Gamemusic(getApplicationContext(),
-						R.raw.gameover);
-				findsame.start();
-				textimg.setImageResource(R.drawable.p1_gameover);
-				textimg.setAnimation(scal1);
-				scal1.start();
-				textlay.setVisibility(View.VISIBLE);
-				plate1.setOnClickListener(null);
-				cart1.setOnClickListener(null);
-				blue1.setOnClickListener(null);
-				plate2.setOnClickListener(null);
-				cart2.setOnClickListener(null);
-				blue2.setOnClickListener(null);
+				findsame = new Gamemusic(getApplicationContext(), R.raw.gameover);
+				findsame.setOnCompleteListener(new Gamemusic.OnCompleteListener() {
+                    @Override
+                    public void onComplete() {
+                        finish();
+                    }
+                });
+                if(!isGameWon){
+				    findsame.start();
+                    textimg.setImageResource(R.drawable.p1_gameover);
+                    textimg.setAnimation(scal1);
+                    scal1.start();
+                    textlay.setVisibility(View.VISIBLE);
+                    plate1.setOnClickListener(null);
+                    cart1.setOnClickListener(null);
+                    blue1.setOnClickListener(null);
+                    plate2.setOnClickListener(null);
+                    cart2.setOnClickListener(null);
+                    blue2.setOnClickListener(null);
+                }
+
 			}
 		}.start();
 
@@ -152,7 +158,6 @@ public class Level1 extends Activity implements OnClickListener,
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		id = v.getId();
 		clickcount++;
 		if (clickcount == 1) {
@@ -168,14 +173,12 @@ public class Level1 extends Activity implements OnClickListener,
 
 	@Override
 	public void onAnimationEnd(Animation animation) {
-		// TODO Auto-generated method stub
 		if(animation==scal){
 			t.cancel();
 		new Handler().postDelayed(new Runnable() {
 				
 				@Override
 				public void run() {
-					// TODO Auto-generated method stub
 					Intent i = new Intent(Level1.this, Mlevel2.class);
 					startActivity(i);
 					finish();
@@ -194,7 +197,6 @@ public class Level1 extends Activity implements OnClickListener,
 				new Handler().postDelayed(new Runnable() {
 					@Override
 					public void run() {
-						// TODO Auto-generated method stub
 						plate1.startAnimation(animation2);
 						plate2.startAnimation(animation2);
 						cart1.startAnimation(animation2);
@@ -363,9 +365,9 @@ public class Level1 extends Activity implements OnClickListener,
 
 				@Override
 				public void run() {
-					// TODO Auto-generated method stub
 					if (gamecount == 3) {
 						if (isface == true) {
+                            isGameWon = true;
 							clock.stop();
 							textlay.bringToFront();
 							textlay.setVisibility(View.VISIBLE);
@@ -383,13 +385,11 @@ public class Level1 extends Activity implements OnClickListener,
 
 	@Override
 	public void onAnimationRepeat(Animation arg0) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void onAnimationStart(Animation animation) {
-		// TODO Auto-generated method stub
 		if (count == 0) {
 			if (animation == animation1) {
 				plate1.setImageResource(R.drawable.front);
@@ -433,7 +433,6 @@ public class Level1 extends Activity implements OnClickListener,
 
 	@Override
 	public void onBackPressed() {
-		// TODO Auto-generated method stub
 		super.onBackPressed();
 		clock.pause();
 		t.cancel();
@@ -441,7 +440,6 @@ public class Level1 extends Activity implements OnClickListener,
 
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
 		clock.stop();
 		t.cancel();

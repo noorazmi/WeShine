@@ -15,6 +15,7 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AbsoluteLayout;
 import android.widget.FrameLayout.LayoutParams;
@@ -28,9 +29,9 @@ import com.game.utils.UtilityMethods;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
 
-public class BaloonActivity extends Activity {
+public class BalloonActivity extends Activity {
 
-	private static final String TAG = BaloonActivity.class.getName();
+	private static final String TAG = BalloonActivity.class.getName();
 	private static final int POLE_PANEL_1 = 10;
 	private static final int POLE_PANEL_2 = 11;
 	private AbsoluteLayout mainLayout;
@@ -114,7 +115,10 @@ public class BaloonActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_baloon);
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		screenSize = UtilityMethods.getScreenSizeInInches(WeShineApp.getInstance());
 		SCREEN_WIDTH = UtilityMethods.getScreenWidth(this);
@@ -1075,6 +1079,8 @@ public class BaloonActivity extends Activity {
 					mp.release();
 					mp = null;
 				}
+				//TODO place to end the activity after game end
+				finish();
 			}
 		});
 		mediaPlayer.start();

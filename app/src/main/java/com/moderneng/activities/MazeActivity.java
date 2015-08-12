@@ -2,6 +2,8 @@ package com.moderneng.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.game.fragment.util.FragmentFactory;
 import com.game.framents.MazeGameMenuFragment;
@@ -15,8 +17,11 @@ public class MazeActivity extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_maze);
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		if (savedInstanceState == null) {
 			mMazeGameMenuFragment = new MazeGameMenuFragment();
 			getFragmentManager().beginTransaction().add(R.id.container, mMazeGameMenuFragment).commit();

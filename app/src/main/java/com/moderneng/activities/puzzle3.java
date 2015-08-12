@@ -266,13 +266,16 @@ public class puzzle3 extends Activity {
 				}else if(count == 8){
 				
 					 count++;
-					   Intent ipuzzle3 = new Intent(puzzle3.this,
-								Videoplay.class);
-						int id=R.raw.puzzle3a;
-						ipuzzle3.putExtra("vid", id);
-						ipuzzle3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-						puzzle3.this.finish();
-						startActivity(ipuzzle3);
+//					   Intent ipuzzle3 = new Intent(puzzle3.this,
+//								Videoplay.class);
+//						int id=R.raw.puzzle3a;
+//						ipuzzle3.putExtra("vid", id);
+//						ipuzzle3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//						puzzle3.this.finish();
+//						startActivity(ipuzzle3);
+
+					Intent intent = new Intent(puzzle3.this, BalloonAnimationActivity.class);
+					startActivityForResult(intent, 100);
 		
 				}
 				break;
@@ -285,6 +288,15 @@ public class puzzle3 extends Activity {
 
 	}
 
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		Intent intent =new Intent(this,puzzle4.class);
+		startActivity(intent);
+		finish();
+
+	}
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub

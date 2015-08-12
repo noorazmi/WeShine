@@ -17,6 +17,8 @@ import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
@@ -77,7 +79,10 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_sun_catcher);
 		screenSize = UtilityMethods.getScreenSizeInInches(WeShineApp.getInstance());
 		SCREEN_WIDTH = UtilityMethods.getScreenWidth(this);
@@ -531,7 +536,20 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 		mAudioFileId = audioFileId;
 		Uri uri = Uri.parse(uriPath);
 		mediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
-		mediaPlayer.setOnCompletionListener(new MediaListener());
+		if(audioFileId == R.raw.battery_full_thankyou || audioFileId == R.raw.game_over){
+			mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
+				@Override
+				public void onCompletion(MediaPlayer mp) {
+					if (mp != null) {
+						mp.release();
+						finish();
+					}
+				}
+			});
+		}else{
+			mediaPlayer.setOnCompletionListener(new MediaListener());
+		}
+
 		mediaPlayer.start();
 	}
 
@@ -541,6 +559,7 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 		public void onCompletion(MediaPlayer mp) {
 			if (mp != null) {
 				mp.release();
+
 			}
 		}
 

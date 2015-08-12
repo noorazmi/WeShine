@@ -210,12 +210,14 @@ public class puzzle2 extends Activity {
 				} else if (count == 8) {
 				
 					  count++;
-					   Intent videoPlayActivity = new Intent(puzzle2.this, Videoplay.class);
-						int id=R.raw.puzzle2a;
-						videoPlayActivity.putExtra("vid", id);
-						videoPlayActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-						puzzle2.this.finish();
-						startActivity(videoPlayActivity);
+//					   Intent videoPlayActivity = new Intent(puzzle2.this, Videoplay.class);
+//						int id=R.raw.puzzle2a;
+//						videoPlayActivity.putExtra("vid", id);
+//						videoPlayActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//						puzzle2.this.finish();
+//						startActivity(videoPlayActivity);
+					Intent intent = new Intent(puzzle2.this, BalloonAnimationActivity.class);
+					startActivityForResult(intent, 100);
 		
 				}
 				break;
@@ -224,6 +226,15 @@ public class puzzle2 extends Activity {
 			}
 			return true;
 		}
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		Intent intent =new Intent(this,puzzle3.class);
+		startActivity(intent);
+		finish();
+
 	}
 	private class Mytouchlistener implements OnTouchListener {
 

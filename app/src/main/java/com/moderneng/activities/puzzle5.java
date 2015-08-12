@@ -269,13 +269,12 @@ public class puzzle5 extends Activity {
 				}else if(count==8){
 				
 					 count++;
-					   Intent ipuzzle5 = new Intent(puzzle5.this,
-								Videoplay.class);
-						int id=R.raw.puzzle5a;
-						ipuzzle5.putExtra("vid", id);
-						ipuzzle5.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					   //Intent ipuzzle5 = new Intent(puzzle5.this, Videoplay.class);
+						//int id=R.raw.puzzle5a;
+						//ipuzzle5.putExtra("vid", id);
+						//ipuzzle5.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						puzzle5.this.finish();
-						startActivity(ipuzzle5);
+						//startActivity(ipuzzle5);
 				}
 
 			}

@@ -140,7 +140,7 @@ public class GameActivity extends Activity implements OnTouchListener {
 			}if (nextimage == 5) {
 				// mp.pause();
 				Intent memory = new Intent(getApplicationContext(),
-						BaloonActivity.class);
+						BalloonActivity.class);
 				memory.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(memory);
 				front.setOnTouchListener(null);
