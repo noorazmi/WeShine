@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 
 import com.android.model.Gamemusic;
 import com.example.solarenegy.playaudio;
+import com.game.utils.ConstantValues;
 import com.moderneng.R;
 public class Mlevel3 extends Activity implements OnClickListener,
 		AnimationListener {
@@ -134,7 +136,6 @@ public class Mlevel3 extends Activity implements OnClickListener,
 		new Handler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				mcard.startAnimation(anim1);
 				tc1.startAnimation(anim1);
 				tc2.startAnimation(anim1);
@@ -150,8 +151,6 @@ public class Mlevel3 extends Activity implements OnClickListener,
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		// count=uniquenumber();
 		final int id = v.getId();
 		v1 = v;
 		if (id == R.id.tcard1) {
@@ -381,13 +380,21 @@ public class Mlevel3 extends Activity implements OnClickListener,
 						clock.pause();
 						t.cancel();
 						clockanim.stop();
-						textl.bringToFront();
-						textl.setVisibility(View.VISIBLE);
-						textimage.setImageResource(R.drawable.p1_congrats);
-						textimage.setAnimation(scale1);
-						findsame = new Gamemusic(getApplicationContext(),
-								R.raw.congrats);
-						findsame.start();
+//						textl.bringToFront();
+//						textl.setVisibility(View.VISIBLE);
+//						textimage.setImageResource(R.drawable.p1_congrats);
+//						textimage.setAnimation(scale1);
+//						findsame = new Gamemusic(getApplicationContext(),
+//								R.raw.congrats);
+//						findsame.start();
+
+						Intent intent = new Intent(Mlevel3.this, BalloonAnimationActivity.class);
+						intent.putExtra(ConstantValues.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.you_are_smart);
+						intent.putExtra(ConstantValues.EXTRA_GREETING_SOUND_ID, R.raw.youraresmart);
+						intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.ballon_playing);
+                        intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, ConstantValues.BALLOON_ANIMATION_SOUND_DELAY);
+
+                        startActivityForResult(intent, 100);
 					}
 				}, 1500);
 			}
@@ -415,7 +422,20 @@ public class Mlevel3 extends Activity implements OnClickListener,
 		}, 1000);
 	}
 
-	@Override
+
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		//Intent i = new Intent(Mlevel3.this, Mlevel3.class);
+		//startActivity(i);
+		finish();
+
+		}
+
+
+
+
+@Override
 	public void onAnimationEnd(Animation animation) {
 		// TODO Auto-generated method stub
 		if (clickcount == 1) {
@@ -522,8 +542,9 @@ public class Mlevel3 extends Activity implements OnClickListener,
 
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
 		t.cancel();
 	}
+
+
 }

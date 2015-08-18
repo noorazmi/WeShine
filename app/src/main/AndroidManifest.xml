@@ -178,8 +178,8 @@
         <activity
             android:name=".activities.BalloonAnimationActivity"
             android:label="@string/title_activity_baloon_animation"
-            android:theme="@style/Theme.Transparent"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.Transparent" >
         </activity>
     </application>
 

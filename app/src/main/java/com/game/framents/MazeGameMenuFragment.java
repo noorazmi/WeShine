@@ -74,7 +74,7 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
                 level = ConstantValues.GAME_LEVEL_0;
                 break;
             case R.id.maze_menu_image2:
-                level = ConstantValues.GAME_LEVEL_2;
+                level = ConstantValues.GAME_LEVEL_1;
                 break;
             case R.id.maze_menu_image3:
                 level = ConstantValues.GAME_LEVEL_2;

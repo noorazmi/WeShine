@@ -21,6 +21,7 @@ import android.widget.RelativeLayout;
 import com.android.model.Gamemusic;
 import com.android.model.ImageDragShadowBuilder;
 import com.example.solarenegy.playaudio;
+import com.game.utils.ConstantValues;
 import com.moderneng.R;
 
 
@@ -280,6 +281,11 @@ Boolean play=true;
 //						startActivity(ipuzzle4);
 
 					Intent intent = new Intent(puzzle4.this, BalloonAnimationActivity.class);
+					intent.putExtra(ConstantValues.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.good_job);
+					intent.putExtra(ConstantValues.EXTRA_GREETING_SOUND_ID, R.raw.goodjob);
+					intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.hey);
+					intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, ConstantValues.BALLOON_ANIMATION_SOUND_DELAY);
+
 					startActivityForResult(intent, 100);
 		
 				}

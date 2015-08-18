@@ -22,6 +22,7 @@ import android.widget.RelativeLayout;
 import com.android.model.Gamemusic;
 import com.android.model.ImageDragShadowBuilder;
 import com.example.solarenegy.playaudio;
+import com.game.utils.ConstantValues;
 import com.moderneng.R;
 
 
@@ -217,6 +218,11 @@ public class puzzle2 extends Activity {
 //						puzzle2.this.finish();
 //						startActivity(videoPlayActivity);
 					Intent intent = new Intent(puzzle2.this, BalloonAnimationActivity.class);
+					intent.putExtra(ConstantValues.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.perfect);
+					intent.putExtra(ConstantValues.EXTRA_GREETING_SOUND_ID, R.raw.perfect);
+					intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.hey);
+					intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, ConstantValues.BALLOON_ANIMATION_SOUND_DELAY);
+
 					startActivityForResult(intent, 100);
 		
 				}

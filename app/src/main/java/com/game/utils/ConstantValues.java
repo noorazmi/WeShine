@@ -16,4 +16,11 @@ public interface ConstantValues {
 	public static final int GAME_LEVEL_2 = 2;
 	public static final int GAME_LEVEL_3 = 3;
 	public static final int GAME_LEVEL_4 = 4;
+
+	public static final String EXTRA_GREETING_IMAGE_RESOURCE_ID = "greeting_image_resource_id";
+	public static final String EXTRA_GREETING_SOUND_ID = "greeting_sound_id";
+	public static final String EXTRA_BALLOON_ANIMATION_SOUND_ID = "balloon_animation_sound_id";
+	public static final String EXTRA_BALLOON_ANIMATION_SOUND_DELAY = "balloon_animation_delay";
+
+	public static final int BALLOON_ANIMATION_SOUND_DELAY = 1000;
 }

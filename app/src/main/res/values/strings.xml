@@ -11,5 +11,7 @@
     <string name="play_five">PLAY_FIVE</string>
     <string name="play_flower">PLAY_FLOWER</string>
     <string name="title_activity_baloon_animation">BaloonAnimationActivity</string>
+    <string name="title_activity_memory_game_baloon_animation">MemoryGameBaloonAnimationActivity
+    </string>
 
 </resources>

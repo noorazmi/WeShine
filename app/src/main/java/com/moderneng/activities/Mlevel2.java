@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.android.model.Gamemusic;
 import com.example.solarenegy.playaudio;
+import com.game.utils.ConstantValues;
 import com.moderneng.R;
 
 public class Mlevel2 extends Activity implements OnClickListener,
@@ -425,21 +426,39 @@ public class Mlevel2 extends Activity implements OnClickListener,
 					// TODO Auto-generated method stub
 					if (nomatch == 5) {
 						if (gamefinish == true) {
-                            isGameWon = true;
+							isGameWon = true;
 							clock.stop();
-							textlay.bringToFront();
-							textlay.setVisibility(View.VISIBLE);
-							textv.setImageResource(R.drawable.p1_congrats);
-							textv.setAnimation(scale1);
-							findsame = new Gamemusic(getApplicationContext(),
-									R.raw.congrats);
-							findsame.start();
+//							textlay.bringToFront();
+//							textlay.setVisibility(View.VISIBLE);
+//							textv.setImageResource(R.drawable.p1_congrats);
+//							textv.setAnimation(scale1);
+//							findsame = new Gamemusic(getApplicationContext(),
+//									R.raw.congrats);
+//							findsame.start();
+
+							Intent intent = new Intent(Mlevel2.this, BalloonAnimationActivity.class);
+							intent.putExtra(ConstantValues.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.congrats);
+							intent.putExtra(ConstantValues.EXTRA_GREETING_SOUND_ID, R.raw.congratulations_short);
+							intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.ballon_playing);
+							intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, ConstantValues.BALLOON_ANIMATION_SOUND_DELAY);
+
+							startActivityForResult(intent, 100);
 						}
 					}
 				}
 			}, 2000);
 		}
 	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		Intent i = new Intent(Mlevel2.this, Mlevel3.class);
+		startActivity(i);
+		finish();
+
+	}
+
 
 	@Override
 	public void onAnimationRepeat(Animation arg0) {

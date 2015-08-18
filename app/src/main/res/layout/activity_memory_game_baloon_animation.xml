@@ -1,0 +1,7 @@
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          android:id="@+id/fragment"
+          android:name="com.moderneng.activities.MemoryGameBaloonAnimationActivityFragment"
+          tools:layout="@layout/fragment_memory_game_baloon_animation"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"/>

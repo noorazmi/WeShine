@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.android.model.Gamemusic;
 import com.example.solarenegy.playaudio;
+import com.game.utils.ConstantValues;
 import com.moderneng.R;
 
 public class Level1 extends Activity implements OnClickListener,
@@ -175,15 +176,15 @@ public class Level1 extends Activity implements OnClickListener,
 	public void onAnimationEnd(Animation animation) {
 		if(animation==scal){
 			t.cancel();
-		new Handler().postDelayed(new Runnable() {
-				
-				@Override
-				public void run() {
-					Intent i = new Intent(Level1.this, Mlevel2.class);
-					startActivity(i);
-					finish();
-				}
-			}, 2500);
+//		new Handler().postDelayed(new Runnable() {
+//
+//				@Override
+//				public void run() {
+//					Intent i = new Intent(Level1.this, Mlevel2.class);
+//					startActivity(i);
+//					finish();
+//				}
+//			}, 2500);
 		
 		}
 		if (count == 0) {
@@ -367,14 +368,22 @@ public class Level1 extends Activity implements OnClickListener,
 				public void run() {
 					if (gamecount == 3) {
 						if (isface == true) {
-                            isGameWon = true;
+							isGameWon = true;
 							clock.stop();
-							textlay.bringToFront();
-							textlay.setVisibility(View.VISIBLE);
-							textimg.setImageResource(R.drawable.welldone1);
-							textimg.setAnimation(scal);
-							findsame = new Gamemusic(getApplicationContext(), R.raw.welldonesound);
-							findsame.start();
+							//textlay.bringToFront();
+							//textlay.setVisibility(View.VISIBLE);
+							//textimg.setImageResource(R.drawable.welldone1);
+							//textimg.setAnimation(scal);
+							//findsame = new Gamemusic(getApplicationContext(), R.raw.welldonesound);
+							//findsame.start();
+
+							Intent intent = new Intent(Level1.this, BalloonAnimationActivity.class);
+							intent.putExtra(ConstantValues.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.well_done);
+							intent.putExtra(ConstantValues.EXTRA_GREETING_SOUND_ID, R.raw.well_done);
+							intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.ballon_playing);
+							intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, ConstantValues.BALLOON_ANIMATION_SOUND_DELAY);
+
+							startActivityForResult(intent, 100);
 						}
 					}
 				}
@@ -382,6 +391,17 @@ public class Level1 extends Activity implements OnClickListener,
 		}
 
 	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		Intent i = new Intent(Level1.this, Mlevel2.class);
+					startActivity(i);
+					finish();
+
+	}
+
+
 
 	@Override
 	public void onAnimationRepeat(Animation arg0) {

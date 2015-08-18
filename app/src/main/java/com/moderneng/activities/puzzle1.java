@@ -24,6 +24,7 @@ import android.widget.RelativeLayout;
 import com.android.model.Gamemusic;
 import com.android.model.ImageDragShadowBuilder;
 import com.example.solarenegy.playaudio;
+import com.game.utils.ConstantValues;
 import com.moderneng.R;
 public class puzzle1 extends Activity {
 	ImageView imgv1, imgv2, imgv3, imgv4, imgv5, imgv6, imgv7, dragimg;
@@ -288,6 +289,11 @@ public class puzzle1 extends Activity {
 //						puzzle1.this.finish();
 //						startActivity(ipuzzle1);
 					Intent intent = new Intent(puzzle1.this, BalloonAnimationActivity.class);
+					intent.putExtra(ConstantValues.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.awsome);
+					intent.putExtra(ConstantValues.EXTRA_GREETING_SOUND_ID, R.raw.awesome);
+					intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.hey);
+					intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, ConstantValues.BALLOON_ANIMATION_SOUND_DELAY);
+
 					startActivityForResult(intent, 100);
 		
 				}

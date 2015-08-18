@@ -111,19 +111,26 @@ public class Mmain extends Activity implements View.OnTouchListener {
 		}
 		if (handlehere) {
 			if (nextimage == 0) {
-				mp4.pause();
+				if(mp4 != null){
+					mp4.pause();
+				}
+
 				Intent i = new Intent(Mmain.this, Level1.class);
 				i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(i);
 				frontimg.setOnTouchListener(null);
 			} else if (nextimage == 1) {
-				mp4.pause();
+				if(mp4 != null){
+					mp4.pause();
+				}
 				Intent i2 = new Intent(Mmain.this, Mlevel2.class);
 				i2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(i2);
 				frontimg.setOnTouchListener(null);
 			} else if (nextimage == 2) {
-				mp4.pause();
+				if(mp4 != null){
+					mp4.pause();
+				}
 				Intent i3 = new Intent(Mmain.this, Mlevel3.class);
 				i3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(i3);
@@ -155,21 +162,29 @@ public class Mmain extends Activity implements View.OnTouchListener {
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		mp4.stop();
+		if(mp4 != null) {
+			mp4.stop();
+		}
 	}
 
 	@Override
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
+		if(mp4 != null){
+
 		mp4.pause();
+		}
 	}
 
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
 		super.onBackPressed();
-		mp4.pause();
+		if(mp4 != null){
+
+			mp4.pause();
+		}
 	}
 
 	@Override

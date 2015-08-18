@@ -1,4 +1,4 @@
-package com.moderneng.activities;
+package com.game.framents;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -11,11 +11,17 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.AbsoluteLayout;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 
+import com.game.util.animation.AnimType;
+import com.game.util.animation.AnimationUtil;
 import com.game.utils.ConstantValues;
 import com.game.utils.UtilityMethods;
 import com.moderneng.R;
@@ -45,9 +51,31 @@ public class BalloonAnimationActivityFragment extends Fragment implements View.O
     private MediaPlayer popPlayer3;
     private MediaPlayer popPlayer4;
     private MediaPlayer popPlayer5;
-    private MediaPlayer heySoundPlayer;
+    private MediaPlayer balloonAnimationSoundPlayer;
+    private AbsoluteLayout mAbsoluteLayoutContainer;
+    private ImageView mImageViewAnimation;
+    private Activity mActivity;
+    private int mGreetingImageDrawableId;
+    private int mGreetingSoundId;
+    private int mBalloonAnimationSoundId;
+
+    private int mBalloonAnimationDelay = 1000;
+
+
+
 
     public BalloonAnimationActivityFragment() {
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        Bundle bundle = getArguments();
+        mGreetingImageDrawableId = bundle.getInt(ConstantValues.EXTRA_GREETING_IMAGE_RESOURCE_ID);
+        mGreetingSoundId = bundle.getInt(ConstantValues.EXTRA_GREETING_SOUND_ID);
+        mBalloonAnimationSoundId = bundle.getInt(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_ID);
+        mBalloonAnimationDelay = bundle.getInt(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_DELAY);
     }
 
     @Override
@@ -57,25 +85,28 @@ public class BalloonAnimationActivityFragment extends Fragment implements View.O
         SCREEN_WIDTH = UtilityMethods.getScreenWidth(getActivity());
         SCREEN_HEIGHT = UtilityMethods.getScreenHeight(getActivity());
         View rootView = inflater.inflate(R.layout.fragment_balloon_animation, container, false);
+        mImageViewAnimation = (ImageView) rootView.findViewById(R.id.imageview_animation);
+        mImageViewAnimation.setImageResource(mGreetingImageDrawableId);
+        mAbsoluteLayoutContainer = (AbsoluteLayout) rootView.findViewById(R.id.absolute_layout_container);
 
         LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         AbsoluteLayout.LayoutParams alp;
         if (screenSize >= 9.4) {
             baloonFrame = layoutInflater.inflate(R.layout.baloon_frame_large, null);
-            ((AbsoluteLayout)rootView).addView(baloonFrame);
+            mAbsoluteLayoutContainer.addView(baloonFrame);
             alp = (AbsoluteLayout.LayoutParams) baloonFrame.getLayoutParams();
             alp.y = SCREEN_HEIGHT - (int) UtilityMethods.convertDpToPixel(150, WeShineApp.getInstance());
             alp.x = (int) UtilityMethods.convertDpToPixel(200, WeShineApp.getInstance());
         } else if (screenSize >= 6.9) {
 
             baloonFrame = layoutInflater.inflate(R.layout.baloon_frame_medium, null);
-            ((AbsoluteLayout)rootView).addView(baloonFrame);
+            mAbsoluteLayoutContainer.addView(baloonFrame);
             alp = (AbsoluteLayout.LayoutParams) baloonFrame.getLayoutParams();
             alp.y = SCREEN_HEIGHT - (int) UtilityMethods.convertDpToPixel(150, WeShineApp.getInstance());
             alp.x = (int) UtilityMethods.convertDpToPixel(140, WeShineApp.getInstance());
         } else {
             baloonFrame = layoutInflater.inflate(R.layout.baloon_frame_small, null);
-            ((AbsoluteLayout)rootView).addView(baloonFrame);
+            mAbsoluteLayoutContainer.addView(baloonFrame);
             alp = (AbsoluteLayout.LayoutParams) baloonFrame.getLayoutParams();
             alp.y = SCREEN_HEIGHT - (int) UtilityMethods.convertDpToPixel(60, WeShineApp.getInstance());
             alp.x = (int) UtilityMethods.convertDpToPixel(70, WeShineApp.getInstance());
@@ -117,19 +148,17 @@ public class BalloonAnimationActivityFragment extends Fragment implements View.O
     }
 
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        startBaloonFrameAnimation();
-        playWelldoneSound();
-    }
+
 
     private void startBaloonFrameAnimation() {
-        ObjectAnimator balloonPanelAnimY = ObjectAnimator.ofFloat(baloonFrame, "translationY", 0, (int) (-1.7 * SCREEN_HEIGHT));
+        //ObjectAnimator balloonPanelAnimY = ObjectAnimator.ofFloat(baloonFrame, "translationY", 0, (int) (-1.7 * SCREEN_HEIGHT));
+        ObjectAnimator balloonPanelAnimY = ObjectAnimator.ofFloat(baloonFrame, "translationY", 0, (int) (-1.5 * SCREEN_HEIGHT));
         if (screenSize >= 9.4) {
-            balloonPanelAnimY.setDuration(4000);
+            balloonPanelAnimY.setDuration(6000);
+        } else if (screenSize >= 6.9) {
+            balloonPanelAnimY.setDuration(6000);
         } else {
-            balloonPanelAnimY.setDuration(5000);
+            balloonPanelAnimY.setDuration(6000);
         }
         baloonPanelAnimatorSet = new AnimatorSet();
         baloonPanelAnimatorSet.play(balloonPanelAnimY);
@@ -141,9 +170,61 @@ public class BalloonAnimationActivityFragment extends Fragment implements View.O
 //                Intent intent = new Intent();
 //                getActivity().setResult(Activity.RESULT_OK, intent);
 //                getActivity().finish();
+
+                Intent intent = new Intent();
+                mActivity.setResult(Activity.RESULT_OK, intent);
+                mActivity.finish();
             }
         });
         baloonPanelAnimatorSet.start();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //startBaloonFrameAnimation();
+        playWelldoneSound();
+        startGreetingImageAnimation();
+
+    }
+
+    private void startGreetingImageAnimation(){
+        AnimationUtil.performAnimation(mImageViewAnimation, AnimType.ZOOM_IN, new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+                FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(0, 0, Gravity.CENTER);
+                mImageViewAnimation.setLayoutParams(lp);
+                //AnimationUtil.performAnimation(mImageViewAnimation, AnimType.ZOOM_OUT, null);
+               // mImageViewAnimation.setVisibility(View.GONE);
+                mAbsoluteLayoutContainer.setVisibility(View.VISIBLE);
+                startBaloonFrameAnimation();
+
+//                new CountDownTimer(500, 500) {
+//                    @Override
+//                    public void onTick(long millisUntilFinished) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onFinish() {
+//                        mAbsoluteLayoutContainer.setVisibility(View.VISIBLE);
+//                        startBaloonFrameAnimation();
+//                    }
+//                }.start();
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
     }
 
     @Override
@@ -200,21 +281,57 @@ public class BalloonAnimationActivityFragment extends Fragment implements View.O
     }
 
     private void playWelldoneSound() {
-        String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.hey;
+        String uriPath = ConstantValues.BASE_RESOURCE_PATH + mGreetingSoundId;
         Uri uri = Uri.parse(uriPath);
-        heySoundPlayer = MediaPlayer.create(getActivity(), uri);
-        heySoundPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+        balloonAnimationSoundPlayer = MediaPlayer.create(getActivity(), uri);
+        balloonAnimationSoundPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 
             @Override
             public void onCompletion(MediaPlayer mp) {
-                heySoundPlayer.release();
-                heySoundPlayer = null;
-                Intent intent = new Intent();
-                getActivity().setResult(Activity.RESULT_OK, intent);
-                getActivity().finish();
+                balloonAnimationSoundPlayer.release();
+                balloonAnimationSoundPlayer = null;
+                playBallonAnimationSound();
+                //startBaloonFrameAnimation();
+//                Intent intent = new Intent();
+//                getActivity().setResult(Activity.RESULT_OK, intent);
+//                getActivity().finish();
             }
         });
-        heySoundPlayer.start();
+        balloonAnimationSoundPlayer.start();
 
+    }
+
+    private void playBallonAnimationSound() {
+        String uriPath = ConstantValues.BASE_RESOURCE_PATH + mBalloonAnimationSoundId;
+        Uri uri = Uri.parse(uriPath);
+        balloonAnimationSoundPlayer = MediaPlayer.create(getActivity(), uri);
+        balloonAnimationSoundPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                balloonAnimationSoundPlayer.release();
+                balloonAnimationSoundPlayer = null;
+//                Intent intent = new Intent();
+//                getActivity().setResult(Activity.RESULT_OK, intent);
+//                getActivity().finish();
+            }
+        });
+
+        //Delay sound playing by one sec
+        mImageViewAnimation.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                balloonAnimationSoundPlayer.start();
+            }
+        }, mBalloonAnimationDelay);
+
+
+
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.mActivity = activity;
     }
 }

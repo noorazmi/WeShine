@@ -109,8 +109,8 @@ android:duration="@integer/ship_red_animation_frame_duration"/>
 <item
 android:drawable="@drawable/maze2_red_ship36"
 android:duration="@integer/ship_red_animation_frame_duration"/>
-<item
-android:drawable="@drawable/maze2_red_ship37"
-android:duration="@integer/ship_red_animation_frame_duration"/>
+<!--<item-->
+<!--android:drawable="@drawable/maze2_red_ship37"-->
+<!--android:duration="@integer/ship_red_animation_frame_duration"/>-->
 
 </animation-list>

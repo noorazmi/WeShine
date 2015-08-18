@@ -21,6 +21,7 @@ import android.widget.RelativeLayout;
 import com.android.model.Gamemusic;
 import com.android.model.ImageDragShadowBuilder;
 import com.example.solarenegy.playaudio;
+import com.game.utils.ConstantValues;
 import com.moderneng.R;
 
 public class puzzle5 extends Activity {
@@ -273,7 +274,14 @@ public class puzzle5 extends Activity {
 						//int id=R.raw.puzzle5a;
 						//ipuzzle5.putExtra("vid", id);
 						//ipuzzle5.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-						puzzle5.this.finish();
+					Intent intent = new Intent(puzzle5.this, BalloonAnimationActivity.class);
+					intent.putExtra(ConstantValues.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.you_are_smart);
+					intent.putExtra(ConstantValues.EXTRA_GREETING_SOUND_ID, R.raw.youraresmart);
+					intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.hey);
+					intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, ConstantValues.BALLOON_ANIMATION_SOUND_DELAY);
+
+					startActivityForResult(intent, 100);
+						//puzzle5.this.finish();
 						//startActivity(ipuzzle5);
 				}
 
@@ -282,6 +290,14 @@ public class puzzle5 extends Activity {
 		}
 	
 	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		finish();
+
+	}
+
 	@Override
 	protected void onRestart() {
 		// TODO Auto-generated method stub
