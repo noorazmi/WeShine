@@ -25,8 +25,7 @@ import com.moderneng.R;
 
 public class Mlevel2 extends Activity implements OnClickListener,
 		AnimationListener {
-	ImageView ucard1, ucard2, ucard3, ucard4, ucard5, mcard1, mcard2, mcard3,
-			mcard4, mcard5, clocka, textv;
+	ImageView ucard1, ucard2, ucard3, ucard4, ucard5, mcard1, mcard2, mcard3, mcard4, mcard5, clocka, textv;
 	Animation anim1, anim2;
 	View v1, v2;
 	int count = 0, clickcount = 0;
@@ -44,21 +43,15 @@ public class Mlevel2 extends Activity implements OnClickListener,
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		getWindow().setFlags(
-				WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
-				WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED, WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
 		setContentView(R.layout.level2);
-		gameover = new ScaleAnimation(0, 1f, 0, 1f, Animation.RELATIVE_TO_SELF,
-				(float) 0.5, Animation.RELATIVE_TO_SELF, (float) 0.5);
+		gameover = new ScaleAnimation(0, 1f, 0, 1f, Animation.RELATIVE_TO_SELF, (float) 0.5, Animation.RELATIVE_TO_SELF, (float) 0.5);
 		gameover.setDuration(1000);
 		gameover.setFillAfter(true);
-		scale1 = new ScaleAnimation(0, 1f, 0, 1f, Animation.RELATIVE_TO_SELF,
-				(float) 0.5, Animation.RELATIVE_TO_SELF, (float) 0.5);
+		scale1 = new ScaleAnimation(0, 1f, 0, 1f, Animation.RELATIVE_TO_SELF, (float) 0.5, Animation.RELATIVE_TO_SELF, (float) 0.5);
 		scale1.setDuration(1000);
 		scale1.setFillAfter(true);
 		scale1.setAnimationListener(this);
@@ -67,10 +60,8 @@ public class Mlevel2 extends Activity implements OnClickListener,
 		clocka.setBackgroundResource(R.drawable.clock);
 		clockanim = (AnimationDrawable) clocka.getBackground();
 		clockanim.start();
-		anim1 = AnimationUtils.loadAnimation(getApplicationContext(),
-				R.anim.tomid);
-		anim2 = AnimationUtils.loadAnimation(getApplicationContext(),
-				R.anim.toend);
+		anim1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.tomid);
+		anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.toend);
 		anim1.setAnimationListener(this);
 		anim2.setAnimationListener(this);
 		ucard1 = (ImageView) findViewById(R.id.cardu1);
@@ -83,7 +74,7 @@ public class Mlevel2 extends Activity implements OnClickListener,
 		mcard3 = (ImageView) findViewById(R.id.cardb3);
 		mcard4 = (ImageView) findViewById(R.id.cardb4);
 		mcard5 = (ImageView) findViewById(R.id.cardb5);
-		findsame = new Gamemusic(getApplicationContext(), R.raw.samecard);
+		findsame = new Gamemusic(getApplicationContext(), R.raw.findthesimiliarcards);
 		findsame.start();
 		textlay = (RelativeLayout) findViewById(R.id.textlay);
 		textv = (ImageView) findViewById(R.id.textimg);
@@ -91,7 +82,6 @@ public class Mlevel2 extends Activity implements OnClickListener,
 
 			@Override
 			public void onTick(long millisUntilFinished) {
-				// TODO Auto-generated method stub
 				int time = (int) (millisUntilFinished / 1000);
 				tv.setText("" + time);
 			}
@@ -149,7 +139,6 @@ public class Mlevel2 extends Activity implements OnClickListener,
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		int id = v.getId();
 		clickcount++;
 		if (clickcount == 1) {
@@ -435,7 +424,9 @@ public class Mlevel2 extends Activity implements OnClickListener,
 //							findsame = new Gamemusic(getApplicationContext(),
 //									R.raw.congrats);
 //							findsame.start();
+							t.cancel();
 
+							clockanim.stop();
 							Intent intent = new Intent(Mlevel2.this, BalloonAnimationActivity.class);
 							intent.putExtra(ConstantValues.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.congrats);
 							intent.putExtra(ConstantValues.EXTRA_GREETING_SOUND_ID, R.raw.congratulations_short);

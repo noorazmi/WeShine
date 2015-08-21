@@ -16,22 +16,21 @@ import com.moderneng.R;
 public class Horizontalpager extends Activity {
 	int count;
 	playaudio mp;
-	int[] backgoundmusic = { R.raw.slide1, R.raw.slide2, R.raw.slide3,
-			R.raw.slide4, R.raw.slide5 };
+	int[] backgoundmusic = { R.raw.slide1, R.raw.slide2, R.raw.slide3, R.raw.slide4, R.raw.slide5 };
 
 	@Override
 	public void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		// Create the view switcher
-		HorizontalPage realViewSwitcher = new HorizontalPage(
-				getApplicationContext());
+		HorizontalPage realViewSwitcher = new HorizontalPage(getApplicationContext());
 
 		// Add some views to it
-		final int[] backgroundColors = { R.drawable.slide1, R.drawable.slide2,
-				R.drawable.slide3, R.drawable.slide4, R.drawable.slide5 };
+
+		//final int[] backgroundColors = { R.drawable.slide1, R.drawable.slide2, R.drawable.slide3, R.drawable.slide4, R.drawable.slide5 };
+		final int[] backgroundColors = { R.drawable.aedu1, R.drawable.aedu2, R.drawable.aedu3, R.drawable.aedu4, R.drawable.aedu5 };
+
 
 		Intent mIntent = getIntent();
 		int intValue = mIntent.getIntExtra("intVariableName", 0);

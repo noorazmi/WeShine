@@ -48,18 +48,15 @@ public final class HorizontalPage extends ViewGroup {
 
 		// Calculate the density-dependent snap velocity in pixels
 		DisplayMetrics displayMetrics = new DisplayMetrics();
-		((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE))
-				.getDefaultDisplay().getMetrics(displayMetrics);
+		((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(displayMetrics);
 		mDensityAdjustedSnapVelocity = (int) (displayMetrics.density * SNAP_VELOCITY_DIP_PER_SECOND);
 
-		final ViewConfiguration configuration = ViewConfiguration
-				.get(getContext());
+		final ViewConfiguration configuration = ViewConfiguration.get(getContext());
 		mTouchSlop = configuration.getScaledTouchSlop();
 		mMaximumVelocity = configuration.getScaledMaximumFlingVelocity();
 	}
 	@Override
-	protected void onMeasure(final int widthMeasureSpec,
-			final int heightMeasureSpec) {
+	protected void onMeasure(final int widthMeasureSpec, final int heightMeasureSpec) {
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
 		final int width = MeasureSpec.getSize(widthMeasureSpec);
@@ -93,12 +90,10 @@ public final class HorizontalPage extends ViewGroup {
 			 * didn't result in an activity restart (code by aveyD). Without
 			 * this you can end up between two pages after a rotation.
 			 */
-			Display display = ((WindowManager) getContext().getSystemService(
-					Context.WINDOW_SERVICE)).getDefaultDisplay();
+			Display display = ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
 			int displayWidth = display.getWidth();
 
-			mNextScreen = Math.max(0,
-					Math.min(getCurrentScreen(), getChildCount() - 1));
+			mNextScreen = Math.max(0, Math.min(getCurrentScreen(), getChildCount() - 1));
 			final int newX = mNextScreen * displayWidth;
 			final int delta = newX - getScrollX();
 			mScroller.startScroll(getScrollX(), 0, delta, 0, 0);
@@ -249,16 +244,13 @@ public final class HorizontalPage extends ViewGroup {
 		case MotionEvent.ACTION_UP:
 			if (mTouchState == TOUCH_STATE_HORIZONTAL_SCROLLING) {
 				final VelocityTracker velocityTracker = mVelocityTracker;
-				velocityTracker.computeCurrentVelocity(
-						VELOCITY_UNIT_PIXELS_PER_SECOND, mMaximumVelocity);
+				velocityTracker.computeCurrentVelocity(VELOCITY_UNIT_PIXELS_PER_SECOND, mMaximumVelocity);
 				int velocityX = (int) velocityTracker.getXVelocity();
 
-				if (velocityX > mDensityAdjustedSnapVelocity
-						&& mCurrentScreen > 0) {
+				if (velocityX > mDensityAdjustedSnapVelocity && mCurrentScreen > 0) {
 					// Fling hard enough to move left
 					snapToScreen(mCurrentScreen - 1);
-				} else if (velocityX < -mDensityAdjustedSnapVelocity
-						&& mCurrentScreen < getChildCount() - 1) {
+				} else if (velocityX < -mDensityAdjustedSnapVelocity && mCurrentScreen < getChildCount() - 1) {
 					// Fling hard enough to move right
 					snapToScreen(mCurrentScreen + 1);
 				} else {
@@ -289,8 +281,7 @@ public final class HorizontalPage extends ViewGroup {
 			scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
 			postInvalidate();
 		} else if (mNextScreen != INVALID_SCREEN) {
-			mCurrentScreen = Math.max(0,
-					Math.min(mNextScreen, getChildCount() - 1));
+			mCurrentScreen = Math.max(0, Math.min(mNextScreen, getChildCount() - 1));
 
 			// Notify observer about screen change
 			if (mOnScreenSwitchListener != null) {
@@ -316,8 +307,7 @@ public final class HorizontalPage extends ViewGroup {
 		invalidate();
 	}
 
-	public void setOnScreenSwitchListener(
-			final OnScreenSwitchListener onScreenSwitchListener) {
+	public void setOnScreenSwitchListener(final OnScreenSwitchListener onScreenSwitchListener) {
 		mOnScreenSwitchListener = onScreenSwitchListener;
 	}
 

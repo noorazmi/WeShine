@@ -23,8 +23,7 @@ import com.example.solarenegy.playaudio;
 import com.game.utils.ConstantValues;
 import com.moderneng.R;
 
-public class Level1 extends Activity implements OnClickListener,
-		AnimationListener {
+public class Level1 extends Activity implements OnClickListener, AnimationListener {
 	ImageView plate1, cart1, blue1, blue2, cart2, plate2, clockani, textimg;
 	private Animation animation1;
 	private Animation animation2;
@@ -47,11 +46,8 @@ public class Level1 extends Activity implements OnClickListener,
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		getWindow().setFlags(
-				WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
-				WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
 		setContentView(R.layout.level1);
 		animation1 = AnimationUtils.loadAnimation(this, R.anim.tomid);
 		animation1.setAnimationListener(this);
@@ -81,7 +77,7 @@ public class Level1 extends Activity implements OnClickListener,
 		plate2 = (ImageView) findViewById(R.id.plate2);
 		cart2 = (ImageView) findViewById(R.id.cart2);
 		blue2 = (ImageView) findViewById(R.id.blue2);
-		findsame = new Gamemusic(getApplicationContext(), R.raw.samecard);
+		findsame = new Gamemusic(getApplicationContext(), R.raw.findthesimiliarcards);
 		findsame.start();
 		new Handler().postDelayed(new Runnable() {
 			@Override
@@ -376,7 +372,9 @@ public class Level1 extends Activity implements OnClickListener,
 							//textimg.setAnimation(scal);
 							//findsame = new Gamemusic(getApplicationContext(), R.raw.welldonesound);
 							//findsame.start();
+							t.cancel();
 
+							clockanimation.stop();
 							Intent intent = new Intent(Level1.this, BalloonAnimationActivity.class);
 							intent.putExtra(ConstantValues.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.well_done);
 							intent.putExtra(ConstantValues.EXTRA_GREETING_SOUND_ID, R.raw.well_done);

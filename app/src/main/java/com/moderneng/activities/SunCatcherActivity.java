@@ -102,6 +102,7 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 		timerText = (TextView) findViewById(R.id.sunCatcher_circleTextView);
 		betteryView = (ImageView) findViewById(R.id.sunCatcher_batteryImageView);
 		raysImageView = (ImageView) findViewById(R.id.sunCatcher_raysImageView);
+        //setSunRaysImageWidthAndHeight();
 		sunImageView = (ImageView) findViewById(R.id.sunCatcher_sunImageView);
 		new CountDownTimer(60000, 1000) {
 
@@ -142,6 +143,36 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 
 			}
 		}.start();
+	}
+
+	private void setSunRaysImageWidthAndHeight(){
+		AbsoluteLayout.LayoutParams params = (AbsoluteLayout.LayoutParams) raysImageView.getLayoutParams();
+		if (screenSize >= 9.4) {
+			sunWidth = (int) UtilityMethods.convertDpToPixel(150, WeShineApp.getInstance());
+			params.width = sunWidth;
+			int sunHeight = (int) UtilityMethods.convertDpToPixel(146, WeShineApp.getInstance());
+			params.height = sunHeight;
+			//params.x = SCREEN_WIDTH / 2 - sunWidth / 2;
+			//params.y = (int) UtilityMethods.convertDpToPixel(115, WeShineApp.getInstance());
+		}
+//		else if (screenSize >= 6.9) {
+//			sunWidth = (int) UtilityMethods.convertDpToPixel(140, WeShineApp.getInstance());
+//			params.width = sunWidth;
+//			int sunHeight = (int) UtilityMethods.convertDpToPixel(146, WeShineApp.getInstance());
+//			params.height = sunHeight;
+//			params.x = SCREEN_WIDTH / 2 - sunWidth / 2;
+//			params.y = (int) UtilityMethods.convertDpToPixel(40, WeShineApp.getInstance());
+//		} else {
+//			sunWidth = (int) UtilityMethods.convertDpToPixel(85, WeShineApp.getInstance());
+//			params.width = sunWidth;
+//			int sunHeight = (int) UtilityMethods.convertDpToPixel(89, WeShineApp.getInstance());
+//			params.height = sunHeight;
+//			params.x = SCREEN_WIDTH / 2 - sunWidth / 2;
+//			params.y = (int) UtilityMethods.convertDpToPixel(10, WeShineApp.getInstance());
+//		}
+//		Log.d(TAG, "WIDTH****:" + SCREEN_WIDTH);
+//		// existing height is ok as is, no need to edit it
+        raysImageView.setLayoutParams(params);
 	}
 
 	private void setAnimatedSunView() {

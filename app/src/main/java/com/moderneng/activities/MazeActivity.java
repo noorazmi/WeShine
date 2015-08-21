@@ -20,8 +20,7 @@ public class MazeActivity extends Activity {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_maze);
-		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		if (savedInstanceState == null) {
 			mMazeGameMenuFragment = new MazeGameMenuFragment();
 			getFragmentManager().beginTransaction().add(R.id.container, mMazeGameMenuFragment).commit();

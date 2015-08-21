@@ -179,6 +179,7 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 			bundle = new Bundle();
 		}
 		bundle.putInt(ConstantValues.VIDEO_FILE_NAME, R.raw.maze2_end_video);
+		bundle.putInt(ConstantValues.BUNDLE_EXTRA_VIDEO_DURATION, ConstantValues.MAZE_TWO_VIDEO_DURATION);
 		((MazeActivity) getActivity()).attachGameEndVideoFragment(bundle);
 		AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame2_fabulusImageView), AnimType.ZOOM_OUT, null);
 		resetDrawingSurface();

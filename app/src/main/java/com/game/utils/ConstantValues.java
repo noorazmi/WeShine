@@ -23,4 +23,12 @@ public interface ConstantValues {
 	public static final String EXTRA_BALLOON_ANIMATION_SOUND_DELAY = "balloon_animation_delay";
 
 	public static final int BALLOON_ANIMATION_SOUND_DELAY = 1000;
+
+	public static final String BUNDLE_EXTRA_VIDEO_DURATION = "video_duration";
+	public static final int MAZE_ONE_VIDEO_DURATION = 10;// Seconds
+	public static final int MAZE_TWO_VIDEO_DURATION = 11;// Seconds
+	public static final int MAZE_THREE_VIDEO_DURATION = 14;// Seconds
+	public static final int MAZE_FOUR_VIDEO_DURATION = 13;// Seconds
+	public static final int MAZE_FIVE_VIDEO_DURATION = 13;// Seconds
+
 }

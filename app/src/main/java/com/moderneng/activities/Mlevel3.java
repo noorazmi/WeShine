@@ -24,8 +24,7 @@ import com.android.model.Gamemusic;
 import com.example.solarenegy.playaudio;
 import com.game.utils.ConstantValues;
 import com.moderneng.R;
-public class Mlevel3 extends Activity implements OnClickListener,
-		AnimationListener {
+public class Mlevel3 extends Activity implements OnClickListener, AnimationListener {
 	ImageView mcard, tc1, tc2, tc3, bc1, bc2, bc3, bc4, bc5, clockv, textimage;
 	Animation anim1, anim2;
 	int count = 1, clickcount = 1;
@@ -388,6 +387,9 @@ public class Mlevel3 extends Activity implements OnClickListener,
 //								R.raw.congrats);
 //						findsame.start();
 
+						t.cancel();
+
+						clockanim.stop();
 						Intent intent = new Intent(Mlevel3.this, BalloonAnimationActivity.class);
 						intent.putExtra(ConstantValues.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.you_are_smart);
 						intent.putExtra(ConstantValues.EXTRA_GREETING_SOUND_ID, R.raw.youraresmart);
