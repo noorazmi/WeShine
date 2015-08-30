@@ -39,6 +39,8 @@ public class GameActivity extends Activity implements OnTouchListener {
 
 	}
 
+
+
 	@Override
 	public boolean onTouch(View v, MotionEvent ev) {
 		// TODO Auto-generated method stub
@@ -170,8 +172,8 @@ public class GameActivity extends Activity implements OnTouchListener {
 	}
 @Override
 protected void onResume() {
-	// TODO Auto-generated method stub
 	super.onResume();
+	System.gc();
 	mp=new playaudio(this, R.raw.homesound);
 	mp.start();
 	    //mp.start();
@@ -179,15 +181,16 @@ protected void onResume() {
 }
 @Override
 protected void onDestroy() {
-	// TODO Auto-generated method stub
 	  // mp.stop();
 	super.onDestroy();
+	System.gc();
 }
 @Override
 protected void onPause() {
 	// TODO Auto-generated method stub
 	   //mp.pause();
 	super.onPause();
+	System.gc();
 }
 
 @Override
@@ -198,5 +201,6 @@ protected void onStop() {
 		mp.release();
 		mp =  null;
 	}
+	System.gc();
 }
 }

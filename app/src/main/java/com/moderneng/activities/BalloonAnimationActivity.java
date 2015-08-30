@@ -29,5 +29,15 @@ public class BalloonAnimationActivity extends Activity {
         getFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        System.gc();
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        System.gc();
+    }
 }

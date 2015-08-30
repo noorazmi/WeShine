@@ -5,6 +5,7 @@ import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
@@ -63,7 +64,7 @@ public class puzzle1 extends Activity {
 		h = new Handler();
 		mp3 = new playaudio(getApplicationContext(), R.raw.puzzle1);
 		mp3.start();
-	
+
 		imgv1 = (ImageView) findViewById(R.id.ltop);
 		imgv2 = (ImageView) findViewById(R.id.lmiddle);
 		imgv3 = (ImageView) findViewById(R.id.lbottom);
@@ -166,7 +167,7 @@ public class puzzle1 extends Activity {
 					mp = new Gamemusic(getApplicationContext(), R.raw.psun);
 					mp.start();
 					imgv1.setImageResource(R.drawable.img1);
-			
+
 					int[] imageCordinates = new int[2];
 					imgv1.getLocationOnScreen(imageCordinates);
 
@@ -295,7 +296,7 @@ public class puzzle1 extends Activity {
 					intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, ConstantValues.BALLOON_ANIMATION_SOUND_DELAY);
 
 					startActivityForResult(intent, 100);
-		
+
 				}
 			default:
 				break;
@@ -304,26 +305,42 @@ public class puzzle1 extends Activity {
 		}
 	}
 
-	
+
 	private class smallanim extends View {
 		Context ctx1;
 		int smcount = 0;
-		Bitmap smstar1, smstar2, smstar3, 
+		Bitmap smstar1, smstar2, smstar3,
 		smstar4, smstar5, smstar6, smstar7,
 				smstar8, smstar9;
 
 		public smallanim(Context context) {
 			super(context);
 			ctx1 = context;
-			smstar1 = Splash.sstar1;
-			smstar2 = Splash.sstar2;
-			smstar3 = Splash.sstar3;
-			smstar4 = Splash.sstar4;
-			smstar5 = Splash.sstar5;
-			smstar6 = Splash.sstar6;
-			smstar7 = Splash.sstar7;
-			smstar8 = Splash.sstar8;
-			smstar9 = Splash.sstar9;
+//			smstar1 = Splash.sstar1;
+//			smstar2 = Splash.sstar2;
+//			smstar3 = Splash.sstar3;
+//			smstar4 = Splash.sstar4;
+//			smstar5 = Splash.sstar5;
+//			smstar6 = Splash.sstar6;
+//			smstar7 = Splash.sstar7;
+//			smstar8 = Splash.sstar8;
+//			smstar9 = Splash.sstar9;
+            initBitmaps();
+        }
+
+
+        private void initBitmaps() {
+            BitmapFactory.Options opts = new BitmapFactory.Options();
+            opts.inPreferredConfig = Bitmap.Config.RGB_565;
+            smstar1 = BitmapFactory.decodeResource(getResources(), R.drawable.p1_star1, opts);
+            smstar2 = BitmapFactory.decodeResource(getResources(), R.drawable.p1_star2, opts);
+            smstar3 = BitmapFactory.decodeResource(getResources(), R.drawable.p1_star3, opts);
+            smstar4 = BitmapFactory.decodeResource(getResources(), R.drawable.p1_star4, opts);
+            smstar5 = BitmapFactory.decodeResource(getResources(), R.drawable.p1_star5, opts);
+            smstar6 = BitmapFactory.decodeResource(getResources(), R.drawable.p1_star6, opts);
+            smstar7 = BitmapFactory.decodeResource(getResources(), R.drawable.p1_star7, opts);
+            smstar8 = BitmapFactory.decodeResource(getResources(), R.drawable.p1_star8, opts);
+            smstar9 = BitmapFactory.decodeResource(getResources(), R.drawable.p1_star9, opts);
 		}
 
 		@Override

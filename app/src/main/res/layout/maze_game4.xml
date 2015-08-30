@@ -8,22 +8,19 @@
         android:id="@+id/mazeGame4_bottomImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/maze4_bottom_img" />
+        android:scaleType="fitXY" />
 
     <com.game.views.MazeGame1View
         android:id="@+id/mazeGame4_middleImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/maze4_middle_img" />
+        android:scaleType="fitXY" />
 
     <ImageView
         android:id="@+id/mazeGame4_topImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/maze4_top_img" />
+        android:scaleType="fitXY"/>
 
     <ImageView
         android:id="@+id/mazeGame4_superImageView"
@@ -39,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top|right" 
         android:layout_marginTop="@dimen/maze4_sun_top_margin"
-        android:layout_marginRight="@dimen/maze4_sun_right_margin"/>
+        android:layout_marginRight="@dimen/maze4_sun_right_margin"
+        android:src="@drawable/maze4sun1"/>
 
 </FrameLayout>

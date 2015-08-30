@@ -1,5 +1,7 @@
 package com.game.framents;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
@@ -21,6 +23,11 @@ public class MazeGame4Fragment extends BaseFragment implements OnGameEndListener
 	// Drawing surface to draw the path on
 	private DrawingSurface mDrawingSurface;
 
+	private Bitmap mTopBitmap;
+	private Bitmap mMiddleBitmap;
+	private Bitmap mBottomBitmap;
+
+
 	@Override
 	protected int getFragmentLayoutId() {
 		return R.layout.maze_game4;
@@ -32,10 +39,27 @@ public class MazeGame4Fragment extends BaseFragment implements OnGameEndListener
 		mDrawingSurface = (DrawingSurface) getFragmentView().findViewById(R.id.mazeGame4_middleImageView);
 		mDrawingSurface.setOnGameEndListener(this);
 		mDrawingSurface.setHotSpotImageView((ImageView) getFragmentView().findViewById(R.id.mazeGame4_bottomImageView));
+
+		setBackgroundImages();
 		setAnimatedSunView();
 		startAudioSound(R.raw.maze4_ondraw);
 	}
 
+
+
+	private void setBackgroundImages() {
+
+		mTopBitmap =  BitmapFactory.decodeResource(getResources(), R.drawable.maze4_top_img);
+		((ImageView)getFragmentView().findViewById(R.id.mazeGame4_topImageView)).setImageBitmap(mTopBitmap);
+
+		mMiddleBitmap =  BitmapFactory.decodeResource(getResources(), R.drawable.maze4_middle_img);
+		mDrawingSurface.setImageBitmap(mMiddleBitmap);
+
+		mBottomBitmap =  BitmapFactory.decodeResource(getResources(), R.drawable.maze4_bottom_img);
+		((ImageView)getFragmentView().findViewById(R.id.mazeGame4_bottomImageView)).setImageBitmap(mBottomBitmap);
+
+
+	}
 	private void setAnimatedSunView() {
 		
 		double screenSize = UtilityMethods.getScreenSizeInInches(WeShineApp.getInstance());
@@ -58,7 +82,7 @@ public class MazeGame4Fragment extends BaseFragment implements OnGameEndListener
 			params.rightMargin = (int) UtilityMethods.convertDpToPixel(62, WeShineApp.getInstance());
 		}
 		
-		AnimationUtil.performFrameAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame4_sunImageView), R.drawable.maze4_sun_animation);
+		//AnimationUtil.performFrameAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame4_sunImageView), R.drawable.maze4_sun_animation);
 	}
 
 	@Override
@@ -78,7 +102,7 @@ public class MazeGame4Fragment extends BaseFragment implements OnGameEndListener
 
 	@Override
 	public void onAnimationEnd(Animation animation) {
-		((MazeActivity) getActivity()).popTopFragment();
+		//((MazeActivity) getActivity()).popTopFragment();
 		Bundle bundle = getArguments();
 		if (bundle == null) {
 			bundle = new Bundle();
@@ -114,4 +138,26 @@ public class MazeGame4Fragment extends BaseFragment implements OnGameEndListener
 		}		
 	}
 
+
+	private void releaseResources(){
+
+		mTopBitmap.recycle();
+		mTopBitmap = null;
+
+		mMiddleBitmap.recycle();
+		mMiddleBitmap = null;
+
+		mBottomBitmap.recycle();
+		mBottomBitmap = null;
+	}
+
+
+
+
+	@Override
+	public void onDetach() {
+		super.onDetach();
+		System.gc();
+		releaseResources();
+	}
 }

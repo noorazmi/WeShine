@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import com.android.model.Gamemusic;
 import com.android.model.ImageDragShadowBuilder;
 import com.example.solarenegy.playaudio;
+import com.game.utils.ConstantValues;
 import com.moderneng.R;
 
 public class match2 extends Activity {
@@ -126,10 +127,10 @@ public class match2 extends Activity {
 					drag.setVisibility(View.VISIBLE);
 				} else if (count == 6) {
 					count++;
-					    Intent imatch2 = new Intent(match2.this,
-								Videoplay.class);
+					    Intent imatch2 = new Intent(match2.this, Videoplay.class);
 						int id=R.raw.match2;
 						imatch2.putExtra("vid", id);
+					imatch2.putExtra(ConstantValues.BUNDLE_EXTRA_VIDEO_DURATION, ConstantValues.MACHING_TWO_VIDEO_DURATION);
 						startActivity(imatch2);
 						finish();
 				}

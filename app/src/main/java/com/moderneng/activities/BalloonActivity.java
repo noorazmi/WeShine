@@ -199,6 +199,8 @@ public class BalloonActivity extends Activity {
 		Logger.error(TAG, "sizeDiagonal%%%%%%%%%************::" + screenSize);
 	}
 
+
+
 	class BalloonTimer extends CountDownTimer {
 
 		public BalloonTimer() {
@@ -1548,12 +1550,14 @@ public class BalloonActivity extends Activity {
 			backgroundMusicMediaPlayer.start();
 		}
 		super.onResume();
+		System.gc();
 	}
 
 	@Override
 	protected void onStop() {
 		stopBackgroundMusic();
 		super.onStop();
+		System.gc();
 	}
 
 	@Override
@@ -1561,6 +1565,7 @@ public class BalloonActivity extends Activity {
 		super.onDestroy();
 		tickTimer.cancel();
 		tickTimer = null;
+		System.gc();
 	}
 
 }

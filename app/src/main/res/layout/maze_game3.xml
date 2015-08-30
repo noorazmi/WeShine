@@ -8,22 +8,19 @@
         android:id="@+id/mazeGame3_bottomImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/maze3_bottom_img" />
+        android:scaleType="fitXY"/>
 
     <com.game.views.MazeGame1View
         android:id="@+id/mazeGame3_middleImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/maze3_middle_img" />
+        android:scaleType="fitXY"/>
 
     <ImageView
         android:id="@+id/mazeGame3_topImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/maze3_top_img" />
+        android:scaleType="fitXY"/>
 
     <ImageView
         android:id="@+id/mazeGame3_sunImageView"
@@ -31,7 +28,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top|left" 
         android:layout_marginTop="50dp"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/maze3sun1"/>
     
      <ImageView
         android:id="@+id/mazeGame3_carImageView"
@@ -39,7 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal" 
         android:layout_marginBottom="5dp"
-        android:layout_marginRight="@dimen/maze3_car_right_margin"/>
+        android:layout_marginRight="@dimen/maze3_car_right_margin"
+         android:src="@drawable/maze3gfcar1"/>
     
     <ImageView
         android:id="@+id/mazeGame3_wellDoneImageView"

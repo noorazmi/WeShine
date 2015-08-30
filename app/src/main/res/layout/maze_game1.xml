@@ -8,22 +8,19 @@
         android:id="@+id/mazeGame1_bottomImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/maze1_bottom_img" />
+        android:scaleType="fitXY" />
 
     <com.game.views.MazeGame1View
         android:id="@+id/mazeGame1_middleImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/maze1_middle_img" />
+        android:scaleType="fitXY"/>
 
     <ImageView
         android:id="@+id/mazeGame1_topImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/maze1_top_img" />
+        android:scaleType="fitXY" />
 
     <ImageView
         android:id="@+id/mazeGame1_terrificImageView"

@@ -26,6 +26,12 @@ public class GameMenuActivity extends Activity implements OnClickListener{
 	}
 
 	@Override
+	protected void onResume() {
+		super.onResume();
+		System.gc();
+	}
+
+	@Override
 	public void onClick(View v) {
 		Intent intent;
 		switch (v.getId()) {
@@ -46,9 +52,10 @@ public class GameMenuActivity extends Activity implements OnClickListener{
 			break;
 		}
 	}
-	
-	
 
-	
-	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		System.gc();
+	}
 }

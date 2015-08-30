@@ -450,10 +450,17 @@ public class Level1 extends Activity implements OnClickListener, AnimationListen
 	}
 
 	@Override
+	protected void onResume() {
+		super.onResume();
+		System.gc();
+	}
+
+	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
 		clock.pause();
 		t.cancel();
+		System.gc();
 	}
 
 	@Override
@@ -461,6 +468,7 @@ public class Level1 extends Activity implements OnClickListener, AnimationListen
 		super.onDestroy();
 		clock.stop();
 		t.cancel();
+		System.gc();
 
 	}
 
