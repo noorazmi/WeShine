@@ -17,7 +17,7 @@ import android.widget.RelativeLayout;
 
 import com.android.model.Gamemusic;
 import com.android.model.ImageDragShadowBuilder;
-import com.game.utils.ConstantValues;
+import com.game.utils.AppConstant;
 import com.moderneng.R;
 
 public class match1 extends Activity {
@@ -167,7 +167,7 @@ public class match1 extends Activity {
                         Intent imatch1 = new Intent(match1.this, Videoplay.class);
                         int id = R.raw.match1;
                         imatch1.putExtra("vid", id);
-                        imatch1.putExtra(ConstantValues.BUNDLE_EXTRA_VIDEO_DURATION, ConstantValues.MACHING_ONE_VIDEO_DURATION);
+                        imatch1.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.MACHING_ONE_VIDEO_DURATION);
                         imatch1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(imatch1);
                         finish();

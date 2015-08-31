@@ -7,7 +7,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.game.framents.BalloonAnimationActivityFragment;
-import com.game.utils.ConstantValues;
+import com.game.utils.AppConstant;
 import com.moderneng.R;
 
 public class BalloonAnimationActivity extends Activity {
@@ -21,10 +21,10 @@ public class BalloonAnimationActivity extends Activity {
 
         Fragment fragment = new BalloonAnimationActivityFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt(ConstantValues.EXTRA_GREETING_IMAGE_RESOURCE_ID,getIntent().getIntExtra(ConstantValues.EXTRA_GREETING_IMAGE_RESOURCE_ID, 0));
-        bundle.putInt(ConstantValues.EXTRA_GREETING_SOUND_ID,getIntent().getIntExtra(ConstantValues.EXTRA_GREETING_SOUND_ID, 0));
-        bundle.putInt(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_ID,getIntent().getIntExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_ID, 0));
-        bundle.putInt(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_DELAY,getIntent().getIntExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, 0));
+        bundle.putInt(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID,getIntent().getIntExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, 0));
+        bundle.putInt(AppConstant.EXTRA_GREETING_SOUND_ID,getIntent().getIntExtra(AppConstant.EXTRA_GREETING_SOUND_ID, 0));
+        bundle.putInt(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID,getIntent().getIntExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, 0));
+        bundle.putInt(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY,getIntent().getIntExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, 0));
         fragment.setArguments(bundle);
         getFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
     }

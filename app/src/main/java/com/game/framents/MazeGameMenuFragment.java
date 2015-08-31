@@ -2,12 +2,11 @@ package com.game.framents;
 
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageButton;
 
 import com.game.listeners.OnMazeMenuItemClickListener;
-import com.game.utils.ConstantValues;
+import com.game.utils.AppConstant;
 import com.game.view.adapter.ImageViewPagerAdapter;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
@@ -71,19 +70,19 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
         int level = 0;
         switch (v.getId()){
             case R.id.maze_menu_image1:
-                level = ConstantValues.GAME_LEVEL_0;
+                level = AppConstant.GAME_LEVEL_0;
                 break;
             case R.id.maze_menu_image2:
-                level = ConstantValues.GAME_LEVEL_1;
+                level = AppConstant.GAME_LEVEL_1;
                 break;
             case R.id.maze_menu_image3:
-                level = ConstantValues.GAME_LEVEL_2;
+                level = AppConstant.GAME_LEVEL_2;
                 break;
             case R.id.maze_menu_image4:
-                level = ConstantValues.GAME_LEVEL_3;
+                level = AppConstant.GAME_LEVEL_3;
                 break;
             case R.id.maze_menu_image5:
-                level = ConstantValues.GAME_LEVEL_4;
+                level = AppConstant.GAME_LEVEL_4;
                 break;
             default:
                 break;
@@ -94,7 +93,7 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
     }
 
     private void playMazeSound(){
-        String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.maze_sound;
+        String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.maze_sound;
         Uri uri = Uri.parse(uriPath);
         final MediaPlayer[] mediaPlayer = {MediaPlayer.create(WeShineApp.getInstance(), uri)};
         if(mediaPlayer[0] != null){

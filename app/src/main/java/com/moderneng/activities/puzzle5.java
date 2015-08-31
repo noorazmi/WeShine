@@ -21,8 +21,8 @@ import android.widget.RelativeLayout;
 
 import com.android.model.Gamemusic;
 import com.android.model.ImageDragShadowBuilder;
-import com.example.solarenegy.playaudio;
-import com.game.utils.ConstantValues;
+import com.example.solarenegy.AudioPlayer;
+import com.game.utils.AppConstant;
 import com.moderneng.R;
 
 public class puzzle5 extends Activity {
@@ -31,7 +31,7 @@ public class puzzle5 extends Activity {
 	ImageView p5imgv3, p5imgv4, p5imgv5, p5imgv6, p5imgv7;
 	ImageView p5dragv;
 	int count = 1;
-	playaudio mp3;
+	AudioPlayer mp3;
 	Gamemusic mp,mp8;
     Boolean play=true;
     int x,y;
@@ -53,7 +53,7 @@ public class puzzle5 extends Activity {
 		p5lay.setBackgroundResource(R.drawable.p5bg);
 		p5dragv = (ImageView) findViewById(R.id.pdragv);
 		p5dragv.setImageResource(R.drawable.p5m4);
-		mp3 = new playaudio(getApplicationContext(), R.raw.puzzle5);
+		mp3 = new AudioPlayer(getApplicationContext(), R.raw.puzzle5);
 		mp3.start();
 		p5imgv1 = (ImageView) findViewById(R.id.ltop);
 		p5imgv2 = (ImageView) findViewById(R.id.lmiddle);
@@ -276,10 +276,10 @@ public class puzzle5 extends Activity {
 						//ipuzzle5.putExtra("vid", id);
 						//ipuzzle5.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					Intent intent = new Intent(puzzle5.this, BalloonAnimationActivity.class);
-					intent.putExtra(ConstantValues.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.you_are_smart);
-					intent.putExtra(ConstantValues.EXTRA_GREETING_SOUND_ID, R.raw.youraresmart);
-					intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.hey);
-					intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, ConstantValues.BALLOON_ANIMATION_SOUND_DELAY);
+					intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.you_are_smart);
+					intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, R.raw.youraresmart);
+					intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.hey);
+					intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, AppConstant.BALLOON_ANIMATION_SOUND_DELAY);
 
 					startActivityForResult(intent, 100);
 						//puzzle5.this.finish();

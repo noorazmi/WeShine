@@ -22,8 +22,8 @@ import android.widget.RelativeLayout;
 
 import com.android.model.Gamemusic;
 import com.android.model.ImageDragShadowBuilder;
-import com.example.solarenegy.playaudio;
-import com.game.utils.ConstantValues;
+import com.example.solarenegy.AudioPlayer;
+import com.game.utils.AppConstant;
 import com.moderneng.R;
 
 
@@ -31,7 +31,7 @@ public class puzzle2 extends Activity {
 	ImageView imgv1, imgv2, imgv3, imgv4, imgv5, imgv6, imgv7, dragimg;
 	int count = 1, viewcount = 1;
 	Gamemusic mp,mp5;
-	playaudio mp3;
+	AudioPlayer mp3;
 	RelativeLayout mainlay;
 	 int x,y;
      Boolean play=true;
@@ -50,7 +50,7 @@ public class puzzle2 extends Activity {
 	}
 		mainlay = (RelativeLayout) findViewById(R.id.mainlay);
 		mainlay.setBackgroundResource(R.drawable.p2bg);
-		mp3 = new playaudio(getApplicationContext(), R.raw.puzzle2);
+		mp3 = new AudioPlayer(getApplicationContext(), R.raw.puzzle2);
 		mp3.start();
 		imgv1 = (ImageView) findViewById(R.id.ltop);
 		imgv2 = (ImageView) findViewById(R.id.lmiddle);
@@ -219,10 +219,10 @@ public class puzzle2 extends Activity {
 //						puzzle2.this.finish();
 //						startActivity(videoPlayActivity);
 					Intent intent = new Intent(puzzle2.this, BalloonAnimationActivity.class);
-					intent.putExtra(ConstantValues.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.perfect);
-					intent.putExtra(ConstantValues.EXTRA_GREETING_SOUND_ID, R.raw.perfect);
-					intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.hey);
-					intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, ConstantValues.BALLOON_ANIMATION_SOUND_DELAY);
+					intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.perfect);
+					intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, R.raw.perfect);
+					intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.hey);
+					intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, AppConstant.BALLOON_ANIMATION_SOUND_DELAY);
 
 					startActivityForResult(intent, 100);
 		

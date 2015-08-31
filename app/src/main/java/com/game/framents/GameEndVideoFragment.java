@@ -8,7 +8,7 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.VideoView;
 
-import com.game.utils.ConstantValues;
+import com.game.utils.AppConstant;
 import com.moderneng.R;
 import com.moderneng.activities.MazeActivity;
 
@@ -24,11 +24,11 @@ public class GameEndVideoFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
 
         getActivity().getWindow().setFormat(PixelFormat.UNKNOWN);
-        int videoDuration = getArguments().getInt(ConstantValues.BUNDLE_EXTRA_VIDEO_DURATION);
+        int videoDuration = getArguments().getInt(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION);
         // Displays a video file.
         View v = getFragmentView();
         VideoView mVideoView = (VideoView) v.findViewById(R.id.videoview);
-        String uriPath = ConstantValues.BASE_RESOURCE_PATH + getArguments().getInt(ConstantValues.VIDEO_FILE_NAME);
+        String uriPath = AppConstant.BASE_RESOURCE_PATH + getArguments().getInt(AppConstant.VIDEO_FILE_NAME);
         Uri uri = Uri.parse(uriPath);
         mVideoView.setVideoURI(uri);
         mVideoView.requestFocus();
@@ -60,15 +60,15 @@ public class GameEndVideoFragment extends BaseFragment {
     }
 
     private void startNextMaze(){
-        if(getArguments().getInt(ConstantValues.VIDEO_FILE_NAME) == R.raw.maze1_end_video){
-            ((MazeActivity)getActivity()).AttachGameFragment(ConstantValues.GAME_LEVEL_1);
-        }else if(getArguments().getInt(ConstantValues.VIDEO_FILE_NAME) == R.raw.maze2_end_video){
-            ((MazeActivity)getActivity()).AttachGameFragment(ConstantValues.GAME_LEVEL_2);
-        }else if(getArguments().getInt(ConstantValues.VIDEO_FILE_NAME) == R.raw.maze3_end_video){
-            ((MazeActivity)getActivity()).AttachGameFragment(ConstantValues.GAME_LEVEL_3);
-        }else if(getArguments().getInt(ConstantValues.VIDEO_FILE_NAME) == R.raw.maze4_end_video){
-            ((MazeActivity)getActivity()).AttachGameFragment(ConstantValues.GAME_LEVEL_4);
-        }else if(getArguments().getInt(ConstantValues.VIDEO_FILE_NAME) == R.raw.maze5_end_video){
+        if(getArguments().getInt(AppConstant.VIDEO_FILE_NAME) == R.raw.maze1_end_video){
+            ((MazeActivity)getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_1);
+        }else if(getArguments().getInt(AppConstant.VIDEO_FILE_NAME) == R.raw.maze2_end_video){
+            ((MazeActivity)getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_2);
+        }else if(getArguments().getInt(AppConstant.VIDEO_FILE_NAME) == R.raw.maze3_end_video){
+            ((MazeActivity)getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_3);
+        }else if(getArguments().getInt(AppConstant.VIDEO_FILE_NAME) == R.raw.maze4_end_video){
+            ((MazeActivity)getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_4);
+        }else if(getArguments().getInt(AppConstant.VIDEO_FILE_NAME) == R.raw.maze5_end_video){
             ((MazeActivity)getActivity()).gotToMazeGameMenu();
 
         }

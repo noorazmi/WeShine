@@ -17,14 +17,14 @@ import android.widget.RelativeLayout;
 
 import com.android.model.Gamemusic;
 import com.android.model.ImageDragShadowBuilder;
-import com.example.solarenegy.playaudio;
-import com.game.utils.ConstantValues;
+import com.example.solarenegy.AudioPlayer;
+import com.game.utils.AppConstant;
 import com.moderneng.R;
 
 public class match4 extends Activity {
 	ImageView sun4, redbuoy, ship, dolfin, greenb, drag4;
 	int count = 1;
-	playaudio mp;
+	AudioPlayer mp;
 	Gamemusic mp3, mp5;
 	int sunx, suny, redx, redy, redy3, shipx, shipy, dolfinx, dolfiny;
 	RelativeLayout li;
@@ -39,7 +39,7 @@ public class match4 extends Activity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
 		setContentView(R.layout.match4);
-		mp = new playaudio(getApplicationContext(), R.raw.matching4);
+		mp = new AudioPlayer(getApplicationContext(), R.raw.matching4);
 		mp.start();
 		sun4 = (ImageView) findViewById(R.id.sun4v);
 		redbuoy = (ImageView) findViewById(R.id.redbuoyv);
@@ -170,7 +170,7 @@ public class match4 extends Activity {
 					Intent imatch4 = new Intent(match4.this, Videoplay.class);
 						int id=R.raw.match4;
 						imatch4.putExtra("vid", id);
-						imatch4.putExtra(ConstantValues.BUNDLE_EXTRA_VIDEO_DURATION, ConstantValues.MACHING_FOUR_VIDEO_DURATION);
+						imatch4.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.MACHING_FOUR_VIDEO_DURATION);
 						startActivity(imatch4);
 					   finish();
 		

@@ -16,14 +16,14 @@ import android.widget.ImageView;
 
 import com.android.model.Gamemusic;
 import com.android.model.ImageDragShadowBuilder;
-import com.example.solarenegy.playaudio;
-import com.game.utils.ConstantValues;
+import com.example.solarenegy.AudioPlayer;
+import com.game.utils.AppConstant;
 import com.moderneng.R;
 
 public class match5 extends Activity {
 	ImageView sun5, solar5, golf5, tree5, ehouse, drag5;
 	int count = 1;
-	playaudio mp;
+	AudioPlayer mp;
 	Gamemusic mp3,mp5;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class match5 extends Activity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-		mp = new playaudio(getApplicationContext(), R.raw.matching5);
+		mp = new AudioPlayer(getApplicationContext(), R.raw.matching5);
 		mp.start();
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.match5);	 
@@ -164,7 +164,7 @@ public class match5 extends Activity {
 					Intent imatch5 = new Intent(match5.this, Videoplay.class);
 					int id=R.raw.match5ss;
 					imatch5.putExtra("vid", id);
-					imatch5.putExtra(ConstantValues.BUNDLE_EXTRA_VIDEO_DURATION, ConstantValues.MACHING_FIVE_VIDEO_DURATION);
+					imatch5.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.MACHING_FIVE_VIDEO_DURATION);
 					startActivity(imatch5);
 					finish();
 				}

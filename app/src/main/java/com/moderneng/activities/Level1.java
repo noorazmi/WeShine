@@ -19,8 +19,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.model.Gamemusic;
-import com.example.solarenegy.playaudio;
-import com.game.utils.ConstantValues;
+import com.example.solarenegy.AudioPlayer;
+import com.game.utils.AppConstant;
 import com.moderneng.R;
 
 public class Level1 extends Activity implements OnClickListener, AnimationListener {
@@ -33,7 +33,7 @@ public class Level1 extends Activity implements OnClickListener, AnimationListen
 	private boolean isBackOfCardShowing = true;
 	private Boolean isface = false;
 	int gamecount = 0;
-	playaudio clock;
+	AudioPlayer clock;
 	Gamemusic findsame;
 	TextView tv;
 	RelativeLayout textlay;
@@ -82,7 +82,7 @@ public class Level1 extends Activity implements OnClickListener, AnimationListen
 		new Handler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				clock = new playaudio(getApplicationContext(), R.raw.clocksound);
+				clock = new AudioPlayer(getApplicationContext(), R.raw.clocksound);
 				clock.start();
 				// tv.setText("15");
 			}
@@ -376,10 +376,10 @@ public class Level1 extends Activity implements OnClickListener, AnimationListen
 
 							clockanimation.stop();
 							Intent intent = new Intent(Level1.this, BalloonAnimationActivity.class);
-							intent.putExtra(ConstantValues.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.well_done);
-							intent.putExtra(ConstantValues.EXTRA_GREETING_SOUND_ID, R.raw.well_done);
-							intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.ballon_playing);
-							intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, ConstantValues.BALLOON_ANIMATION_SOUND_DELAY);
+							intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.well_done);
+							intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, R.raw.well_done);
+							intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.ballon_playing);
+							intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, AppConstant.BALLOON_ANIMATION_SOUND_DELAY);
 
 							startActivityForResult(intent, 100);
 						}

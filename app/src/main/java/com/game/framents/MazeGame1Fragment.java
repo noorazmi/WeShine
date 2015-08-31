@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import com.game.listeners.OnGameEndListener;
 import com.game.util.animation.AnimType;
 import com.game.util.animation.AnimationUtil;
-import com.game.utils.ConstantValues;
+import com.game.utils.AppConstant;
 import com.game.utils.Logger;
 import com.game.utils.UtilityMethods;
 import com.game.views.DrawingSurface;
@@ -140,8 +140,8 @@ public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener
 		if (bundle == null) {
 			bundle = new Bundle();
 		}
-		bundle.putInt(ConstantValues.VIDEO_FILE_NAME, R.raw.maze1_end_video);
-		bundle.putInt(ConstantValues.BUNDLE_EXTRA_VIDEO_DURATION, ConstantValues.MAZE_ONE_VIDEO_DURATION);
+		bundle.putInt(AppConstant.VIDEO_FILE_NAME, R.raw.maze1_end_video);
+		bundle.putInt(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.MAZE_ONE_VIDEO_DURATION);
 
 		((MazeActivity) getActivity()).attachGameEndVideoFragment(bundle);
 		AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame1_terrificImageView), AnimType.ZOOM_OUT, null);

@@ -11,13 +11,13 @@ public class Logger {
 
 	
 	public static void debug(String tag, String message) {
-		if (ConstantValues.APP_DEBUG) {
-			Log.e(tag, ConstantValues.APP_TAG+message);
+		if (AppConstant.APP_DEBUG) {
+			Log.e(tag, AppConstant.APP_TAG+message);
 		}
 	}
 
 	public static void error(String tag, String message) {
-		if (ConstantValues.APP_DEBUG) {
+		if (AppConstant.APP_DEBUG) {
 			Log.e(tag, message);
 		}
 	}

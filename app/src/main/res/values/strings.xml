@@ -13,5 +13,6 @@
     <string name="title_activity_baloon_animation">BaloonAnimationActivity</string>
     <string name="title_activity_memory_game_baloon_animation">MemoryGameBaloonAnimationActivity
     </string>
+    <string name="title_activity_language_menu">Title</string>
 
 </resources>

@@ -1,7 +1,6 @@
 package com.game.framents;
 
 import android.app.Fragment;
-import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.net.Uri;
@@ -10,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.game.utils.ConstantValues;
+import com.game.utils.AppConstant;
 import com.moderneng.WeShineApp;
 
 /**
@@ -45,7 +44,7 @@ public abstract class BaseFragment extends Fragment implements OnCompletionListe
 
 	protected void startAudioSound(int audioFileId) {
 
-		String uriPath = ConstantValues.BASE_RESOURCE_PATH + audioFileId;
+		String uriPath = AppConstant.BASE_RESOURCE_PATH + audioFileId;
 		mAudioFileId = audioFileId;
 		Uri uri = Uri.parse(uriPath);
 		MediaPlayer mediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);

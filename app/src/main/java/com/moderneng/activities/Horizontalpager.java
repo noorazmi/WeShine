@@ -10,12 +10,12 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
 import com.example.solarenegy.HorizontalPage;
-import com.example.solarenegy.playaudio;
+import com.example.solarenegy.AudioPlayer;
 import com.moderneng.R;
 
 public class Horizontalpager extends Activity {
 	int count;
-	playaudio mp;
+	AudioPlayer mp;
 	int[] backgoundmusic = { R.raw.slide1, R.raw.slide2, R.raw.slide3, R.raw.slide4, R.raw.slide5 };
 
 	@Override
@@ -41,7 +41,7 @@ public class Horizontalpager extends Activity {
 			textView.setImageResource(backgroundColors[i]);
 			realViewSwitcher.addView(textView);
 		}
-		mp = new playaudio(this, backgoundmusic[count]);
+		mp = new AudioPlayer(this, backgoundmusic[count]);
 
 		// set as content view
 		setContentView(realViewSwitcher);
@@ -70,7 +70,7 @@ public class Horizontalpager extends Activity {
 				id=count+4;
 			}
 		//count++;
-			mp = new playaudio(getApplicationContext(), backgoundmusic[id]);
+			mp = new AudioPlayer(getApplicationContext(), backgoundmusic[id]);
 			mp.start();
 			Log.d("HorizontalPager", "switched to screen: " + screen);
 		}

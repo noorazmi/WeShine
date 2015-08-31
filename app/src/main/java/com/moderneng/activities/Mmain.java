@@ -17,19 +17,18 @@ import android.widget.ImageView;
 
 import com.android.model.Gamemusic;
 import com.example.solarenegy.ColorTool;
-import com.example.solarenegy.playaudio;
+import com.example.solarenegy.AudioPlayer;
 import com.moderneng.R;
 
 public class Mmain extends Activity implements View.OnTouchListener {
 	ImageView frontimg, backimg, bird, bird2, beev, bird3;
 	Animation bird1;
 	Gamemusic mp;
-	playaudio mp4;
+	AudioPlayer mp4;
 	Boolean isopen = true;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -48,17 +47,15 @@ public class Mmain extends Activity implements View.OnTouchListener {
 		bird2anim.start();
 		AnimationDrawable beeanim = (AnimationDrawable) beev.getBackground();
 		beeanim.start();
-		AnimationDrawable gyroAnimation = (AnimationDrawable) bird
-				.getBackground();
+		AnimationDrawable gyroAnimation = (AnimationDrawable) bird.getBackground();
 		gyroAnimation.start();
 		mp = new Gamemusic(getApplicationContext(), R.raw.mgames);
 		mp.start();
 		new Handler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				mp.pause();
-				mp4 = new playaudio(getApplicationContext(), R.raw.homesound);
+				mp4 = new AudioPlayer(getApplicationContext(), R.raw.homesound);
 				mp4.start();
 			}
 		}, 1100);
@@ -71,7 +68,6 @@ public class Mmain extends Activity implements View.OnTouchListener {
 
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
-		// TODO Auto-generated method stub
 		Boolean handlehere = false;
 		final int action = event.getAction();
 		final int evx = (int) event.getX();
@@ -81,8 +77,7 @@ public class Mmain extends Activity implements View.OnTouchListener {
 		if (front == null)
 			return false;
 		Integer tagNum = (Integer) front.getTag();
-		int currentResource = (tagNum == null) ? R.drawable.mcardfront : tagNum
-				.intValue();
+		int currentResource = (tagNum == null) ? R.drawable.mcardfront : tagNum.intValue();
 		switch (action) {
 		case MotionEvent.ACTION_DOWN:
 			if (currentResource == R.drawable.mcardfront) {

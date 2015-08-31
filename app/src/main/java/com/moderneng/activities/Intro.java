@@ -9,13 +9,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
-import com.example.solarenegy.playaudio;
+import com.example.solarenegy.AudioPlayer;
 import com.moderneng.R;
 
 public class Intro extends Activity implements OnClickListener {
 	ImageButton slide1, slide2, slide3, slide4, slide5;
 	int intValue;
-	playaudio mp;
+	AudioPlayer mp;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class Intro extends Activity implements OnClickListener {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.eduslide);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-	     	mp = new playaudio(getApplicationContext(), R.raw.homesound);
+	     	mp = new AudioPlayer(getApplicationContext(), R.raw.homesound);
 		    mp.start();
 		slide1 = (ImageButton) findViewById(R.id.imag1);
 		slide2 = (ImageButton) findViewById(R.id.imag2);

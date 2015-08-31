@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import com.game.listeners.OnGameEndListener;
 import com.game.util.animation.AnimType;
 import com.game.util.animation.AnimationUtil;
-import com.game.utils.ConstantValues;
+import com.game.utils.AppConstant;
 import com.game.utils.UtilityMethods;
 import com.game.views.DrawingSurface;
 import com.moderneng.R;
@@ -107,8 +107,8 @@ public class MazeGame4Fragment extends BaseFragment implements OnGameEndListener
 		if (bundle == null) {
 			bundle = new Bundle();
 		}
-		bundle.putInt(ConstantValues.VIDEO_FILE_NAME, R.raw.maze4_end_video);
-		bundle.putInt(ConstantValues.BUNDLE_EXTRA_VIDEO_DURATION, ConstantValues.MAZE_FOUR_VIDEO_DURATION);
+		bundle.putInt(AppConstant.VIDEO_FILE_NAME, R.raw.maze4_end_video);
+		bundle.putInt(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.MAZE_FOUR_VIDEO_DURATION);
 		((MazeActivity) getActivity()).attachGameEndVideoFragment(bundle);
 		AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame4_superImageView), AnimType.ZOOM_OUT, null);
 		resetDrawingSurface();

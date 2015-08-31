@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import com.game.listeners.OnGameEndListener;
 import com.game.pojo.FloatPoint;
 import com.game.utils.ColorTool;
-import com.game.utils.ConstantValues;
+import com.game.utils.AppConstant;
 import com.game.utils.Logger;
 import com.game.utils.UtilityMethods;
 import com.moderneng.WeShineApp;
@@ -63,7 +63,7 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 		mPaint.setStyle(Paint.Style.STROKE);
 		mPaint.setStrokeJoin(Paint.Join.ROUND);
 		mPaint.setStrokeCap(Paint.Cap.ROUND);
-		mPaint.setStrokeWidth(UtilityMethods.convertDpToPixel(ConstantValues.STROKE_WIDTH, WeShineApp.getInstance()));
+		mPaint.setStrokeWidth(UtilityMethods.convertDpToPixel(AppConstant.STROKE_WIDTH, WeShineApp.getInstance()));
 		mCanvas = new Canvas();
 		mPath = new Path();
 
@@ -161,7 +161,7 @@ public abstract class DrawingSurface extends ImageView implements OnTouchListene
 			Logger.debug(TAG, "******************Hot Spot image is null. Please set hot spot image using method setHotSpotImageView()");
 			return false;
 		}
-		FloatPoint[] floatPoints = UtilityMethods.getPoints(mPath, ConstantValues.POINTS_COUNT);
+		FloatPoint[] floatPoints = UtilityMethods.getPoints(mPath, AppConstant.POINTS_COUNT);
 
 		for (FloatPoint floatPoint : floatPoints) {
 			int hotSpotColorPixel = -1;

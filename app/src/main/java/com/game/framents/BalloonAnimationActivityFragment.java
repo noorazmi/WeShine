@@ -22,7 +22,7 @@ import android.widget.ImageView;
 
 import com.game.util.animation.AnimType;
 import com.game.util.animation.AnimationUtil;
-import com.game.utils.ConstantValues;
+import com.game.utils.AppConstant;
 import com.game.utils.UtilityMethods;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
@@ -72,10 +72,10 @@ public class BalloonAnimationActivityFragment extends Fragment implements View.O
         super.onCreate(savedInstanceState);
 
         Bundle bundle = getArguments();
-        mGreetingImageDrawableId = bundle.getInt(ConstantValues.EXTRA_GREETING_IMAGE_RESOURCE_ID);
-        mGreetingSoundId = bundle.getInt(ConstantValues.EXTRA_GREETING_SOUND_ID);
-        mBalloonAnimationSoundId = bundle.getInt(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_ID);
-        mBalloonAnimationDelay = bundle.getInt(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_DELAY);
+        mGreetingImageDrawableId = bundle.getInt(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID);
+        mGreetingSoundId = bundle.getInt(AppConstant.EXTRA_GREETING_SOUND_ID);
+        mBalloonAnimationSoundId = bundle.getInt(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID);
+        mBalloonAnimationDelay = bundle.getInt(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY);
     }
 
     @Override
@@ -235,7 +235,7 @@ public class BalloonAnimationActivityFragment extends Fragment implements View.O
 
     private void playBalloonSound() {
 
-        String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.balloon_sound;
+        String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.balloon_sound;
         Uri uri = Uri.parse(uriPath);
         if (currentPopPlayer == BALOON_POP_PLAYER1) {
             popPlayer2 = MediaPlayer.create(WeShineApp.getInstance(), uri);
@@ -281,7 +281,7 @@ public class BalloonAnimationActivityFragment extends Fragment implements View.O
     }
 
     private void playWelldoneSound() {
-        String uriPath = ConstantValues.BASE_RESOURCE_PATH + mGreetingSoundId;
+        String uriPath = AppConstant.BASE_RESOURCE_PATH + mGreetingSoundId;
         Uri uri = Uri.parse(uriPath);
         balloonAnimationSoundPlayer = MediaPlayer.create(getActivity(), uri);
         balloonAnimationSoundPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -302,7 +302,7 @@ public class BalloonAnimationActivityFragment extends Fragment implements View.O
     }
 
     private void playBallonAnimationSound() {
-        String uriPath = ConstantValues.BASE_RESOURCE_PATH + mBalloonAnimationSoundId;
+        String uriPath = AppConstant.BASE_RESOURCE_PATH + mBalloonAnimationSoundId;
         Uri uri = Uri.parse(uriPath);
         balloonAnimationSoundPlayer = MediaPlayer.create(getActivity(), uri);
         balloonAnimationSoundPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {

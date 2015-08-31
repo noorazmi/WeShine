@@ -38,24 +38,11 @@ public class Splash extends Activity {
         opts.inPreferredConfig = Bitmap.Config.RGB_565;
         mBitmapSplash =  BitmapFactory.decodeResource(getResources(), R.drawable.splash, opts);
         ((ImageView) findViewById(R.id.imageview_splash)).setImageBitmap(mBitmapSplash);
-        //mDisplay = this.getWindowManager().getDefaultDisplay();
-        //height = mDisplay.getHeight();
-        //width = mDisplay.getWidth();
-//        BitmapFactory.Options opts = new BitmapFactory.Options();
-//        opts.inPreferredConfig = Bitmap.Config.RGB_565;
-//        sstar1 = BitmapFactory.decodeResource(getResources(), R.drawable.p1_star1, opts);
-//        sstar2 = BitmapFactory.decodeResource(getResources(), R.drawable.p1_star2, opts);
-//        sstar3 = BitmapFactory.decodeResource(getResources(), R.drawable.p1_star3, opts);
-//        sstar4 = BitmapFactory.decodeResource(getResources(), R.drawable.p1_star4, opts);
-//        sstar5 = BitmapFactory.decodeResource(getResources(), R.drawable.p1_star5, opts);
-//        sstar6 = BitmapFactory.decodeResource(getResources(), R.drawable.p1_star6, opts);
-//        sstar7 = BitmapFactory.decodeResource(getResources(), R.drawable.p1_star7, opts);
-//        sstar8 = BitmapFactory.decodeResource(getResources(), R.drawable.p1_star8, opts);
-//        sstar9 = BitmapFactory.decodeResource(getResources(), R.drawable.p1_star9, opts);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(getApplicationContext(), mainmenu.class);
+                //Intent i = new Intent(getApplicationContext(), mainmenu.class);
+                Intent i = new Intent(getApplicationContext(), LanguageMenuActivity.class);
                 startActivity(i);
                 mBitmapSplash.recycle();
                 mBitmapSplash = null;

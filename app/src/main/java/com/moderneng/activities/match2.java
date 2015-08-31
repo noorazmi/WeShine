@@ -17,15 +17,15 @@ import android.widget.ImageView;
 
 import com.android.model.Gamemusic;
 import com.android.model.ImageDragShadowBuilder;
-import com.example.solarenegy.playaudio;
-import com.game.utils.ConstantValues;
+import com.example.solarenegy.AudioPlayer;
+import com.game.utils.AppConstant;
 import com.moderneng.R;
 
 public class match2 extends Activity {
 	ImageView stower, golf, sun, boat, drag, wtower;
 	int  count = 1;
 	Gamemusic mp;
-	playaudio mp3;
+	AudioPlayer mp3;
    //	TranslateAnimation animation;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class match2 extends Activity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.match2);
-		mp3 = new playaudio(getApplicationContext(), R.raw.matching2);
+		mp3 = new AudioPlayer(getApplicationContext(), R.raw.matching2);
 		mp3.start();
 		stower = (ImageView) findViewById(R.id.stowerblank);
 		golf = (ImageView) findViewById(R.id.golf1blank);
@@ -130,7 +130,7 @@ public class match2 extends Activity {
 					    Intent imatch2 = new Intent(match2.this, Videoplay.class);
 						int id=R.raw.match2;
 						imatch2.putExtra("vid", id);
-					imatch2.putExtra(ConstantValues.BUNDLE_EXTRA_VIDEO_DURATION, ConstantValues.MACHING_TWO_VIDEO_DURATION);
+					imatch2.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.MACHING_TWO_VIDEO_DURATION);
 						startActivity(imatch2);
 						finish();
 				}

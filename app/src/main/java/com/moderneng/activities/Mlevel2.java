@@ -19,8 +19,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.model.Gamemusic;
-import com.example.solarenegy.playaudio;
-import com.game.utils.ConstantValues;
+import com.example.solarenegy.AudioPlayer;
+import com.game.utils.AppConstant;
 import com.moderneng.R;
 
 public class Mlevel2 extends Activity implements OnClickListener,
@@ -29,7 +29,7 @@ public class Mlevel2 extends Activity implements OnClickListener,
 	Animation anim1, anim2;
 	View v1, v2;
 	int count = 0, clickcount = 0;
-	playaudio clock;
+	AudioPlayer clock;
 	Gamemusic findsame;
 	AnimationDrawable clockanim;
 	TextView tv;
@@ -120,7 +120,7 @@ public class Mlevel2 extends Activity implements OnClickListener,
 		new Handler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				clock = new playaudio(getApplicationContext(), R.raw.clocksound);
+				clock = new AudioPlayer(getApplicationContext(), R.raw.clocksound);
 				clock.start();
 			}
 		}, 800);
@@ -428,10 +428,10 @@ public class Mlevel2 extends Activity implements OnClickListener,
 
 							clockanim.stop();
 							Intent intent = new Intent(Mlevel2.this, BalloonAnimationActivity.class);
-							intent.putExtra(ConstantValues.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.congrats);
-							intent.putExtra(ConstantValues.EXTRA_GREETING_SOUND_ID, R.raw.congratulations_short);
-							intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.ballon_playing);
-							intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, ConstantValues.BALLOON_ANIMATION_SOUND_DELAY);
+							intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.congrats);
+							intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, R.raw.congratulations_short);
+							intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.ballon_playing);
+							intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, AppConstant.BALLOON_ANIMATION_SOUND_DELAY);
 
 							startActivityForResult(intent, 100);
 						}

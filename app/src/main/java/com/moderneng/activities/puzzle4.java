@@ -21,8 +21,8 @@ import android.widget.RelativeLayout;
 
 import com.android.model.Gamemusic;
 import com.android.model.ImageDragShadowBuilder;
-import com.example.solarenegy.playaudio;
-import com.game.utils.ConstantValues;
+import com.example.solarenegy.AudioPlayer;
+import com.game.utils.AppConstant;
 import com.moderneng.R;
 
 
@@ -32,7 +32,7 @@ public class puzzle4 extends Activity {
 	ImageView p4imgv1, p4imgv2, p4imgv3, p4imgv4, p4imgv5, p4imgv6, p4imgv7,
 			p4dragv;
 	int count = 1;
-	playaudio mp;
+	AudioPlayer mp;
 	Gamemusic mp3,mp7;
 	int x,y;
     int millisecond=700;
@@ -55,7 +55,7 @@ Boolean play=true;
 		p4rlay.setBackgroundResource(R.drawable.p4bg);
 		p4dragv = (ImageView) findViewById(R.id.pdragv);
 		p4dragv.setImageResource(R.drawable.p4m5);
-		mp = new playaudio(getApplicationContext(), R.raw.puzzle4);
+		mp = new AudioPlayer(getApplicationContext(), R.raw.puzzle4);
 		mp.start();
 		p4imgv1 = (ImageView) findViewById(R.id.ltop);
 		p4imgv2 = (ImageView) findViewById(R.id.lmiddle);
@@ -282,10 +282,10 @@ Boolean play=true;
 //						startActivity(ipuzzle4);
 
 					Intent intent = new Intent(puzzle4.this, BalloonAnimationActivity.class);
-					intent.putExtra(ConstantValues.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.good_job);
-					intent.putExtra(ConstantValues.EXTRA_GREETING_SOUND_ID, R.raw.goodjob);
-					intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.hey);
-					intent.putExtra(ConstantValues.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, ConstantValues.BALLOON_ANIMATION_SOUND_DELAY);
+					intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.good_job);
+					intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, R.raw.goodjob);
+					intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.hey);
+					intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, AppConstant.BALLOON_ANIMATION_SOUND_DELAY);
 
 					startActivityForResult(intent, 100);
 		

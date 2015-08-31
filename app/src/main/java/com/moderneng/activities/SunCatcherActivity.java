@@ -28,7 +28,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.game.util.animation.AnimationUtil;
-import com.game.utils.ConstantValues;
+import com.game.utils.AppConstant;
 import com.game.utils.Logger;
 import com.game.utils.UtilityMethods;
 import com.moderneng.R;
@@ -553,7 +553,7 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 
 	private void startBackgroundMusic() {
 
-		String uriPath = ConstantValues.BASE_RESOURCE_PATH + R.raw.sun_cather_music;
+		String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.sun_cather_music;
 		// mAudioFileId = R.raw.sun_cather_music;
 		Uri uri = Uri.parse(uriPath);
 		backgroundMusicMediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
@@ -563,7 +563,7 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 
 	protected void startAudioSound(int audioFileId) {
 
-		String uriPath = ConstantValues.BASE_RESOURCE_PATH + audioFileId;
+		String uriPath = AppConstant.BASE_RESOURCE_PATH + audioFileId;
 		mAudioFileId = audioFileId;
 		Uri uri = Uri.parse(uriPath);
 		mediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);

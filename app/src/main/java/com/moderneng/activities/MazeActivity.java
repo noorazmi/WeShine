@@ -5,12 +5,9 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.game.fragment.util.FragmentFactory;
-import com.game.fragment.util.FragmentHelper;
 import com.game.fragment.util.FragmentTag;
 import com.game.framents.GameEndVideoFragment;
 import com.game.framents.MazeGame1Fragment;
@@ -19,15 +16,13 @@ import com.game.framents.MazeGame3Fragment;
 import com.game.framents.MazeGame4Fragment;
 import com.game.framents.MazeGame5Fragment;
 import com.game.framents.MazeGameMenuFragment;
-import com.game.utils.ConstantValues;
+import com.game.utils.AppConstant;
 import com.moderneng.R;
-
-import java.lang.ref.WeakReference;
 
 public class MazeActivity extends Activity {
 
 	private MazeGameMenuFragment mMazeGameMenuFragment;
-	private int currentGameLevel = ConstantValues.GAME_LEVEL_0;
+	private int currentGameLevel = AppConstant.GAME_LEVEL_0;
 	private FragmentManager mFragmentManager;
 
 
@@ -44,19 +39,19 @@ public class MazeActivity extends Activity {
 		System.gc();
 		currentGameLevel = gameLevel;
 		switch (gameLevel) {
-		case ConstantValues.GAME_LEVEL_0:
+		case AppConstant.GAME_LEVEL_0:
 			attachMaze1Fragment();
 			break;
-		case ConstantValues.GAME_LEVEL_1:
+		case AppConstant.GAME_LEVEL_1:
 			attachMaze2Fragment();
 			break;
-		case ConstantValues.GAME_LEVEL_2:
+		case AppConstant.GAME_LEVEL_2:
 			attachMaze3Fragment();
 			break;
-		case ConstantValues.GAME_LEVEL_3:
+		case AppConstant.GAME_LEVEL_3:
 			attachMaze4Fragment();
 			break;
-		case ConstantValues.GAME_LEVEL_4:
+		case AppConstant.GAME_LEVEL_4:
 			attachMaze5Fragment();
 			break;
 
