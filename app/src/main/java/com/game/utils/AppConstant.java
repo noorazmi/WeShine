@@ -25,18 +25,23 @@ public interface AppConstant {
 	public static final int BALLOON_ANIMATION_SOUND_DELAY = 1000;
 
 	public static final String BUNDLE_EXTRA_VIDEO_DURATION = "video_duration";
-	public static final int MAZE_ONE_VIDEO_DURATION = 10000;// Seconds
-	public static final int MAZE_TWO_VIDEO_DURATION = 11000;// Seconds
-	public static final int MAZE_THREE_VIDEO_DURATION = 14000;// Seconds
-	public static final int MAZE_FOUR_VIDEO_DURATION = 13000;// Seconds
-	public static final int MAZE_FIVE_VIDEO_DURATION = 13000;// Seconds
+	public static final int MAZE_ONE_VIDEO_DURATION = 10000;//Milli Seconds
+	public static final int MAZE_TWO_VIDEO_DURATION = 11000;//Milli Seconds
+	public static final int MAZE_THREE_VIDEO_DURATION = 14000;//Milli Seconds
+	public static final int MAZE_FOUR_VIDEO_DURATION = 13000;//Milli Seconds
+	public static final int MAZE_FIVE_VIDEO_DURATION = 13000;//Milli Seconds
 
 
-	public static final int MACHING_ONE_VIDEO_DURATION = 6000;// Seconds
-	public static final int MACHING_TWO_VIDEO_DURATION = 11000;// Seconds
-	public static final int MACHING_THREE_VIDEO_DURATION = 8000;// Seconds
-	public static final int MACHING_FOUR_VIDEO_DURATION = 11000;// Seconds
-	public static final int MACHING_FIVE_VIDEO_DURATION = 9000;// Seconds
+	public static final int MACHING_ONE_VIDEO_DURATION = 6000;//Milli Seconds
+	public static final int MACHING_TWO_VIDEO_DURATION = 11000;// Milli Seconds
+	public static final int MACHING_THREE_VIDEO_DURATION = 8000;//Milli Seconds
+	public static final int MACHING_FOUR_VIDEO_DURATION = 11000;//Milli Seconds
+	public static final int MACHING_FIVE_VIDEO_DURATION = 9000;// Milli Seconds
+
+	public static final int STORY_VIDEO_DURATION =241000 ;// Milli Seconds
+	public static final int ARB_STORY_VIDEO_DURATION = 256000;//Milli Seconds
+
+
 
 
 	String LANGUAGE_ARABIC = "arabic";

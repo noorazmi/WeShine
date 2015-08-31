@@ -5,7 +5,7 @@
     android:layout_height="match_parent" >
 
     <VideoView
-        android:id="@+id/videoView1"
+        android:id="@+id/videoview_game_end"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
@@ -13,5 +13,14 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:scaleType="fitXY" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageview_thankyou"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
+        android:visibility="gone"/>
 
 </RelativeLayout>

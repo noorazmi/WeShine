@@ -109,8 +109,13 @@ public class mainmenu extends Activity implements View.OnTouchListener {
             if (nextImage == 0) {
                 mp.release();
                 Intent introintent = new Intent(getApplicationContext(), Videoplay.class);
-                int id = R.raw.story2;
-                introintent.putExtra("vid", id);
+                if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
+                    introintent.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.STORY_VIDEO_DURATION);
+                    introintent.putExtra("vid", R.raw.story2);
+                }else if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
+                    introintent.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.ARB_STORY_VIDEO_DURATION);
+                    introintent.putExtra("vid", R.raw.arb_story_iphone);
+                }
                 startActivity(introintent);
             }
             if (nextImage == 1) {
