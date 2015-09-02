@@ -277,7 +277,7 @@ public class puzzle5 extends Activity {
 						//ipuzzle5.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					Intent intent = new Intent(puzzle5.this, BalloonAnimationActivity.class);
 					intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.you_are_smart);
-					intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, R.raw.youraresmart);
+					intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, R.raw.you_are_smart);
 					intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.hey);
 					intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, AppConstant.BALLOON_ANIMATION_SOUND_DELAY);
 

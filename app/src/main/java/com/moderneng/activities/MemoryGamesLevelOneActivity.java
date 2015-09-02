@@ -2,7 +2,10 @@ package com.moderneng.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -22,8 +25,9 @@ import com.android.model.Gamemusic;
 import com.example.solarenegy.AudioPlayer;
 import com.game.utils.AppConstant;
 import com.moderneng.R;
+import com.moderneng.WeShineApp;
 
-public class Level1 extends Activity implements OnClickListener, AnimationListener {
+public class MemoryGamesLevelOneActivity extends Activity implements OnClickListener, AnimationListener {
 	ImageView plate1, cart1, blue1, blue2, cart2, plate2, clockani, textimg;
 	private Animation animation1;
 	private Animation animation2;
@@ -41,13 +45,23 @@ public class Level1 extends Activity implements OnClickListener, AnimationListen
 	CountDownTimer t;
 	ScaleAnimation scal,scal1;
     private boolean isGameWon = false;
+	private Bitmap mBitmapBg;
+
+//	private int sSoundIdGameOver;
+//	private int sSoundIdFindTheSimilarCards;
+//	private int sSoundIdSolarLight;
+//	private int sSoundIdGolfCart;
+//	private int sSoundIdGreenBilli;
+//	private int sSoundIdWellDone;
+
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED, WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
 		setContentView(R.layout.level1);
 		animation1 = AnimationUtils.loadAnimation(this, R.anim.tomid);
 		animation1.setAnimationListener(this);
@@ -58,14 +72,10 @@ public class Level1 extends Activity implements OnClickListener, AnimationListen
 		clockanimation = (AnimationDrawable) clockani.getBackground();
 		clockanimation.start();
 		tv = (TextView) findViewById(R.id.time);
-		scal = new ScaleAnimation(0, 1f, 0, 1f,
-				Animation.RELATIVE_TO_SELF, (float) 0.5,
-				Animation.RELATIVE_TO_SELF, (float) 0.5);
+		scal = new ScaleAnimation(0, 1f, 0, 1f, Animation.RELATIVE_TO_SELF, (float) 0.5, Animation.RELATIVE_TO_SELF, (float) 0.5);
 		scal.setDuration(1000);
 		scal.setFillAfter(true);
-		scal1 = new ScaleAnimation(0, 1f, 0, 1f,
-				Animation.RELATIVE_TO_SELF, (float) 0.5,
-				Animation.RELATIVE_TO_SELF, (float) 0.5);
+		scal1 = new ScaleAnimation(0, 1f, 0, 1f,Animation.RELATIVE_TO_SELF, (float) 0.5,Animation.RELATIVE_TO_SELF, (float) 0.5);
 		scal1.setDuration(1000);
 		scal1.setFillAfter(true);
 		scal.setAnimationListener(this);
@@ -77,7 +87,8 @@ public class Level1 extends Activity implements OnClickListener, AnimationListen
 		plate2 = (ImageView) findViewById(R.id.plate2);
 		cart2 = (ImageView) findViewById(R.id.cart2);
 		blue2 = (ImageView) findViewById(R.id.blue2);
-		findsame = new Gamemusic(getApplicationContext(), R.raw.findthesimiliarcards);
+
+		findsame = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdFindTheSimilarCards);
 		findsame.start();
 		new Handler().postDelayed(new Runnable() {
 			@Override
@@ -113,7 +124,7 @@ public class Level1 extends Activity implements OnClickListener, AnimationListen
 				tv.setText("0");
 				clock.stop();
 				clockanimation.stop();
-				findsame = new Gamemusic(getApplicationContext(), R.raw.gameover);
+				findsame = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdGameOver);
 				findsame.setOnCompleteListener(new Gamemusic.OnCompleteListener() {
                     @Override
                     public void onComplete() {
@@ -139,13 +150,13 @@ public class Level1 extends Activity implements OnClickListener, AnimationListen
 
 		/*
 		 * new Handler().postDelayed(new Runnable() {
-		 * 
+		 *
 		 * @Override public void run() { // TODO Auto-generated method stub if
 		 * (isface == false) { clock.stop(); clockanimation.stop(); findsame =
 		 * new Gamemusic(getApplicationContext(), R.raw.gameover);
 		 * findsame.start(); textimg.setImageResource(R.drawable.gameover);
 		 * textlay.setVisibility(View.VISIBLE);
-		 * 
+		 *
 		 * plate1.setOnClickListener(null); cart1.setOnClickListener(null);
 		 * blue1.setOnClickListener(null); plate2.setOnClickListener(null);
 		 * cart2.setOnClickListener(null); blue2.setOnClickListener(null); } }
@@ -153,6 +164,8 @@ public class Level1 extends Activity implements OnClickListener, AnimationListen
 		 */
 	}
 
+
+	
 	@Override
 	public void onClick(View v) {
 		id = v.getId();
@@ -181,7 +194,7 @@ public class Level1 extends Activity implements OnClickListener, AnimationListen
 //					finish();
 //				}
 //			}, 2500);
-		
+
 		}
 		if (count == 0) {
 			if (animation == animation1) {
@@ -226,32 +239,32 @@ public class Level1 extends Activity implements OnClickListener, AnimationListen
 				if (v1.getId() == R.id.plate1) {
 					plate1.setImageResource(R.drawable.plate);
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.solars);
+							WeShineApp.sSoundIdSolarLight);
 					findsame.start();
 				} else if (v1.getId() == R.id.plate2) {
 					plate2.setImageResource(R.drawable.plate);
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.solars);
+							WeShineApp.sSoundIdSolarLight);
 					findsame.start();
 				} else if (v1.getId() == R.id.cart1) {
 					cart1.setImageResource(R.drawable.cgolf);
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.golfs);
+							WeShineApp.sSoundIdGolfCart);
 					findsame.start();
 				} else if (v1.getId() == R.id.cart2) {
 					cart2.setImageResource(R.drawable.cgolf);
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.golfs);
+							WeShineApp.sSoundIdGolfCart);
 					findsame.start();
 				} else if (v1.getId() == R.id.blue1) {
 					blue1.setImageResource(R.drawable.cblue);
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.greens);
+							WeShineApp.sSoundIdGreenBilli);
 					findsame.start();
 				} else if (v1.getId() == R.id.blue2) {
 					blue2.setImageResource(R.drawable.cblue);
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.greens);
+							WeShineApp.sSoundIdGreenBilli);
 					findsame.start();
 				}
 				// isface = true;
@@ -261,32 +274,32 @@ public class Level1 extends Activity implements OnClickListener, AnimationListen
 				if (v2.getId() == R.id.plate1) {
 					plate1.setImageResource(R.drawable.plate);
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.solars);
+							WeShineApp.sSoundIdSolarLight);
 					findsame.start();
 				} else if (v2.getId() == R.id.plate2) {
 					plate2.setImageResource(R.drawable.plate);
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.solars);
+							WeShineApp.sSoundIdSolarLight);
 					findsame.start();
 				} else if (v2.getId() == R.id.cart1) {
 					cart1.setImageResource(R.drawable.cgolf);
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.golfs);
+							WeShineApp.sSoundIdGolfCart);
 					findsame.start();
 				} else if (v2.getId() == R.id.cart2) {
 					cart2.setImageResource(R.drawable.cgolf);
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.golfs);
+							WeShineApp.sSoundIdGolfCart);
 					findsame.start();
 				} else if (v2.getId() == R.id.blue1) {
 					blue1.setImageResource(R.drawable.cblue);
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.greens);
+							WeShineApp.sSoundIdGreenBilli);
 					findsame.start();
 				} else if (v2.getId() == R.id.blue2) {
 					blue2.setImageResource(R.drawable.cblue);
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.greens);
+							WeShineApp.sSoundIdGreenBilli);
 					findsame.start();
 				}
 
@@ -375,9 +388,10 @@ public class Level1 extends Activity implements OnClickListener, AnimationListen
 							t.cancel();
 
 							clockanimation.stop();
-							Intent intent = new Intent(Level1.this, BalloonAnimationActivity.class);
-							intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.well_done);
-							intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, R.raw.well_done);
+							Intent intent = new Intent(MemoryGamesLevelOneActivity.this, BalloonAnimationActivity.class);
+							intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, WeShineApp.sImageIdWellDone);
+							//intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, R.raw.well_done);
+							intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, WeShineApp.sSoundIdWellDone);
 							intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.ballon_playing);
 							intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, AppConstant.BALLOON_ANIMATION_SOUND_DELAY);
 
@@ -393,7 +407,7 @@ public class Level1 extends Activity implements OnClickListener, AnimationListen
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		Intent i = new Intent(Level1.this, Mlevel2.class);
+		Intent i = new Intent(MemoryGamesLevelOneActivity.this, MemoryGamesLevelTwoActivity.class);
 					startActivity(i);
 					finish();
 
@@ -453,6 +467,13 @@ public class Level1 extends Activity implements OnClickListener, AnimationListen
 	protected void onResume() {
 		super.onResume();
 		System.gc();
+		super.onResume();
+		if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
+			mBitmapBg = BitmapFactory.decodeResource(getResources(), R.drawable.memlevel1);
+		}else if (WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
+			mBitmapBg = BitmapFactory.decodeResource(getResources(), R.drawable.memory_games_level_one_bg);
+		}
+		((RelativeLayout)findViewById(R.id.relative_layout_parent)).setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapBg));
 	}
 
 	@Override
@@ -464,6 +485,16 @@ public class Level1 extends Activity implements OnClickListener, AnimationListen
 	}
 
 	@Override
+	protected void onStop() {
+		super.onStop();
+		if(mBitmapBg != null){
+			mBitmapBg.recycle();
+			mBitmapBg = null;
+		}
+	}
+
+
+	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 		clock.stop();
@@ -471,5 +502,24 @@ public class Level1 extends Activity implements OnClickListener, AnimationListen
 		System.gc();
 
 	}
+
+//	private void assignSoundIds(){
+//		if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
+//			sSoundIdFindTheSimilarCards = R.raw.findthesimiliarcards;
+//			sSoundIdGameOver = R.raw.gameover;
+//			sSoundIdSolarLight = R.raw.solars;
+//			sSoundIdGolfCart = R.raw.golfs;
+//			sSoundIdGreenBilli = R.raw.greens;
+//			sSoundIdWellDone = R.raw.well_done;
+//		}else if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
+//			sSoundIdFindTheSimilarCards = R.raw.arb_memmory_games_findthesimiliarcards;
+//			sSoundIdGameOver = R.raw.gameover;
+//			sSoundIdSolarLight = R.raw.arb_soalr_signal;
+//			sSoundIdGolfCart = R.raw.arb_golf_cart_sound;
+//			sSoundIdGreenBilli = R.raw.arb_green_bouy;
+//			sSoundIdWellDone = R.raw.arb_well_done;
+//		}
+//	}
+//
 
 }

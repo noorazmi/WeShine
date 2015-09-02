@@ -89,7 +89,7 @@ public class GameActivity extends Activity implements OnTouchListener {
                     mImageViewTop.setOnTouchListener(null);
                 } else if (ct.closeMatch(Color.MAGENTA, touchcolor, tolerence)) {
 //                    nextimage = 3;
-                    Intent memory = new Intent(getApplicationContext(), Mmain.class);
+                    Intent memory = new Intent(getApplicationContext(), MemoryGamesMenuActivity.class);
                     memory.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(memory);
                     mImageViewTop.setOnTouchListener(null);

@@ -3,6 +3,7 @@ package com.moderneng.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -18,21 +19,26 @@ import android.widget.ImageView;
 import com.android.model.Gamemusic;
 import com.example.solarenegy.ColorTool;
 import com.example.solarenegy.AudioPlayer;
+import com.game.utils.AppConstant;
 import com.moderneng.R;
+import com.moderneng.WeShineApp;
 
-public class Mmain extends Activity implements View.OnTouchListener {
-	ImageView frontimg, backimg, bird, bird2, beev, bird3;
-	Animation bird1;
-	Gamemusic mp;
-	AudioPlayer mp4;
-	Boolean isopen = true;
+public class MemoryGamesMenuActivity extends Activity implements View.OnTouchListener {
+	private ImageView frontimg, backimg, bird, bird2, beev, bird3;
+	private Animation bird1;
+	private Gamemusic mp;
+	private AudioPlayer mp4;
+	private Boolean isopen = true;
+	private Bitmap mBitmapFront;
+	private Bitmap mBitmapBack;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		setContentView(R.layout.mmainmenu);
+		setContentView(R.layout.activity_memory_games_menu);
+
 		bird = (ImageView) findViewById(R.id.sunim);
 		bird2 = (ImageView) findViewById(R.id.bird2);
 		beev = (ImageView) findViewById(R.id.bee);
@@ -49,7 +55,12 @@ public class Mmain extends Activity implements View.OnTouchListener {
 		beeanim.start();
 		AnimationDrawable gyroAnimation = (AnimationDrawable) bird.getBackground();
 		gyroAnimation.start();
-		mp = new Gamemusic(getApplicationContext(), R.raw.mgames);
+		//mp = new Gamemusic(getApplicationContext(), R.raw.mgames);
+        if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
+            mp = new Gamemusic(getApplicationContext(), R.raw.mgames);
+        }else if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
+            mp = new Gamemusic(getApplicationContext(), R.raw.memmory_games_arb);
+        }
 		mp.start();
 		new Handler().postDelayed(new Runnable() {
 			@Override
@@ -61,9 +72,6 @@ public class Mmain extends Activity implements View.OnTouchListener {
 		}, 1100);
 		frontimg = (ImageView) findViewById(R.id.frontimg);
 		backimg = (ImageView) findViewById(R.id.backimg);
-		if (frontimg != null) {
-			frontimg.setOnTouchListener(this);
-		}
 	}
 
 	@Override
@@ -109,7 +117,7 @@ public class Mmain extends Activity implements View.OnTouchListener {
 					mp4.pause();
 				}
 
-				Intent i = new Intent(Mmain.this, Level1.class);
+				Intent i = new Intent(MemoryGamesMenuActivity.this, MemoryGamesLevelOneActivity.class);
 				i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(i);
 				frontimg.setOnTouchListener(null);
@@ -117,7 +125,7 @@ public class Mmain extends Activity implements View.OnTouchListener {
 				if(mp4 != null){
 					mp4.pause();
 				}
-				Intent i2 = new Intent(Mmain.this, Mlevel2.class);
+				Intent i2 = new Intent(MemoryGamesMenuActivity.this, MemoryGamesLevelTwoActivity.class);
 				i2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(i2);
 				frontimg.setOnTouchListener(null);
@@ -125,7 +133,7 @@ public class Mmain extends Activity implements View.OnTouchListener {
 				if(mp4 != null){
 					mp4.pause();
 				}
-				Intent i3 = new Intent(Mmain.this, Mlevel3.class);
+				Intent i3 = new Intent(MemoryGamesMenuActivity.this, MemoryGamesLevelThreeActivity.class);
 				i3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(i3);
 				frontimg.setOnTouchListener(null);
@@ -154,7 +162,6 @@ public class Mmain extends Activity implements View.OnTouchListener {
 
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
 		if(mp4 != null) {
 			mp4.stop();
@@ -162,8 +169,21 @@ public class Mmain extends Activity implements View.OnTouchListener {
 	}
 
 	@Override
+	protected void onStop() {
+		super.onStop();
+		if(mBitmapFront!= null){
+			mBitmapFront.recycle();
+			mBitmapFront = null;
+		}
+
+		if(mBitmapBack!= null){
+			mBitmapBack.recycle();
+			mBitmapBack = null;
+		}
+	}
+
+	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
 		if(mp4 != null){
 
@@ -173,7 +193,6 @@ public class Mmain extends Activity implements View.OnTouchListener {
 
 	@Override
 	public void onBackPressed() {
-		// TODO Auto-generated method stub
 		super.onBackPressed();
 		if(mp4 != null){
 
@@ -183,8 +202,16 @@ public class Mmain extends Activity implements View.OnTouchListener {
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
 		super.onResume();
+		if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
+			mBitmapFront = BitmapFactory.decodeResource(getResources(), R.drawable.mcardfront);
+			mBitmapBack = BitmapFactory.decodeResource(getResources(), R.drawable.mcardback);
+		}else if (WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
+			mBitmapFront = BitmapFactory.decodeResource(getResources(), R.drawable.memory_games_menu_front_arb);
+			mBitmapBack = BitmapFactory.decodeResource(getResources(), R.drawable.memory_games_menu_back_arb);
+		}
+		frontimg.setImageBitmap(mBitmapFront);
+		backimg.setImageBitmap(mBitmapBack);
 		frontimg.setOnTouchListener(this);
 	}
 }

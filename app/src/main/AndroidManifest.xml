@@ -138,22 +138,22 @@
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".activities.Mlevel2"
+            android:name=".activities.MemoryGamesLevelTwoActivity"
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".activities.Mmain"
+            android:name=".activities.MemoryGamesMenuActivity"
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".activities.Level1"
+            android:name=".activities.MemoryGamesLevelOneActivity"
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".activities.Mlevel3"
+            android:name=".activities.MemoryGamesLevelThreeActivity"
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>

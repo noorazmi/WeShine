@@ -99,7 +99,7 @@ public class Videoplay extends Activity {
 					finish();
 					imatch = new Intent(Videoplay.this, match5.class);
 					break;
-				case R.raw.arb_story_iphone:
+				case R.raw.story_arb:
 					showStoryEndImage();
 					break;
 				case R.raw.story2:

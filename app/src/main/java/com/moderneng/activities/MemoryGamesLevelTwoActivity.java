@@ -2,7 +2,10 @@ package com.moderneng.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -22,8 +25,9 @@ import com.android.model.Gamemusic;
 import com.example.solarenegy.AudioPlayer;
 import com.game.utils.AppConstant;
 import com.moderneng.R;
+import com.moderneng.WeShineApp;
 
-public class Mlevel2 extends Activity implements OnClickListener,
+public class MemoryGamesLevelTwoActivity extends Activity implements OnClickListener,
 		AnimationListener {
 	ImageView ucard1, ucard2, ucard3, ucard4, ucard5, mcard1, mcard2, mcard3, mcard4, mcard5, clocka, textv;
 	Animation anim1, anim2;
@@ -39,6 +43,8 @@ public class Mlevel2 extends Activity implements OnClickListener,
 	Boolean gamefinish = false;
 	int nomatch = 0;
     private boolean isGameWon = false;
+	private Bitmap mBitmapBg;
+	///private ImageView mImageViewBg;
 
 
     @Override
@@ -74,7 +80,8 @@ public class Mlevel2 extends Activity implements OnClickListener,
 		mcard3 = (ImageView) findViewById(R.id.cardb3);
 		mcard4 = (ImageView) findViewById(R.id.cardb4);
 		mcard5 = (ImageView) findViewById(R.id.cardb5);
-		findsame = new Gamemusic(getApplicationContext(), R.raw.findthesimiliarcards);
+
+		findsame = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdFindTheSimilarCards);
 		findsame.start();
 		textlay = (RelativeLayout) findViewById(R.id.textlay);
 		textv = (ImageView) findViewById(R.id.textimg);
@@ -91,7 +98,7 @@ public class Mlevel2 extends Activity implements OnClickListener,
 				tv.setText("0");
 				clock.stop();
 				clockanim.stop();
-				findsame = new Gamemusic(getApplicationContext(), R.raw.gameover);
+				findsame = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdGameOver);
 				findsame.setOnCompleteListener(new Gamemusic.OnCompleteListener() {
                     @Override
                     public void onComplete() {
@@ -138,6 +145,17 @@ public class Mlevel2 extends Activity implements OnClickListener,
 	}
 
 	@Override
+	protected void onResume() {
+		super.onResume();
+		if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
+			mBitmapBg = BitmapFactory.decodeResource(getResources(), R.drawable.memlevel2);
+		}else if (WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
+			mBitmapBg = BitmapFactory.decodeResource(getResources(), R.drawable.memory_games_level_two_bg);
+		}
+		((RelativeLayout)findViewById(R.id.relative_layout_parent)).setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapBg));
+	}
+
+	@Override
 	public void onClick(View v) {
 		int id = v.getId();
 		clickcount++;
@@ -159,7 +177,7 @@ public class Mlevel2 extends Activity implements OnClickListener,
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
-					Intent i = new Intent(Mlevel2.this, Mlevel3.class);
+					Intent i = new Intent(MemoryGamesLevelTwoActivity.this, MemoryGamesLevelThreeActivity.class);
 					startActivity(i);
 					finish();
 				}
@@ -222,52 +240,52 @@ public class Mlevel2 extends Activity implements OnClickListener,
 			if (animation == anim1) {
 				if (v1.getId() == R.id.cardu1) {
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.golfs);
+							WeShineApp.sSoundIdGolfCart);
 					findsame.start();
 					ucard1.setImageResource(R.drawable.cgolf);
 				} else if (v1.getId() == R.id.cardb1) {
 					mcard1.setImageResource(R.drawable.csplate);
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.station);
+							WeShineApp.sSoundIdSolarStation);
 					findsame.start();
 				} else if (v1.getId() == R.id.cardu2) {
 					ucard2.setImageResource(R.drawable.cblue);
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.greens);
+							WeShineApp.sSoundIdGreenBilli);
 					findsame.start();
 				} else if (v1.getId() == R.id.cardb2) {
 					mcard2.setImageResource(R.drawable.plate);
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.solars);
+							WeShineApp.sSoundIdSolarLight);
 					findsame.start();
 				} else if (v1.getId() == R.id.cardu3) {
 					ucard3.setImageResource(R.drawable.csun);
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.csuns);
+							WeShineApp.sSoundIdLovelySun);
 					findsame.start();
 				} else if (v1.getId() == R.id.cardb3) {
 					mcard3.setImageResource(R.drawable.cgolf);
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.golfs);
+							R.raw.golf_cart);
 					findsame.start();
 				} else if (v1.getId() == R.id.cardu4) {
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.station);
+							WeShineApp.sSoundIdSolarStation);
 					findsame.start();
 					ucard4.setImageResource(R.drawable.csplate);
 				} else if (v1.getId() == R.id.cardb4) {
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.greens);
+							WeShineApp.sSoundIdGreenBilli);
 					findsame.start();
 					mcard4.setImageResource(R.drawable.cblue);
 				} else if (v1.getId() == R.id.cardu5) {
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.solars);
+							WeShineApp.sSoundIdSolarLight);
 					findsame.start();
 					ucard5.setImageResource(R.drawable.plate);
 				} else if (v1.getId() == R.id.cardb5) {
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.csuns);
+							WeShineApp.sSoundIdLovelySun);
 					findsame.start();
 					mcard5.setImageResource(R.drawable.csun);
 				}
@@ -277,51 +295,51 @@ public class Mlevel2 extends Activity implements OnClickListener,
 				if (v2.getId() == R.id.cardu1) {
 					ucard1.setImageResource(R.drawable.cgolf);
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.golfs);
+							WeShineApp.sSoundIdGolfCart);
 					findsame.start();
 				} else if (v2.getId() == R.id.cardb1) {
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.station);
+							WeShineApp.sSoundIdSolarStation);
 					findsame.start();
 					mcard1.setImageResource(R.drawable.csplate);
 				} else if (v2.getId() == R.id.cardu2) {
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.greens);
+							WeShineApp.sSoundIdGreenBilli);
 					findsame.start();
 					ucard2.setImageResource(R.drawable.cblue);
 				} else if (v2.getId() == R.id.cardb2) {
 					mcard2.setImageResource(R.drawable.plate);
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.solars);
+							WeShineApp.sSoundIdSolarLight);
 					findsame.start();
 				} else if (v2.getId() == R.id.cardu3) {
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.csuns);
+							WeShineApp.sSoundIdLovelySun);
 					findsame.start();
 					ucard3.setImageResource(R.drawable.csun);
 				} else if (v2.getId() == R.id.cardb3) {
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.golfs);
+							WeShineApp.sSoundIdGolfCart);
 					findsame.start();
 					mcard3.setImageResource(R.drawable.cgolf);
 				} else if (v2.getId() == R.id.cardu4) {
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.station);
+							WeShineApp.sSoundIdSolarStation);
 					findsame.start();
 					ucard4.setImageResource(R.drawable.csplate);
 				} else if (v2.getId() == R.id.cardb4) {
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.greens);
+							WeShineApp.sSoundIdGreenBilli);
 					findsame.start();
 					mcard4.setImageResource(R.drawable.cblue);
 				} else if (v2.getId() == R.id.cardu5) {
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.solars);
+							WeShineApp.sSoundIdSolarLight);
 					findsame.start();
 					ucard5.setImageResource(R.drawable.plate);
 				} else if (v2.getId() == R.id.cardb5) {
 					findsame = new Gamemusic(getApplicationContext(),
-							R.raw.csuns);
+							WeShineApp.sSoundIdLovelySun);
 					findsame.start();
 					mcard5.setImageResource(R.drawable.csun);
 				}
@@ -427,9 +445,9 @@ public class Mlevel2 extends Activity implements OnClickListener,
 							t.cancel();
 
 							clockanim.stop();
-							Intent intent = new Intent(Mlevel2.this, BalloonAnimationActivity.class);
-							intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.congrats);
-							intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, R.raw.congratulations_short);
+							Intent intent = new Intent(MemoryGamesLevelTwoActivity.this, BalloonAnimationActivity.class);
+							intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, WeShineApp.sImageIdCongratulations);
+							intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, WeShineApp.sSoundIdCongratulationsShort);
 							intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.ballon_playing);
 							intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, AppConstant.BALLOON_ANIMATION_SOUND_DELAY);
 
@@ -444,7 +462,7 @@ public class Mlevel2 extends Activity implements OnClickListener,
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		Intent i = new Intent(Mlevel2.this, Mlevel3.class);
+		Intent i = new Intent(MemoryGamesLevelTwoActivity.this, MemoryGamesLevelThreeActivity.class);
 		startActivity(i);
 		finish();
 
@@ -510,15 +528,22 @@ public class Mlevel2 extends Activity implements OnClickListener,
 
 	@Override
 	public void onBackPressed() {
-		// TODO Auto-generated method stub
 		super.onBackPressed();
 		t.cancel();
 		clock.pause();
 	}
 
 	@Override
+	protected void onStop() {
+		super.onStop();
+		if(mBitmapBg != null){
+			mBitmapBg.recycle();
+			mBitmapBg = null;
+		}
+	}
+
+	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
 		t.cancel();
 		clock.stop();

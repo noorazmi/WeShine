@@ -114,7 +114,7 @@ public class mainmenu extends Activity implements View.OnTouchListener {
                     introintent.putExtra("vid", R.raw.story2);
                 }else if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
                     introintent.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.ARB_STORY_VIDEO_DURATION);
-                    introintent.putExtra("vid", R.raw.arb_story_iphone);
+                    introintent.putExtra("vid", R.raw.story_arb);
                 }
                 startActivity(introintent);
             }
