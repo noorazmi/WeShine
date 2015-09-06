@@ -11,13 +11,15 @@ import android.widget.ImageView.ScaleType;
 
 import com.example.solarenegy.HorizontalPage;
 import com.example.solarenegy.AudioPlayer;
+import com.game.utils.AppConstant;
 import com.moderneng.R;
+import com.moderneng.WeShineApp;
 
 public class Horizontalpager extends Activity {
 	int count;
 	AudioPlayer mp;
-	int[] backgoundmusic = { R.raw.slide1, R.raw.slide2, R.raw.slide3, R.raw.slide4, R.raw.slide5 };
-
+	//int[] backgoundmusic = { R.raw.slide1, R.raw.slide2, R.raw.slide3, R.raw.slide4, R.raw.slide5 };
+	int[] backgoundmusic ;
 	@Override
 	public void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -28,8 +30,17 @@ public class Horizontalpager extends Activity {
 
 		// Add some views to it
 
-		//final int[] backgroundColors = { R.drawable.slide1, R.drawable.slide2, R.drawable.slide3, R.drawable.slide4, R.drawable.slide5 };
-		final int[] backgroundColors = { R.drawable.aedu1, R.drawable.aedu2, R.drawable.aedu3, R.drawable.aedu4, R.drawable.aedu5 };
+		//final int[] backgroundDrawables = { R.drawable.slide1, R.drawable.slide2, R.drawable.slide3, R.drawable.slide4, R.drawable.slide5 };
+
+		int[] backgroundDrawables = null;
+		if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
+			backgroundDrawables = new int[]{R.drawable.aedu1, R.drawable.aedu2, R.drawable.aedu3, R.drawable.aedu4, R.drawable.aedu5};
+			backgoundmusic = new int[]{R.raw.slide1, R.raw.slide2, R.raw.slide3, R.raw.slide4, R.raw.slide5};
+		}else if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
+			backgroundDrawables = new int[]{R.drawable.edu1_arb, R.drawable.edu2_arb, R.drawable.edu3_arb, R.drawable.edu4_arb, R.drawable.edu5_arb};
+			backgoundmusic = new int[]{R.raw.aedu1_arb, R.raw.aedu2_arb, R.raw.aedu3_arb, R.raw.aedu4_arb, R.raw.aedu5_arb};
+
+		}
 
 
 		Intent mIntent = getIntent();
@@ -38,7 +49,7 @@ public class Horizontalpager extends Activity {
 		for (int i = intValue; i < 5; i++) {
 			ImageView textView = new ImageView(getApplicationContext());
 			textView.setScaleType(ScaleType.FIT_XY);
-			textView.setImageResource(backgroundColors[i]);
+			textView.setImageResource(backgroundDrawables[i]);
 			realViewSwitcher.addView(textView);
 		}
 		mp = new AudioPlayer(this, backgoundmusic[count]);

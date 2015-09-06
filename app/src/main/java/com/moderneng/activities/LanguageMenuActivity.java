@@ -5,9 +5,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -36,8 +33,7 @@ public class LanguageMenuActivity extends Activity implements View.OnTouchListen
         System.gc();
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_language_menu);
 
 //        mBitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.arabic_english);
@@ -73,7 +69,7 @@ public class LanguageMenuActivity extends Activity implements View.OnTouchListen
 
                 if(openMenu){
                     mAudioPlayer.release();
-                    Intent i = new Intent(getApplicationContext(), mainmenu.class);
+                    Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
                     startActivity(i);
                 }
                 break;

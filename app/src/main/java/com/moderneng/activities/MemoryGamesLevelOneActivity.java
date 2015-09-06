@@ -47,7 +47,7 @@ public class MemoryGamesLevelOneActivity extends Activity implements OnClickList
     private boolean isGameWon = false;
 	private Bitmap mBitmapBg;
 
-//	private int sSoundIdGameOver;
+//	private int sSoundIdGameOverTingTing;
 //	private int sSoundIdFindTheSimilarCards;
 //	private int sSoundIdSolarLight;
 //	private int sSoundIdGolfCart;
@@ -124,7 +124,7 @@ public class MemoryGamesLevelOneActivity extends Activity implements OnClickList
 				tv.setText("0");
 				clock.stop();
 				clockanimation.stop();
-				findsame = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdGameOver);
+				findsame = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdGameOverTingTing);
 				findsame.setOnCompleteListener(new Gamemusic.OnCompleteListener() {
                     @Override
                     public void onComplete() {
@@ -506,14 +506,14 @@ public class MemoryGamesLevelOneActivity extends Activity implements OnClickList
 //	private void assignSoundIds(){
 //		if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
 //			sSoundIdFindTheSimilarCards = R.raw.findthesimiliarcards;
-//			sSoundIdGameOver = R.raw.gameover;
+//			sSoundIdGameOverTingTing = R.raw.gameover;
 //			sSoundIdSolarLight = R.raw.solars;
 //			sSoundIdGolfCart = R.raw.golfs;
 //			sSoundIdGreenBilli = R.raw.greens;
 //			sSoundIdWellDone = R.raw.well_done;
 //		}else if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
 //			sSoundIdFindTheSimilarCards = R.raw.arb_memmory_games_findthesimiliarcards;
-//			sSoundIdGameOver = R.raw.gameover;
+//			sSoundIdGameOverTingTing = R.raw.gameover;
 //			sSoundIdSolarLight = R.raw.arb_soalr_signal;
 //			sSoundIdGolfCart = R.raw.arb_golf_cart_sound;
 //			sSoundIdGreenBilli = R.raw.arb_green_bouy;

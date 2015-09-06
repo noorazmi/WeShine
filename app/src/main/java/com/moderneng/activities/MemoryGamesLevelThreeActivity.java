@@ -94,7 +94,7 @@ public class MemoryGamesLevelThreeActivity extends Activity implements OnClickLi
 				clockanim.stop();
 				if(!isGameWon){
 
-					findsame = new Gamemusic(getApplicationContext(), R.raw.gameover);
+					findsame = new Gamemusic(getApplicationContext(), R.raw.game_over_ting_ting);
 					findsame.setOnCompleteListener(new Gamemusic.OnCompleteListener() {
 						@Override
 						public void onComplete() {

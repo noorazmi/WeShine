@@ -88,7 +88,7 @@
             android:id="@+id/sunCatcher_batteryFullImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/batteryfull" />
+            android:src="@drawable/battery_is_full_thankyou" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/sunCatcher_gameOverLinearLayout" 
@@ -98,9 +98,9 @@
         android:visibility="gone" >
 
         <ImageView
+            android:id="@+id/imageview_gameover"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/gameover" />
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </FrameLayout>

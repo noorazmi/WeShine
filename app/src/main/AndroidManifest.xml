@@ -18,13 +18,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <android:uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
+    <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <android:uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
+    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".WeShineApp"
@@ -44,12 +40,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.mainmenu"
+            android:name=".activities.MainMenuActivity"
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".activities.Intro"
+            android:name=".activities.EducationMenuActivity"
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>
@@ -63,7 +59,7 @@
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".activities.GameActivity"
+            android:name=".activities.GameMenuActivity"
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>
@@ -77,63 +73,63 @@
         <!-- android:screenOrientation="landscape" > -->
         <!-- </activity> -->
         <activity
-            android:name=".activities.matchmenu"
+            android:name=".activities.MatchingMenuActivity"
             android:configChanges="orientation|navigation|screenLayout"
             android:noHistory="false"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".activities.puzzlemenu"
+            android:name=".activities.PuzzleMenuActivity"
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".activities.match1"
+            android:name=".activities.Match1Activity"
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".activities.match2"
+            android:name=".activities.Match2Activity"
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".activities.match3"
+            android:name=".activities.Match3Activity"
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".activities.match4"
+            android:name=".activities.Match4Activity"
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".activities.match5"
+            android:name=".activities.Match5Activity"
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".activities.puzzle1"
+            android:name=".activities.Puzzle1Activity"
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".activities.puzzle2"
+            android:name=".activities.Puzzle2Activity"
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".activities.puzzle3"
+            android:name=".activities.Puzzle3Activity"
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".activities.puzzle4"
+            android:name=".activities.Puzzle4Activity"
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".activities.puzzle5"
+            android:name=".activities.Puzzle5Activity"
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>
@@ -157,9 +153,8 @@
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>
-
         <activity
-            android:name=".activities.MazeActivity"
+            android:name=".activities.MazeMenuActivity"
             android:screenOrientation="landscape" >
         </activity>
         <activity
@@ -179,7 +174,7 @@
         </activity>
         <activity
             android:name=".activities.LanguageMenuActivity"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
         </activity>
     </application>
 

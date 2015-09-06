@@ -10,7 +10,7 @@ import com.game.utils.AppConstant;
 import com.game.view.adapter.ImageViewPagerAdapter;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
-import com.moderneng.activities.MazeActivity;
+import com.moderneng.activities.MazeMenuActivity;
 
 public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItemClickListener, View.OnClickListener {
 
@@ -52,7 +52,7 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
 
 	@Override
 	public void onGameMenuItemClick(int level) {
-		((MazeActivity) getActivity()).AttachGameFragment(level);
+		((MazeMenuActivity) getActivity()).AttachGameFragment(level);
 	}
 	
 	@Override
@@ -89,11 +89,11 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
 
         }
 
-        ((MazeActivity) getActivity()).AttachGameFragment(level);
+        ((MazeMenuActivity) getActivity()).AttachGameFragment(level);
     }
 
     private void playMazeSound(){
-        String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.maze_sound;
+        String uriPath = AppConstant.BASE_RESOURCE_PATH + WeShineApp.sSoundIdMaze;
         Uri uri = Uri.parse(uriPath);
         final MediaPlayer[] mediaPlayer = {MediaPlayer.create(WeShineApp.getInstance(), uri)};
         if(mediaPlayer[0] != null){

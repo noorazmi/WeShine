@@ -5,7 +5,25 @@
       <config />
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match2.xml">
+        <config>
+          <state>Landscape</state>
+          <theme>@android:style/Theme.Holo.Light.NoActionBar</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout-sw720dp/activity_memory_games_menu.xml">
+        <config>
+          <state>Landscape</state>
+          <theme>@android:style/Theme.Holo.Light.NoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match2.xml">
+        <config>
+          <state>Landscape</state>
+          <theme>@android:style/Theme.Holo.Light.NoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_education_menu.xml">
         <config>
           <state>Landscape</state>
           <theme>@android:style/Theme.Holo.Light.NoActionBar</theme>
@@ -29,69 +47,227 @@
           <theme>@android:style/Theme.Holo.Light.NoActionBar</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/match2.xml">
+        <config>
+          <state>Landscape</state>
+          <theme>@android:style/Theme.Holo.Light.NoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/matchmenun.xml">
+        <config>
+          <state>Landscape</state>
+          <theme>@android:style/Theme.Holo.Light.NoActionBar</theme>
+        </config>
+      </layout>
     </layouts>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68223606-15c6-4326-8e90-7c73b5b04ae2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/arb_well_done.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/awesome_arb.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/bravo_arb.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/congratulations_short_arb.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/find_the_similar_cards_arb.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/golf_cart_arb.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/green_bouy_arb.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/lovely_sun_arb.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/memmory_games_arb.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/memmory_games_findthesimiliarcard_arb.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/memory_games_level_one_bg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/memory_games_level_three_bg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/memory_games_level_two_bg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/memory_games_menu_arb.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/memory_games_menu_back_arb.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/memory_games_menu_front_arb.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/red_bouy_arb.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/solar_camera_arb.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/solar_light_arb.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/solar_station_arb.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/well_done_arb.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/you_are_smart_arb.mp3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/you_are_smart_arb.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Level1.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MemoryGamesLevelOneActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Mlevel2.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MemoryGamesLevelTwoActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Mlevel3.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MemoryGamesLevelThreeActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Mmain.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MemoryGamesMenuActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/mmainmenu.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/activity_memory_games_menu.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/mmainmenu.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/activity_memory_games_menu.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/layout/mmainmenu.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_memory_games_menu.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/raw/arb_story_iphone.mp4" afterPath="$PROJECT_DIR$/app/src/main/res/raw/story_arb.mp4" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/raw/credbouy.mp3" afterPath="$PROJECT_DIR$/app/src/main/res/raw/red_bouy.mp3" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/raw/csoalrsignal.mp3" afterPath="$PROJECT_DIR$/app/src/main/res/raw/solar_signal.mp3" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/raw/csolarcamera.mp3" afterPath="$PROJECT_DIR$/app/src/main/res/raw/solar_camera.mp3" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/raw/csuns.mp3" afterPath="$PROJECT_DIR$/app/src/main/res/raw/lovely_sun.mp3" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/raw/golfs.mp3" afterPath="$PROJECT_DIR$/app/src/main/res/raw/golf_cart.mp3" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/raw/greens.mp3" afterPath="$PROJECT_DIR$/app/src/main/res/raw/green_bouy.mp3" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/raw/solars.mp3" afterPath="$PROJECT_DIR$/app/src/main/res/raw/solar_light.mp3" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/raw/station.mp3" afterPath="$PROJECT_DIR$/app/src/main/res/raw/solar_station.mp3" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/raw/youraresmart.mp3" afterPath="$PROJECT_DIR$/app/src/main/res/raw/you_are_smart.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/aedu1_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/aedu2_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/aedu3_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/aedu4_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/aedu5_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/awesome_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/battery_full_thankyou_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/battery_is_full_thankyou_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/catchup_the_sun_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/congratulations_and_sound_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/congratulations_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/edu1_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/edu2_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/edu3_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/edu4_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/edu5_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/edu_menu_img1_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/edu_menu_img1_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-sw600dp/edu_menu_img1_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-sw720dp/edu_menu_img1_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/edu_menu_img1_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/edu_menu_img2_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/edu_menu_img2_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-sw600dp/edu_menu_img2_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-sw720dp/edu_menu_img2_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/edu_menu_img2_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/edu_menu_img3_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/edu_menu_img3_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-sw600dp/edu_menu_img3_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-sw720dp/edu_menu_img3_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/edu_menu_img3_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/edu_menu_img4_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/edu_menu_img4_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-sw600dp/edu_menu_img4_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-sw720dp/edu_menu_img4_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/edu_menu_img4_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/edu_menu_img5_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/edu_menu_img5_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-sw600dp/edu_menu_img5_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-sw720dp/edu_menu_img5_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/edu_menu_img5_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/edubg_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/excellent_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/excellent_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/fabulous_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/fabulous_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/game_over_ting_ting_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/gameover_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/good_job_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/goodjob_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/great_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/great_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/incredible.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/incredible.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/incredible_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/incredible_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/maching_menu_bg_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/matching1_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/matching2_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/matching3_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/matching4_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/matching5_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/matching_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/maze1_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/maze2_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/maze3_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/maze4_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/maze5_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/maze_sound_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/perfect_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/perfect_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/pop_the_balloons_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/puzzle_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/puzzle_menu_bg_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/super_img_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/super_sound_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/terrific_arb.mp3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/terrific_arb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/matching1_video.mp4" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/matching2_video.mp4" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/matching3_video.mp4" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/matching4_video.mp4" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/raw/matching5_video.mp4" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/menu/baloon.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/menu/main.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/menu/main_page.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_language_menu.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/raw/fabulus.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/raw/matching1.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/raw/matching2.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/raw/matching3.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/raw/matching4.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/raw/matching5.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/raw/supermp.mp3" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/GameActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/GameMenuActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Intro.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/EducationMenuActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MazeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MazeMenuActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/mainmenu.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MainMenuActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/match1.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Match1Activity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/match2.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Match2Activity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/match3.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Match3Activity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/match4.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Match4Activity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/match5.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Match5Activity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/matchmenu.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MatchingMenuActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/puzzle1.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Puzzle1Activity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/puzzle2.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Puzzle2Activity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/puzzle3.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Puzzle3Activity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/puzzle4.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Puzzle4Activity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/puzzle5.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Puzzle5Activity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/puzzlemenu.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/PuzzleMenuActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/bedu1.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/edu_menu_img1.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/bedu2.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/edu_menu_img2.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/bedu3.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/edu_menu_img3.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/bedu4.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/edu_menu_img4.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/bedu5.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/edu_menu_img5.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/bedu1.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/edu_menu_img1.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/bedu2.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/edu_menu_img2.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/bedu3.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/edu_menu_img3.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/bedu4.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/edu_menu_img4.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/bedu5.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/edu_menu_img5.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-sw600dp/bedu1.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-sw600dp/edu_menu_img1.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-sw600dp/bedu2.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-sw600dp/edu_menu_img2.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-sw600dp/bedu3.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-sw600dp/edu_menu_img3.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-sw600dp/bedu4.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-sw600dp/edu_menu_img4.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-sw600dp/bedu5.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-sw600dp/edu_menu_img5.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-sw720dp/bedu1.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/edu_menu_img1.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-sw720dp/bedu2.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/edu_menu_img2.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-sw720dp/bedu3.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/edu_menu_img3.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-sw720dp/bedu4.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/edu_menu_img4.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-sw720dp/bedu5.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/edu_menu_img5.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/bedu1.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-sw720dp/edu_menu_img1.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/bedu2.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-sw720dp/edu_menu_img2.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/bedu3.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-sw720dp/edu_menu_img3.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/bedu4.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-sw720dp/edu_menu_img4.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/bedu5.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-sw720dp/edu_menu_img5.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/bedu1.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/edu_menu_img1.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/bedu2.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/edu_menu_img2.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/bedu3.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/edu_menu_img3.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/bedu4.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/edu_menu_img4.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/bedu5.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/edu_menu_img5.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/arb_game_home_screen.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/game_home_screen_arb.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/batteryfull.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/battery_is_full_thankyou.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/congrats.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/congratulations.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/terrific1.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/terrific.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/layout/eduslide.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_education_menu.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/raw/catchupthesun.mp3" afterPath="$PROJECT_DIR$/app/src/main/res/raw/catchup_the_sun.mp3" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/raw/gameover.mp3" afterPath="$PROJECT_DIR$/app/src/main/res/raw/game_over_ting_ting.mp3" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/raw/matchingstart.mp3" afterPath="$PROJECT_DIR$/app/src/main/res/raw/matching.mp3" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/res/raw/puzzlevoice.mp3" afterPath="$PROJECT_DIR$/app/src/main/res/raw/puzzle.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/arb_game_home_screen_hotspot.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/arb_game_home_screen_hotspot.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/game_home_screen.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/game_home_screen.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/home_screen_hotspot.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/home_screen_hotspot.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/GameActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/GameActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/game/utils/AppConstant.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/game/utils/AppConstant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/BalloonActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/BalloonActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/BalloonAnimationActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/BalloonAnimationActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/game/fragment/util/FragmentFactory.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/game/fragment/util/FragmentFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/game/framents/GameEndVideoFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/game/framents/GameEndVideoFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/android/model/Gamemusic.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/android/model/Gamemusic.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Horizontalpager.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Horizontalpager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/LanguageMenuActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/LanguageMenuActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGame1Fragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGame1Fragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGame2Fragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGame2Fragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGame3Fragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGame3Fragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGame4Fragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGame4Fragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGame5Fragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGame5Fragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGameMenuFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGameMenuFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MemoryGamesLevelOneActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MemoryGamesLevelOneActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MemoryGamesLevelThreeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MemoryGamesLevelThreeActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MemoryGamesLevelTwoActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MemoryGamesLevelTwoActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MemoryGamesMenuActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MemoryGamesMenuActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/SunCatcherActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/SunCatcherActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Videoplay.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Videoplay.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/WeShineApp.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/WeShineApp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_maze.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_maze.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_sun_catcher.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_sun_catcher.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/level1.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/level1.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/level1.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/level1.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/level1.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/level1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/level2.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/level2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/level2.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/level2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/level2.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/level2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/level3.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/level3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/level3.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/level3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/level3.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/level3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/mainmenu.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/mainmenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/puzzle5.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/puzzle5.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/match1.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/match1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match1.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match1.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/match2.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/match2.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match2.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match2.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match2.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match2.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/match3.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/match3.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match3.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match3.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match3.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match3.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/match4.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/match4.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match4.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match4.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match4.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match4.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/match5.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/match5.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match5.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match5.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match5.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match5.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/matchmenun.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/matchmenun.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/maze_game1.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/maze_game1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/maze_game2.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/maze_game2.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/maze_game3.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/maze_game3.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/maze_game4.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/maze_game4.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/maze_game5.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/maze_game5.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/puzzlemenun.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/puzzlemenun.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="WeShine.iws" />
@@ -112,7 +288,61 @@
     <favorites_list name="WeShine" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="Videoplay.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Videoplay.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Match4Activity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Match4Activity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="211" column="100" selection-start-line="211" selection-start-column="100" selection-end-line="211" selection-end-column="100" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="match4.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match4.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WeShineApp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/WeShineApp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="209" column="49" selection-start-line="209" selection-start-column="49" selection-end-line="209" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppConstant.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/game/utils/AppConstant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5843521">
+              <caret line="36" column="58" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -1442,40 +1672,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Splash.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_language_menu.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/solarenegy/AudioPlayer.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/mainmenu.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/LanguageMenuActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/GameActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Puzzle3Activity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Puzzle4Activity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Puzzle5Activity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MazeMenuActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_maze.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/GameMenuActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/maze_game_menu.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGameMenuFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGame1Fragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/maze_game1.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/maze_game2.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGame2Fragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGame3Fragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/maze_game3.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/maze_game4.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGame4Fragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/maze_game5.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGame5Fragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Puzzle1Activity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/matchmenun.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/PuzzleMenuActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/puzzlemenun.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/game/utils/AppConstant.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/mainmenu.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Videoplay.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Mmain.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Level1.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_matching_video.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MatchingVideoActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/match2.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match2.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match2.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/match3.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match3.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match3.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/match5.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match5.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match5.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match1.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match1.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/match1.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Match1Activity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Match2Activity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Match3Activity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Match5Activity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/android/model/Gamemusic.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MatchingMenuActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Match4Activity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match4.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match4.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/match4.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/WeShineApp.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Mlevel3.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MemoryGamesOneActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Mlevel2.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MemoryGamesMenuActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_memory_games_menu.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MemoryGamesLevelTwoActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MemoryGamesLevelOneActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MemoryGamesLevelThreeActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/level3.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/level3.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/level2.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/level2.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/level1.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/level3.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/level2.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/level1.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/level1.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/activity_memory_games_menu.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/activity_memory_games_menu.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Videoplay.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/game/utils/AppConstant.java" />
       </list>
     </option>
   </component>
@@ -1517,6 +1764,28 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WeShine" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WeShine" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1623,7 +1892,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="drawable" />
+              <option name="myItemId" value="raw" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1658,44 +1927,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="moderneng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WeShine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WeShine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="moderneng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activities" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1803,29 +2034,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="AndroidView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WeShine" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WeShine" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1852,15 +2061,19 @@
     <property name="DEBUGGABLE_DEVICE" value="lava-irisx8-IrisX8415A0041090" />
     <property name="DEBUGGABLE_PROCESS" value="com.moderneng" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="L&#9;FILE&#9;file:///Users/noor/WeShine/app/src/main/java/com/moderneng/activities/Mlevel3.java" />
+    <property name="SearchEverywhereHistoryKey" value="App&#9;FILE&#9;file:///Users/noor/WeShine/app/src/main/java/com/game/utils/AppConstant.java&#10;We&#9;FILE&#9;file:///Users/noor/WeShine/app/src/main/java/com/moderneng/WeShineApp.java&#10;AppCon&#9;PSI&#9;JAVA://com.game.utils.AppConstant&#10;WeS&#9;PSI&#9;JAVA://com.moderneng.WeShineApp&#10;Ba&#9;FILE&#9;file:///Users/noor/WeShine/app/src/main/java/com/moderneng/activities/BalloonAnimationActivity.java&#10;L&#9;FILE&#9;file:///Users/noor/WeShine/app/src/main/java/com/moderneng/activities/Mlevel3.java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/raw" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.packageName">
       <recent name="com.moderneng.activities" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/app/src/main/res/raw" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-hdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-sw720dp" />
     </key>
     <key name="android.template.parentActivityClass">
       <recent name="" />
@@ -2067,7 +2280,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="773" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2077,25 +2290,26 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5129376" sideWeight="0.49676898" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3348554" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5129376" sideWeight="0.49676898" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956383" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.73363775" sideWeight="0.49676898" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6697108" sideWeight="0.49676898" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3634895" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35702747" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39878234" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39878234" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.04361874" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="114" y="117" width="1080" height="557" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.152207" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7016743" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -2110,33 +2324,74 @@
           <properties />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/app/src/main/res/raw/match1.mp4</url>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match2.xml</url>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="16" />
+      <option name="time" value="24" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/homeback2.jpg">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Puzzle1Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="22" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MazeMenuActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.263911">
+          <caret line="72" column="56" selection-start-line="72" selection-start-column="56" selection-end-line="72" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/matchmenun.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.104166664">
+          <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/puzzle_menu_bg_arb.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/arabic_english.png">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/puzzlemenun.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30054644">
+          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/PuzzleMenuActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/game_home_screen.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/arabic_english_hotspot.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/home_screen_hotspot.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/arb_home_screen_hotspot.png">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/game_home_screen_arb.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -2146,38 +2401,20 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/maze_game_menu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.234375">
-          <caret line="21" column="48" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
-        </state>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/home_screen_hotspot.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/gmainmenu.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGameMenuFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Intro.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09538951">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/gameback1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/gamefront1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/arb_game_home_screen_hotspot.png">
@@ -2185,318 +2422,356 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/arb_game_home_screen.png">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/home_screen.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/gameback1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/gmainmenu.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MainMenuActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.962264">
-          <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.42766297">
+          <caret line="155" column="92" selection-start-line="155" selection-start-column="92" selection-end-line="155" selection-end-column="92" />
+          <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/game/util/animation/AnimationUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-mdpi/gamefront1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_language_menu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49479166">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/mainmenu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.5283017">
-          <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-        </state>
-      </provider>
       <provider editor-type-id="android-designer">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/game/framents/GameEndVideoFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/LanguageMenuActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/raw/matching1_video.mp4">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.80922097">
-          <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36458334">
+          <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4152249">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.333334">
+          <caret line="180" column="51" selection-start-line="180" selection-start-column="51" selection-end-line="180" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match2.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.037736">
+          <caret line="121" column="38" selection-start-line="121" selection-start-column="38" selection-end-line="121" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match2.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8958333">
+          <caret line="117" column="40" selection-start-line="117" selection-start-column="40" selection-end-line="117" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match3.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.5283018">
+          <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match3.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-34.24528">
+          <caret line="121" column="56" selection-start-line="121" selection-start-column="56" selection-end-line="121" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match5.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9479167">
+          <caret line="136" column="40" selection-start-line="136" selection-start-column="40" selection-end-line="136" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/match3.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.320755">
+          <caret line="145" column="40" selection-start-line="140" selection-start-column="4" selection-end-line="145" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match5.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.3333333">
+          <caret line="128" column="21" selection-start-line="128" selection-start-column="21" selection-end-line="128" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match1.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.6226416">
+          <caret line="83" column="50" selection-start-line="83" selection-start-column="50" selection-end-line="83" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match1.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.6981132">
+          <caret line="6" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/match5.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.320755">
+          <caret line="127" column="40" selection-start-line="122" selection-start-column="4" selection-end-line="127" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/match1.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5052083">
+          <caret line="80" column="49" selection-start-line="80" selection-start-column="49" selection-end-line="80" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/game/views/DrawingSurface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGame1Fragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.62963">
+          <caret line="63" column="20" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/game/framents/BaseFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0833335">
-          <caret line="159" column="8" selection-start-line="159" selection-start-column="8" selection-end-line="159" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="67" column="5" selection-start-line="44" selection-start-column="4" selection-end-line="67" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGame2Fragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.319555">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MazeActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Match1Activity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.047694754">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="232" column="9" selection-start-line="229" selection-start-column="8" selection-end-line="232" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Development/Android/android-sdk/sources/android-21/android/app/Activity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Match5Activity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33227345">
-          <caret line="3973" column="16" selection-start-line="3973" selection-start-column="16" selection-end-line="3973" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="209" column="91" selection-start-line="209" selection-start-column="91" selection-end-line="209" selection-end-column="91" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/matchingmenu.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Match3Activity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5989583">
-          <caret line="23" column="32" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="204" column="25" selection-start-line="204" selection-start-column="25" selection-end-line="204" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/GameMenuActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19395867">
+          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/android/model/Gamemusic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Development/Android/android-sdk/sources/android-21/android/os/CountDownTimer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MatchingMenuActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="107" column="14" selection-start-line="107" selection-start-column="14" selection-end-line="107" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Match2Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="5.026578">
+          <caret line="206" column="0" selection-start-line="206" selection-start-column="0" selection-end-line="206" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp/match4.xml">
       <provider editor-type-id="android-designer">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.603773">
+          <caret line="108" column="40" selection-start-line="103" selection-start-column="3" selection-end-line="108" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/match4.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.301887">
+          <caret line="109" column="40" selection-start-line="109" selection-start-column="40" selection-end-line="109" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/match2.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.390625">
+          <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Videoplay.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07472178">
-          <caret line="102" column="16" selection-start-line="102" selection-start-column="16" selection-end-line="102" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw720dp/match4.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/WeShineApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="209" column="49" selection-start-line="209" selection-start-column="49" selection-end-line="209" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/Match4Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="211" column="100" selection-start-line="211" selection-start-column="100" selection-end-line="211" selection-end-column="100" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/game/utils/AppConstant.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4753577">
-          <caret line="34" column="54" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/matchmenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.16693164">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/mainmenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="117" column="17" selection-start-line="111" selection-start-column="16" selection-end-line="117" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/GameActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/mcardfront.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/WeShineApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-36.11111">
-          <caret line="69" column="9" selection-start-line="69" selection-start-column="9" selection-end-line="69" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/game/framents/MazeGame1Fragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0969794">
-          <caret line="68" column="93" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Development/Android/android-sdk/sources/android-21/android/graphics/drawable/BitmapDrawable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3608903">
-          <caret line="710" column="11" selection-start-line="710" selection-start-column="10" selection-end-line="710" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/memory_games_menu_arb.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw720dp/level3.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.6981132">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/level3.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15625">
-          <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp/level3.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.104166664">
-          <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MemoryGamesLevelThreeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.1565218">
-          <caret line="159" column="65" selection-start-line="159" selection-start-column="43" selection-end-line="159" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/level2.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13020833">
-          <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw720dp/level2.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.104166664">
-          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp/level2.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13020833">
-          <caret line="5" column="43" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/level1.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13020833">
-          <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp/level1.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.052083332">
-          <caret line="2" column="4" selection-start-line="0" selection-start-column="0" selection-end-line="111" selection-end-column="17" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_memory_games_menu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5729167">
-          <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw720dp/activity_memory_games_menu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.546875">
-          <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw600dp/activity_memory_games_menu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31770834">
-          <caret line="21" column="46" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MemoryGamesMenuActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.9003983">
-          <caret line="188" column="0" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MemoryGamesLevelOneActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="14.968421">
-          <caret line="494" column="0" selection-start-line="494" selection-start-column="0" selection-end-line="494" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-sw720dp/level1.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12605043">
-          <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/moderneng/activities/MemoryGamesLevelTwoActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.105263">
-          <caret line="138" column="37" selection-start-line="138" selection-start-column="37" selection-end-line="138" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.5843521">
+          <caret line="36" column="58" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
+          <folding />
         </state>
       </provider>
     </entry>

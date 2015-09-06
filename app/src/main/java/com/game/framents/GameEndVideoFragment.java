@@ -10,7 +10,7 @@ import android.widget.VideoView;
 
 import com.game.utils.AppConstant;
 import com.moderneng.R;
-import com.moderneng.activities.MazeActivity;
+import com.moderneng.activities.MazeMenuActivity;
 
 public class GameEndVideoFragment extends BaseFragment {
 
@@ -61,15 +61,15 @@ public class GameEndVideoFragment extends BaseFragment {
 
     private void startNextMaze(){
         if(getArguments().getInt(AppConstant.VIDEO_FILE_NAME) == R.raw.maze1_end_video){
-            ((MazeActivity)getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_1);
+            ((MazeMenuActivity)getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_1);
         }else if(getArguments().getInt(AppConstant.VIDEO_FILE_NAME) == R.raw.maze2_end_video){
-            ((MazeActivity)getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_2);
+            ((MazeMenuActivity)getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_2);
         }else if(getArguments().getInt(AppConstant.VIDEO_FILE_NAME) == R.raw.maze3_end_video){
-            ((MazeActivity)getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_3);
+            ((MazeMenuActivity)getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_3);
         }else if(getArguments().getInt(AppConstant.VIDEO_FILE_NAME) == R.raw.maze4_end_video){
-            ((MazeActivity)getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_4);
+            ((MazeMenuActivity)getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_4);
         }else if(getArguments().getInt(AppConstant.VIDEO_FILE_NAME) == R.raw.maze5_end_video){
-            ((MazeActivity)getActivity()).gotToMazeGameMenu();
+            ((MazeMenuActivity)getActivity()).gotToMazeGameMenu();
 
         }
     }

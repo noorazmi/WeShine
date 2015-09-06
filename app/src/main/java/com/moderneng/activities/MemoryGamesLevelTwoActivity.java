@@ -98,7 +98,7 @@ public class MemoryGamesLevelTwoActivity extends Activity implements OnClickList
 				tv.setText("0");
 				clock.stop();
 				clockanim.stop();
-				findsame = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdGameOver);
+				findsame = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdGameOverTingTing);
 				findsame.setOnCompleteListener(new Gamemusic.OnCompleteListener() {
                     @Override
                     public void onComplete() {

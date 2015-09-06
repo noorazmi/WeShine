@@ -20,7 +20,7 @@ import com.game.utils.UtilityMethods;
 import com.game.views.DrawingSurface;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
-import com.moderneng.activities.MazeActivity;
+import com.moderneng.activities.MazeMenuActivity;
 
 public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener, AnimationListener {
 
@@ -36,6 +36,7 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
     private Bitmap mTopBitmap;
     private Bitmap mMiddleBitmap;
     private Bitmap mBottomBitmap;
+    private Bitmap mBitmapFabulous;
 
 
 	@Override
@@ -71,6 +72,9 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 
         mBottomBitmap =  BitmapFactory.decodeResource(getResources(), R.drawable.maze2_bottom_img);
         ((ImageView)getFragmentView().findViewById(R.id.mazeGame2_bottomImageView)).setImageBitmap(mBottomBitmap);
+
+		mBitmapFabulous = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdFabulous);
+		((ImageView)getFragmentView().findViewById(R.id.mazeGame2_fabulusImageView)).setImageBitmap(mBitmapFabulous);
 
 
     }
@@ -240,7 +244,7 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 
 	@Override
 	public void onAnimationStart(Animation animation) {
-		startAudioSound(R.raw.fabulus);
+		startAudioSound(WeShineApp.sSoundIdFabulous);
     }
 
     @Override
@@ -252,7 +256,7 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 		}
 		bundle.putInt(AppConstant.VIDEO_FILE_NAME, R.raw.maze2_end_video);
 		bundle.putInt(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.MAZE_TWO_VIDEO_DURATION);
-		((MazeActivity) getActivity()).attachGameEndVideoFragment(bundle);
+		((MazeMenuActivity) getActivity()).attachGameEndVideoFragment(bundle);
 		AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame2_fabulusImageView), AnimType.ZOOM_OUT, null);
 		resetDrawingSurface();
 	}
@@ -273,7 +277,7 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 	protected void onAudioComplete(int audioFileId) {
 		switch (audioFileId) {
 		case R.raw.maze2_ondraw:
-			startAudioSound(R.raw.maze2);
+			startAudioSound(WeShineApp.sSoundIdMaze2);
 			break;
 
 		default:
@@ -319,6 +323,9 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 
         mBottomBitmap.recycle();
         mBottomBitmap = null;
+
+		mBitmapFabulous.recycle();
+		mBitmapFabulous = null;
 	}
 
 

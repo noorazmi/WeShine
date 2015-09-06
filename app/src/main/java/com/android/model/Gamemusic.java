@@ -43,23 +43,25 @@ public class Gamemusic {
 		mp.setLooping(false);
 	}
 	public void start() {
-		// TODO Auto-generated method stub
 		if (mp != null) {
 			mp.start();
 		}
 	}
 	public void stop() {
-		if (mp.isPlaying() == true) {
+		if (mp != null && mp.isPlaying() == true) {
 			mp.stop();
 		}
 	}
 	public void pause() {
-		if (mp.isPlaying() == true) {
+//		if (mp != null && mp.isPlaying() == true) {
+		if (mp != null) {
 			mp.pause();
 		}
 	}
 	public void release() {
-		mp.release();
+		if (mp != null ) {
+			mp.release();
+		}
 	}
 
 	public void setOnCompleteListener(OnCompleteListener onCompleteListener){

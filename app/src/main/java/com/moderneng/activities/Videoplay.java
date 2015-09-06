@@ -28,6 +28,7 @@ public class Videoplay extends Activity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		setContentView(R.layout.activity_main);
 		System.gc();
 		Intent mIntent = getIntent();
@@ -69,35 +70,39 @@ public class Videoplay extends Activity {
 			switch (intValue) {
 				case R.raw.puzzle1a:
 					finish();
-					imatch=new Intent(Videoplay.this,puzzle2.class);
+					imatch=new Intent(Videoplay.this,Puzzle2Activity.class);
 					break;
 				case R.raw.puzzle2a:
 					finish();
-					imatch=new Intent(Videoplay.this,puzzle3.class);
+					imatch=new Intent(Videoplay.this,Puzzle3Activity.class);
 					break;
 				case R.raw.puzzle3a:
 					finish();
-					imatch=new Intent(Videoplay.this,puzzle4.class);
+					imatch=new Intent(Videoplay.this,Puzzle4Activity.class);
 					break;
 				case R.raw.puzzle4a:
 					finish();
-					imatch=new Intent(Videoplay.this,puzzle5.class);
+					imatch=new Intent(Videoplay.this,Puzzle5Activity.class);
 					break;
-				case R.raw.match1:
+				case R.raw.matching1_video:
 					finish();
-					imatch = new Intent(Videoplay.this, match2.class);
+					imatch = new Intent(Videoplay.this, Match2Activity.class);
 					break;
-				case R.raw.match2:
+				case R.raw.matching2_video:
 					finish();
-					imatch = new Intent(Videoplay.this, match3.class);
+					imatch = new Intent(Videoplay.this, Match3Activity.class);
 					break;
-				case R.raw.match3:
+				case R.raw.matching3_video:
 					finish();
-					imatch = new Intent(Videoplay.this, match4.class);
+					imatch = new Intent(Videoplay.this, Match4Activity.class);
 					break;
-				case R.raw.match4:
+				case R.raw.matching4_video:
 					finish();
-					imatch = new Intent(Videoplay.this, match5.class);
+					imatch = new Intent(Videoplay.this, Match5Activity.class);
+					break;
+				case R.raw.matching5_video:
+					finish();
+					//imatch = new Intent(Videoplay.this, Match5Activity.class);
 					break;
 				case R.raw.story_arb:
 					showStoryEndImage();

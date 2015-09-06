@@ -21,6 +21,7 @@ public interface AppConstant {
 	public static final String EXTRA_GREETING_SOUND_ID = "greeting_sound_id";
 	public static final String EXTRA_BALLOON_ANIMATION_SOUND_ID = "balloon_animation_sound_id";
 	public static final String EXTRA_BALLOON_ANIMATION_SOUND_DELAY = "balloon_animation_delay";
+	public static final String EXTRA_VIDEO_ID = "vid";
 
 	public static final int BALLOON_ANIMATION_SOUND_DELAY = 1000;
 
@@ -32,15 +33,20 @@ public interface AppConstant {
 	public static final int MAZE_FIVE_VIDEO_DURATION = 13000;//Milli Seconds
 
 
-	public static final int MACHING_ONE_VIDEO_DURATION = 6000;//Milli Seconds
-	public static final int MACHING_TWO_VIDEO_DURATION = 11000;// Milli Seconds
-	public static final int MACHING_THREE_VIDEO_DURATION = 8000;//Milli Seconds
-	public static final int MACHING_FOUR_VIDEO_DURATION = 11000;//Milli Seconds
+	public static final int MACHING_ONE_VIDEO_DURATION = 5000;//Milli Seconds
+	public static final int MACHING_TWO_VIDEO_DURATION = 7000;// Milli Seconds
+	public static final int MACHING_THREE_VIDEO_DURATION = 9000;//Milli Seconds
+	public static final int MACHING_FOUR_VIDEO_DURATION = 9000;//Milli Seconds
 	public static final int MACHING_FIVE_VIDEO_DURATION = 9000;// Milli Seconds
 
 	public static final int STORY_VIDEO_DURATION =241000 ;// Milli Seconds
 	public static final int ARB_STORY_VIDEO_DURATION = 256000;//Milli Seconds
 
+//	public static final int MACHING1_VIDEO_DURATION = 5000;
+//	public static final int MACHING2_VIDEO_DURATION = 5000;
+//	public static final int MACHING3_VIDEO_DURATION = 9000;
+//	public static final int MACHING4_VIDEO_DURATION = 9000;
+//	public static final int MACHING5_VIDEO_DURATION = 9000;
 
 
 
