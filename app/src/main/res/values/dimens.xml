@@ -35,4 +35,7 @@
     <dimen name="baloon_width_medium">100dp</dimen>
     <dimen name="baloon_height_medium">204dp</dimen>
 
+    <dimen name="title_text_width">240dp</dimen>
+    <dimen name="title_text_height">59dp</dimen>
+
 </resources>

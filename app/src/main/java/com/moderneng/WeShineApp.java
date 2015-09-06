@@ -78,6 +78,8 @@ public class WeShineApp extends Application {
 	public static int sImageIdMatchingMenuBg;
 	public static int sImageIdPuzzleMenuBg;
 	public static int sImageIdIncredible;
+	public static int sImageIdMatching;
+	public static int sImageIdPuzzle;
 
 
 
@@ -130,9 +132,13 @@ public class WeShineApp extends Application {
             sImageIdFabulous = R.drawable.fabulous;
             sImageIdSuper = R.drawable.super_img;
             sImageIdExcellent = R.drawable.excellent;
-			sImageIdMatchingMenuBg = R.drawable.matchingmenu;
-			sImageIdPuzzleMenuBg = R.drawable.puzzlemenu;
+			//sImageIdMatchingMenuBg = R.drawable.matchingmenu;
+			sImageIdMatchingMenuBg = R.drawable.maching_menu_bg;
+			//sImageIdPuzzleMenuBg = R.drawable.puzzlemenu;
+			sImageIdPuzzleMenuBg = R.drawable.puzzle_menu_bg;
             sImageIdIncredible = R.drawable.incredible;
+			sImageIdMatching = R.drawable.matching;
+			sImageIdPuzzle = R.drawable.puzzle_text;
 
 
 
@@ -156,10 +162,13 @@ public class WeShineApp extends Application {
             sImageIdFabulous = R.drawable.fabulous_arb;
             sImageIdSuper = R.drawable.super_img_arb;
             sImageIdExcellent = R.drawable.excellent_arb;
-			sImageIdMatchingMenuBg = R.drawable.maching_menu_bg_arb;
-			sImageIdPuzzleMenuBg = R.drawable.puzzle_menu_bg_arb;
+			//sImageIdMatchingMenuBg = R.drawable.maching_menu_bg_arb;
+			sImageIdMatchingMenuBg = R.drawable.maching_menu_bg;
+			//sImageIdPuzzleMenuBg = R.drawable.puzzle_menu_bg_arb;
+			sImageIdPuzzleMenuBg = R.drawable.puzzle_menu_bg;
             sImageIdIncredible = R.drawable.incredible_arb;
-
+			sImageIdMatching = R.drawable.matching_arb;
+			sImageIdPuzzle = R.drawable.puzzle_text_arb;
 
 
         }

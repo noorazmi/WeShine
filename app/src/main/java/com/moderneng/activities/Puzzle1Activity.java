@@ -317,15 +317,6 @@ public class Puzzle1Activity extends Activity {
 		public smallanim(Context context) {
 			super(context);
 			ctx1 = context;
-//			smstar1 = Splash.sstar1;
-//			smstar2 = Splash.sstar2;
-//			smstar3 = Splash.sstar3;
-//			smstar4 = Splash.sstar4;
-//			smstar5 = Splash.sstar5;
-//			smstar6 = Splash.sstar6;
-//			smstar7 = Splash.sstar7;
-//			smstar8 = Splash.sstar8;
-//			smstar9 = Splash.sstar9;
             initBitmaps();
         }
 
