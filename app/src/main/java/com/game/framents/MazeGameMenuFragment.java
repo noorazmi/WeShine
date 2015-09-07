@@ -1,11 +1,17 @@
 package com.game.framents;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
+import com.android.model.Gamemusic;
 import com.game.listeners.OnMazeMenuItemClickListener;
+import com.game.util.animation.AnimType;
+import com.game.util.animation.AnimationUtil;
 import com.game.utils.AppConstant;
 import com.game.view.adapter.ImageViewPagerAdapter;
 import com.moderneng.R;
@@ -21,6 +27,11 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
     private ImageButton mImageButtonMaze3;
     private ImageButton mImageButtonMaze4;
     private ImageButton mImageButtonMaze5;
+    private Bitmap mBitmapTitle;
+    private Gamemusic mp;
+
+
+
 	@Override
 	public void onResume() {
 		super.onResume();
@@ -29,6 +40,10 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
         mImageButtonMaze3 = (ImageButton) getFragmentView().findViewById(R.id.maze_menu_image3);
         mImageButtonMaze4 = (ImageButton) getFragmentView().findViewById(R.id.maze_menu_image4);
         mImageButtonMaze5 = (ImageButton) getFragmentView().findViewById(R.id.maze_menu_image5);
+
+        mBitmapTitle =  BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMaze);
+        ((ImageView)getFragmentView().findViewById(R.id.imageview_title)).setImageBitmap(mBitmapTitle);
+        AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
 
         mImageButtonMaze1.setOnClickListener(this);
         mImageButtonMaze2.setOnClickListener(this);
@@ -95,16 +110,17 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
     private void playMazeSound(){
         String uriPath = AppConstant.BASE_RESOURCE_PATH + WeShineApp.sSoundIdMaze;
         Uri uri = Uri.parse(uriPath);
-        final MediaPlayer[] mediaPlayer = {MediaPlayer.create(WeShineApp.getInstance(), uri)};
-        if(mediaPlayer[0] != null){
-            mediaPlayer[0].setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                    mediaPlayer[0].release();
-                    mediaPlayer[0] = null;
-                }
-            });
-            mediaPlayer[0].start();
+        mp = new Gamemusic(getActivity(), WeShineApp.sSoundIdMaze);
+        mp.start();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mBitmapTitle.recycle();
+        mBitmapTitle = null;
+        if(mp !=null){
+            mp.release();
         }
     }
 }

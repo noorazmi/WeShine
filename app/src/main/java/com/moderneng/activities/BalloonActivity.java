@@ -22,6 +22,7 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.game.util.animation.AnimType;
 import com.game.util.animation.AnimationUtil;
 import com.game.utils.AppConstant;
 import com.game.utils.Logger;
@@ -337,6 +338,7 @@ public class BalloonActivity extends Activity {
 				super.onAnimationEnd(animation);
 				(findViewById(R.id.gameOverImageView)).setBackgroundResource(WeShineApp.sImageIdCongratulations);
 				(findViewById(R.id.gameOverImageView)).setVisibility(View.VISIBLE);
+				AnimationUtil.performAnimation((ImageView) findViewById(R.id.gameOverImageView), AnimType.ZOOM_IN, null);
 				startAudioSound(WeShineApp.sSoundIdCongratulationsAndSound);
 			}
 		});

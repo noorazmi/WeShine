@@ -80,6 +80,13 @@ public class WeShineApp extends Application {
 	public static int sImageIdIncredible;
 	public static int sImageIdMatching;
 	public static int sImageIdPuzzle;
+	public static int sImageIdMaze;
+	public static int sImageIdMemory;
+	public static int sImageIdMemoryBg;
+	public static int sImageIdMemoryBgHotspot;
+	public static int sImageIdMemoryGamesLevel1;
+	public static int sImageIdMemoryGamesLevel2;
+	public static int sImageIdMemoryGamesLevel3;
 
 
 
@@ -139,6 +146,13 @@ public class WeShineApp extends Application {
             sImageIdIncredible = R.drawable.incredible;
 			sImageIdMatching = R.drawable.matching;
 			sImageIdPuzzle = R.drawable.puzzle_text;
+			sImageIdMaze = R.drawable.maze_text;
+			sImageIdMemory = R.drawable.memory_games;
+			sImageIdMemoryBg = R.drawable.memory_games_bg;
+			sImageIdMemoryBgHotspot = R.drawable.memory_games_bg_hotspot;
+			sImageIdMemoryGamesLevel1 = R.drawable.memory_games_bg_level1;
+			sImageIdMemoryGamesLevel2 = R.drawable.memory_games_bg_level2;
+			sImageIdMemoryGamesLevel3 = R.drawable.memory_games_bg_level3;
 
 
 
@@ -169,9 +183,14 @@ public class WeShineApp extends Application {
             sImageIdIncredible = R.drawable.incredible_arb;
 			sImageIdMatching = R.drawable.matching_arb;
 			sImageIdPuzzle = R.drawable.puzzle_text_arb;
-
-
-        }
+			sImageIdMaze = R.drawable.maze_text_arb;
+			sImageIdMemory = R.drawable.memory_games_arb;
+			sImageIdMemoryBg = R.drawable.memory_games_bg;
+			sImageIdMemoryBgHotspot = R.drawable.memory_games_bg_hotspot;
+			sImageIdMemoryGamesLevel1 = R.drawable.memory_games_bg_level1;
+			sImageIdMemoryGamesLevel2 = R.drawable.memory_games_bg_level2;
+			sImageIdMemoryGamesLevel3 = R.drawable.memory_games_bg_level3;
+		}
 	}
 
 	private static void assignSoundIds(){

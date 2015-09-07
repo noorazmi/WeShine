@@ -23,6 +23,8 @@ import android.widget.TextView;
 
 import com.android.model.Gamemusic;
 import com.example.solarenegy.AudioPlayer;
+import com.game.util.animation.AnimType;
+import com.game.util.animation.AnimationUtil;
 import com.game.utils.AppConstant;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
@@ -44,7 +46,7 @@ public class MemoryGamesLevelTwoActivity extends Activity implements OnClickList
 	int nomatch = 0;
     private boolean isGameWon = false;
 	private Bitmap mBitmapBg;
-	///private ImageView mImageViewBg;
+	private Bitmap mBitmapTitle;
 
 
     @Override
@@ -53,7 +55,7 @@ public class MemoryGamesLevelTwoActivity extends Activity implements OnClickList
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED, WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
-		setContentView(R.layout.level2);
+		setContentView(R.layout.activity_memory_games_level2);
 		gameover = new ScaleAnimation(0, 1f, 0, 1f, Animation.RELATIVE_TO_SELF, (float) 0.5, Animation.RELATIVE_TO_SELF, (float) 0.5);
 		gameover.setDuration(1000);
 		gameover.setFillAfter(true);
@@ -147,12 +149,19 @@ public class MemoryGamesLevelTwoActivity extends Activity implements OnClickList
 	@Override
 	protected void onResume() {
 		super.onResume();
-		if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
-			mBitmapBg = BitmapFactory.decodeResource(getResources(), R.drawable.memlevel2);
-		}else if (WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
-			mBitmapBg = BitmapFactory.decodeResource(getResources(), R.drawable.memory_games_level_two_bg);
-		}
+//		if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
+//			mBitmapBg = BitmapFactory.decodeResource(getResources(), R.drawable.memlevel2);
+//		}else if (WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
+//			mBitmapBg = BitmapFactory.decodeResource(getResources(), R.drawable.memory_games_level_two_bg);
+//		}
+//		((RelativeLayout)findViewById(R.id.relative_layout_parent)).setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapBg));
+
+		mBitmapBg = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMemoryGamesLevel2);
 		((RelativeLayout)findViewById(R.id.relative_layout_parent)).setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapBg));
+
+		mBitmapTitle = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMemory);
+		((ImageView) findViewById(R.id.imageview_title)).setImageBitmap(mBitmapTitle);
+		AnimationUtil.performAnimation((ImageView) findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
 	}
 
 	@Override
@@ -471,12 +480,10 @@ public class MemoryGamesLevelTwoActivity extends Activity implements OnClickList
 
 	@Override
 	public void onAnimationRepeat(Animation arg0) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void onAnimationStart(Animation animation) {
-		// TODO Auto-generated method stub
 		if (count == 0) {
 			if (animation == anim1) {
 				ucard1.setImageResource(R.drawable.front);
@@ -539,6 +546,11 @@ public class MemoryGamesLevelTwoActivity extends Activity implements OnClickList
 		if(mBitmapBg != null){
 			mBitmapBg.recycle();
 			mBitmapBg = null;
+		}
+
+		if (mBitmapTitle != null) {
+			mBitmapTitle.recycle();
+			mBitmapTitle = null;
 		}
 	}
 

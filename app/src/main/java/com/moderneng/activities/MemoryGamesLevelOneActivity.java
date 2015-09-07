@@ -23,37 +23,32 @@ import android.widget.TextView;
 
 import com.android.model.Gamemusic;
 import com.example.solarenegy.AudioPlayer;
+import com.game.util.animation.AnimType;
+import com.game.util.animation.AnimationUtil;
 import com.game.utils.AppConstant;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
 
 public class MemoryGamesLevelOneActivity extends Activity implements OnClickListener, AnimationListener {
-	ImageView plate1, cart1, blue1, blue2, cart2, plate2, clockani, textimg;
+	private ImageView plate1, cart1, blue1, blue2, cart2, plate2, clockani, textimg;
 	private Animation animation1;
 	private Animation animation2;
 	int id;
-	View v1, v2;
-	int count = 0, clickcount = 0;
+	private View v1, v2;
+	private int count = 0, clickcount = 0;
 	private boolean isBackOfCardShowing = true;
 	private Boolean isface = false;
-	int gamecount = 0;
-	AudioPlayer clock;
-	Gamemusic findsame;
-	TextView tv;
-	RelativeLayout textlay;
-	AnimationDrawable clockanimation;
-	CountDownTimer t;
-	ScaleAnimation scal,scal1;
+	private int gamecount = 0;
+	private AudioPlayer clock;
+	private Gamemusic findsame;
+	private TextView tv;
+	private RelativeLayout textlay;
+	private AnimationDrawable clockanimation;
+	private CountDownTimer t;
+	private ScaleAnimation scal,scal1;
     private boolean isGameWon = false;
 	private Bitmap mBitmapBg;
-
-//	private int sSoundIdGameOverTingTing;
-//	private int sSoundIdFindTheSimilarCards;
-//	private int sSoundIdSolarLight;
-//	private int sSoundIdGolfCart;
-//	private int sSoundIdGreenBilli;
-//	private int sSoundIdWellDone;
-
+	private Bitmap mBitmapTitle;
 
 
 	@Override
@@ -62,7 +57,7 @@ public class MemoryGamesLevelOneActivity extends Activity implements OnClickList
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED, WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
-		setContentView(R.layout.level1);
+		setContentView(R.layout.activity_memory_games_level1);
 		animation1 = AnimationUtils.loadAnimation(this, R.anim.tomid);
 		animation1.setAnimationListener(this);
 		animation2 = AnimationUtils.loadAnimation(this, R.anim.toend);
@@ -468,12 +463,18 @@ public class MemoryGamesLevelOneActivity extends Activity implements OnClickList
 		super.onResume();
 		System.gc();
 		super.onResume();
-		if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
-			mBitmapBg = BitmapFactory.decodeResource(getResources(), R.drawable.memlevel1);
-		}else if (WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
-			mBitmapBg = BitmapFactory.decodeResource(getResources(), R.drawable.memory_games_level_one_bg);
-		}
+//		if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
+//			mBitmapBg = BitmapFactory.decodeResource(getResources(), R.drawable.memlevel1);
+//		}else if (WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
+//			mBitmapBg = BitmapFactory.decodeResource(getResources(), R.drawable.memory_games_level_one_bg);
+//		}
+
+		mBitmapBg = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMemoryGamesLevel1);
 		((RelativeLayout)findViewById(R.id.relative_layout_parent)).setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapBg));
+
+		mBitmapTitle = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMemory);
+		((ImageView) findViewById(R.id.imageview_title)).setImageBitmap(mBitmapTitle);
+		AnimationUtil.performAnimation((ImageView) findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
 	}
 
 	@Override
@@ -491,6 +492,11 @@ public class MemoryGamesLevelOneActivity extends Activity implements OnClickList
 			mBitmapBg.recycle();
 			mBitmapBg = null;
 		}
+
+		if (mBitmapTitle != null) {
+			mBitmapTitle.recycle();
+			mBitmapTitle = null;
+		}
 	}
 
 
@@ -500,26 +506,5 @@ public class MemoryGamesLevelOneActivity extends Activity implements OnClickList
 		clock.stop();
 		t.cancel();
 		System.gc();
-
 	}
-
-//	private void assignSoundIds(){
-//		if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
-//			sSoundIdFindTheSimilarCards = R.raw.findthesimiliarcards;
-//			sSoundIdGameOverTingTing = R.raw.gameover;
-//			sSoundIdSolarLight = R.raw.solars;
-//			sSoundIdGolfCart = R.raw.golfs;
-//			sSoundIdGreenBilli = R.raw.greens;
-//			sSoundIdWellDone = R.raw.well_done;
-//		}else if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
-//			sSoundIdFindTheSimilarCards = R.raw.arb_memmory_games_findthesimiliarcards;
-//			sSoundIdGameOverTingTing = R.raw.gameover;
-//			sSoundIdSolarLight = R.raw.arb_soalr_signal;
-//			sSoundIdGolfCart = R.raw.arb_golf_cart_sound;
-//			sSoundIdGreenBilli = R.raw.arb_green_bouy;
-//			sSoundIdWellDone = R.raw.arb_well_done;
-//		}
-//	}
-//
-
 }
