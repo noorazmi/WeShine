@@ -35,24 +35,6 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gmainmenu);
-
-
-//		mImageViewTop = (ImageView) findViewById(R.id.frontimg);
-//		mBitmapBottom = BitmapFactory.decodeResource(getResources(), R.drawable.arb_game_home_screen_hotspot);
-//		if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
-//			mBitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.game_home_screen);
-//		}else{
-//			mBitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.arb_game_home_screen);
-//		}
-//
-//		mImageViewTop.setImageBitmap(mBitmapTop);
-//		((ImageView) findViewById(R.id.backimg)).setImageBitmap(mBitmapBottom);
-//
-//		mImageViewTop = (ImageView) findViewById(R.id.frontimg);
-//		if (mImageViewTop != null) {
-//			mImageViewTop.setOnTouchListener(this);
-//		}
-
     }
 
 
@@ -118,7 +100,6 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
     }
 
     private int gethotspotcolor(int hotspotid, int x, int y) {
-        // TODO Auto-generated method stub
         ImageView spotimg = (ImageView) findViewById(hotspotid);
         if (spotimg == null) {
             Log.d("image ", "hotspot image is not found");
@@ -161,12 +142,17 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
         if (mp != null) {
             mp.release();
             mp = null;
         }
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
         System.gc();
         releaseResources();
     }

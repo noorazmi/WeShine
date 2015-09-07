@@ -51,6 +51,8 @@ public class WeShineApp extends Application {
 	public static int sSoundIdMaze5;
 	public static int sSoundIdTerrific;
 	public static int sSoundIdIncredible;
+	public static int sSoundIdMemoryGames;
+	public static int sSoundIdStory;
 
 
 
@@ -81,13 +83,20 @@ public class WeShineApp extends Application {
 	public static int sImageIdMatching;
 	public static int sImageIdPuzzle;
 	public static int sImageIdMaze;
-	public static int sImageIdMemory;
+	public static int sImageIdMemoryGame;
+	public static int sImageIdMemoryGames;
 	public static int sImageIdMemoryBg;
 	public static int sImageIdMemoryBgHotspot;
 	public static int sImageIdMemoryGamesLevel1;
 	public static int sImageIdMemoryGamesLevel2;
 	public static int sImageIdMemoryGamesLevel3;
+	public static int sImageIdEducation;
+	public static int sImageIdHomeScreen;
+	public static int sImageIdStoryEndThankYouImage;
 
+
+	//Video Durations
+	public static int sStoryVideoDuration;
 
 
 	public static WeShineApp getInstance() {
@@ -114,8 +123,9 @@ public class WeShineApp extends Application {
 
 	public static void setLanguage(String sLanguage) {
 		WeShineApp.sLanguage = sLanguage;
-		assignSoundIds();
+		assignSoundAndVideosIds();
 		assignDrawableIds();
+		assignVideoDurations();
 	}
 
 	private static void assignDrawableIds() {
@@ -147,12 +157,16 @@ public class WeShineApp extends Application {
 			sImageIdMatching = R.drawable.matching;
 			sImageIdPuzzle = R.drawable.puzzle_text;
 			sImageIdMaze = R.drawable.maze_text;
-			sImageIdMemory = R.drawable.memory_games;
+			sImageIdMemoryGame = R.drawable.memory_game;
+			sImageIdMemoryGames = R.drawable.memory_games;
 			sImageIdMemoryBg = R.drawable.memory_games_bg;
 			sImageIdMemoryBgHotspot = R.drawable.memory_games_bg_hotspot;
 			sImageIdMemoryGamesLevel1 = R.drawable.memory_games_bg_level1;
 			sImageIdMemoryGamesLevel2 = R.drawable.memory_games_bg_level2;
 			sImageIdMemoryGamesLevel3 = R.drawable.memory_games_bg_level3;
+            sImageIdEducation = R.drawable.education;
+			sImageIdHomeScreen = R.drawable.home_screen;
+			sImageIdStoryEndThankYouImage = R.drawable.story_end_image;
 
 
 
@@ -165,7 +179,7 @@ public class WeShineApp extends Application {
             sImageIdEduMenuImg3 = R.drawable.edu_menu_img3_arb;
             sImageIdEduMenuImg4 = R.drawable.edu_menu_img4_arb;
             sImageIdEduMenuImg5 = R.drawable.edu_menu_img5_arb;
-            sImageIdEduBg = R.drawable.edubg_arb;
+            sImageIdEduBg = R.drawable.edubg;
             sImageIdGameOver = R.drawable.gameover_arb;
             sImageIdBatteryIsFullThanYou = R.drawable.battery_is_full_thankyou_arb;
             sImageIdAwesome = R.drawable.awesome_arb;
@@ -184,16 +198,20 @@ public class WeShineApp extends Application {
 			sImageIdMatching = R.drawable.matching_arb;
 			sImageIdPuzzle = R.drawable.puzzle_text_arb;
 			sImageIdMaze = R.drawable.maze_text_arb;
-			sImageIdMemory = R.drawable.memory_games_arb;
+			sImageIdMemoryGame = R.drawable.memory_game_arb;
+            sImageIdMemoryGames = R.drawable.memory_game_arb;
 			sImageIdMemoryBg = R.drawable.memory_games_bg;
 			sImageIdMemoryBgHotspot = R.drawable.memory_games_bg_hotspot;
 			sImageIdMemoryGamesLevel1 = R.drawable.memory_games_bg_level1;
 			sImageIdMemoryGamesLevel2 = R.drawable.memory_games_bg_level2;
 			sImageIdMemoryGamesLevel3 = R.drawable.memory_games_bg_level3;
+            sImageIdEducation = R.drawable.education_arb;
+			sImageIdHomeScreen = R.drawable.home_screen_arb;
+			sImageIdStoryEndThankYouImage = R.drawable.arb_story_end_image;
 		}
 	}
 
-	private static void assignSoundIds(){
+	private static void assignSoundAndVideosIds(){
 		if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
 			sSoundIdFindTheSimilarCards = R.raw.findthesimiliarcards;
             sSoundIdGameOver = R.raw.game_over;
@@ -236,6 +254,8 @@ public class WeShineApp extends Application {
             sSoundIdMaze5 = R.raw.maze5;
             sSoundIdTerrific = R.raw.terrific;
             sSoundIdIncredible = R.raw.incredible;
+            sSoundIdMemoryGames = R.raw.memmory_games;
+			sSoundIdStory = R.raw.story;
 
 		}else if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
 			sSoundIdFindTheSimilarCards = R.raw.find_the_similar_cards_arb;
@@ -279,6 +299,18 @@ public class WeShineApp extends Application {
             sSoundIdMaze5 = R.raw.maze5_arb;
             sSoundIdTerrific = R.raw.terrific_arb;
             sSoundIdIncredible = R.raw.incredible_arb;
+            sSoundIdMemoryGames = R.raw.memmory_games_arb;
+			sSoundIdStory = R.raw.story_arb;
         }
+	}
+
+	private static void assignVideoDurations(){
+		if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
+			sStoryVideoDuration = AppConstant.STORY_VIDEO_DURATION;
+
+		}else if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
+			sStoryVideoDuration = AppConstant.ARB_STORY_VIDEO_DURATION;
+		}
+
 	}
 }

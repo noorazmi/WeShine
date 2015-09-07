@@ -11,9 +11,12 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.solarenegy.AudioPlayer;
+import com.game.util.animation.AnimType;
+import com.game.util.animation.AnimationUtil;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
 
@@ -26,6 +29,7 @@ public class EducationMenuActivity extends Activity implements OnClickListener {
     private Bitmap mBitmapEduMenu5;
 
     private Bitmap mBitmapEduBg;
+    private Bitmap mBitmapTitle;
 
 
     private int intValue;
@@ -94,6 +98,10 @@ public class EducationMenuActivity extends Activity implements OnClickListener {
     protected void onResume() {
         super.onResume();
 
+        mBitmapTitle = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdEducation);
+        ((ImageView) findViewById(R.id.imageview_title)).setImageBitmap(mBitmapTitle);
+        AnimationUtil.performAnimation((ImageView) findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
+
         mp = new AudioPlayer(getApplicationContext(), R.raw.homesound);
         mp.start();
 
@@ -102,6 +110,7 @@ public class EducationMenuActivity extends Activity implements OnClickListener {
         mBitmapEduMenu3 = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdEduMenuImg3);
         mBitmapEduMenu4 = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdEduMenuImg4);
         mBitmapEduMenu5 = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdEduMenuImg5);
+
         mBitmapEduBg = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdEduBg);
 
         slide1.setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapEduMenu1));
@@ -120,25 +129,33 @@ public class EducationMenuActivity extends Activity implements OnClickListener {
         slide5.setOnClickListener(this);
     }
 
-
     @Override
     protected void onPause() {
-        super.onPause();
         mp.release();
+        super.onPause();
+    }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
         mBitmapEduMenu1.recycle();
         mBitmapEduMenu2.recycle();
         mBitmapEduMenu3.recycle();
         mBitmapEduMenu4.recycle();
         mBitmapEduMenu5.recycle();
         mBitmapEduBg.recycle();
-
+        if (mBitmapTitle != null) {
+            mBitmapTitle.recycle();
+            mBitmapTitle = null;
+        }
         mBitmapEduMenu1 = null;
         mBitmapEduMenu2 = null;
         mBitmapEduMenu3 = null;
         mBitmapEduMenu4 = null;
         mBitmapEduMenu5 = null;
         mBitmapEduBg = null;
+
+
     }
 
 }

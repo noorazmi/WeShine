@@ -93,15 +93,10 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
 
             if (nextImage == 0) {
                 mp.release();
-                Intent introintent = new Intent(getApplicationContext(), Videoplay.class);
-                if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
-                    introintent.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.STORY_VIDEO_DURATION);
-                    introintent.putExtra("vid", R.raw.story2);
-                }else if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
-                    introintent.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.ARB_STORY_VIDEO_DURATION);
-                    introintent.putExtra("vid", R.raw.story_arb);
-                }
-                startActivity(introintent);
+                Intent storyVideoIntent = new Intent(getApplicationContext(), Videoplay.class);
+                storyVideoIntent.putExtra("vid", WeShineApp.sSoundIdStory);
+                storyVideoIntent.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, WeShineApp.sStoryVideoDuration);
+                startActivity(storyVideoIntent);
             }
             if (nextImage == 1) {
                 mp.release();
@@ -150,11 +145,7 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
 
         mImageViewTop = (ImageView) findViewById(R.id.image);
         mBitmapBottom = BitmapFactory.decodeResource(getResources(), R.drawable.home_screen_hotspot);
-        if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
-            mBitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.home_screen);
-        }else{
-            mBitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.arb_home_screen);
-        }
+        mBitmapTop = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdHomeScreen);
 
         mImageViewTop.setImageBitmap(mBitmapTop);
         ((ImageView) findViewById(R.id.image_areas)).setImageBitmap(mBitmapBottom);
@@ -163,22 +154,24 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
         }
     }
 
+
+    @Override
+    protected void onPause() {
+        mp.release();
+        mp = null;
+        super.onPause();
+    }
+
     @Override
     protected void onStop() {
         super.onStop();
-        mp.release();
-        mp = null;
-        releaseResources();
-    }
 
-    private void releaseResources(){
         mBitmapTop.recycle();
         mBitmapTop = null;
 
 
         mBitmapBottom.recycle();
         mBitmapBottom = null;
-
     }
 
 }

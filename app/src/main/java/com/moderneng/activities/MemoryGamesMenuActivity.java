@@ -21,7 +21,6 @@ import com.example.solarenegy.ColorTool;
 import com.example.solarenegy.AudioPlayer;
 import com.game.util.animation.AnimType;
 import com.game.util.animation.AnimationUtil;
-import com.game.utils.AppConstant;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
 
@@ -60,20 +59,22 @@ public class MemoryGamesMenuActivity extends Activity implements View.OnTouchLis
         AnimationDrawable gyroAnimation = (AnimationDrawable) bird.getBackground();
         gyroAnimation.start();
         //mp = new Gamemusic(getApplicationContext(), R.raw.mgames);
-        if (WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)) {
-            mp = new Gamemusic(getApplicationContext(), R.raw.mgames);
-        } else if (WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)) {
-            mp = new Gamemusic(getApplicationContext(), R.raw.memmory_games_arb);
-        }
-        mp.start();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mp.pause();
-                mp4 = new AudioPlayer(getApplicationContext(), R.raw.homesound);
-                mp4.start();
-            }
-        }, 1100);
+//        if (WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)) {
+//            mp = new Gamemusic(getApplicationContext(), R.raw.mgames);
+//        } else if (WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)) {
+//            mp = new Gamemusic(getApplicationContext(), R.raw.memmory_games_arb);
+//        }
+
+//        mp = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdMemoryGames);
+//        mp.start();
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                mp.pause();
+//                mp4 = new AudioPlayer(getApplicationContext(), R.raw.homesound);
+//                mp4.start();
+//            }
+//        }, 1100);
         frontimg = (ImageView) findViewById(R.id.frontimg);
         backimg = (ImageView) findViewById(R.id.backimg);
     }
@@ -164,13 +165,6 @@ public class MemoryGamesMenuActivity extends Activity implements View.OnTouchLis
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (mp4 != null) {
-            mp4.stop();
-        }
-    }
 
     @Override
     protected void onStop() {
@@ -192,32 +186,26 @@ public class MemoryGamesMenuActivity extends Activity implements View.OnTouchLis
 
     @Override
     protected void onPause() {
+        if (mp4 != null) {
+            mp4.release();
+        }
         super.onPause();
-        if (mp4 != null) {
-
-            mp4.pause();
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        if (mp4 != null) {
-
-            mp4.pause();
-        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-//		if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
-//			mBitmapFront = BitmapFactory.decodeResource(getResources(), R.drawable.mcardfront);
-//			mBitmapBack = BitmapFactory.decodeResource(getResources(), R.drawable.mcardback);
-//		}else if (WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
-//			mBitmapFront = BitmapFactory.decodeResource(getResources(), R.drawable.memory_games_menu_front_arb);
-//			mBitmapBack = BitmapFactory.decodeResource(getResources(), R.drawable.memory_games_menu_back_arb);
-//		}
+
+        mp = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdMemoryGames);
+        mp.start();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mp4 = new AudioPlayer(getApplicationContext(), R.raw.homesound);
+                mp4.start();
+            }
+        }, 1100);
 
         mBitmapFront = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMemoryBg);
         mBitmapBack = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMemoryBgHotspot);
@@ -226,7 +214,7 @@ public class MemoryGamesMenuActivity extends Activity implements View.OnTouchLis
         backimg.setImageBitmap(mBitmapBack);
         frontimg.setOnTouchListener(this);
 
-        mBitmapTitle = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMemory);
+        mBitmapTitle = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMemoryGames);
         ((ImageView) findViewById(R.id.imageview_title)).setImageBitmap(mBitmapTitle);
         AnimationUtil.performAnimation((ImageView) findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
     }

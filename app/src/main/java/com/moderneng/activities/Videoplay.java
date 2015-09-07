@@ -107,7 +107,7 @@ public class Videoplay extends Activity {
 				case R.raw.story_arb:
 					showStoryEndImage();
 					break;
-				case R.raw.story2:
+				case R.raw.story:
 					showStoryEndImage();
 					break;
 			}
@@ -119,11 +119,8 @@ public class Videoplay extends Activity {
 	}
 
 	private void showStoryEndImage(){
-		if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
-			mBitmapThankyou = BitmapFactory.decodeResource(getResources(), R.drawable.story_end_image);
-		}else if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
-			mBitmapThankyou = BitmapFactory.decodeResource(getResources(), R.drawable.arb_story_end_image);
-		}
+
+		mBitmapThankyou = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdStoryEndThankYouImage);
 		((ImageView)findViewById(R.id.imageview_thankyou)).setImageBitmap(mBitmapThankyou);
 		((ImageView)findViewById(R.id.imageview_thankyou)).setVisibility(View.VISIBLE);
 		((VideoView)findViewById(R.id.videoview_game_end)).setVisibility(View.GONE);

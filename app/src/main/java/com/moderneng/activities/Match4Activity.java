@@ -65,7 +65,7 @@ public class Match4Activity extends Activity {
         li = (RelativeLayout) findViewById(R.id.m4mainl);
         drag4.setOnTouchListener(new Mytouchlistener());
 
-        mBitmapText = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdCongratulations);
+        mBitmapText = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdGoogJob);
         ((ImageView) findViewById(R.id.imageview_greeting)).setImageBitmap(mBitmapText);
 
     }
