@@ -238,11 +238,11 @@ public class WeShineApp extends Application {
             sSoundIdBatteryFullThankYou = R.raw.battery_full_thankyou;
             sSoundIdCatchUpTheSun = R.raw.catchup_the_sun;
             sSoundIdMatching = R.raw.matching;
-            sSoundIdMatching1 = R.raw.matching1_video;
-            sSoundIdMatching2 = R.raw.matching2_video;
-            sSoundIdMatching3 = R.raw.matching3_video;
-            sSoundIdMatching4 = R.raw.matching4_video;
-            sSoundIdMatching5 = R.raw.matching5_video;
+            sSoundIdMatching1 = R.raw.matching1;
+            sSoundIdMatching2 = R.raw.matching2;
+            sSoundIdMatching3 = R.raw.matching3;
+            sSoundIdMatching4 = R.raw.matching4;
+            sSoundIdMatching5 = R.raw.matching5;
             sSoundIdPuzzle = R.raw.puzzle;
             sSoundIdBravo = R.raw.bravo;
             sSoundIdAwsome = R.raw.awesome;

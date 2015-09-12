@@ -61,55 +61,29 @@ public class MatchingMenuActivity extends Activity implements OnClickListener {
 		int id = v.getId();
 		switch (id) {
 		case R.id.match1:
-			// mp.pause();
-            if(mp4 !=null){
-                mp4.pause();
-            }
-
 			Intent match1 = new Intent(getApplicationContext(), Match1Activity.class);
 			match1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(match1);
-			//game1.setOnClickListener(null);
 			break;
 		case R.id.match2:
-			// mp.pause();
-            if(mp4 !=null){
-                mp4.pause();
-            }
 			Intent match2 = new Intent(getApplicationContext(), Match2Activity.class);
 			match2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(match2);
-			//game2.setOnClickListener(null);
 			break;
 		case R.id.match3:
-			// mp.pause();
-            if(mp4 !=null){
-                mp4.pause();
-            }
 			Intent match3 = new Intent(getApplicationContext(), Match3Activity.class);
 			match3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(match3);
-			//game3.setOnClickListener(null);
 			break;
 		case R.id.match4:
-			// mp.pause();
-            if(mp4 !=null){
-                mp4.pause();
-            }
 			Intent match4 = new Intent(getApplicationContext(), Match4Activity.class);
 			match4.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(match4);
-			//game4.setOnClickListener(null);
 			break;
 		case R.id.match5:
-			// mp.pause();
-            if(mp4 !=null){
-                mp4.pause();
-            }
 			Intent match5 = new Intent(getApplicationContext(), Match5Activity.class);
 			match5.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(match5);
-			//game5.setOnClickListener(null);
 			break;
 		}
 	}

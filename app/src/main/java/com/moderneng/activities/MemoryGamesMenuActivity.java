@@ -122,7 +122,7 @@ public class MemoryGamesMenuActivity extends Activity implements View.OnTouchLis
                     mp4.pause();
                 }
 
-                Intent i = new Intent(MemoryGamesMenuActivity.this, MemoryGamesLevelOneActivity.class);
+                Intent i = new Intent(MemoryGamesMenuActivity.this, MemoryGame1Activity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
                 frontimg.setOnTouchListener(null);
@@ -130,7 +130,7 @@ public class MemoryGamesMenuActivity extends Activity implements View.OnTouchLis
                 if (mp4 != null) {
                     mp4.pause();
                 }
-                Intent i2 = new Intent(MemoryGamesMenuActivity.this, MemoryGamesLevelTwoActivity.class);
+                Intent i2 = new Intent(MemoryGamesMenuActivity.this, MemoryGame3Activity.class);
                 i2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i2);
                 frontimg.setOnTouchListener(null);
@@ -138,7 +138,7 @@ public class MemoryGamesMenuActivity extends Activity implements View.OnTouchLis
                 if (mp4 != null) {
                     mp4.pause();
                 }
-                Intent i3 = new Intent(MemoryGamesMenuActivity.this, MemoryGamesLevelThreeActivity.class);
+                Intent i3 = new Intent(MemoryGamesMenuActivity.this, MemoryGame2Activity.class);
                 i3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i3);
                 frontimg.setOnTouchListener(null);

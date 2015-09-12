@@ -30,20 +30,20 @@ import com.moderneng.R;
 import com.moderneng.WeShineApp;
 
 public class Puzzle1Activity extends Activity {
-	ImageView imgv1, imgv2, imgv3, imgv4, imgv5, imgv6, imgv7, dragimg;
-	int count = 1, viewcount = 1;
-	Gamemusic mp, mp4;
-	AudioPlayer mp3;
-	RelativeLayout mainlay;
-	int x = -1;
-	int starcount = 0;
-	int y = -1;
-	int x1 = -1, x2 = -1;
-	int y1 = -1, y2 = -1;
-      int millisecond=700;
-	Boolean play = true;
-	Drawable myDrawable;
-	Handler h;
+	private ImageView imgv1, imgv2, imgv3, imgv4, imgv5, imgv6, imgv7, dragimg;
+	private int count = 1, viewcount = 1;
+	private Gamemusic mp, mp4;
+	private AudioPlayer mp3;
+	private RelativeLayout mainlay;
+	private int x = -1;
+	private int starcount = 0;
+	private int y = -1;
+	private int x1 = -1, x2 = -1;
+	private int y1 = -1, y2 = -1;
+	private int millisecond=700;
+	private Boolean play = true;
+	private Drawable myDrawable;
+	private Handler h;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +52,10 @@ public class Puzzle1Activity extends Activity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		  Intent mIntent = getIntent();
-	      int intValue = mIntent.getIntExtra("intVariableName", 0);
-	      if(MainMenuActivity.height<=480){
-		  setContentView(R.layout.puzzle1small);
-	     }else{
-		setContentView(R.layout.puzzle2);
+		if(MainMenuActivity.height<=480){
+		  	setContentView(R.layout.puzzle1small);
+		}else{
+			setContentView(R.layout.puzzle2);
 	    }
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		mainlay = (RelativeLayout) findViewById(R.id.mainlay);

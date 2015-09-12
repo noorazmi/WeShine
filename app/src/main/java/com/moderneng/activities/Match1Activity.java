@@ -74,24 +74,19 @@ public class Match1Activity extends Activity {
                 ClipData data = ClipData.newPlainText("", "");
 
                 if (count == 1) {
-                    view1 = ImageDragShadowBuilder.fromResource(
-                            getApplicationContext(), R.drawable.cloud);
+                    view1 = ImageDragShadowBuilder.fromResource(getApplicationContext(), R.drawable.cloud);
                     view.startDrag(data, view1, img, 0);
                 } else if (count == 2) {
-                    view1 = ImageDragShadowBuilder.fromResource(
-                            getApplicationContext(), R.drawable.sun);
+                    view1 = ImageDragShadowBuilder.fromResource(getApplicationContext(), R.drawable.sun);
                     view.startDrag(data, view1, img, 0);
                 } else if (count == 3) {
-                    view1 = ImageDragShadowBuilder.fromResource(
-                            getApplicationContext(), R.drawable.solar);
+                    view1 = ImageDragShadowBuilder.fromResource(getApplicationContext(), R.drawable.solar);
                     view.startDrag(data, view1, img, 0);
                 } else if (count == 4) {
-                    view1 = ImageDragShadowBuilder.fromResource(
-                            getApplicationContext(), R.drawable.golf);
+                    view1 = ImageDragShadowBuilder.fromResource(getApplicationContext(), R.drawable.golf);
                     view.startDrag(data, view1, img, 0);
                 } else if (count == 5) {
-                    view1 = ImageDragShadowBuilder.fromResource(
-                            getApplicationContext(), R.drawable.tree);
+                    view1 = ImageDragShadowBuilder.fromResource(getApplicationContext(), R.drawable.tree);
                     view.startDrag(data, view1, img, 0);
                 }
 
@@ -109,10 +104,7 @@ public class Match1Activity extends Activity {
             int action = event.getAction();
             switch (event.getAction()) {
                 case DragEvent.ACTION_DRAG_STARTED:
-                    // do nothing
-                    // drag.setImageResource(R.drawable.golf);
                     drag.setVisibility(View.INVISIBLE);
-                    // mp.release();
                     break;
                 case DragEvent.ACTION_DRAG_ENTERED:
                     break;

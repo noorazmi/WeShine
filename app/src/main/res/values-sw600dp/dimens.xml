@@ -2,7 +2,8 @@
 <resources>
 
 
-    <dimen name="title_text_width">350dp</dimen>
-    <dimen name="title_text_height">86dp</dimen>
+    <dimen name="title_text_width">300dp</dimen>
+    <dimen name="title_text_height">64dp</dimen>
+    <dimen name="margin_top_memory_games">-7dp</dimen>
 
 </resources>

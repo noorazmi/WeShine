@@ -52,12 +52,12 @@ public class Gamemusic {
 			mp.stop();
 		}
 	}
-	public void pause() {
-//		if (mp != null && mp.isPlaying() == true) {
-		if (mp != null) {
-			mp.pause();
-		}
-	}
+//	public void pause() {
+////		if (mp != null && mp.isPlaying() == true) {
+//		if (mp != null) {
+//			mp.pause();
+//		}
+	//}
 	public void release() {
 		if (mp != null ) {
 			mp.release();

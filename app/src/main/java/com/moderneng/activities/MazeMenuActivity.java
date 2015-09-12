@@ -21,10 +21,7 @@ import com.moderneng.R;
 
 public class MazeMenuActivity extends Activity {
 
-	private MazeGameMenuFragment mMazeGameMenuFragment;
-	private int currentGameLevel = AppConstant.GAME_LEVEL_0;
 	private FragmentManager mFragmentManager;
-
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +34,6 @@ public class MazeMenuActivity extends Activity {
 	}
 	public void AttachGameFragment(int gameLevel){
 		System.gc();
-		currentGameLevel = gameLevel;
 		switch (gameLevel) {
 		case AppConstant.GAME_LEVEL_0:
 			attachMaze1Fragment();

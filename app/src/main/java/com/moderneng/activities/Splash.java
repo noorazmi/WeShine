@@ -19,14 +19,6 @@ public class Splash extends Activity {
     int Time_Out_millis = 1500;
     private Bitmap mBitmapSplash;
 
-    //static int width;
-    //static int height;
-    //Display mDisplay;
-    //Modelclass mod;
-//    public static Bitmap star1, star2, star3,
-//            star4, star5, sstar1, sstar2, sstar3, sstar4, sstar5, sstar6, sstar7,
-//            sstar8, sstar9, sstar10;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,12 +28,11 @@ public class Splash extends Activity {
         setContentView(R.layout.splash);
         BitmapFactory.Options opts = new BitmapFactory.Options();
         opts.inPreferredConfig = Bitmap.Config.RGB_565;
-        mBitmapSplash =  BitmapFactory.decodeResource(getResources(), R.drawable.splash, opts);
+        mBitmapSplash = BitmapFactory.decodeResource(getResources(), R.drawable.splash, opts);
         ((ImageView) findViewById(R.id.imageview_splash)).setImageBitmap(mBitmapSplash);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                //Intent i = new Intent(getApplicationContext(), mainmenu.class);
                 Intent i = new Intent(getApplicationContext(), LanguageMenuActivity.class);
                 startActivity(i);
                 mBitmapSplash.recycle();
@@ -52,8 +43,11 @@ public class Splash extends Activity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        System.gc();
+    protected void onStop() {
+        super.onStop();
+        if(mBitmapSplash != null){
+            mBitmapSplash.recycle();
+            mBitmapSplash = null;
+        }
     }
 }

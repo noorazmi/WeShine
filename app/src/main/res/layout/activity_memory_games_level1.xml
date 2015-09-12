@@ -119,6 +119,7 @@
         android:layout_width="@dimen/title_text_width"
         android:layout_height="@dimen/title_text_height"
         android:layout_gravity="top|center_horizontal"
-        android:layout_marginTop="0dp"/>
+        android:layout_marginTop="@dimen/margin_top_memory_games"
+        android:src="@drawable/memory_game_arb"/>
 
 </FrameLayout>

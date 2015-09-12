@@ -53,44 +53,34 @@ public class PuzzleMenuActivity extends Activity implements OnClickListener {
 		int id = v.getId();
 		switch (id) {
 		case R.id.puzzle1:
-			mp.pause();
 			Intent ip1 = new Intent(getApplicationContext(), Puzzle1Activity.class);
 			ip1.putExtra("intVariableName", 0);
 			ip1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(ip1);
-			pgame1.setOnClickListener(null);
 			break;
 		case R.id.puzzle2:
-			mp.pause();
 			Intent ip2 = new Intent(getApplicationContext(), Puzzle2Activity.class);
 			ip2.putExtra("intVariableName", 1);
 			ip2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(ip2);
-			pgame2.setOnClickListener(null);
 			break;
 		case R.id.puzzle3:
-			mp.pause();
 			Intent ip3 = new Intent(getApplicationContext(), Puzzle3Activity.class);
 			ip3.putExtra("intVariableName", 2);
 			ip3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(ip3);
-			pgame3.setOnClickListener(null);
 			break;
 		case R.id.puzzle4:
-			mp.pause();
 			Intent ip4 = new Intent(getApplicationContext(), Puzzle4Activity.class);
 			ip4.putExtra("intVariableName", 3);
 			ip4.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(ip4);
-			pgame4.setOnClickListener(null);
 			break;
 		case R.id.puzzle5:
-			mp.pause();
 			Intent ip5 = new Intent(getApplicationContext(), Puzzle5Activity.class);
 			ip5.putExtra("intVariableName", 4);
 			ip5.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(ip5);
-			pgame5.setOnClickListener(null);
 			break;
 
 		}

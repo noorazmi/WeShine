@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
     android:id="@+id/mainlay"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/pbg">
 
     <RelativeLayout
         android:id="@+id/contentlay"
@@ -12,7 +14,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="20dip"
         android:layout_marginLeft="20dip"
-        android:background="@drawable/frame" >
+        android:background="@drawable/frame">
 
         <ImageView
             android:id="@+id/ltop"
@@ -20,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:src="@drawable/emp1" />
+            android:src="@drawable/emp1"/>
 
         <ImageView
             android:id="@+id/mtop"
@@ -29,7 +31,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="72dip"
-      android:src="@drawable/emp4" />
+            android:src="@drawable/emp4"/>
 
         <ImageView
             android:id="@+id/lmiddle"
@@ -38,7 +40,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="53dip"
-            android:src="@drawable/emp2" />
+            android:src="@drawable/emp2"/>
 
         <ImageView
             android:id="@+id/lbottom"
@@ -47,7 +49,7 @@
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/ltop"
             android:layout_marginTop="46dip"
-            android:src="@drawable/emp3" />
+            android:src="@drawable/emp3"/>
 
         <ImageView
             android:id="@+id/mmiddle"
@@ -57,7 +59,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="34dip"
             android:layout_marginTop="22dip"
-            android:src="@drawable/emp5" />
+            android:src="@drawable/emp5"/>
 
         <ImageView
             android:id="@+id/mbottom"
@@ -66,7 +68,7 @@
             android:layout_alignBottom="@+id/mmiddle"
             android:layout_alignLeft="@+id/mtop"
             android:layout_marginLeft="36dip"
-            android:src="@drawable/emp6" />
+            android:src="@drawable/emp6"/>
 
         <ImageView
             android:id="@+id/rmost"
@@ -74,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_alignRight="@+id/mtop"
             android:layout_marginTop="32dp"
-            android:src="@drawable/emp7" />
+            android:src="@drawable/emp7"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -84,12 +86,12 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:background="@drawable/border"
-        android:gravity="center" >
+        android:gravity="center">
 
         <ImageView
             android:id="@+id/pdragv"
-            android:layout_height="fill_parent"
             android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:src="@drawable/img1"/>
 
     </RelativeLayout>
