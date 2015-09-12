@@ -22,12 +22,12 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.android.model.Gamemusic;
-import com.android.model.ImageDragShadowBuilder;
-import com.example.solarenegy.AudioPlayer;
-import com.game.utils.AppConstant;
 import com.moderneng.R;
-import com.moderneng.WeShineApp;
+import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.AudioPlayer;
+import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.ImageAndMediaResources;
+import com.moderneng.views.ImageDragShadowBuilder;
 
 public class Puzzle1Activity extends Activity {
 	private ImageView imgv1, imgv2, imgv3, imgv4, imgv5, imgv6, imgv7, dragimg;
@@ -216,7 +216,7 @@ public class Puzzle1Activity extends Activity {
 				} else if (count == 5 && v.getId() == R.id.mmiddle) {
 					imgv5.setImageResource(R.drawable.img5);
 					count++;
-					mp = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdSuper);
+					mp = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSuper);
 					mp.start();
 					int[] imageCordinates = new int[2];
 					imgv5.getLocationOnScreen(imageCordinates);
@@ -288,9 +288,9 @@ public class Puzzle1Activity extends Activity {
 //						puzzle1.this.finish();
 //						startActivity(ipuzzle1);
 					Intent intent = new Intent(Puzzle1Activity.this, BalloonAnimationActivity.class);
-					intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, WeShineApp.sImageIdAwesome);
+					intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, ImageAndMediaResources.sImageIdAwesome);
 //					intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, R.drawable.awsome);
-					intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, WeShineApp.sSoundIdAwsome);
+					intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, ImageAndMediaResources.sSoundIdAwsome);
 					intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.hey);
 					intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, AppConstant.BALLOON_ANIMATION_SOUND_DELAY);
 

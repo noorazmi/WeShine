@@ -19,23 +19,21 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.android.model.Gamemusic;
-import com.android.model.ImageDragShadowBuilder;
-import com.example.solarenegy.AudioPlayer;
-import com.game.utils.AppConstant;
 import com.moderneng.R;
-import com.moderneng.WeShineApp;
+import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.AudioPlayer;
+import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.ImageAndMediaResources;
+import com.moderneng.views.ImageDragShadowBuilder;
 
 
 public class Puzzle3Activity extends Activity {
-    ImageView p3imgv1, p3imgv2, p3imgv3, p3imgv4, p3imgv5, p3imgv6, p3imgv7, p3dragv;
-    RelativeLayout p3lay;
-    int count = 1;
-    Gamemusic mp3, mp6;
-    AudioPlayer mp;
-    Boolean play = true;
-    int x, y;
-    int millisecond = 700;
+    private ImageView p3imgv1, p3imgv2, p3imgv3, p3imgv4, p3imgv5, p3imgv6, p3imgv7, p3dragv;
+    private RelativeLayout p3lay;
+    private int count = 1;
+    private Gamemusic mp3;
+    private AudioPlayer mp;
+    private int x, y;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,7 +161,7 @@ public class Puzzle3Activity extends Activity {
                     } else if (count == 2 && p3v.getId() == R.id.lbottom) {
                         p3imgv3.setImageResource(R.drawable.p2img3);
                         count++;
-                        mp3 = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdPerfect);
+                        mp3 = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdPerfect);
                         mp3.start();
                         int[] imageCordinates = new int[2];
                         p3imgv3.getLocationOnScreen(imageCordinates);
@@ -269,8 +267,8 @@ public class Puzzle3Activity extends Activity {
                         count++;
 
                         Intent intent = new Intent(Puzzle3Activity.this, BalloonAnimationActivity.class);
-                        intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, WeShineApp.sImageIdGreat);
-                        intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, WeShineApp.sSoundIdGreat);
+                        intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, ImageAndMediaResources.sImageIdGreat);
+                        intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, ImageAndMediaResources.sSoundIdGreat);
                         intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.hey);
                         intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, AppConstant.BALLOON_ANIMATION_SOUND_DELAY);
                         startActivityForResult(intent, 100);

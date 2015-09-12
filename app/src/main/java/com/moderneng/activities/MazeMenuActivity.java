@@ -8,16 +8,16 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.game.fragment.util.FragmentTag;
-import com.game.framents.GameEndVideoFragment;
-import com.game.framents.MazeGame1Fragment;
-import com.game.framents.MazeGame2Fragment;
-import com.game.framents.MazeGame3Fragment;
-import com.game.framents.MazeGame4Fragment;
-import com.game.framents.MazeGame5Fragment;
-import com.game.framents.MazeGameMenuFragment;
-import com.game.utils.AppConstant;
+import com.moderneng.framents.GameEndVideoFragment;
+import com.moderneng.framents.MazeGame1Fragment;
+import com.moderneng.framents.MazeGame2Fragment;
+import com.moderneng.framents.MazeGame3Fragment;
+import com.moderneng.framents.MazeGame4Fragment;
+import com.moderneng.framents.MazeGame5Fragment;
+import com.moderneng.framents.MazeGameMenuFragment;
+import com.moderneng.utils.AppConstant;
 import com.moderneng.R;
+import com.moderneng.utils.FragmentTag;
 
 public class MazeMenuActivity extends Activity {
 

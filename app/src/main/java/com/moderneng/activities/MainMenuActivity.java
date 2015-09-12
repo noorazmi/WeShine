@@ -14,11 +14,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-import com.example.solarenegy.ColorTool;
-import com.example.solarenegy.AudioPlayer;
-import com.game.utils.AppConstant;
 import com.moderneng.R;
-import com.moderneng.WeShineApp;
+import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.AudioPlayer;
+import com.moderneng.utils.ColorTool;
+import com.moderneng.utils.ImageAndMediaResources;
 
 public class MainMenuActivity extends Activity implements View.OnTouchListener {
     AudioPlayer mp;
@@ -94,8 +94,9 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
             if (nextImage == 0) {
                 mp.release();
                 Intent storyVideoIntent = new Intent(getApplicationContext(), Videoplay.class);
-                storyVideoIntent.putExtra("vid", WeShineApp.sSoundIdStory);
-                storyVideoIntent.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, WeShineApp.sStoryVideoDuration);
+                storyVideoIntent.putExtra("vid", ImageAndMediaResources.sSoundIdStory);
+                storyVideoIntent.putExtra(AppConstant.EXTRA_VIDEO_TYPE, AppConstant.VIDEO_TYPE_STORY);
+                storyVideoIntent.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, ImageAndMediaResources.sStoryVideoDuration);
                 startActivity(storyVideoIntent);
             }
             if (nextImage == 1) {
@@ -145,7 +146,7 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
 
         mImageViewTop = (ImageView) findViewById(R.id.image);
         mBitmapBottom = BitmapFactory.decodeResource(getResources(), R.drawable.home_screen_hotspot);
-        mBitmapTop = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdHomeScreen);
+        mBitmapTop = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdHomeScreen);
 
         mImageViewTop.setImageBitmap(mBitmapTop);
         ((ImageView) findViewById(R.id.image_areas)).setImageBitmap(mBitmapBottom);

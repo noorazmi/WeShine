@@ -1,8 +1,5 @@
 package com.moderneng.activities;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -25,13 +22,16 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.android.model.Gamemusic;
-import com.example.solarenegy.AudioPlayer;
-import com.game.util.animation.AnimType;
-import com.game.util.animation.AnimationUtil;
-import com.game.utils.AppConstant;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
+import com.moderneng.animation.AnimType;
+import com.moderneng.animation.AnimationUtil;
+import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.ImageAndMediaResources;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class MemoryGame2Activity extends Activity implements OnClickListener, AnimationListener {
     private ImageView mcard, tc1, tc2, tc3, bc1, bc2, bc3, bc4, bc5, clockv, textimage;
@@ -73,11 +73,7 @@ public class MemoryGame2Activity extends Activity implements OnClickListener, An
         scale1.setDuration(1000);
         scale1.setFillAfter(true);
         scale1.setAnimationListener(this);
-        if (WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)) {
-            findsame = new Gamemusic(getApplicationContext(), R.raw.samecard);
-        } else if (WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)) {
-            findsame = new Gamemusic(getApplicationContext(), R.raw.memmory_games_findthesimiliarcard_arb);
-        }
+        findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdFindTheSimilarCards);
         findsame.start();
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -163,10 +159,10 @@ public class MemoryGame2Activity extends Activity implements OnClickListener, An
     @Override
     protected void onResume() {
         super.onResume();
-        mBitmapBg = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMemoryGamesLevel1);
+        mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryGamesLevel1);
         findViewById(R.id.relative_layout_parent).setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapBg));
 
-        mBitmapTitle = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMemoryGame);
+        mBitmapTitle = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryGame);
         ((ImageView) findViewById(R.id.imageview_title)).setImageBitmap(mBitmapTitle);
         AnimationUtil.performAnimation(findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
 
@@ -195,42 +191,42 @@ public class MemoryGame2Activity extends Activity implements OnClickListener, An
         }
         if (ncount == 1) {
             if (id == R.id.tcard1) {
-                findsame = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdSolarSignal);
+                findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarSignal);
                 findsame.start();
             }
         } else if (ncount == 2) {
             if (id == R.id.tcard2) {
-                findsame = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdRedBilli);
+                findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdRedBilli);
                 findsame.start();
             }
         } else if (ncount == 3) {
             if (id == R.id.tcard3) {
-                findsame = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdSolarCamera);
+                findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarCamera);
                 findsame.start();
             }
         } else if (ncount == 4) {
             if (id == R.id.lcard1) {
-                findsame = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdGolfCart);
+                findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGolfCart);
                 findsame.start();
             }
         } else if (ncount == 5) {
             if (id == R.id.lcard2) {
-                findsame = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdGreenBilli);
+                findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGreenBilli);
                 findsame.start();
             }
         } else if (ncount == 6) {
             if (id == R.id.lcard3) {
-                findsame = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdLovelySun);
+                findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdLovelySun);
                 findsame.start();
             }
         } else if (ncount == 7) {
             if (id == R.id.lcard4) {
-                findsame = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdSolarStation);
+                findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarStation);
                 findsame.start();
             }
         } else if (ncount == 8) {
             if (id == R.id.lcard5) {
-                findsame = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdSolarLight);
+                findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarLight);
                 findsame.start();
             }
         }
@@ -408,8 +404,8 @@ public class MemoryGame2Activity extends Activity implements OnClickListener, An
 
                         clockanim.stop();
                         Intent intent = new Intent(MemoryGame2Activity.this, BalloonAnimationActivity.class);
-                        intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, WeShineApp.sImageIdYouAreSmart);
-                        intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, WeShineApp.sSoundIdYouAreSmart);
+                        intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, ImageAndMediaResources.sImageIdYouAreSmart);
+                        intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, ImageAndMediaResources.sSoundIdYouAreSmart);
                         intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.ballon_playing);
                         intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, AppConstant.BALLOON_ANIMATION_SOUND_DELAY);
 

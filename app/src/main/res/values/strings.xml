@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">   الشمس المرحة     </string>
+
     <string name="title_activity_baloon">BaloonActivity</string>
     <string name="play_five">PLAY_FIVE</string>
     <string name="play_flower">PLAY_FLOWER</string>

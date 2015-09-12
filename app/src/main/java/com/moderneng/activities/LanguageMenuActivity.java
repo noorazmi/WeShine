@@ -13,9 +13,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-import com.example.solarenegy.AudioPlayer;
-import com.game.utils.AppConstant;
-import com.game.utils.ColorTool;
+import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.AudioPlayer;
+import com.moderneng.utils.ColorTool;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
 
@@ -35,15 +35,6 @@ public class LanguageMenuActivity extends Activity implements View.OnTouchListen
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_language_menu);
-
-//        mBitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.arabic_english);
-//        mImageViewFront = ((ImageView) findViewById(R.id.imageview_arabic_english));
-//        mImageViewFront.setImageBitmap(mBitmapTop);
-//        mImageViewFront.setOnTouchListener(this);
-//
-//        mBitmapBottom = BitmapFactory.decodeResource(getResources(), R.drawable.arabic_english_hotspot);
-//        mImageViewHotspot = ((ImageView) findViewById(R.id.imageview_hotspot));
-//        mImageViewHotspot.setImageBitmap(mBitmapBottom);
     }
 
 

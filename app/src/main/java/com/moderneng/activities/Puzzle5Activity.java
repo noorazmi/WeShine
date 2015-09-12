@@ -19,12 +19,14 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.android.model.Gamemusic;
-import com.android.model.ImageDragShadowBuilder;
-import com.example.solarenegy.AudioPlayer;
-import com.game.utils.AppConstant;
+import com.moderneng.utils.AppConstant;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
+import com.moderneng.utils.AudioPlayer;
+import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.ImageAndMediaResources;
+import com.moderneng.views.ImageDragShadowBuilder;
+
 
 public class Puzzle5Activity extends Activity {
     private RelativeLayout p5lay;
@@ -173,7 +175,7 @@ public class Puzzle5Activity extends Activity {
                         return true;
                     } else if (count == 3 && dragv.getId() == R.id.ltop) {
                         p5imgv1.setImageResource(R.drawable.p5m1);
-                        mp = new Gamemusic(getApplicationContext(),  WeShineApp.sSoundIdAwsome);
+                        mp = new Gamemusic(getApplicationContext(),  ImageAndMediaResources.sSoundIdAwsome);
                         mp.start();
                         count++;
                         int[] imageCordinates = new int[2];
@@ -272,8 +274,8 @@ public class Puzzle5Activity extends Activity {
 
                         count++;
                         Intent intent = new Intent(Puzzle5Activity.this, BalloonAnimationActivity.class);
-                        intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, WeShineApp.sImageIdYouAreSmart);
-                        intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID,  WeShineApp.sSoundIdYouAreSmart);
+                        intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, ImageAndMediaResources.sImageIdYouAreSmart);
+                        intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID,  ImageAndMediaResources.sSoundIdYouAreSmart);
                         intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.hey);
                         intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, AppConstant.BALLOON_ANIMATION_SOUND_DELAY);
                         startActivityForResult(intent, 100);

@@ -16,13 +16,13 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 
-import com.android.model.Gamemusic;
-import com.example.solarenegy.ColorTool;
-import com.example.solarenegy.AudioPlayer;
-import com.game.util.animation.AnimType;
-import com.game.util.animation.AnimationUtil;
 import com.moderneng.R;
-import com.moderneng.WeShineApp;
+import com.moderneng.animation.AnimType;
+import com.moderneng.animation.AnimationUtil;
+import com.moderneng.utils.AudioPlayer;
+import com.moderneng.utils.ColorTool;
+import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.ImageAndMediaResources;
 
 public class MemoryGamesMenuActivity extends Activity implements View.OnTouchListener {
     private ImageView frontimg, backimg, bird, bird2, beev, bird3;
@@ -65,7 +65,7 @@ public class MemoryGamesMenuActivity extends Activity implements View.OnTouchLis
 //            mp = new Gamemusic(getApplicationContext(), R.raw.memmory_games_arb);
 //        }
 
-//        mp = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdMemoryGames);
+//        mp = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdMemoryGames);
 //        mp.start();
 //        new Handler().postDelayed(new Runnable() {
 //            @Override
@@ -196,7 +196,7 @@ public class MemoryGamesMenuActivity extends Activity implements View.OnTouchLis
     protected void onResume() {
         super.onResume();
 
-        mp = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdMemoryGames);
+        mp = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdMemoryGames);
         mp.start();
 
         new Handler().postDelayed(new Runnable() {
@@ -207,14 +207,14 @@ public class MemoryGamesMenuActivity extends Activity implements View.OnTouchLis
             }
         }, 1100);
 
-        mBitmapFront = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMemoryBg);
-        mBitmapBack = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMemoryBgHotspot);
+        mBitmapFront = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryBg);
+        mBitmapBack = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryBgHotspot);
 
         frontimg.setImageBitmap(mBitmapFront);
         backimg.setImageBitmap(mBitmapBack);
         frontimg.setOnTouchListener(this);
 
-        mBitmapTitle = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMemoryGames);
+        mBitmapTitle = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryGames);
         ((ImageView) findViewById(R.id.imageview_title)).setImageBitmap(mBitmapTitle);
         AnimationUtil.performAnimation(findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
     }

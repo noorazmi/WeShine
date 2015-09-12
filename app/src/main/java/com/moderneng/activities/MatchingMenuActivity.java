@@ -13,13 +13,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
-import com.android.model.Gamemusic;
-import com.game.util.animation.AnimType;
-import com.game.util.animation.AnimationUtil;
 import com.moderneng.R;
-import com.moderneng.WeShineApp;
+import com.moderneng.animation.AnimType;
+import com.moderneng.animation.AnimationUtil;
+import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.ImageAndMediaResources;
 
 public class MatchingMenuActivity extends Activity implements OnClickListener {
 	private ImageButton game1, game2, game3, game4, game5;
@@ -109,15 +108,15 @@ public class MatchingMenuActivity extends Activity implements OnClickListener {
 	@Override
 	protected void onResume() {
 		super.onResume();
-        mBitmapBg = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMatchingMenuBg);
+        mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMatchingMenuBg);
         findViewById(R.id.linear_layout_container).setBackgroundDrawable(new BitmapDrawable(mBitmapBg));
 
-		mBitmapTitle =  BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMatching);
+		mBitmapTitle =  BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMatching);
         ((ImageView)findViewById(R.id.imageview_title)).setImageBitmap(mBitmapTitle);
 		AnimationUtil.performAnimation(findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
 
 
-        mp = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdMatching);
+        mp = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdMatching);
 		mp.start();
 		new Handler().postDelayed(new Runnable() {
 

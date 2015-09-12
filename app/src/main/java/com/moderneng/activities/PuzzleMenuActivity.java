@@ -13,13 +13,14 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
-import com.android.model.Gamemusic;
-import com.game.util.animation.AnimType;
-import com.game.util.animation.AnimationUtil;
+import com.moderneng.animation.AnimType;
+import com.moderneng.animation.AnimationUtil;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
+import com.moderneng.utils.AudioPlayer;
+import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.ImageAndMediaResources;
 
 public class PuzzleMenuActivity extends Activity implements OnClickListener {
 	private ImageButton pgame1, pgame2, pgame3, pgame4, pgame5;
@@ -109,15 +110,15 @@ public class PuzzleMenuActivity extends Activity implements OnClickListener {
 	protected void onResume() {
 		super.onResume();
 
-		mBitmapBg = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdPuzzleMenuBg);
+		mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdPuzzleMenuBg);
 		findViewById(R.id.linear_layout_container).setBackgroundDrawable(new BitmapDrawable(mBitmapBg));
 
-		mBitmapTitle =  BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdPuzzle);
+		mBitmapTitle =  BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdPuzzle);
 		((ImageView)findViewById(R.id.imageview_title)).setImageBitmap(mBitmapTitle);
 		AnimationUtil.performAnimation(findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
 
 
-		mp4 = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdPuzzle);
+		mp4 = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdPuzzle);
 		mp4.start();
 		new Handler().postDelayed(new Runnable() {
 			@Override

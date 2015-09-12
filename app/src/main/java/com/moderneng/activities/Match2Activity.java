@@ -19,16 +19,16 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.widget.ImageView;
-import android.widget.VideoView;
 
-import com.android.model.Gamemusic;
-import com.android.model.ImageDragShadowBuilder;
-import com.example.solarenegy.AudioPlayer;
-import com.game.util.animation.AnimType;
-import com.game.util.animation.AnimationUtil;
-import com.game.utils.AppConstant;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
+import com.moderneng.animation.AnimType;
+import com.moderneng.animation.AnimationUtil;
+import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.AudioPlayer;
+import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.ImageAndMediaResources;
+import com.moderneng.views.ImageDragShadowBuilder;
 
 public class Match2Activity extends Activity {
 	ImageView stower, golf, sun, boat, drag, wtower;
@@ -46,7 +46,7 @@ public class Match2Activity extends Activity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		setContentView(R.layout.match2);
-		mp3 = new AudioPlayer(getApplicationContext(), WeShineApp.sSoundIdMatching2);
+		mp3 = new AudioPlayer(getApplicationContext(), ImageAndMediaResources.sSoundIdMatching2);
 		mp3.start();
 		stower = (ImageView) findViewById(R.id.stowerblank);
 		golf = (ImageView) findViewById(R.id.golf1blank);
@@ -61,7 +61,7 @@ public class Match2Activity extends Activity {
 		wtower.setOnDragListener(new Mydraglisterner());
 		drag.setOnTouchListener(new Mytouchlistener());
 
-        mBitmapText = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdFabulous);
+        mBitmapText = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdFabulous);
         ((ImageView) findViewById(R.id.imageview_greeting)).setImageBitmap(mBitmapText);
 	}
 
@@ -206,7 +206,7 @@ public class Match2Activity extends Activity {
 
 
     protected void startAudioSound() {
-        String uriPath = AppConstant.BASE_RESOURCE_PATH + WeShineApp.sSoundIdFabulous;
+        String uriPath = AppConstant.BASE_RESOURCE_PATH + ImageAndMediaResources.sSoundIdFabulous;
         Uri uri = Uri.parse(uriPath);
         mMediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
         mMediaPlayer.start();

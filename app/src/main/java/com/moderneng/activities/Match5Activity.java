@@ -19,14 +19,15 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 
-import com.android.model.Gamemusic;
-import com.android.model.ImageDragShadowBuilder;
-import com.example.solarenegy.AudioPlayer;
-import com.game.util.animation.AnimType;
-import com.game.util.animation.AnimationUtil;
-import com.game.utils.AppConstant;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
+import com.moderneng.animation.AnimType;
+import com.moderneng.animation.AnimationUtil;
+import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.AudioPlayer;
+import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.ImageAndMediaResources;
+import com.moderneng.views.ImageDragShadowBuilder;
 
 public class Match5Activity extends Activity {
     private ImageView sun5, solar5, golf5, tree5, ehouse, drag5;
@@ -41,7 +42,7 @@ public class Match5Activity extends Activity {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		mp = new AudioPlayer(getApplicationContext(), WeShineApp.sSoundIdMatching5);
+		mp = new AudioPlayer(getApplicationContext(), ImageAndMediaResources.sSoundIdMatching5);
 		mp.start();
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.match5);	 
@@ -57,7 +58,7 @@ public class Match5Activity extends Activity {
 		tree5.setOnDragListener(new Mydraglistner());
 		ehouse.setOnDragListener(new Mydraglistner());
 		drag5.setOnTouchListener(new Mytouchlisterner());
-		mBitmapText = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdIncredible);
+		mBitmapText = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdIncredible);
 		((ImageView) findViewById(R.id.imageview_greeting)).setImageBitmap(mBitmapText);
 	}
 
@@ -188,7 +189,7 @@ public class Match5Activity extends Activity {
 	}
 
     protected void startAudioSound() {
-        String uriPath = AppConstant.BASE_RESOURCE_PATH + WeShineApp.sSoundIdIncredible;
+        String uriPath = AppConstant.BASE_RESOURCE_PATH + ImageAndMediaResources.sSoundIdIncredible;
         Uri uri = Uri.parse(uriPath);
         mMediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
         mMediaPlayer.start();

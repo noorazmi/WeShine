@@ -14,15 +14,15 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-import com.example.solarenegy.ColorTool;
-import com.example.solarenegy.AudioPlayer;
-import com.game.utils.AppConstant;
+import com.moderneng.utils.AppConstant;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
+import com.moderneng.utils.AudioPlayer;
+import com.moderneng.utils.ColorTool;
 
 public class GameMenuActivity extends Activity implements OnTouchListener {
-    AudioPlayer mp;
-    ImageView back, mImageViewTop;
+    private AudioPlayer mp;
+    private ImageView back, mImageViewTop;
     private Bitmap mBitmapTop;
     private Bitmap mBitmapBottom;
 
