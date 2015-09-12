@@ -94,7 +94,7 @@ public class MazeGame5Fragment extends BaseFragment implements OnGameEndListener
 	@Override
 	public void onGameEnd(boolean isSuccessful) {
 		if (isSuccessful) {
-			AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame5_excellentImageView), AnimType.ZOOM_IN, this);
+			AnimationUtil.performAnimation(getFragmentView().findViewById(R.id.mazeGame5_excellentImageView), AnimType.ZOOM_IN, this);
 		} else {
 			// Reset the view and let the user try to draw right path again.
 			resetDrawingSurface();
@@ -116,7 +116,7 @@ public class MazeGame5Fragment extends BaseFragment implements OnGameEndListener
 		bundle.putInt(AppConstant.VIDEO_FILE_NAME, R.raw.maze5_end_video);
 		bundle.putInt(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.MAZE_FIVE_VIDEO_DURATION);
 		((MazeMenuActivity) getActivity()).attachGameEndVideoFragment(bundle);
-		AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame5_excellentImageView), AnimType.ZOOM_OUT, null);
+		AnimationUtil.performAnimation(getFragmentView().findViewById(R.id.mazeGame5_excellentImageView), AnimType.ZOOM_OUT, null);
 		resetDrawingSurface();
 	}
 

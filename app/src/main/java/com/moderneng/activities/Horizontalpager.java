@@ -90,5 +90,5 @@ public class Horizontalpager extends Activity {
 	public void onBackPressed() {
 		mp.pause();
 		super.onBackPressed();
-	};
+	}
 }

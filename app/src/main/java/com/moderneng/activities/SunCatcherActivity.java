@@ -122,7 +122,6 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 				timerText.setText("" + 0);
 				if (rayHitCount >= BATTERY_100_HIT_COUNT) {
 					betteryView.setImageResource(R.drawable.battery100);
-					;
 
 					(findViewById(R.id.sunCatcher_batteryFullLinearLayout)).setVisibility(View.VISIBLE);
 					//Bitmap bm = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdBatteryIsFullThanYou)

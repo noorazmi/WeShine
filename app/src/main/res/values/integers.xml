@@ -4,6 +4,4 @@
     <item type="integer" name="stars_animation_frame_duration">10</item>
     <item type="integer" name="sea_animation_frame_duration">500</item>
     <item type="integer" name="maze1sun_animation_frame_duration">300</item>
-    <item type="integer" name="ship_green_animation_frame_duration">250</item>
-    <item type="integer" name="ship_red_animation_frame_duration">150</item>
 </resources>

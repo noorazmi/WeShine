@@ -338,7 +338,7 @@ public class BalloonActivity extends Activity {
 				super.onAnimationEnd(animation);
 				(findViewById(R.id.gameOverImageView)).setBackgroundResource(WeShineApp.sImageIdCongratulations);
 				(findViewById(R.id.gameOverImageView)).setVisibility(View.VISIBLE);
-				AnimationUtil.performAnimation((ImageView) findViewById(R.id.gameOverImageView), AnimType.ZOOM_IN, null);
+				AnimationUtil.performAnimation(findViewById(R.id.gameOverImageView), AnimType.ZOOM_IN, null);
 				startAudioSound(WeShineApp.sSoundIdCongratulationsAndSound);
 			}
 		});
@@ -376,7 +376,6 @@ public class BalloonActivity extends Activity {
 			xPosBatteryBox = xPosPole + (int) UtilityMethods.convertDpToPixel(160, WeShineApp.getInstance());
 			// increase to shift pole to up
 			yPosBatteryBox = yPosPole + poleWidth - (int) UtilityMethods.convertDpToPixel(40, WeShineApp.getInstance());
-			;
 			batteryBoxWidth = (int) UtilityMethods.convertDpToPixel(89, WeShineApp.getInstance());
 			batteryBoxHeight = (int) UtilityMethods.convertDpToPixel(38, WeShineApp.getInstance());
 			batteryBoxImageParams.x = xPosBatteryBox;
@@ -400,8 +399,6 @@ public class BalloonActivity extends Activity {
 			xPosBatteryBox = xPosPole + (int) UtilityMethods.convertDpToPixel(135, WeShineApp.getInstance());
 			// increase to shift box to up
 			yPosBatteryBox = yPosPole + poleWidth - (int) UtilityMethods.convertDpToPixel(35, WeShineApp.getInstance());
-			;
-			;
 			batteryBoxWidth = (int) UtilityMethods.convertDpToPixel(65, WeShineApp.getInstance());
 			batteryBoxHeight = (int) UtilityMethods.convertDpToPixel(28, WeShineApp.getInstance());
 			batteryBoxImageParams.x = xPosBatteryBox;
@@ -779,7 +776,7 @@ public class BalloonActivity extends Activity {
 		int fromX = SCREEN_WIDTH / 2;
 		int fromY = sunY + (int) UtilityMethods.convertDpToPixel(60, WeShineApp.getInstance());
 		// int fromX = SCREEN_WIDTH / 2 - sunWidth / 2;
-		AbsoluteLayout.LayoutParams alp = (AbsoluteLayout.LayoutParams) new AbsoluteLayout.LayoutParams(width, height, fromX, fromY);
+		AbsoluteLayout.LayoutParams alp = new AbsoluteLayout.LayoutParams(width, height, fromX, fromY);
 		panelImg.setLayoutParams(alp);
 		return panelImg;
 	}
@@ -872,7 +869,7 @@ public class BalloonActivity extends Activity {
 	private ImageView getNewPanel(int panelDrawable, int width, int height) {
 		ImageView panelImg = new ImageView(this);
 		panelImg.setImageResource(panelDrawable);
-		AbsoluteLayout.LayoutParams alp = (AbsoluteLayout.LayoutParams) new AbsoluteLayout.LayoutParams(width, height, xStartPosPanel, yStartPosPanel);
+		AbsoluteLayout.LayoutParams alp = new AbsoluteLayout.LayoutParams(width, height, xStartPosPanel, yStartPosPanel);
 		panelImg.setLayoutParams(alp);
 		return panelImg;
 	}
@@ -1382,7 +1379,7 @@ public class BalloonActivity extends Activity {
 			left = left + 3 * width;
 			top = top + 4 * height;
 		}
-		AbsoluteLayout.LayoutParams alp = (AbsoluteLayout.LayoutParams) new AbsoluteLayout.LayoutParams(width, height, left, top);
+		AbsoluteLayout.LayoutParams alp = new AbsoluteLayout.LayoutParams(width, height, left, top);
 		flowerImg.setLayoutParams(alp);
 		mainLayout.addView(flowerImg);
 		return flowerImg;
@@ -1411,7 +1408,7 @@ public class BalloonActivity extends Activity {
 			left = left + 3 * width;
 			top = top + 3 * height;
 		}
-		AbsoluteLayout.LayoutParams alp = (AbsoluteLayout.LayoutParams) new AbsoluteLayout.LayoutParams(width, height, left, top);
+		AbsoluteLayout.LayoutParams alp = new AbsoluteLayout.LayoutParams(width, height, left, top);
 		fiveImg.setLayoutParams(alp);
 		mainLayout.addView(fiveImg);
 		return fiveImg;

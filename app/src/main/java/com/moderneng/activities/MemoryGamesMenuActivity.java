@@ -216,6 +216,6 @@ public class MemoryGamesMenuActivity extends Activity implements View.OnTouchLis
 
         mBitmapTitle = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMemoryGames);
         ((ImageView) findViewById(R.id.imageview_title)).setImageBitmap(mBitmapTitle);
-        AnimationUtil.performAnimation((ImageView) findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
+        AnimationUtil.performAnimation(findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
     }
 }

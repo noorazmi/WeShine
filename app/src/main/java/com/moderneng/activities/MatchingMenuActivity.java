@@ -110,11 +110,11 @@ public class MatchingMenuActivity extends Activity implements OnClickListener {
 	protected void onResume() {
 		super.onResume();
         mBitmapBg = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMatchingMenuBg);
-        ((LinearLayout)findViewById(R.id.linear_layout_container)).setBackgroundDrawable(new BitmapDrawable(mBitmapBg));
+        findViewById(R.id.linear_layout_container).setBackgroundDrawable(new BitmapDrawable(mBitmapBg));
 
 		mBitmapTitle =  BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMatching);
         ((ImageView)findViewById(R.id.imageview_title)).setImageBitmap(mBitmapTitle);
-		AnimationUtil.performAnimation((ImageView) findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
+		AnimationUtil.performAnimation(findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
 
 
         mp = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdMatching);

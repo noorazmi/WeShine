@@ -43,7 +43,7 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
 
         mBitmapTitle =  BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMaze);
         ((ImageView)getFragmentView().findViewById(R.id.imageview_title)).setImageBitmap(mBitmapTitle);
-        AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
+        AnimationUtil.performAnimation(getFragmentView().findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
 
         mImageButtonMaze1.setOnClickListener(this);
         mImageButtonMaze2.setOnClickListener(this);

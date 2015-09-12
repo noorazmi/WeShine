@@ -195,8 +195,8 @@ public class Match5Activity extends Activity {
     }
 
 	private void performGreetingTextAnimation(){
-		((ImageView) findViewById(R.id.imageview_greeting)).setVisibility(View.VISIBLE);
-		AnimationUtil.performAnimation((ImageView) findViewById(R.id.imageview_greeting), AnimType.ZOOM_IN, new Animation.AnimationListener() {
+		findViewById(R.id.imageview_greeting).setVisibility(View.VISIBLE);
+		AnimationUtil.performAnimation(findViewById(R.id.imageview_greeting), AnimType.ZOOM_IN, new Animation.AnimationListener() {
 			@Override
 			public void onAnimationStart(Animation animation) {
 

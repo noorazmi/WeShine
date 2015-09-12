@@ -49,7 +49,7 @@ public class ImageDragShadowBuilder extends View.DragShadowBuilder {
         shadowSize.x = shadow.getMinimumWidth();
         shadowSize.y = shadow.getMinimumHeight();
  
-        shadowTouchPoint.x = (int)(shadowSize.x / 2);
-        shadowTouchPoint.y = (int)(shadowSize.y / 2);
+        shadowTouchPoint.x = shadowSize.x / 2;
+        shadowTouchPoint.y = shadowSize.y / 2;
     }
 }

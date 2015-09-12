@@ -68,7 +68,7 @@ public class Gamemusic {
 		this.mOnCompleteListener = onCompleteListener;
 	}
 
-	public static interface OnCompleteListener{
+	public interface OnCompleteListener{
 		void onComplete();
 	}
 

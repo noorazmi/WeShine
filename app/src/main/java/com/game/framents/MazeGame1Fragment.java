@@ -125,7 +125,7 @@ public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener
 	@Override
 	public void onGameEnd(boolean isSuccessful) {
 		if (isSuccessful) {
-			AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame1_terrificImageView), AnimType.ZOOM_IN, this);
+			AnimationUtil.performAnimation(getFragmentView().findViewById(R.id.mazeGame1_terrificImageView), AnimType.ZOOM_IN, this);
 		} else {
 			// Reset the view and let the user try to draw right path again.
 			//resetDrawingSurface();
@@ -148,7 +148,7 @@ public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener
 		bundle.putInt(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.MAZE_ONE_VIDEO_DURATION);
 
 		((MazeMenuActivity) getActivity()).attachGameEndVideoFragment(bundle);
-		AnimationUtil.performAnimation((ImageView) getFragmentView().findViewById(R.id.mazeGame1_terrificImageView), AnimType.ZOOM_OUT, null);
+		AnimationUtil.performAnimation(getFragmentView().findViewById(R.id.mazeGame1_terrificImageView), AnimType.ZOOM_OUT, null);
 		//resetDrawingSurface();
 	}
 
@@ -167,11 +167,11 @@ public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener
     private AnimationDrawable getAnimationDrawable(int[] drawables, int duration){
 
         AnimationDrawable newAnim = new AnimationDrawable();
-        for (int i = 0; i < drawables.length ; i++) {
-            Bitmap bitmap =  BitmapFactory.decodeResource(getResources(),drawables[i]);
-            BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), bitmap);
-            newAnim.addFrame(bitmapDrawable, duration);
-        }
+		for (int drawable : drawables) {
+			Bitmap bitmap = BitmapFactory.decodeResource(getResources(), drawable);
+			BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), bitmap);
+			newAnim.addFrame(bitmapDrawable, duration);
+		}
         return newAnim;
     }
 

@@ -72,7 +72,7 @@ public class Match2Activity extends Activity {
 			// TODO Auto-generated method stub
 			mp3.stop();
 
-			if (event.getAction() == event.ACTION_DOWN) {
+			if (event.getAction() == MotionEvent.ACTION_DOWN) {
 				DragShadowBuilder view2 = null;
 				mp = new Gamemusic(getApplicationContext(), R.raw.drag);
 				mp.start();
@@ -213,8 +213,8 @@ public class Match2Activity extends Activity {
     }
 
     private void performGreetingTextAnimation(){
-        ((ImageView) findViewById(R.id.imageview_greeting)).setVisibility(View.VISIBLE);
-        AnimationUtil.performAnimation((ImageView) findViewById(R.id.imageview_greeting), AnimType.ZOOM_IN, new Animation.AnimationListener() {
+        findViewById(R.id.imageview_greeting).setVisibility(View.VISIBLE);
+        AnimationUtil.performAnimation(findViewById(R.id.imageview_greeting), AnimType.ZOOM_IN, new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
 

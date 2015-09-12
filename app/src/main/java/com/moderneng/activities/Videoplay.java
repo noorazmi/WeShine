@@ -122,8 +122,8 @@ public class Videoplay extends Activity {
 
 		mBitmapThankyou = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdStoryEndThankYouImage);
 		((ImageView)findViewById(R.id.imageview_thankyou)).setImageBitmap(mBitmapThankyou);
-		((ImageView)findViewById(R.id.imageview_thankyou)).setVisibility(View.VISIBLE);
-		((VideoView)findViewById(R.id.videoview_game_end)).setVisibility(View.GONE);
+		findViewById(R.id.imageview_thankyou).setVisibility(View.VISIBLE);
+		findViewById(R.id.videoview_game_end).setVisibility(View.GONE);
 
 	}
 

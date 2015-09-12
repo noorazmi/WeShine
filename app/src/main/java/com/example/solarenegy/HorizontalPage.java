@@ -358,7 +358,7 @@ public final class HorizontalPage extends ViewGroup {
 		invalidate();
 	}
 
-	public static interface OnScreenSwitchListener {
+	public interface OnScreenSwitchListener {
 
 		void onScreenSwitched(int screen);
 	}

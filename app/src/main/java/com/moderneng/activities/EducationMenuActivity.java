@@ -100,7 +100,7 @@ public class EducationMenuActivity extends Activity implements OnClickListener {
 
         mBitmapTitle = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdEducation);
         ((ImageView) findViewById(R.id.imageview_title)).setImageBitmap(mBitmapTitle);
-        AnimationUtil.performAnimation((ImageView) findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
+        AnimationUtil.performAnimation(findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
 
         mp = new AudioPlayer(getApplicationContext(), R.raw.homesound);
         mp.start();
@@ -119,7 +119,7 @@ public class EducationMenuActivity extends Activity implements OnClickListener {
         slide4.setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapEduMenu4));
         slide5.setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapEduMenu5));
         slide5.setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapEduMenu5));
-        ((LinearLayout) findViewById(R.id.linear_layout_parent)).setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapEduBg));
+        findViewById(R.id.linear_layout_parent).setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapEduBg));
 
 
         slide1.setOnClickListener(this);

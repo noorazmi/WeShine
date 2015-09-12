@@ -19,7 +19,7 @@ public enum FragmentTag {
 	FragmentMazeGame5(MazeGame5Fragment.class.getSimpleName());
 	
     private String fragmentTag;
-	private FragmentTag(String fragmentTag) {
+	FragmentTag(String fragmentTag) {
 		this.fragmentTag = fragmentTag;
 	}
 	
