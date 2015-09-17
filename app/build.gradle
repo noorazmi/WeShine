@@ -16,6 +16,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+
+    productFlavors {
+        english {
+            applicationId = "com.moderneng.eng"
+        }
+        english_arabic {
+            applicationId = "com.moderneng.engarb"
+        }
+
+    }
+
+
 }
 
 dependencies {

@@ -28,12 +28,13 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.game.util.animation.AnimationUtil;
-import com.game.utils.AppConstant;
-import com.game.utils.Logger;
-import com.game.utils.UtilityMethods;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
+import com.moderneng.animation.AnimationUtil;
+import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.ImageAndMediaResources;
+import com.moderneng.utils.Logger;
+import com.moderneng.utils.UtilityMethods;
 
 public class SunCatcherActivity extends Activity implements OnTouchListener {
 
@@ -110,7 +111,7 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 			public void onTick(long millisUntilFinished) {
 				int remainingMilliSecs = (int) millisUntilFinished / 1000;
 				if (remainingMilliSecs == 58) {
-					startAudioSound(WeShineApp.sSoundIdCatchUpTheSun);
+					startAudioSound(ImageAndMediaResources.sSoundIdCatchUpTheSun);
 				}
 				if (remainingMilliSecs == 1) {
 					raysImageView.setVisibility(View.INVISIBLE);
@@ -124,13 +125,13 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 					betteryView.setImageResource(R.drawable.battery100);
 
 					(findViewById(R.id.sunCatcher_batteryFullLinearLayout)).setVisibility(View.VISIBLE);
-					//Bitmap bm = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdBatteryIsFullThanYou)
-					((ImageView)findViewById(R.id.sunCatcher_batteryFullImageView)).setImageBitmap(BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdBatteryIsFullThanYou));
-					startAudioSound(WeShineApp.sSoundIdBatteryFullThankYou);
+					//Bitmap bm = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdBatteryIsFullThanYou)
+					((ImageView)findViewById(R.id.sunCatcher_batteryFullImageView)).setImageBitmap(BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdBatteryIsFullThanYou));
+					startAudioSound(ImageAndMediaResources.sSoundIdBatteryFullThankYou);
 				} else {
 					(findViewById(R.id.sunCatcher_gameOverLinearLayout)).setVisibility(View.VISIBLE);
-					((ImageView)findViewById(R.id.imageview_gameover)).setImageBitmap(BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdGameOver));
-					startAudioSound(WeShineApp.sSoundIdGameOver);
+					((ImageView)findViewById(R.id.imageview_gameover)).setImageBitmap(BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdGameOver));
+					startAudioSound(ImageAndMediaResources.sSoundIdGameOver);
 				}
 
 			}
@@ -431,13 +432,13 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 			++rayHitCount;
 			if (rayHitCount == BATTERY_25_HIT_COUNT) {
 				betteryView.setImageResource(R.drawable.battery25);
-				startAudioSound(WeShineApp.sSoundIdWellDone);
+				startAudioSound(ImageAndMediaResources.sSoundIdWellDone);
 			} else if (rayHitCount == BATTERY_50_HIT_COUNT) {
 				betteryView.setImageResource(R.drawable.battery50);
-				startAudioSound(WeShineApp.sSoundIdPerfect);
+				startAudioSound(ImageAndMediaResources.sSoundIdPerfect);
 			} else if (rayHitCount == BATTERY_75_HIT_COUNT) {
 				betteryView.setImageResource(R.drawable.battery75);
-				startAudioSound(WeShineApp.sSoundIdSuper);
+				startAudioSound(ImageAndMediaResources.sSoundIdSuper);
 			}
 
 		}
@@ -573,7 +574,7 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 		Uri uri = Uri.parse(uriPath);
 		mediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
 		//if(audioFileId == R.raw.battery_full_thankyou || audioFileId == R.raw.game_over){
-		if(audioFileId == WeShineApp.sSoundIdBatteryFullThankYou || audioFileId == WeShineApp.sSoundIdGameOver){
+		if(audioFileId == ImageAndMediaResources.sSoundIdBatteryFullThankYou || audioFileId == ImageAndMediaResources.sSoundIdGameOver){
 			mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
 				@Override
 				public void onCompletion(MediaPlayer mp) {

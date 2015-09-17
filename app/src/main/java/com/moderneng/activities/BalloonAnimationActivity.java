@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.game.framents.BalloonAnimationActivityFragment;
-import com.game.utils.AppConstant;
+import com.moderneng.framents.BalloonAnimationActivityFragment;
+import com.moderneng.utils.AppConstant;
 import com.moderneng.R;
 
 public class BalloonAnimationActivity extends Activity {

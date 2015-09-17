@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:scaleType="fitXY" />
 
-    <com.game.views.MazeGame1View
+    <com.moderneng.views.MazeGame1View
         android:id="@+id/mazeGame5_middleImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

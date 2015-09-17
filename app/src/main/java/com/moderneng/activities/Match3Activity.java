@@ -19,20 +19,21 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 
-import com.android.model.Gamemusic;
-import com.android.model.ImageDragShadowBuilder;
-import com.example.solarenegy.AudioPlayer;
-import com.game.util.animation.AnimType;
-import com.game.util.animation.AnimationUtil;
-import com.game.utils.AppConstant;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
+import com.moderneng.animation.AnimType;
+import com.moderneng.animation.AnimationUtil;
+import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.AudioPlayer;
+import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.ImageAndMediaResources;
+import com.moderneng.views.ImageDragShadowBuilder;
 
 public class Match3Activity extends Activity {
-    ImageView house, sun, golf, store, plane, drag;
-    int count = 1;
-    Gamemusic mp3;
-    AudioPlayer mp;
+    private ImageView house, sun, golf, store, plane, drag;
+    private int count = 1;
+    private Gamemusic mp3;
+    private AudioPlayer mp;
     private Bitmap mBitmapText;
     private MediaPlayer mMediaPlayer;
 
@@ -43,7 +44,7 @@ public class Match3Activity extends Activity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.match3);
-        mp = new AudioPlayer(getApplicationContext(), WeShineApp.sSoundIdMatching3);
+        mp = new AudioPlayer(getApplicationContext(), ImageAndMediaResources.sSoundIdMatching3);
         mp.start();
         house = (ImageView) findViewById(R.id.houseblank);
         sun = (ImageView) findViewById(R.id.match3sun);
@@ -59,7 +60,7 @@ public class Match3Activity extends Activity {
         plane.setOnDragListener(new mydraglisterner());
         drag.setOnTouchListener(new mytouchlistner());
 
-        mBitmapText = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdGoogJob);
+        mBitmapText = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdGoogJob);
         ((ImageView) findViewById(R.id.imageview_greeting)).setImageBitmap(mBitmapText);
     }
 
@@ -181,7 +182,7 @@ public class Match3Activity extends Activity {
     }
 
     protected void startAudioSound() {
-        String uriPath = AppConstant.BASE_RESOURCE_PATH + WeShineApp.sSoundIdGoodjob;
+        String uriPath = AppConstant.BASE_RESOURCE_PATH + ImageAndMediaResources.sSoundIdGoodjob;
         Uri uri = Uri.parse(uriPath);
         mMediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
         mMediaPlayer.start();

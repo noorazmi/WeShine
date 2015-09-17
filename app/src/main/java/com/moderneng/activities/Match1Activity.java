@@ -20,20 +20,21 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.android.model.Gamemusic;
-import com.android.model.ImageDragShadowBuilder;
-import com.game.util.animation.AnimType;
-import com.game.util.animation.AnimationUtil;
-import com.game.utils.AppConstant;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
+import com.moderneng.animation.AnimType;
+import com.moderneng.animation.AnimationUtil;
+import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.ImageAndMediaResources;
+import com.moderneng.views.ImageDragShadowBuilder;
 
 public class Match1Activity extends Activity {
-    ImageView drag, sun, tree, golf, car, house, cloud;
-    int count = 1;
-    Boolean play = false, mp4play = true;
-    Gamemusic mp, mp4, mp5;
-    RelativeLayout li;
+    private ImageView drag, sun, tree, golf, house, cloud;
+    private int count = 1;
+    private Boolean play = false;
+    private Gamemusic mp;
+    private RelativeLayout li;
     private Bitmap mBitmapText;
     private MediaPlayer mMediaPlayer;
 
@@ -44,7 +45,7 @@ public class Match1Activity extends Activity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.match1);
-        mp = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdMatching1);
+        mp = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdMatching1);
         mp.start();
         drag = (ImageView) findViewById(R.id.draglayout);
         golf = (ImageView) findViewById(R.id.golfblank);
@@ -59,7 +60,7 @@ public class Match1Activity extends Activity {
         house.setOnDragListener(new MyDragListener());
         cloud.setOnDragListener(new MyDragListener());
         drag.setOnTouchListener(new MyTouchListener());
-        mBitmapText = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdExcellent);
+        mBitmapText = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdExcellent);
         ((ImageView) findViewById(R.id.imageview_greeting)).setImageBitmap(mBitmapText);
     }
 
@@ -180,7 +181,7 @@ public class Match1Activity extends Activity {
 
 
     protected void startAudioSound() {
-        String uriPath = AppConstant.BASE_RESOURCE_PATH + WeShineApp.sSoundIdExcellent;
+        String uriPath = AppConstant.BASE_RESOURCE_PATH + ImageAndMediaResources.sSoundIdExcellent;
         Uri uri = Uri.parse(uriPath);
         mMediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
         mMediaPlayer.start();

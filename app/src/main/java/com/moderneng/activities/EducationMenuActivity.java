@@ -12,13 +12,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
-import com.example.solarenegy.AudioPlayer;
-import com.game.util.animation.AnimType;
-import com.game.util.animation.AnimationUtil;
+import com.moderneng.animation.AnimType;
+import com.moderneng.animation.AnimationUtil;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
+import com.moderneng.utils.AudioPlayer;
+import com.moderneng.utils.ImageAndMediaResources;
 
 public class EducationMenuActivity extends Activity implements OnClickListener {
     private ImageButton slide1, slide2, slide3, slide4, slide5;
@@ -98,20 +98,20 @@ public class EducationMenuActivity extends Activity implements OnClickListener {
     protected void onResume() {
         super.onResume();
 
-        mBitmapTitle = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdEducation);
+        mBitmapTitle = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdEducation);
         ((ImageView) findViewById(R.id.imageview_title)).setImageBitmap(mBitmapTitle);
         AnimationUtil.performAnimation(findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
 
         mp = new AudioPlayer(getApplicationContext(), R.raw.homesound);
         mp.start();
 
-        mBitmapEduMenu1 = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdEduMenuImg1);
-        mBitmapEduMenu2 = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdEduMenuImg2);
-        mBitmapEduMenu3 = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdEduMenuImg3);
-        mBitmapEduMenu4 = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdEduMenuImg4);
-        mBitmapEduMenu5 = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdEduMenuImg5);
+        mBitmapEduMenu1 = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdEduMenuImg1);
+        mBitmapEduMenu2 = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdEduMenuImg2);
+        mBitmapEduMenu3 = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdEduMenuImg3);
+        mBitmapEduMenu4 = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdEduMenuImg4);
+        mBitmapEduMenu5 = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdEduMenuImg5);
 
-        mBitmapEduBg = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdEduBg);
+        mBitmapEduBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdEduBg);
 
         slide1.setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapEduMenu1));
         slide2.setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapEduMenu2));

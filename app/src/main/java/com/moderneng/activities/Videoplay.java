@@ -14,15 +14,16 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.VideoView;
 
-import com.game.utils.AppConstant;
 import com.moderneng.R;
-import com.moderneng.WeShineApp;
+import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.ImageAndMediaResources;
 
 public class Videoplay extends Activity {
 	private VideoView vv;
 	private Intent imatch;
 	private  int intValue;
 	private Bitmap mBitmapThankyou;
+	private String mVideoType;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,6 +34,7 @@ public class Videoplay extends Activity {
 		System.gc();
 		Intent mIntent = getIntent();
 		intValue = mIntent.getIntExtra("vid", 0);
+		mVideoType = mIntent.getStringExtra(AppConstant.VIDEO_TYPE_STORY);
 		vv = (VideoView) this.findViewById(R.id.videoview_game_end);
 		String uri = "android.resource://" + getPackageName() + "/" + intValue;
 		vv.setVideoURI(Uri.parse(uri));
@@ -68,22 +70,22 @@ public class Videoplay extends Activity {
 		{
 
 			switch (intValue) {
-				case R.raw.puzzle1a:
-					finish();
-					imatch=new Intent(Videoplay.this,Puzzle2Activity.class);
-					break;
-				case R.raw.puzzle2a:
-					finish();
-					imatch=new Intent(Videoplay.this,Puzzle3Activity.class);
-					break;
-				case R.raw.puzzle3a:
-					finish();
-					imatch=new Intent(Videoplay.this,Puzzle4Activity.class);
-					break;
-				case R.raw.puzzle4a:
-					finish();
-					imatch=new Intent(Videoplay.this,Puzzle5Activity.class);
-					break;
+//				case R.raw.puzzle1a:
+//					finish();
+//					imatch=new Intent(Videoplay.this,Puzzle2Activity.class);
+//					break;
+//				case R.raw.puzzle2a:
+//					finish();
+//					imatch=new Intent(Videoplay.this,Puzzle3Activity.class);
+//					break;
+//				case R.raw.puzzle3a:
+//					finish();
+//					imatch=new Intent(Videoplay.this,Puzzle4Activity.class);
+//					break;
+//				case R.raw.puzzle4a:
+//					finish();
+//					imatch=new Intent(Videoplay.this,Puzzle5Activity.class);
+//					break;
 				case R.raw.matching1_video:
 					finish();
 					imatch = new Intent(Videoplay.this, Match2Activity.class);
@@ -104,13 +106,18 @@ public class Videoplay extends Activity {
 					finish();
 					//imatch = new Intent(Videoplay.this, Match5Activity.class);
 					break;
-				case R.raw.story_arb:
-					showStoryEndImage();
-					break;
+//				case R.raw.story_arb:
+//					showStoryEndImage();
+//					break;
 				case R.raw.story:
 					showStoryEndImage();
 					break;
 			}
+
+			if(mVideoType.equals(AppConstant.VIDEO_TYPE_STORY)){
+				showStoryEndImage();
+			}
+
 			if(imatch!=null){
 				startActivity(imatch);
 			}
@@ -120,7 +127,7 @@ public class Videoplay extends Activity {
 
 	private void showStoryEndImage(){
 
-		mBitmapThankyou = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdStoryEndThankYouImage);
+		mBitmapThankyou = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdStoryEndThankYouImage);
 		((ImageView)findViewById(R.id.imageview_thankyou)).setImageBitmap(mBitmapThankyou);
 		findViewById(R.id.imageview_thankyou).setVisibility(View.VISIBLE);
 		findViewById(R.id.videoview_game_end).setVisibility(View.GONE);

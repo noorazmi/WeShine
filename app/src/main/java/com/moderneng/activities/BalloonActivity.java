@@ -22,11 +22,12 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.game.util.animation.AnimType;
-import com.game.util.animation.AnimationUtil;
-import com.game.utils.AppConstant;
-import com.game.utils.Logger;
-import com.game.utils.UtilityMethods;
+import com.moderneng.animation.AnimType;
+import com.moderneng.animation.AnimationUtil;
+import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.ImageAndMediaResources;
+import com.moderneng.utils.Logger;
+import com.moderneng.utils.UtilityMethods;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
 
@@ -170,9 +171,9 @@ public class BalloonActivity extends Activity {
 						balloonTimer = null;
 						timerText.setText("" + 0);
 						baloonPanelAnimatorSet.end();
-						(findViewById(R.id.gameOverImageView)).setBackgroundResource(WeShineApp.sImageIdGameOver);
+						(findViewById(R.id.gameOverImageView)).setBackgroundResource(ImageAndMediaResources.sImageIdGameOver);
 						(findViewById(R.id.gameOverImageView)).setVisibility(View.VISIBLE);
-						startAudioSound(WeShineApp.sSoundIdGameOver);
+						startAudioSound(ImageAndMediaResources.sSoundIdGameOver);
 						isGameFinish = true;
 						tickTimer.cancel();
 					}
@@ -336,10 +337,10 @@ public class BalloonActivity extends Activity {
 			@Override
 			public void onAnimationEnd(Animator animation) {
 				super.onAnimationEnd(animation);
-				(findViewById(R.id.gameOverImageView)).setBackgroundResource(WeShineApp.sImageIdCongratulations);
+				(findViewById(R.id.gameOverImageView)).setBackgroundResource(ImageAndMediaResources.sImageIdCongratulations);
 				(findViewById(R.id.gameOverImageView)).setVisibility(View.VISIBLE);
 				AnimationUtil.performAnimation(findViewById(R.id.gameOverImageView), AnimType.ZOOM_IN, null);
-				startAudioSound(WeShineApp.sSoundIdCongratulationsAndSound);
+				startAudioSound(ImageAndMediaResources.sSoundIdCongratulationsAndSound);
 			}
 		});
 		animatorSet.play(birdAnimX).with(birdAnimY);
@@ -1212,7 +1213,7 @@ public class BalloonActivity extends Activity {
 
 	private void playPerfectSound() {
 		//String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.perfect;
-		String uriPath = AppConstant.BASE_RESOURCE_PATH + WeShineApp.sSoundIdPerfect;
+		String uriPath = AppConstant.BASE_RESOURCE_PATH + ImageAndMediaResources.sSoundIdPerfect;
 		Uri uri = Uri.parse(uriPath);
 		perfectPlayer = MediaPlayer.create(this, uri);
 		perfectPlayer.setOnCompletionListener(new OnCompletionListener() {
@@ -1228,7 +1229,7 @@ public class BalloonActivity extends Activity {
 	}
 
 	private void playGoodJobSound() {
-		String uriPath = AppConstant.BASE_RESOURCE_PATH + WeShineApp.sSoundIdGoodjob;
+		String uriPath = AppConstant.BASE_RESOURCE_PATH + ImageAndMediaResources.sSoundIdGoodjob;
 		Uri uri = Uri.parse(uriPath);
 		goodJobPlayer = MediaPlayer.create(this, uri);
 		goodJobPlayer.setOnCompletionListener(new OnCompletionListener() {
@@ -1244,7 +1245,7 @@ public class BalloonActivity extends Activity {
 	}
 
 	private void playPopBalloon() {
-		String uriPath = AppConstant.BASE_RESOURCE_PATH + WeShineApp.sSoundIdPopTheBalloons;
+		String uriPath = AppConstant.BASE_RESOURCE_PATH + ImageAndMediaResources.sSoundIdPopTheBalloons;
 		Uri uri = Uri.parse(uriPath);
 		popBalloonPlayer = MediaPlayer.create(this, uri);
 		popBalloonPlayer.setOnCompletionListener(new OnCompletionListener() {
@@ -1260,7 +1261,7 @@ public class BalloonActivity extends Activity {
 	}
 
 	private void playSuperSound() {
-		String uriPath = AppConstant.BASE_RESOURCE_PATH + WeShineApp.sSoundIdSuper;
+		String uriPath = AppConstant.BASE_RESOURCE_PATH + ImageAndMediaResources.sSoundIdSuper;
 		Uri uri = Uri.parse(uriPath);
 		superPlayer = MediaPlayer.create(this, uri);
 		superPlayer.setOnCompletionListener(new OnCompletionListener() {
@@ -1276,7 +1277,7 @@ public class BalloonActivity extends Activity {
 	}
 
 	private void playFabulousSound() {
-		String uriPath = AppConstant.BASE_RESOURCE_PATH + WeShineApp.sSoundIdFabulous;
+		String uriPath = AppConstant.BASE_RESOURCE_PATH + ImageAndMediaResources.sSoundIdFabulous;
 		Uri uri = Uri.parse(uriPath);
 		fabulousPlayer = MediaPlayer.create(this, uri);
 		fabulousPlayer.setOnCompletionListener(new OnCompletionListener() {
@@ -1292,7 +1293,7 @@ public class BalloonActivity extends Activity {
 	}
 
 	private void playGreatSound() {
-		String uriPath = AppConstant.BASE_RESOURCE_PATH + WeShineApp.sSoundIdGreat;
+		String uriPath = AppConstant.BASE_RESOURCE_PATH + ImageAndMediaResources.sSoundIdGreat;
 		Uri uri = Uri.parse(uriPath);
 		greatPlayer = MediaPlayer.create(this, uri);
 		greatPlayer.setOnCompletionListener(new OnCompletionListener() {
@@ -1308,7 +1309,7 @@ public class BalloonActivity extends Activity {
 	}
 
 	private void playExcellentSound() {
-		String uriPath = AppConstant.BASE_RESOURCE_PATH + WeShineApp.sSoundIdExcellent;
+		String uriPath = AppConstant.BASE_RESOURCE_PATH + ImageAndMediaResources.sSoundIdExcellent;
 		Uri uri = Uri.parse(uriPath);
 		excellentPlayer = MediaPlayer.create(this, uri);
 		excellentPlayer.setOnCompletionListener(new OnCompletionListener() {
@@ -1325,7 +1326,7 @@ public class BalloonActivity extends Activity {
 
 	private void playWelldoneSound() {
 		//String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.well_done;
-		String uriPath = AppConstant.BASE_RESOURCE_PATH + WeShineApp.sSoundIdWellDone;
+		String uriPath = AppConstant.BASE_RESOURCE_PATH + ImageAndMediaResources.sSoundIdWellDone;
 		Uri uri = Uri.parse(uriPath);
 		welldonePlayer = MediaPlayer.create(this, uri);
 		welldonePlayer.setOnCompletionListener(new OnCompletionListener() {

@@ -23,12 +23,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.android.model.Gamemusic;
-import com.game.util.animation.AnimType;
-import com.game.util.animation.AnimationUtil;
-import com.game.utils.AppConstant;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
+import com.moderneng.animation.AnimType;
+import com.moderneng.animation.AnimationUtil;
+import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.ImageAndMediaResources;
 
 public class MemoryGame1Activity extends Activity implements OnClickListener, AnimationListener {
 	private ImageView plate1, cart1, blue1, blue2, cart2, plate2, clockani, textimg;
@@ -85,7 +86,7 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
 		cart2 = (ImageView) findViewById(R.id.cart2);
 		blue2 = (ImageView) findViewById(R.id.blue2);
 
-		gamemusic = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdFindTheSimilarCards);
+		gamemusic = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdFindTheSimilarCards);
 		gamemusic.start();
 		new Handler().postDelayed(new Runnable() {
 			@Override
@@ -129,7 +130,7 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
 				tv.setText("0");
 				mMediaPlayerClock.stop();
 				clockanimation.stop();
-				gamemusic = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdGameOverTingTing);
+				gamemusic = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGameOverTingTing);
 				gamemusic.setOnCompleteListener(new Gamemusic.OnCompleteListener() {
 					@Override
 					public void onComplete() {
@@ -244,32 +245,32 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
 				if (v1.getId() == R.id.plate1) {
 					plate1.setImageResource(R.drawable.plate);
 					gamemusic = new Gamemusic(getApplicationContext(),
-							WeShineApp.sSoundIdSolarLight);
+							ImageAndMediaResources.sSoundIdSolarLight);
 					gamemusic.start();
 				} else if (v1.getId() == R.id.plate2) {
 					plate2.setImageResource(R.drawable.plate);
 					gamemusic = new Gamemusic(getApplicationContext(),
-							WeShineApp.sSoundIdSolarLight);
+							ImageAndMediaResources.sSoundIdSolarLight);
 					gamemusic.start();
 				} else if (v1.getId() == R.id.cart1) {
 					cart1.setImageResource(R.drawable.cgolf);
 					gamemusic = new Gamemusic(getApplicationContext(),
-							WeShineApp.sSoundIdGolfCart);
+							ImageAndMediaResources.sSoundIdGolfCart);
 					gamemusic.start();
 				} else if (v1.getId() == R.id.cart2) {
 					cart2.setImageResource(R.drawable.cgolf);
 					gamemusic = new Gamemusic(getApplicationContext(),
-							WeShineApp.sSoundIdGolfCart);
+							ImageAndMediaResources.sSoundIdGolfCart);
 					gamemusic.start();
 				} else if (v1.getId() == R.id.blue1) {
 					blue1.setImageResource(R.drawable.cblue);
 					gamemusic = new Gamemusic(getApplicationContext(),
-							WeShineApp.sSoundIdGreenBilli);
+							ImageAndMediaResources.sSoundIdGreenBilli);
 					gamemusic.start();
 				} else if (v1.getId() == R.id.blue2) {
 					blue2.setImageResource(R.drawable.cblue);
 					gamemusic = new Gamemusic(getApplicationContext(),
-							WeShineApp.sSoundIdGreenBilli);
+							ImageAndMediaResources.sSoundIdGreenBilli);
 					gamemusic.start();
 				}
 				// isface = true;
@@ -279,32 +280,32 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
 				if (v2.getId() == R.id.plate1) {
 					plate1.setImageResource(R.drawable.plate);
 					gamemusic = new Gamemusic(getApplicationContext(),
-							WeShineApp.sSoundIdSolarLight);
+							ImageAndMediaResources.sSoundIdSolarLight);
 					gamemusic.start();
 				} else if (v2.getId() == R.id.plate2) {
 					plate2.setImageResource(R.drawable.plate);
 					gamemusic = new Gamemusic(getApplicationContext(),
-							WeShineApp.sSoundIdSolarLight);
+							ImageAndMediaResources.sSoundIdSolarLight);
 					gamemusic.start();
 				} else if (v2.getId() == R.id.cart1) {
 					cart1.setImageResource(R.drawable.cgolf);
 					gamemusic = new Gamemusic(getApplicationContext(),
-							WeShineApp.sSoundIdGolfCart);
+							ImageAndMediaResources.sSoundIdGolfCart);
 					gamemusic.start();
 				} else if (v2.getId() == R.id.cart2) {
 					cart2.setImageResource(R.drawable.cgolf);
 					gamemusic = new Gamemusic(getApplicationContext(),
-							WeShineApp.sSoundIdGolfCart);
+							ImageAndMediaResources.sSoundIdGolfCart);
 					gamemusic.start();
 				} else if (v2.getId() == R.id.blue1) {
 					blue1.setImageResource(R.drawable.cblue);
 					gamemusic = new Gamemusic(getApplicationContext(),
-							WeShineApp.sSoundIdGreenBilli);
+							ImageAndMediaResources.sSoundIdGreenBilli);
 					gamemusic.start();
 				} else if (v2.getId() == R.id.blue2) {
 					blue2.setImageResource(R.drawable.cblue);
 					gamemusic = new Gamemusic(getApplicationContext(),
-							WeShineApp.sSoundIdGreenBilli);
+							ImageAndMediaResources.sSoundIdGreenBilli);
 					gamemusic.start();
 				}
 
@@ -394,9 +395,9 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
 
 							clockanimation.stop();
 							Intent intent = new Intent(MemoryGame1Activity.this, BalloonAnimationActivity.class);
-							intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, WeShineApp.sImageIdWellDone);
+							intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, ImageAndMediaResources.sImageIdWellDone);
 							//intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, R.raw.well_done);
-							intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, WeShineApp.sSoundIdWellDone);
+							intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, ImageAndMediaResources.sSoundIdWellDone);
 							intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.ballon_playing);
 							intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, AppConstant.BALLOON_ANIMATION_SOUND_DELAY);
 
@@ -479,10 +480,10 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
 //			mBitmapBg = BitmapFactory.decodeResource(getResources(), R.drawable.memory_games_level_one_bg);
 //		}
 
-		mBitmapBg = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMemoryGamesLevel1);
+		mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryGamesLevel1);
 		findViewById(R.id.relative_layout_parent).setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapBg));
 
-		mBitmapTitle = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdMemoryGame);
+		mBitmapTitle = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryGame);
 		((ImageView) findViewById(R.id.imageview_title)).setImageBitmap(mBitmapTitle);
 		AnimationUtil.performAnimation(findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
 	}

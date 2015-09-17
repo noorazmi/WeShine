@@ -20,14 +20,15 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.android.model.Gamemusic;
-import com.android.model.ImageDragShadowBuilder;
-import com.example.solarenegy.AudioPlayer;
-import com.game.util.animation.AnimType;
-import com.game.util.animation.AnimationUtil;
-import com.game.utils.AppConstant;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
+import com.moderneng.animation.AnimType;
+import com.moderneng.animation.AnimationUtil;
+import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.AudioPlayer;
+import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.ImageAndMediaResources;
+import com.moderneng.views.ImageDragShadowBuilder;
 
 public class Match4Activity extends Activity {
     private ImageView sun4, redbuoy, ship, dolfin, greenb, drag4;
@@ -49,7 +50,7 @@ public class Match4Activity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED, WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.match4);
-        mp = new AudioPlayer(getApplicationContext(), WeShineApp.sSoundIdMatching4);
+        mp = new AudioPlayer(getApplicationContext(), ImageAndMediaResources.sSoundIdMatching4);
         mp.start();
         sun4 = (ImageView) findViewById(R.id.sun4v);
         redbuoy = (ImageView) findViewById(R.id.redbuoyv);
@@ -65,7 +66,7 @@ public class Match4Activity extends Activity {
         li = (RelativeLayout) findViewById(R.id.m4mainl);
         drag4.setOnTouchListener(new Mytouchlistener());
 
-        mBitmapText = BitmapFactory.decodeResource(getResources(), WeShineApp.sImageIdGoogJob);
+        mBitmapText = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdGoogJob);
         ((ImageView) findViewById(R.id.imageview_greeting)).setImageBitmap(mBitmapText);
 
     }
@@ -189,7 +190,7 @@ public class Match4Activity extends Activity {
     }
 
     protected void startAudioSound() {
-        String uriPath = AppConstant.BASE_RESOURCE_PATH + WeShineApp.sSoundIdGoodjob;
+        String uriPath = AppConstant.BASE_RESOURCE_PATH + ImageAndMediaResources.sSoundIdGoodjob;
         Uri uri = Uri.parse(uriPath);
         mMediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
         mMediaPlayer.start();

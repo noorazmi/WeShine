@@ -19,22 +19,23 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.android.model.Gamemusic;
-import com.android.model.ImageDragShadowBuilder;
-import com.example.solarenegy.AudioPlayer;
-import com.game.utils.AppConstant;
+import com.moderneng.utils.AppConstant;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
-
+import com.moderneng.utils.AudioPlayer;
+import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.AudioPlayer;
+import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.ImageAndMediaResources;
+import com.moderneng.views.ImageDragShadowBuilder;
 
 public class Puzzle4Activity extends Activity {
-	RelativeLayout p4rlay;
-	ImageView p4imgv1, p4imgv2, p4imgv3, p4imgv4, p4imgv5, p4imgv6, p4imgv7, p4dragv;
-	int count = 1;
-	AudioPlayer mp;
-	Gamemusic mp3,mp7;
-	int x,y;
-    int millisecond=700;
+	private RelativeLayout p4rlay;
+	private ImageView p4imgv1, p4imgv2, p4imgv3, p4imgv4, p4imgv5, p4imgv6, p4imgv7, p4dragv;
+	private int count = 1;
+	private AudioPlayer mp;
+	private Gamemusic mp3;
+	private int x,y;
 Boolean play=true;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -162,7 +163,7 @@ Boolean play=true;
 				} else if (count == 2 && dragv.getId() == R.id.mtop) {
 					p4imgv4.setImageResource(R.drawable.p4m4);
 					count++;
-					mp3 = new Gamemusic(getApplicationContext(), WeShineApp.sSoundIdSuper);
+					mp3 = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSuper);
 					mp3.start();
 					 int[] imageCordinates = new int[2];
 					 p4imgv4.getLocationOnScreen(imageCordinates);
@@ -279,8 +280,8 @@ Boolean play=true;
 //						startActivity(ipuzzle4);
 
 					Intent intent = new Intent(Puzzle4Activity.this, BalloonAnimationActivity.class);
-					intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, WeShineApp.sImageIdGoogJob);
-					intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, WeShineApp.sSoundIdGoodjob);
+					intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, ImageAndMediaResources.sImageIdGoogJob);
+					intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, ImageAndMediaResources.sSoundIdGoodjob);
 					intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.hey);
 					intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, AppConstant.BALLOON_ANIMATION_SOUND_DELAY);
 
