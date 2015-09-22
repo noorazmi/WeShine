@@ -5,9 +5,11 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.content.res.AssetFileDescriptor;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.net.Uri;
@@ -36,6 +38,8 @@ import com.moderneng.utils.ImageAndMediaResources;
 import com.moderneng.utils.Logger;
 import com.moderneng.utils.UtilityMethods;
 
+import java.io.IOException;
+
 public class SunCatcherActivity extends Activity implements OnTouchListener {
 
 	private static final String TAG = SunCatcherActivity.class.getName();
@@ -48,7 +52,8 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 	private ImageView letterView;
 	private ImageView birdImageView;
 	private ImageView sunImageView;
-	private int mAudioFileId = -1;
+	private int mAudioFileId ;
+	private String mAudioFileName ;
 	private MediaPlayer mediaPlayer;
 	private double screenSize;
 	private int birdMarginTop;
@@ -559,10 +564,23 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 
 	private void startBackgroundMusic() {
 
-		String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.sun_cather_music;
+		//String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.sun_cather_music;
 		// mAudioFileId = R.raw.sun_cather_music;
-		Uri uri = Uri.parse(uriPath);
-		backgroundMusicMediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
+		//Uri uri = Uri.parse(uriPath);
+		//backgroundMusicMediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
+
+
+
+		AssetFileDescriptor fd = WeShineApp.getAssetFileDescriptor("sun_cather_music" + ".mp3");
+		backgroundMusicMediaPlayer = new MediaPlayer();
+		backgroundMusicMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+		backgroundMusicMediaPlayer.setLooping(false);
+		try {
+			backgroundMusicMediaPlayer.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(), fd.getLength());
+			backgroundMusicMediaPlayer.prepare();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		backgroundMusicMediaPlayer.setOnCompletionListener(new MediaListener());
 		backgroundMusicMediaPlayer.start();
 	}
@@ -575,6 +593,41 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 		mediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
 		//if(audioFileId == R.raw.battery_full_thankyou || audioFileId == R.raw.game_over){
 		if(audioFileId == ImageAndMediaResources.sSoundIdBatteryFullThankYou || audioFileId == ImageAndMediaResources.sSoundIdGameOver){
+			mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
+				@Override
+				public void onCompletion(MediaPlayer mp) {
+					if (mp != null) {
+						mp.release();
+						finish();
+					}
+				}
+			});
+		}else{
+			mediaPlayer.setOnCompletionListener(new MediaListener());
+		}
+
+		mediaPlayer.start();
+
+	}
+
+
+	protected void startAudioSound(String audioFileName) {
+		//String uriPath = AppConstant.BASE_RESOURCE_PATH + audioFileId;
+		mAudioFileName = audioFileName;
+		//Uri uri = Uri.parse(uriPath);
+		//mediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
+		//if(audioFileId == R.raw.battery_full_thankyou || audioFileId == R.raw.game_over){
+
+		AssetFileDescriptor fd = WeShineApp.getAssetFileDescriptor(audioFileName+".mp3");
+		mediaPlayer = new MediaPlayer();
+		mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+		try {
+			mediaPlayer.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(), fd.getLength());
+			mediaPlayer.prepare();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if(mAudioFileName.equals(ImageAndMediaResources.sSoundIdBatteryFullThankYou) || mAudioFileName.equals(ImageAndMediaResources.sSoundIdGameOver)){
 			mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
 				@Override
 				public void onCompletion(MediaPlayer mp) {

@@ -13,7 +13,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
 import android.widget.ImageView;
 
 import com.moderneng.R;
@@ -21,15 +20,13 @@ import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
 import com.moderneng.utils.AudioPlayer;
 import com.moderneng.utils.ColorTool;
-import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.GameMusic;
 import com.moderneng.utils.ImageAndMediaResources;
 
 public class MemoryGamesMenuActivity extends Activity implements View.OnTouchListener {
     private ImageView frontimg, backimg, bird, bird2, beev, bird3;
-    private Animation bird1;
-    private Gamemusic mp;
+    private GameMusic mp;
     private AudioPlayer mp4;
-    private Boolean isopen = true;
     private Bitmap mBitmapFront;
     private Bitmap mBitmapBack;
     private Bitmap mBitmapTitle;
@@ -58,93 +55,42 @@ public class MemoryGamesMenuActivity extends Activity implements View.OnTouchLis
         beeanim.start();
         AnimationDrawable gyroAnimation = (AnimationDrawable) bird.getBackground();
         gyroAnimation.start();
-        //mp = new Gamemusic(getApplicationContext(), R.raw.mgames);
-//        if (WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)) {
-//            mp = new Gamemusic(getApplicationContext(), R.raw.mgames);
-//        } else if (WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)) {
-//            mp = new Gamemusic(getApplicationContext(), R.raw.memmory_games_arb);
-//        }
-
-//        mp = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdMemoryGames);
-//        mp.start();
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                mp.pause();
-//                mp4 = new AudioPlayer(getApplicationContext(), R.raw.homesound);
-//                mp4.start();
-//            }
-//        }, 1100);
         frontimg = (ImageView) findViewById(R.id.frontimg);
         backimg = (ImageView) findViewById(R.id.backimg);
     }
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        Boolean handlehere = false;
         final int action = event.getAction();
         final int evx = (int) event.getX();
         final int evy = (int) event.getY();
-        int nextimage = -1;
         ImageView front = (ImageView) v.findViewById(R.id.frontimg);
         if (front == null)
             return false;
-        Integer tagNum = (Integer) front.getTag();
-        int currentResource = (tagNum == null) ? R.drawable.mcardfront : tagNum.intValue();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-                if (currentResource == R.drawable.mcardfront) {
-                    handlehere = true;
-                } else
-                    handlehere = true;
-                break;
             case MotionEvent.ACTION_UP:
-                int touchcolor = getHotspotColor(R.id.backimg, evx, evy);
+                int touchColor = getHotspotColor(R.id.backimg, evx, evy);
                 ColorTool ct = new ColorTool();
-                int tolerence = 25;
-                if (ct.closeMatch(Color.BLUE, touchcolor, tolerence)) {
-                    nextimage = 0;
-                } else if (ct.closeMatch(Color.RED, touchcolor, tolerence)) {
-                    nextimage = 1;
-                } else if (ct.closeMatch(Color.GREEN, touchcolor, tolerence)) {
-                    nextimage = 2;
-                } else if (ct.closeMatch(Color.WHITE, touchcolor, tolerence)) {
-                    nextimage = 3;
-                }
-                handlehere = true;
-                break;
-            default:
-                handlehere = false;
-        }
-        if (handlehere) {
-            if (nextimage == 0) {
-                if (mp4 != null) {
-                    mp4.pause();
-                }
+                int tolerance = 25;
+                if (ct.closeMatch(Color.BLUE, touchColor, tolerance)) {
+                    Intent i = new Intent(MemoryGamesMenuActivity.this, MemoryGame1Activity.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(i);
+                } else if (ct.closeMatch(Color.RED, touchColor, tolerance)) {
+                    Intent i2 = new Intent(MemoryGamesMenuActivity.this, MemoryGame3Activity.class);
+                    i2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(i2);
+                } else if (ct.closeMatch(Color.GREEN, touchColor, tolerance)) {
+                    Intent i3 = new Intent(MemoryGamesMenuActivity.this, MemoryGame2Activity.class);
+                    i3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(i3);
+                } else if (ct.closeMatch(Color.WHITE, touchColor, tolerance)) {
 
-                Intent i = new Intent(MemoryGamesMenuActivity.this, MemoryGame1Activity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i);
-                frontimg.setOnTouchListener(null);
-            } else if (nextimage == 1) {
-                if (mp4 != null) {
-                    mp4.pause();
                 }
-                Intent i2 = new Intent(MemoryGamesMenuActivity.this, MemoryGame3Activity.class);
-                i2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i2);
-                frontimg.setOnTouchListener(null);
-            } else if (nextimage == 2) {
-                if (mp4 != null) {
-                    mp4.pause();
-                }
-                Intent i3 = new Intent(MemoryGamesMenuActivity.this, MemoryGame2Activity.class);
-                i3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(i3);
-                frontimg.setOnTouchListener(null);
-            }
+                break;
         }
-        return handlehere;
+        return false;
     }
 
     public int getHotspotColor(int hotspotId, int x, int y) {
@@ -196,13 +142,13 @@ public class MemoryGamesMenuActivity extends Activity implements View.OnTouchLis
     protected void onResume() {
         super.onResume();
 
-        mp = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdMemoryGames);
+        mp = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdMemoryGames);
         mp.start();
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                mp4 = new AudioPlayer(getApplicationContext(), R.raw.homesound);
+                mp4 = new AudioPlayer(getApplicationContext(), "homesound");
                 mp4.start();
             }
         }, 1100);

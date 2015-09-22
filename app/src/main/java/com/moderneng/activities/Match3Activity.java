@@ -5,6 +5,7 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,17 +26,18 @@ import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
 import com.moderneng.utils.AppConstant;
 import com.moderneng.utils.AudioPlayer;
-import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.GameMusic;
 import com.moderneng.utils.ImageAndMediaResources;
 import com.moderneng.views.ImageDragShadowBuilder;
 
 public class Match3Activity extends Activity {
     private ImageView house, sun, golf, store, plane, drag;
     private int count = 1;
-    private Gamemusic mp3;
+    private GameMusic mp3;
     private AudioPlayer mp;
     private Bitmap mBitmapText;
     private MediaPlayer mMediaPlayer;
+    private Bitmap mBitmapBg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,11 +70,10 @@ public class Match3Activity extends Activity {
 
         @Override
         public boolean onTouch(View v, MotionEvent event) {
-            // TODO Auto-generated method stub
             mp.stop();
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 DragShadowBuilder view3 = null;
-                mp3 = new Gamemusic(getApplicationContext(), R.raw.drag);
+                mp3 = new GameMusic(getApplicationContext(), "drag");
                 mp3.start();
                 ImageView img = (ImageView) v;
                 ClipData data = ClipData.newPlainText("", "");
@@ -118,21 +119,21 @@ public class Match3Activity extends Activity {
                     if (count == 1 && v3.getId() == R.id.match3sun) {
                         sun.setImageResource(R.drawable.sun3);
                         count++;
-                        mp3 = new Gamemusic(getApplicationContext(), R.raw.suns);
+                        mp3 = new GameMusic(getApplicationContext(), "suns");
                         mp3.start();
 
                         return true;
                     } else if (count == 2 && v3.getId() == R.id.planeblank) {
                         plane.setImageResource(R.drawable.flight);
                         count++;
-                        mp3 = new Gamemusic(getApplicationContext(), R.raw.flight);
+                        mp3 = new GameMusic(getApplicationContext(), "flight");
                         mp3.start();
 
                         return true;
                     } else if (count == 3 && v3.getId() == R.id.storeblank) {
                         store.setImageResource(R.drawable.store);
                         count++;
-                        mp3 = new Gamemusic(getApplicationContext(), R.raw.store);
+                        mp3 = new GameMusic(getApplicationContext(), "store");
                         mp3.start();
 
                         return true;
@@ -140,7 +141,7 @@ public class Match3Activity extends Activity {
 
                         house.setImageResource(R.drawable.school);
                         count++;
-                        mp3 = new Gamemusic(getApplicationContext(), R.raw.school);
+                        mp3 = new GameMusic(getApplicationContext(), "school");
                         mp3.start();
 
                         return true;
@@ -150,7 +151,7 @@ public class Match3Activity extends Activity {
 
                         return true;
                     } else {
-                        mp3 = new Gamemusic(getApplicationContext(), R.raw.wrongs);
+                        mp3 = new GameMusic(getApplicationContext(), "wrongs");
                         mp3.start();
                         return false;
                     }
@@ -199,8 +200,9 @@ public class Match3Activity extends Activity {
             @Override
             public void onAnimationEnd(Animation animation) {
 
-                Intent intent = new Intent(Match3Activity.this, Videoplay.class);
-                intent.putExtra(AppConstant.EXTRA_VIDEO_ID, R.raw.matching3_video);
+                Intent intent = new Intent(Match3Activity.this, VideoPlayActivity.class);
+                //intent.putExtra(AppConstant.EXTRA_VIDEO_ID, R.raw.matching3_video);
+                intent.putExtra(AppConstant.EXTRA_VIDEO_ID, "matching3_video");
                 intent.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.MACHING_THREE_VIDEO_DURATION);
                 startActivity(intent);
                 finish();
@@ -214,8 +216,21 @@ public class Match3Activity extends Activity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMatch3Bg);
+        findViewById(R.id.relative_layout_parent).setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapBg));
+    }
+
+    @Override
     protected void onStop() {
         super.onStop();
+
+        if(mBitmapBg != null){
+            mBitmapBg.recycle();
+            mBitmapBg = null;
+        }
+
         if(mBitmapText != null){
             mBitmapText.recycle();
             mBitmapText = null;

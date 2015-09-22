@@ -91,7 +91,9 @@ public class LanguageMenuActivity extends Activity implements View.OnTouchListen
 
     @Override
     protected void onResume() {
-        mAudioPlayer = new AudioPlayer(this, R.raw.homesound);
+       // mAudioPlayer = new AudioPlayer(this, R.raw.homesound);
+        //mAudioPlayer = new AudioPlayer(this, R.raw.homesound);
+        mAudioPlayer = new AudioPlayer(this, "homesound.mp3");
         mAudioPlayer.start();
 
 

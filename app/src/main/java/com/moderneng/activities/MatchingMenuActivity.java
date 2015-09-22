@@ -17,12 +17,12 @@ import android.widget.ImageView;
 import com.moderneng.R;
 import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
-import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.GameMusic;
 import com.moderneng.utils.ImageAndMediaResources;
 
 public class MatchingMenuActivity extends Activity implements OnClickListener {
 	private ImageButton game1, game2, game3, game4, game5;
-	private Gamemusic mp4, mp;
+	private GameMusic mp4, mp;
     private Bitmap mBitmapBg;
 	private Bitmap mBitmapTitle;
 
@@ -116,13 +116,13 @@ public class MatchingMenuActivity extends Activity implements OnClickListener {
 		AnimationUtil.performAnimation(findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
 
 
-        mp = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdMatching);
+        mp = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdMatching);
 		mp.start();
 		new Handler().postDelayed(new Runnable() {
 
 			@Override
 			public void run() {
-				mp4 = new Gamemusic(getApplicationContext(), R.raw.homesound);
+				mp4 = new GameMusic(getApplicationContext(), "homesound");
 				mp4.start();
 			}
 		}, 500);

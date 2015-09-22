@@ -2,12 +2,13 @@ package com.moderneng.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -28,8 +29,10 @@ import com.moderneng.WeShineApp;
 import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
 import com.moderneng.utils.AppConstant;
-import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.GameMusic;
 import com.moderneng.utils.ImageAndMediaResources;
+
+import java.io.IOException;
 
 public class MemoryGame3Activity extends Activity implements OnClickListener, AnimationListener {
     private ImageView ucard1, ucard2, ucard3, ucard4, ucard5, mcard1, mcard2, mcard3, mcard4, mcard5, clocka, textv;
@@ -37,7 +40,7 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
     private View v1, v2;
     private int count = 0, clickcount = 0;
     private MediaPlayer mMediaPlayerClock;
-    private Gamemusic findsame;
+    private GameMusic findsame;
     private AnimationDrawable clockanim;
     private TextView tv;
     private RelativeLayout textlay;
@@ -85,7 +88,7 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
         mcard4 = (ImageView) findViewById(R.id.cardb4);
         mcard5 = (ImageView) findViewById(R.id.cardb5);
 
-        findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdFindTheSimilarCard);
+        findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdFindTheSimilarCard);
         findsame.start();
         textlay = (RelativeLayout) findViewById(R.id.textlay);
         textv = (ImageView) findViewById(R.id.textimg);
@@ -102,8 +105,8 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
                 tv.setText("0");
                 mMediaPlayerClock.stop();
                 clockanim.stop();
-                findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGameOverTingTing);
-                findsame.setOnCompleteListener(new Gamemusic.OnCompleteListener() {
+                findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGameOverTingTing);
+                findsame.setOnCompleteListener(new GameMusic.OnCompleteListener() {
                     @Override
                     public void onComplete() {
                         finish();
@@ -131,13 +134,30 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.clocksound;
-                Uri uri = Uri.parse(uriPath);
-                mMediaPlayerClock = MediaPlayer.create(WeShineApp.getInstance(), uri);
-                if(mMediaPlayerClock != null){
-                    mMediaPlayerClock.setVolume(0.25f,0.25f);
-                    mMediaPlayerClock.start();
+//                String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.clocksound;
+//                Uri uri = Uri.parse(uriPath);
+//                mMediaPlayerClock = MediaPlayer.create(WeShineApp.getInstance(), uri);
+//                if(mMediaPlayerClock != null){
+//                    mMediaPlayerClock.setVolume(0.25f,0.25f);
+//                    mMediaPlayerClock.start();
+//                }
+
+                try {
+                    AssetFileDescriptor fd = WeShineApp.getAssetFileDescriptor("clocksound.mp3");
+                    mMediaPlayerClock = new MediaPlayer();
+                    mMediaPlayerClock.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                    mMediaPlayerClock.setLooping(false);
+                    mMediaPlayerClock.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(), fd.getLength());
+                    mMediaPlayerClock.prepare();
+                    if (mMediaPlayerClock != null) {
+                        mMediaPlayerClock.setVolume(0.25f, 0.25f);
+                        mMediaPlayerClock.start();
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
+
             }
         }, 800);
         ucard1.startAnimation(anim1);
@@ -246,43 +266,43 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
         if (clickcount == 1) {
             if (animation == anim1) {
                 if (v1.getId() == R.id.cardu1) {
-                    findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGolfCart);
+                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGolfCart);
                     findsame.start();
                     ucard1.setImageResource(R.drawable.cgolf);
                 } else if (v1.getId() == R.id.cardb1) {
                     mcard1.setImageResource(R.drawable.csplate);
-                    findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarStation);
+                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarStation);
                     findsame.start();
                 } else if (v1.getId() == R.id.cardu2) {
                     ucard2.setImageResource(R.drawable.cblue);
-                    findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGreenBilli);
+                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGreenBilli);
                     findsame.start();
                 } else if (v1.getId() == R.id.cardb2) {
                     mcard2.setImageResource(R.drawable.plate);
-                    findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarLight);
+                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarLight);
                     findsame.start();
                 } else if (v1.getId() == R.id.cardu3) {
                     ucard3.setImageResource(R.drawable.csun);
-                    findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdLovelySun);
+                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdLovelySun);
                     findsame.start();
                 } else if (v1.getId() == R.id.cardb3) {
                     mcard3.setImageResource(R.drawable.cgolf);
-                    findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGolfCart);
+                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGolfCart);
                     findsame.start();
                 } else if (v1.getId() == R.id.cardu4) {
-                    findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarStation);
+                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarStation);
                     findsame.start();
                     ucard4.setImageResource(R.drawable.csplate);
                 } else if (v1.getId() == R.id.cardb4) {
-                    findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGreenBilli);
+                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGreenBilli);
                     findsame.start();
                     mcard4.setImageResource(R.drawable.cblue);
                 } else if (v1.getId() == R.id.cardu5) {
-                    findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarLight);
+                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarLight);
                     findsame.start();
                     ucard5.setImageResource(R.drawable.plate);
                 } else if (v1.getId() == R.id.cardb5) {
-                    findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdLovelySun);
+                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdLovelySun);
                     findsame.start();
                     mcard5.setImageResource(R.drawable.csun);
                 }
@@ -291,42 +311,42 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
             if (animation == anim1) {
                 if (v2.getId() == R.id.cardu1) {
                     ucard1.setImageResource(R.drawable.cgolf);
-                    findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGolfCart);
+                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGolfCart);
                     findsame.start();
                 } else if (v2.getId() == R.id.cardb1) {
-                    findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarStation);
+                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarStation);
                     findsame.start();
                     mcard1.setImageResource(R.drawable.csplate);
                 } else if (v2.getId() == R.id.cardu2) {
-                    findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGreenBilli);
+                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGreenBilli);
                     findsame.start();
                     ucard2.setImageResource(R.drawable.cblue);
                 } else if (v2.getId() == R.id.cardb2) {
                     mcard2.setImageResource(R.drawable.plate);
-                    findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarLight);
+                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarLight);
                     findsame.start();
                 } else if (v2.getId() == R.id.cardu3) {
-                    findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdLovelySun);
+                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdLovelySun);
                     findsame.start();
                     ucard3.setImageResource(R.drawable.csun);
                 } else if (v2.getId() == R.id.cardb3) {
-                    findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGolfCart);
+                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGolfCart);
                     findsame.start();
                     mcard3.setImageResource(R.drawable.cgolf);
                 } else if (v2.getId() == R.id.cardu4) {
-                    findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarStation);
+                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarStation);
                     findsame.start();
                     ucard4.setImageResource(R.drawable.csplate);
                 } else if (v2.getId() == R.id.cardb4) {
-                    findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGreenBilli);
+                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGreenBilli);
                     findsame.start();
                     mcard4.setImageResource(R.drawable.cblue);
                 } else if (v2.getId() == R.id.cardu5) {
-                    findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarLight);
+                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarLight);
                     findsame.start();
                     ucard5.setImageResource(R.drawable.plate);
                 } else if (v2.getId() == R.id.cardb5) {
-                    findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdLovelySun);
+                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdLovelySun);
                     findsame.start();
                     mcard5.setImageResource(R.drawable.csun);
                 }
@@ -343,7 +363,7 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
                 @Override
                 public void run() {
                     if ((v1.getId() == R.id.cardu1 && v2.getId() == R.id.cardb3) || v2.getId() == R.id.cardu1 && v1.getId() == R.id.cardb3) {
-                        findsame = new Gamemusic(getApplicationContext(), R.raw.p2drop);
+                        findsame = new GameMusic(getApplicationContext(), "p2drop");
                         findsame.start();
                         v1.setVisibility(View.INVISIBLE);
                         v2.setVisibility(View.INVISIBLE);
@@ -352,7 +372,7 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
                         nomatch++;
 
                     } else if ((v1.getId() == R.id.cardu2 && v2.getId() == R.id.cardb4) || v2.getId() == R.id.cardu2 && v1.getId() == R.id.cardb4) {
-                        findsame = new Gamemusic(getApplicationContext(), R.raw.p2drop);
+                        findsame = new GameMusic(getApplicationContext(), "p2drop");
                         findsame.start();
                         v1.setVisibility(View.INVISIBLE);
                         v2.setVisibility(View.INVISIBLE);
@@ -360,7 +380,7 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
                         nomatch++;
                         clickcount = 0;
                     } else if ((v1.getId() == R.id.cardu3 && v2.getId() == R.id.cardb5) || v2.getId() == R.id.cardu3 && v1.getId() == R.id.cardb5) {
-                        findsame = new Gamemusic(getApplicationContext(), R.raw.p2drop);
+                        findsame = new GameMusic(getApplicationContext(), "p2drop");
                         findsame.start();
                         v1.setVisibility(View.INVISIBLE);
                         v2.setVisibility(View.INVISIBLE);
@@ -368,7 +388,7 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
                         nomatch++;
                         clickcount = 0;
                     } else if ((v1.getId() == R.id.cardu4 && v2.getId() == R.id.cardb1) || v2.getId() == R.id.cardu4 && v1.getId() == R.id.cardb1) {
-                        findsame = new Gamemusic(getApplicationContext(), R.raw.p2drop);
+                        findsame = new GameMusic(getApplicationContext(), "p2drop");
                         findsame.start();
                         v1.setVisibility(View.INVISIBLE);
                         v2.setVisibility(View.INVISIBLE);
@@ -376,7 +396,7 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
                         nomatch++;
                         clickcount = 0;
                     } else if ((v1.getId() == R.id.cardu5 && v2.getId() == R.id.cardb2) || v2.getId() == R.id.cardu5 && v1.getId() == R.id.cardb2) {
-                        findsame = new Gamemusic(getApplicationContext(), R.raw.p2drop);
+                        findsame = new GameMusic(getApplicationContext(), "p2drop");
                         findsame.start();
                         v1.setVisibility(View.INVISIBLE);
                         v2.setVisibility(View.INVISIBLE);
@@ -386,7 +406,7 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
                     } else {
                         ImageView img1 = (ImageView) v1;
                         ImageView img2 = (ImageView) v2;
-                        findsame = new Gamemusic(getApplicationContext(), R.raw.wrongs);
+                        findsame = new GameMusic(getApplicationContext(), "wrongs");
                         findsame.start();
                         img1.setImageResource(R.drawable.front);
                         img2.setImageResource(R.drawable.front);

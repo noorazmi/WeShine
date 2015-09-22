@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.DragEvent;
 import android.view.MotionEvent;
@@ -23,19 +24,19 @@ import android.widget.RelativeLayout;
 import com.moderneng.R;
 import com.moderneng.utils.AppConstant;
 import com.moderneng.utils.AudioPlayer;
-import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.GameMusic;
 import com.moderneng.utils.ImageAndMediaResources;
 import com.moderneng.views.ImageDragShadowBuilder;
 
 
 public class Puzzle2Activity extends Activity {
-    ImageView imgv1, imgv2, imgv3, imgv4, imgv5, imgv6, imgv7, dragimg;
-    int count = 1, viewcount = 1;
-    Gamemusic mp, mp5;
-    AudioPlayer mp3;
-    RelativeLayout mainlay;
-    int x, y;
-    Boolean play = true;
+    private ImageView imgv1, imgv2, imgv3, imgv4, imgv5, imgv6, imgv7, dragimg;
+    private int count = 1;
+    private GameMusic mp;
+    private AudioPlayer mp3;
+    private RelativeLayout mainlay;
+    private int x, y;
+    private Bitmap mBitmapBg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +50,9 @@ public class Puzzle2Activity extends Activity {
         } else {
             setContentView(R.layout.puzzle2);
         }
-        mainlay = (RelativeLayout) findViewById(R.id.mainlay);
-        mainlay.setBackgroundResource(R.drawable.p2bg);
-        mp3 = new AudioPlayer(getApplicationContext(), R.raw.puzzle2);
+        mainlay = (RelativeLayout) findViewById(R.id.relative_layout_parent);
+        mainlay.setBackgroundResource(R.drawable.puzzle2_bg);
+        mp3 = new AudioPlayer(getApplicationContext(), "puzzle2");
         mp3.start();
         imgv1 = (ImageView) findViewById(R.id.ltop);
         imgv2 = (ImageView) findViewById(R.id.lmiddle);
@@ -93,8 +94,11 @@ public class Puzzle2Activity extends Activity {
                     if (count == 1 && dragv.getId() == R.id.lbottom) {
                         imgv3.setImageResource(R.drawable.pemp3);
                         count++;
-                        mp = new Gamemusic(getApplicationContext(), R.raw.p2drop);
-                        mp.start();
+                        mp = new GameMusic(getApplicationContext(), "p2drop");
+                        if(mp != null){
+                            mp.start();
+                        }
+
                         int[] imageCordinates = new int[2];
                         imgv3.getLocationOnScreen(imageCordinates);
 
@@ -107,8 +111,10 @@ public class Puzzle2Activity extends Activity {
                     } else if (count == 2 && dragv.getId() == R.id.mmiddle) {
                         imgv5.setImageResource(R.drawable.pemp5);
                         count++;
-                        mp = new Gamemusic(getApplicationContext(), R.raw.p2drop);
-                        mp.start();
+                        mp = new GameMusic(getApplicationContext(), "p2drop");
+                        if(mp != null){
+                            mp.start();
+                        }
                         int[] imageCordinates = new int[2];
                         imgv5.getLocationOnScreen(imageCordinates);
 
@@ -120,8 +126,10 @@ public class Puzzle2Activity extends Activity {
                     } else if (count == 3 && dragv.getId() == R.id.mtop) {
                         imgv4.setImageResource(R.drawable.pemp4);
                         count++;
-                        mp = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdBravo);
-                        mp.start();
+                        mp = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdBravo);
+                        if(mp != null){
+                            mp.start();
+                        }
                         int[] imageCordinates = new int[2];
                         imgv4.getLocationOnScreen(imageCordinates);
 
@@ -133,8 +141,10 @@ public class Puzzle2Activity extends Activity {
                     } else if (count == 4 && dragv.getId() == R.id.rmost) {
                         imgv7.setImageResource(R.drawable.pemp7);
                         count++;
-                        mp = new Gamemusic(getApplicationContext(), R.raw.p2drop);
-                        mp.start();
+                        mp = new GameMusic(getApplicationContext(), "p2drop");
+                        if(mp != null){
+                            mp.start();
+                        }
                         int[] imageCordinates = new int[2];
                         imgv7.getLocationOnScreen(imageCordinates);
 
@@ -146,8 +156,10 @@ public class Puzzle2Activity extends Activity {
                     } else if (count == 5 && dragv.getId() == R.id.mbottom) {
                         imgv6.setImageResource(R.drawable.pemp6);
                         count++;
-                        mp = new Gamemusic(getApplicationContext(), R.raw.p2drop);
-                        mp.start();
+                        mp = new GameMusic(getApplicationContext(), "p2drop");
+                        if(mp != null){
+                            mp.start();
+                        }
                         int[] imageCordinates = new int[2];
                         imgv6.getLocationOnScreen(imageCordinates);
 
@@ -159,8 +171,10 @@ public class Puzzle2Activity extends Activity {
                     } else if (count == 6 && dragv.getId() == R.id.lmiddle) {
                         imgv2.setImageResource(R.drawable.pemp2);
                         count++;
-                        mp = new Gamemusic(getApplicationContext(), R.raw.p2drop);
-                        mp.start();
+                        mp = new GameMusic(getApplicationContext(), "p2drop");
+                        if(mp != null){
+                            mp.start();
+                        }
                         int[] imageCordinates = new int[2];
                         imgv2.getLocationOnScreen(imageCordinates);
 
@@ -181,8 +195,10 @@ public class Puzzle2Activity extends Activity {
                         mainlay.addView(mv);
                         return true;
                     } else {
-                        mp = new Gamemusic(getApplicationContext(), R.raw.wrongs);
-                        mp.start();
+                        mp = new GameMusic(getApplicationContext(), "wrongs");
+                        if(mp != null){
+                            mp.start();
+                        }
                         count = count;
                         return true;
                     }
@@ -247,8 +263,10 @@ public class Puzzle2Activity extends Activity {
                 DragShadowBuilder view4 = null;
                 ImageView img = (ImageView) v;
                 ClipData data = ClipData.newPlainText("", "");
-                mp = new Gamemusic(getApplicationContext(), R.raw.drag);
-                mp.start();
+                mp = new GameMusic(getApplicationContext(), "drag");
+                if(mp != null){
+                    mp.start();
+                }
                 if (count == 1) {
                     view4 = ImageDragShadowBuilder.fromResource(
                             getApplicationContext(), R.drawable.pemp3);
@@ -374,7 +392,22 @@ public class Puzzle2Activity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdPuzzle2Bg);
+        findViewById(R.id.relative_layout_parent).setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapBg));
+
         mp3.start();
+
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(mBitmapBg != null){
+            mBitmapBg.recycle();
+            mBitmapBg = null;
+        }
     }
 
     @Override
@@ -383,9 +416,11 @@ public class Puzzle2Activity extends Activity {
         mp3.pause();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mp3.stop();
-    }
+
+
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        mp3.stop();
+//    }
 }

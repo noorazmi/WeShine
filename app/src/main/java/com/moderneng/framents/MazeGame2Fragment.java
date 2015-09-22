@@ -6,6 +6,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.FrameLayout.LayoutParams;
@@ -15,6 +16,7 @@ import com.moderneng.listeners.OnGameEndListener;
 import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
 import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.GameMusic;
 import com.moderneng.utils.ImageAndMediaResources;
 import com.moderneng.utils.Logger;
 import com.moderneng.utils.UtilityMethods;
@@ -28,9 +30,9 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 	// Drawing surface to draw the path on
 	private DrawingSurface mDrawingSurface;
 	private  AnimationDrawable mBirdsAnimationDrawable;
-	private  AnimationDrawable mSunAnimationDrawable;
-	private  AnimationDrawable mRedShipAnimationDrawable;
-	private  AnimationDrawable mGreenShipAnimationDrawable;
+	//private  AnimationDrawable mSunAnimationDrawable;
+	//private  AnimationDrawable mRedShipAnimationDrawable;
+	//private  AnimationDrawable mGreenShipAnimationDrawable;
 	//private  AnimationDrawable mSeaAnimationDrawable;
 
 
@@ -38,6 +40,10 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
     private Bitmap mMiddleBitmap;
     private Bitmap mBottomBitmap;
     private Bitmap mBitmapFabulous;
+
+	private GameMusic mGameMusic1;
+	private GameMusic mGameMusic2;
+	private GameMusic mGameMusicEnd;
 
 
 	@Override
@@ -60,7 +66,16 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 		setAnimationRedShipView();
 		setYellowShipView();
 		setSeaAnimation();
-		startAudioSound(R.raw.maze1_ondraw);
+		///startAudioSound(R.raw.maze1_ondraw);
+		mGameMusic1 = new GameMusic(getActivity(), "maze1_ondraw");
+		mGameMusic1.start();
+		new Handler().postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				mGameMusic2 = new GameMusic(getActivity(), ImageAndMediaResources.sSoundIdMaze2);
+				mGameMusic2.start();
+			}
+		}, 500);
 	}
 
     private void setBackgroundImages() {
@@ -245,7 +260,9 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 
 	@Override
 	public void onAnimationStart(Animation animation) {
-		startAudioSound(ImageAndMediaResources.sSoundIdFabulous);
+		//startAudioSound(ImageAndMediaResources.sSoundIdFabulous);
+		mGameMusicEnd = new GameMusic(getActivity(), ImageAndMediaResources.sSoundIdFabulous);
+		mGameMusicEnd.start();
     }
 
     @Override
@@ -255,7 +272,8 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 		if (bundle == null) {
 			bundle = new Bundle();
 		}
-		bundle.putInt(AppConstant.VIDEO_FILE_NAME, R.raw.maze2_end_video);
+		//bundle.putInt(AppConstant.VIDEO_FILE_NAME, R.raw.maze2_end_video);
+		bundle.putString(AppConstant.VIDEO_FILE_NAME, "maze2_end_video");
 		bundle.putInt(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.MAZE_TWO_VIDEO_DURATION);
 		((MazeMenuActivity) getActivity()).attachGameEndVideoFragment(bundle);
 		AnimationUtil.performAnimation(getFragmentView().findViewById(R.id.mazeGame2_fabulusImageView), AnimType.ZOOM_OUT, null);
@@ -275,9 +293,9 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 	}
 
 	@Override
-	protected void onAudioComplete(int audioFileId) {
+	protected void onAudioComplete(String audioFileId) {
 		switch (audioFileId) {
-		case R.raw.maze1_ondraw:
+		case "maze1_ondraw":
 			startAudioSound(ImageAndMediaResources.sSoundIdMaze2);
 			break;
 
@@ -305,13 +323,13 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 		mBirdsAnimationDrawable = null;
 
         //recycle(mSunAnimationDrawable);
-		mSunAnimationDrawable = null;
+		//mSunAnimationDrawable = null;
 
         //recycle(mGreenShipAnimationDrawable);
-        mGreenShipAnimationDrawable = null;
+        //mGreenShipAnimationDrawable = null;
 
         //recycle(mRedShipAnimationDrawable);
-        mRedShipAnimationDrawable = null;
+        //mRedShipAnimationDrawable = null;
 
         //recycle(mSeaAnimationDrawable);
         //mSeaAnimationDrawable = null;
@@ -327,6 +345,19 @@ public class MazeGame2Fragment extends BaseFragment implements OnGameEndListener
 
 		mBitmapFabulous.recycle();
 		mBitmapFabulous = null;
+
+		if(mGameMusic1 != null){
+			mGameMusic1.release();
+		}
+
+		if(mGameMusic2 != null){
+			mGameMusic2.release();
+		}
+
+		if(mGameMusicEnd != null){
+			mGameMusicEnd.release();
+			mGameMusicEnd = null;
+		}
 	}
 
 

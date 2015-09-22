@@ -5,6 +5,7 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -26,19 +27,19 @@ import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
 import com.moderneng.utils.AppConstant;
 import com.moderneng.utils.AudioPlayer;
-import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.GameMusic;
 import com.moderneng.utils.ImageAndMediaResources;
 import com.moderneng.views.ImageDragShadowBuilder;
 
 public class Match2Activity extends Activity {
-	ImageView stower, golf, sun, boat, drag, wtower;
-	int  count = 1;
-	Gamemusic mp;
-	AudioPlayer mp3;
+	private ImageView stower, golf, sun, boat, drag, wtower;
+	private int  count = 1;
+	private GameMusic mp;
+	private AudioPlayer mp3;
     private Bitmap mBitmapText;
     private MediaPlayer mMediaPlayer;
+	private Bitmap mBitmapBg;
 
-    //	TranslateAnimation animation;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -69,12 +70,11 @@ public class Match2Activity extends Activity {
 
 		@Override
 		public boolean onTouch(View view, MotionEvent event) {
-			// TODO Auto-generated method stub
 			mp3.stop();
 
 			if (event.getAction() == MotionEvent.ACTION_DOWN) {
 				DragShadowBuilder view2 = null;
-				mp = new Gamemusic(getApplicationContext(), R.raw.drag);
+				mp = new GameMusic(getApplicationContext(), "drag");
 				mp.start();
 				ImageView img = (ImageView) view;
 				ClipData data = ClipData.newPlainText("", "");
@@ -151,7 +151,7 @@ public class Match2Activity extends Activity {
 				View v1 = (View) dragevent.getLocalState();
 				if (count == 1 && v.getId() == R.id.sun1blank) {
 					ViewGroup group = (ViewGroup) v.getParent();
-					mp = new Gamemusic(getApplicationContext(), R.raw.suns);
+					mp = new GameMusic(getApplicationContext(), "suns");
 					mp.start();
 					sun.setImageResource(R.drawable.sun2);
 					int[] imagecordinates=new int[2];
@@ -162,7 +162,7 @@ public class Match2Activity extends Activity {
 				} else if (count == 2 && v.getId() == R.id.towerblank) {
 					ViewGroup group = (ViewGroup) v.getParent();
 					wtower.setImageResource(R.drawable.bouy);
-					mp = new Gamemusic(getApplicationContext(), R.raw.bouy);
+					mp = new GameMusic(getApplicationContext(), "bouy");
 					mp.start();
 					count++;
 					// wtower.setOnClickListener(null);
@@ -172,7 +172,7 @@ public class Match2Activity extends Activity {
 					ViewGroup group = (ViewGroup) v.getParent();
 					boat.setImageResource(R.drawable.vessal);
 					count++;
-					mp = new Gamemusic(getApplicationContext(), R.raw.vessel);
+					mp = new GameMusic(getApplicationContext(), "vessel");
 					// boat.setOnClickListener(null);
 					mp.start();
 					return true;
@@ -182,7 +182,7 @@ public class Match2Activity extends Activity {
 					count++;
 					int[] imagecordinates=new int[2];
 					golf.getLocationOnScreen(imagecordinates);
-					mp = new Gamemusic(getApplicationContext(), R.raw.golfcart);
+					mp = new GameMusic(getApplicationContext(), "golfcart");
 					mp.start();
 					// golf.setOnClickListener(null);
 					return true;
@@ -193,7 +193,7 @@ public class Match2Activity extends Activity {
 
 					return true;
 				} else {
-					mp = new Gamemusic(getApplicationContext(), R.raw.wrongs);
+					mp = new GameMusic(getApplicationContext(), "wrongs");
 					mp.start();
 					count = count;
 					return false;
@@ -215,31 +215,46 @@ public class Match2Activity extends Activity {
     private void performGreetingTextAnimation(){
         findViewById(R.id.imageview_greeting).setVisibility(View.VISIBLE);
         AnimationUtil.performAnimation(findViewById(R.id.imageview_greeting), AnimType.ZOOM_IN, new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
+			@Override
+			public void onAnimationStart(Animation animation) {
 
-            }
+			}
 
-            @Override
-            public void onAnimationEnd(Animation animation) {
+			@Override
+			public void onAnimationEnd(Animation animation) {
 
-                Intent intent = new Intent(Match2Activity.this, Videoplay.class);
-                intent.putExtra(AppConstant.EXTRA_VIDEO_ID, R.raw.matching2_video);
-                intent.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.MACHING_TWO_VIDEO_DURATION);
-                startActivity(intent);
-                finish();
-            }
+				Intent intent = new Intent(Match2Activity.this, VideoPlayActivity.class);
+				intent.putExtra(AppConstant.EXTRA_VIDEO_ID, "matching2_video");
+				intent.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.MACHING_TWO_VIDEO_DURATION);
+				startActivity(intent);
+				finish();
+			}
 
-            @Override
-            public void onAnimationRepeat(Animation animation) {
+			@Override
+			public void onAnimationRepeat(Animation animation) {
 
-            }
-        });
+			}
+		});
     }
+
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMatch2Bg);
+		findViewById(R.id.relative_layout_parent).setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapBg));
+	}
+
 
     @Override
     protected void onStop() {
         super.onStop();
+
+		if(mBitmapBg != null){
+			mBitmapBg.recycle();
+			mBitmapBg = null;
+		}
+
         if(mBitmapText != null){
             mBitmapText.recycle();
             mBitmapText = null;

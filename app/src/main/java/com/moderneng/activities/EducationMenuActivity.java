@@ -13,10 +13,9 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.moderneng.R;
 import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
-import com.moderneng.R;
-import com.moderneng.WeShineApp;
 import com.moderneng.utils.AudioPlayer;
 import com.moderneng.utils.ImageAndMediaResources;
 
@@ -102,7 +101,7 @@ public class EducationMenuActivity extends Activity implements OnClickListener {
         ((ImageView) findViewById(R.id.imageview_title)).setImageBitmap(mBitmapTitle);
         AnimationUtil.performAnimation(findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
 
-        mp = new AudioPlayer(getApplicationContext(), R.raw.homesound);
+        mp = new AudioPlayer(getApplicationContext(), "homesound");
         mp.start();
 
         mBitmapEduMenu1 = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdEduMenuImg1);

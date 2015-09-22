@@ -5,11 +5,10 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:id="@+id/RelativeLayout1"
+        android:id="@+id/relative_layout_parent"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/matchbg">
+        android:layout_height="match_parent">
 
         <RelativeLayout
             android:id="@+id/relativeLayout3"
@@ -38,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
 
-                android:src="@drawable/sunb"/>
+                android:src="@drawable/sun1blank"/>
 
             <ImageView
                 android:id="@+id/golfblank"

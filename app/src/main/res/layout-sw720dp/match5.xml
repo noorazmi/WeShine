@@ -4,10 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <RelativeLayout
-        android:id="@+id/mainlayout"
+        android:id="@+id/relative_layout_parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/matchbg5" >
+        android:layout_height="match_parent" >
 
         <RelativeLayout
             android:id="@+id/sun5lay"

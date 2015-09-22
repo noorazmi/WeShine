@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.moderneng.R;
 import com.moderneng.framents.GameEndVideoFragment;
 import com.moderneng.framents.MazeGame1Fragment;
 import com.moderneng.framents.MazeGame2Fragment;
@@ -16,12 +17,12 @@ import com.moderneng.framents.MazeGame4Fragment;
 import com.moderneng.framents.MazeGame5Fragment;
 import com.moderneng.framents.MazeGameMenuFragment;
 import com.moderneng.utils.AppConstant;
-import com.moderneng.R;
 import com.moderneng.utils.FragmentTag;
 
 public class MazeMenuActivity extends Activity {
 
 	private FragmentManager mFragmentManager;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +119,7 @@ public class MazeMenuActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		System.gc();
+			System.gc();
 	}
 
 	@Override

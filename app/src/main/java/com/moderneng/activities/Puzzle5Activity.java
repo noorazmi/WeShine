@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.DragEvent;
 import android.view.MotionEvent;
@@ -19,24 +20,24 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.moderneng.utils.AppConstant;
 import com.moderneng.R;
-import com.moderneng.WeShineApp;
+import com.moderneng.utils.AppConstant;
 import com.moderneng.utils.AudioPlayer;
-import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.GameMusic;
 import com.moderneng.utils.ImageAndMediaResources;
 import com.moderneng.views.ImageDragShadowBuilder;
 
 
 public class Puzzle5Activity extends Activity {
-    private RelativeLayout p5lay;
+    private RelativeLayout mRelativeLayoutParent;
     private ImageView p5imgv1, p5imgv2;
     private ImageView p5imgv3, p5imgv4, p5imgv5, p5imgv6, p5imgv7;
     private ImageView p5dragv;
     private int count = 1;
     private AudioPlayer mp3;
-    private Gamemusic mp;
+    private GameMusic mp;
     private int x, y;
+    private Bitmap mBitmapBg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +52,14 @@ public class Puzzle5Activity extends Activity {
         } else {
             setContentView(R.layout.puzzle2);
         }
-        p5lay = (RelativeLayout) findViewById(R.id.mainlay);
-        p5lay.setBackgroundResource(R.drawable.p5bg);
+        mRelativeLayoutParent = (RelativeLayout) findViewById(R.id.relative_layout_parent);
         p5dragv = (ImageView) findViewById(R.id.pdragv);
         p5dragv.setImageResource(R.drawable.p5m4);
-        mp3 = new AudioPlayer(getApplicationContext(), R.raw.puzzle5);
-        mp3.start();
+        mp3 = new AudioPlayer(getApplicationContext(), "puzzle5");
+        if(mp3 != null){
+            mp3.start();
+        }
+
         p5imgv1 = (ImageView) findViewById(R.id.ltop);
         p5imgv2 = (ImageView) findViewById(R.id.lmiddle);
         p5imgv3 = (ImageView) findViewById(R.id.lbottom);
@@ -77,18 +80,19 @@ public class Puzzle5Activity extends Activity {
 
     }
 
+
     private class Mytouchlistener implements OnTouchListener {
 
         @Override
         public boolean onTouch(View v, MotionEvent event) {
-            // TODO Auto-generated method stub
             mp3.stop();
-            mp = new Gamemusic(getApplicationContext(), R.raw.drag);
+
 
             DragShadowBuilder p5img = null;
             ImageView img = (ImageView) v;
             ClipData data = ClipData.newPlainText("", "");
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                mp = new GameMusic(getApplicationContext(), "drag");
                 mp.start();
                 if (count == 1) {
                     p5img = ImageDragShadowBuilder.fromResource(
@@ -149,8 +153,11 @@ public class Puzzle5Activity extends Activity {
                 case DragEvent.ACTION_DROP:
                     if (count == 1 && dragv.getId() == R.id.mtop) {
                         p5imgv4.setImageResource(R.drawable.p5m4);
-                        mp = new Gamemusic(getApplicationContext(), R.raw.psun);
-                        mp.start();
+                        mp = new GameMusic(getApplicationContext(), "psun");
+                        if(mp != null){
+                            mp.start();
+                        }
+
                         count++;
                         int[] imageCordinates = new int[2];
                         p5imgv4.getLocationOnScreen(imageCordinates);
@@ -158,12 +165,14 @@ public class Puzzle5Activity extends Activity {
                         x = imageCordinates[0] + (p5imgv4.getWidth() / 2);
                         y = imageCordinates[1] + (p5imgv4.getHeight() / 2);
                         smallanim mv = new smallanim(Puzzle5Activity.this);
-                        p5lay.addView(mv);
+                        mRelativeLayoutParent.addView(mv);
                         return true;
                     } else if (count == 2 && dragv.getId() == R.id.mbottom) {
                         p5imgv6.setImageResource(R.drawable.p5m6);
-                        mp = new Gamemusic(getApplicationContext(), R.raw.psun);
-                        mp.start();
+                        mp = new GameMusic(getApplicationContext(), "psun");
+                        if(mp != null){
+                            mp.start();
+                        }
                         count++;
                         int[] imageCordinates = new int[2];
                         p5imgv6.getLocationOnScreen(imageCordinates);
@@ -171,12 +180,14 @@ public class Puzzle5Activity extends Activity {
                         x = imageCordinates[0] + (p5imgv6.getWidth() / 2);
                         y = imageCordinates[1] + (p5imgv6.getHeight() / 2);
                         smallanim mv = new smallanim(Puzzle5Activity.this);
-                        p5lay.addView(mv);
+                        mRelativeLayoutParent.addView(mv);
                         return true;
                     } else if (count == 3 && dragv.getId() == R.id.ltop) {
                         p5imgv1.setImageResource(R.drawable.p5m1);
-                        mp = new Gamemusic(getApplicationContext(),  ImageAndMediaResources.sSoundIdAwsome);
-                        mp.start();
+                        mp = new GameMusic(getApplicationContext(),  ImageAndMediaResources.sSoundIdAwsome);
+                        if(mp != null){
+                            mp.start();
+                        }
                         count++;
                         int[] imageCordinates = new int[2];
                         p5imgv1.getLocationOnScreen(imageCordinates);
@@ -184,12 +195,14 @@ public class Puzzle5Activity extends Activity {
                         x = imageCordinates[0] + (p5imgv1.getWidth() / 2);
                         y = imageCordinates[1] + (p5imgv1.getHeight() / 2);
                         smallanim mv = new smallanim(Puzzle5Activity.this);
-                        p5lay.addView(mv);
+                        mRelativeLayoutParent.addView(mv);
                         return true;
                     } else if (count == 4 && dragv.getId() == R.id.lbottom) {
                         p5imgv3.setImageResource(R.drawable.p5m3);
-                        mp = new Gamemusic(getApplicationContext(), R.raw.psun);
-                        mp.start();
+                        mp = new GameMusic(getApplicationContext(), "psun");
+                        if(mp != null){
+                            mp.start();
+                        }
                         count++;
                         int[] imageCordinates = new int[2];
                         p5imgv3.getLocationOnScreen(imageCordinates);
@@ -197,13 +210,15 @@ public class Puzzle5Activity extends Activity {
                         x = imageCordinates[0] + (p5imgv3.getWidth() / 2);
                         y = imageCordinates[1] + (p5imgv3.getHeight() / 2);
                         smallanim mv = new smallanim(Puzzle5Activity.this);
-                        p5lay.addView(mv);
+                        mRelativeLayoutParent.addView(mv);
                         return true;
 
                     } else if (count == 5 && dragv.getId() == R.id.mmiddle) {
                         p5imgv5.setImageResource(R.drawable.p5m5);
-                        mp = new Gamemusic(getApplicationContext(), R.raw.psun);
-                        mp.start();
+                        mp = new GameMusic(getApplicationContext(), "psun");
+                        if(mp != null){
+                            mp.start();
+                        }
                         count++;
                         int[] imageCordinates = new int[2];
                         p5imgv5.getLocationOnScreen(imageCordinates);
@@ -211,12 +226,14 @@ public class Puzzle5Activity extends Activity {
                         x = imageCordinates[0] + (p5imgv5.getWidth() / 2);
                         y = imageCordinates[1] + (p5imgv5.getHeight() / 2);
                         smallanim mv = new smallanim(Puzzle5Activity.this);
-                        p5lay.addView(mv);
+                        mRelativeLayoutParent.addView(mv);
                         return true;
                     } else if (count == 6 && dragv.getId() == R.id.rmost) {
                         p5imgv7.setImageResource(R.drawable.p5m7);
-                        mp = new Gamemusic(getApplicationContext(), R.raw.psun);
-                        mp.start();
+                        mp = new GameMusic(getApplicationContext(), "psun");
+                        if(mp != null){
+                            mp.start();
+                        }
                         count++;
                         int[] imageCordinates = new int[2];
                         p5imgv7.getLocationOnScreen(imageCordinates);
@@ -224,7 +241,7 @@ public class Puzzle5Activity extends Activity {
                         x = imageCordinates[0] + (p5imgv7.getWidth() / 2);
                         y = imageCordinates[1] + (p5imgv7.getHeight() / 2);
                         smallanim mv = new smallanim(Puzzle5Activity.this);
-                        p5lay.addView(mv);
+                        mRelativeLayoutParent.addView(mv);
                         return true;
 
                     } else if (count == 7 && dragv.getId() == R.id.lmiddle) {
@@ -238,12 +255,14 @@ public class Puzzle5Activity extends Activity {
                         x = imageCordinates[0] + (p5imgv2.getWidth() / 2);
                         y = imageCordinates[1] + (p5imgv2.getHeight() / 2);
                         smallanim mv = new smallanim(Puzzle5Activity.this);
-                        p5lay.addView(mv);
+                        mRelativeLayoutParent.addView(mv);
                         return true;
                     } else {
                         count = count;
-                        mp = new Gamemusic(getApplicationContext(), R.raw.wrongs);
-                        mp.start();
+                        mp = new GameMusic(getApplicationContext(), "wrongs");
+                        if(mp != null){
+                            mp.start();
+                        }
                         return false;
                     }
 
@@ -293,26 +312,31 @@ public class Puzzle5Activity extends Activity {
 
     }
 
-    @Override
-    protected void onRestart() {
-        // TODO Auto-generated method stub
-        super.onRestart();
-        mp3.start();
-    }
+
 
     @Override
     protected void onResume() {
-        // TODO Auto-generated method stub
         super.onResume();
-        //mp3.start();
+
+
+        mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdPuzzle5Bg);
+        findViewById(R.id.relative_layout_parent).setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapBg));
+
+        mp3.start();    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(mBitmapBg != null){
+            mBitmapBg.recycle();
+            mBitmapBg = null;
+        }
     }
 
     @Override
     protected void onDestroy() {
-        // TODO Auto-generated method stub
         super.onDestroy();
         mp3.stop();
-        //mp8.stop();
     }
 
     private class smallanim extends View {
@@ -322,7 +346,6 @@ public class Puzzle5Activity extends Activity {
 
         public smallanim(Context context) {
             super(context);
-            // TODO Auto-generated constructor stub
             ctx1 = context;
             initBitmaps();
         }

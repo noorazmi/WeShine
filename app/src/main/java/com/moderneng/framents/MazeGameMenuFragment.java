@@ -2,25 +2,23 @@ package com.moderneng.framents;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.moderneng.R;
+import com.moderneng.activities.MazeMenuActivity;
+import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
 import com.moderneng.listeners.OnMazeMenuItemClickListener;
 import com.moderneng.utils.AppConstant;
-import com.moderneng.adapter.ImageViewPagerAdapter;
-import com.moderneng.R;
-import com.moderneng.WeShineApp;
-import com.moderneng.activities.MazeMenuActivity;
-import com.moderneng.utils.Gamemusic;
-import com.moderneng.animation.AnimType;
+import com.moderneng.utils.AudioPlayer;
+import com.moderneng.utils.GameMusic;
 import com.moderneng.utils.ImageAndMediaResources;
 
 public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItemClickListener, View.OnClickListener {
-
-	//private ViewPager mViewPager;
 
     private ImageButton mImageButtonMaze1;
     private ImageButton mImageButtonMaze2;
@@ -28,11 +26,12 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
     private ImageButton mImageButtonMaze4;
     private ImageButton mImageButtonMaze5;
     private Bitmap mBitmapTitle;
-    private Gamemusic mp;
+    private GameMusic mp;
+    private Bitmap mBitmapBg;
+    private AudioPlayer mp4;
 
 
-
-	@Override
+    @Override
 	public void onResume() {
 		super.onResume();
         mImageButtonMaze1 = (ImageButton) getFragmentView().findViewById(R.id.maze_menu_image1);
@@ -50,14 +49,9 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
         mImageButtonMaze3.setOnClickListener(this);
         mImageButtonMaze4.setOnClickListener(this);
         mImageButtonMaze5.setOnClickListener(this);
+        mp4 = new AudioPlayer(getActivity(), "homesound");
 
         playMazeSound();
-
-		//mViewPager = (ViewPager) getFragmentView().findViewById(R.id.game_menu_view_pager);
-		ImageViewPagerAdapter adapter = new ImageViewPagerAdapter(getActivity());
-		//adapter.setOnMazeMenuItemClickListener(this);
-		//mViewPager.setAdapter(adapter);
-
 	}
 
 	@Override
@@ -71,16 +65,15 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
 	}
 	
 	@Override
-	protected void onAudioComplete(int audioFileId) {
+	protected void onAudioComplete(String audioFileName) {
 	}
 	
-    public void setCurrentMenuItem(int level){
-
-		//mViewPager.setCurrentItem(level);
-    }
-
     @Override
     public void onClick(View v) {
+        if(mp4 != null){
+            mp4.release();
+            mp4 = null;
+        }
 
         int level = 0;
         switch (v.getId()){
@@ -108,10 +101,22 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
     }
 
     private void playMazeSound(){
-        String uriPath = AppConstant.BASE_RESOURCE_PATH + ImageAndMediaResources.sSoundIdMaze;
-        Uri uri = Uri.parse(uriPath);
-        mp = new Gamemusic(getActivity(), ImageAndMediaResources.sSoundIdMaze);
+//        String uriPath = AppConstant.BASE_RESOURCE_PATH + ImageAndMediaResources.sSoundIdMaze;
+//        Uri uri = Uri.parse(uriPath);
+        mp = new GameMusic(getActivity(), ImageAndMediaResources.sSoundIdMaze);
         mp.start();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(mp4 != null){
+                    mp4.start();
+                }
+            }
+        }, 1000);
+
+        mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMazeMenuBg);
+        getView().findViewById(R.id.linear_layout_container).setBackgroundDrawable(new BitmapDrawable(mBitmapBg));
     }
 
     @Override
@@ -121,6 +126,14 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
         mBitmapTitle = null;
         if(mp !=null){
             mp.release();
+        }
+        if(mp4 !=null){
+            mp4.release();
+        }
+
+        if(mBitmapBg != null){
+            mBitmapBg.recycle();
+            mBitmapBg = null;
         }
     }
 }

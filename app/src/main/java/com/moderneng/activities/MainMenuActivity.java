@@ -21,11 +21,11 @@ import com.moderneng.utils.ColorTool;
 import com.moderneng.utils.ImageAndMediaResources;
 
 public class MainMenuActivity extends Activity implements View.OnTouchListener {
-    AudioPlayer mp;
+    private AudioPlayer mp;
     private ImageView mImageViewTop, mImageViewBottom;
-    static int width;
-    static int height;
-    Display mDisplay;
+    public static int width;
+    public static int height;
+    private Display mDisplay;
     private Bitmap mBitmapTop;
     private Bitmap mBitmapBottom;
 
@@ -93,9 +93,11 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
 
             if (nextImage == 0) {
                 mp.release();
-                Intent storyVideoIntent = new Intent(getApplicationContext(), Videoplay.class);
-                storyVideoIntent.putExtra("vid", ImageAndMediaResources.sSoundIdStory);
+                Intent storyVideoIntent = new Intent(getApplicationContext(), VideoPlayActivity.class);
+                storyVideoIntent.putExtra(AppConstant.EXTRA_VIDEO_ID, ImageAndMediaResources.sSoundIdStory);
+                storyVideoIntent.putExtra(AppConstant.EXTRA_VIDEO_NAME, "story");
                 storyVideoIntent.putExtra(AppConstant.EXTRA_VIDEO_TYPE, AppConstant.VIDEO_TYPE_STORY);
+                storyVideoIntent.putExtra(AppConstant.EXTRA_VIDEO_LOCATION, AppConstant.EXTRA_VIDEO_LOCATION_APK);
                 storyVideoIntent.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, ImageAndMediaResources.sStoryVideoDuration);
                 startActivity(storyVideoIntent);
             }
@@ -141,9 +143,10 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
     @Override
     protected void onResume() {
         super.onResume();
-        mp = new AudioPlayer(this, R.raw.homesound);
-        mp.start();
-
+        mp = new AudioPlayer(this, "homesound");
+        if(mp != null){
+            mp.start();
+        }
         mImageViewTop = (ImageView) findViewById(R.id.image);
         mBitmapBottom = BitmapFactory.decodeResource(getResources(), R.drawable.home_screen_hotspot);
         mBitmapTop = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdHomeScreen);

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.DragEvent;
 import android.view.MotionEvent;
@@ -22,18 +23,19 @@ import android.widget.RelativeLayout;
 import com.moderneng.R;
 import com.moderneng.utils.AppConstant;
 import com.moderneng.utils.AudioPlayer;
-import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.GameMusic;
 import com.moderneng.utils.ImageAndMediaResources;
 import com.moderneng.views.ImageDragShadowBuilder;
 
 
 public class Puzzle3Activity extends Activity {
     private ImageView p3imgv1, p3imgv2, p3imgv3, p3imgv4, p3imgv5, p3imgv6, p3imgv7, p3dragv;
-    private RelativeLayout p3lay;
+    private RelativeLayout mRelativeLayoutParent;
     private int count = 1;
-    private Gamemusic mp3;
+    private GameMusic mp3;
     private AudioPlayer mp;
     private int x, y;
+    private Bitmap mBitmapBg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +51,12 @@ public class Puzzle3Activity extends Activity {
         } else {
             setContentView(R.layout.puzzle2);
         }
-        p3lay = (RelativeLayout) findViewById(R.id.mainlay);
-        p3lay.setBackgroundResource(R.drawable.p3bg);
-        mp = new AudioPlayer(getApplicationContext(), R.raw.puzzle3);
-        mp.start();
+        mRelativeLayoutParent = (RelativeLayout) findViewById(R.id.relative_layout_parent);
+        mp = new AudioPlayer(getApplicationContext(), "puzzle3");
+        if(mp != null){
+            mp.start();
+        }
+
         p3imgv1 = (ImageView) findViewById(R.id.ltop);
         p3imgv2 = (ImageView) findViewById(R.id.lmiddle);
         p3imgv3 = (ImageView) findViewById(R.id.lbottom);
@@ -86,8 +90,14 @@ public class Puzzle3Activity extends Activity {
                 DragShadowBuilder p3dragb = null;
                 ClipData data = ClipData.newPlainText("", "");
                 ImageView img = (ImageView) v;
-                mp3 = new Gamemusic(getApplicationContext(), R.raw.drag);
-                mp3.start();
+                //mp3 = new GameMusic(getApplicationContext(), R.raw.drag);
+                //mp3.start();
+
+                mp3 = new GameMusic(getApplicationContext(), "drag");
+                if(mp3 != null){
+                    mp3.start();
+                }
+
                 if (count == 1) {
                     p3dragb = ImageDragShadowBuilder.fromResource(
                             getApplicationContext(), R.drawable.p2img7);
@@ -130,6 +140,23 @@ public class Puzzle3Activity extends Activity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdPuzzle3Bg);
+        findViewById(R.id.relative_layout_parent).setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapBg));
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(mBitmapBg != null){
+            mBitmapBg.recycle();
+            mBitmapBg = null;
+        }
+    }
+
     private class Mydraglistner implements OnDragListener {
 
         @Override
@@ -148,80 +175,116 @@ public class Puzzle3Activity extends Activity {
                     if (count == 1 && p3v.getId() == R.id.rmost) {
                         p3imgv7.setImageResource(R.drawable.p2img7);
                         count++;
-                        mp3 = new Gamemusic(getApplicationContext(), R.raw.p3drop);
-                        mp3.start();
+                        //mp3 = new GameMusic(getApplicationContext(), R.raw.p3drop);
+                        //mp3.start();
+
+                        mp3 = new GameMusic(getApplicationContext(), "p3drop");
+                        if(mp3 != null){
+                            mp3.start();
+                        }
+
                         int[] imageCordinates = new int[2];
                         p3imgv7.getLocationOnScreen(imageCordinates);
 
                         x = imageCordinates[0] + (p3imgv7.getWidth() / 2);
                         y = imageCordinates[1] + (p3imgv7.getHeight() / 2);
                         smallanim mv = new smallanim(Puzzle3Activity.this);
-                        p3lay.addView(mv);
+                        mRelativeLayoutParent.addView(mv);
                         return true;
                     } else if (count == 2 && p3v.getId() == R.id.lbottom) {
                         p3imgv3.setImageResource(R.drawable.p2img3);
                         count++;
-                        mp3 = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdPerfect);
-                        mp3.start();
+                        //mp3 = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdPerfect);
+                        //mp3.start();
+
+                        mp3 = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdPerfect);
+                        if(mp3 != null){
+                            mp3.start();
+                        }
+
                         int[] imageCordinates = new int[2];
                         p3imgv3.getLocationOnScreen(imageCordinates);
 
                         x = imageCordinates[0] + (p3imgv3.getWidth() / 2);
                         y = imageCordinates[1] + (p3imgv3.getHeight() / 2);
                         smallanim mv = new smallanim(Puzzle3Activity.this);
-                        p3lay.addView(mv);
+                        mRelativeLayoutParent.addView(mv);
                         return true;
                     } else if (count == 3 && p3v.getId() == R.id.ltop) {
                         p3imgv1.setImageResource(R.drawable.p2img1);
                         count++;
-                        mp3 = new Gamemusic(getApplicationContext(), R.raw.p3drop);
-                        mp3.start();
+                        //mp3 = new GameMusic(getApplicationContext(), R.raw.p3drop);
+                        //mp3.start();
+
+                        mp3 = new GameMusic(getApplicationContext(), "p3drop");
+                        if(mp3 != null){
+                            mp3.start();
+                        }
+
                         int[] imageCordinates = new int[2];
                         p3imgv1.getLocationOnScreen(imageCordinates);
 
                         x = imageCordinates[0] + (p3imgv1.getWidth() / 2);
                         y = imageCordinates[1] + (p3imgv1.getHeight() / 2);
                         smallanim mv = new smallanim(Puzzle3Activity.this);
-                        p3lay.addView(mv);
+                        mRelativeLayoutParent.addView(mv);
                         return true;
                     } else if (count == 4 && p3v.getId() == R.id.mbottom) {
                         p3imgv6.setImageResource(R.drawable.p2img6);
                         count++;
-                        mp3 = new Gamemusic(getApplicationContext(), R.raw.p3drop);
-                        mp3.start();
+                        //mp3 = new GameMusic(getApplicationContext(), R.raw.p3drop);
+                        //mp3.start();
+
+                        mp3 = new GameMusic(getApplicationContext(), "p3drop");
+                        if(mp3 != null){
+                            mp3.start();
+                        }
+
                         int[] imageCordinates = new int[2];
                         p3imgv6.getLocationOnScreen(imageCordinates);
 
                         x = imageCordinates[0] + (p3imgv6.getWidth() / 2);
                         y = imageCordinates[1] + (p3imgv6.getHeight() / 2);
                         smallanim mv = new smallanim(Puzzle3Activity.this);
-                        p3lay.addView(mv);
+                        mRelativeLayoutParent.addView(mv);
                         return true;
                     } else if (count == 5 && p3v.getId() == R.id.lmiddle) {
                         p3imgv2.setImageResource(R.drawable.p2img2);
                         count++;
-                        mp3 = new Gamemusic(getApplicationContext(), R.raw.p3drop);
-                        mp3.start();
+                        //mp3 = new GameMusic(getApplicationContext(), R.raw.p3drop);
+                        //mp3.start();
+
+                        mp3 = new GameMusic(getApplicationContext(), "p3drop");
+                        if(mp3 != null){
+                            mp3.start();
+                        }
+
                         int[] imageCordinates = new int[2];
                         p3imgv2.getLocationOnScreen(imageCordinates);
 
                         x = imageCordinates[0] + (p3imgv2.getWidth() / 2);
                         y = imageCordinates[1] + (p3imgv2.getHeight() / 2);
                         smallanim mv = new smallanim(Puzzle3Activity.this);
-                        p3lay.addView(mv);
+                        mRelativeLayoutParent.addView(mv);
                         return true;
                     } else if (count == 6 && p3v.getId() == R.id.mtop) {
                         p3imgv4.setImageResource(R.drawable.p2img4);
                         count++;
-                        mp3 = new Gamemusic(getApplicationContext(), R.raw.p3drop);
-                        mp3.start();
+                        //mp3 = new GameMusic(getApplicationContext(), R.raw.p3drop);
+                        //mp3.start();
+
+                        mp3 = new GameMusic(getApplicationContext(), "p3drop");
+                        if(mp3 != null){
+                            mp3.start();
+                        }
+
                         int[] imageCordinates = new int[2];
                         p3imgv4.getLocationOnScreen(imageCordinates);
 
                         x = imageCordinates[0] + (p3imgv4.getWidth() / 2);
                         y = imageCordinates[1] + (p3imgv4.getHeight() / 2);
                         smallanim mv = new smallanim(Puzzle3Activity.this);
-                        p3lay.addView(mv);
+                        mRelativeLayoutParent.addView(mv);
                         return true;
                     } else if (count == 7 && p3v.getId() == R.id.mmiddle) {
                         p3imgv5.setImageResource(R.drawable.p2img5);
@@ -232,12 +295,18 @@ public class Puzzle3Activity extends Activity {
                         x = imageCordinates[0] + (p3imgv5.getWidth() / 2);
                         y = imageCordinates[1] + (p3imgv5.getHeight() / 2);
                         smallanim mv = new smallanim(Puzzle3Activity.this);
-                        p3lay.addView(mv);
+                        mRelativeLayoutParent.addView(mv);
                         return true;
                     } else {
                         count = count;
-                        mp3 = new Gamemusic(getApplicationContext(), R.raw.wrongs);
-                        mp3.start();
+                       // mp3 = new GameMusic(getApplicationContext(), R.raw.wrongs);
+                       // mp3.start();
+
+                        mp3 = new GameMusic(getApplicationContext(), "wrongs");
+                        if(mp3 != null){
+                            mp3.start();
+                        }
+
                         return false;
                     }
                 case DragEvent.ACTION_DRAG_ENDED:
@@ -294,11 +363,7 @@ public class Puzzle3Activity extends Activity {
 
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
 
-    }
 
     private class smallanim extends View {
         Context ctx1;

@@ -6,6 +6,8 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.AssetFileDescriptor;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.net.Uri;
@@ -22,14 +24,16 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.moderneng.R;
+import com.moderneng.WeShineApp;
 import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
 import com.moderneng.utils.AppConstant;
 import com.moderneng.utils.ImageAndMediaResources;
 import com.moderneng.utils.Logger;
 import com.moderneng.utils.UtilityMethods;
-import com.moderneng.R;
-import com.moderneng.WeShineApp;
+
+import java.io.IOException;
 
 public class BalloonActivity extends Activity {
 
@@ -876,17 +880,38 @@ public class BalloonActivity extends Activity {
 	}
 
 	private void startBellSound() {
-		String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.bell_sound;
-		Uri uri = Uri.parse(uriPath);
-		MediaPlayer mediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
-		mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
-
-			@Override
-			public void onCompletion(MediaPlayer mp) {
-				mp.release();
+		MediaPlayer mediaPlayer = null;
+		try {
+			AssetFileDescriptor fd = WeShineApp.getAssetFileDescriptor("bell_sound.mp3");
+			mediaPlayer = new MediaPlayer();
+			mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+			mediaPlayer.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(), fd.getLength());
+			mediaPlayer.prepare();
+			mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
+				@Override
+				public void onCompletion(MediaPlayer mp) {
+					mp.release();
+				}
+			});
+			if(mediaPlayer != null){
+				mediaPlayer.start();
 			}
-		});
-		mediaPlayer.start();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+//		String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.bell_sound;
+//		Uri uri = Uri.parse(uriPath);
+//		MediaPlayer mediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
+//		mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
+//
+//			@Override
+//			public void onCompletion(MediaPlayer mp) {
+//				mp.release();
+//			}
+//		});
+//		mediaPlayer.start();
 	}
 
 	private void startCarPanelAnimation(int panelNumber) {
@@ -1055,18 +1080,43 @@ public class BalloonActivity extends Activity {
 
 	private void startBackgroundMusic() {
 
-		String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.sun_cather_music;
-		Uri uri = Uri.parse(uriPath);
-		backgroundMusicMediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
-		backgroundMusicMediaPlayer.setOnCompletionListener(new OnCompletionListener() {
-			@Override
-			public void onCompletion(MediaPlayer mp) {
-				if (mp != null) {
+//		String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.sun_cather_music;
+//		Uri uri = Uri.parse(uriPath);
+//		backgroundMusicMediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
+//		backgroundMusicMediaPlayer.setOnCompletionListener(
+//				new OnCompletionListener() {
+//			@Override
+//			public void onCompletion(MediaPlayer mp) {
+//				if (mp != null) {
+//					mp.release();
+//				}
+//			}
+//		});
+//		backgroundMusicMediaPlayer.start();
+
+		try {
+			AssetFileDescriptor fd = WeShineApp.getAssetFileDescriptor("sun_cather_music.mp3");
+			backgroundMusicMediaPlayer = new MediaPlayer();
+			backgroundMusicMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+			backgroundMusicMediaPlayer.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(), fd.getLength());
+			backgroundMusicMediaPlayer.prepare();
+			backgroundMusicMediaPlayer.setOnCompletionListener(new OnCompletionListener() {
+				@Override
+				public void onCompletion(MediaPlayer mp) {
 					mp.release();
 				}
+			});
+			if(backgroundMusicMediaPlayer != null){
+				backgroundMusicMediaPlayer.start();
 			}
-		});
-		backgroundMusicMediaPlayer.start();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+
+
+
 	}
 
 	protected void startAudioSound(int audioFileId) {
@@ -1085,6 +1135,29 @@ public class BalloonActivity extends Activity {
 			}
 		});
 		mediaPlayer.start();
+	}
+
+	protected void startAudioSound(String audioFileName) {
+		MediaPlayer mediaPlayer = null;
+		try {
+			AssetFileDescriptor fd = WeShineApp.getAssetFileDescriptor(audioFileName+".mp3");
+			mediaPlayer = new MediaPlayer();
+			mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+			mediaPlayer.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(), fd.getLength());
+			mediaPlayer.prepare();
+			mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
+				@Override
+				public void onCompletion(MediaPlayer mp) {
+					mp.release();
+				}
+			});
+			if(mediaPlayer != null){
+				mediaPlayer.start();
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void setLakeImageView() {

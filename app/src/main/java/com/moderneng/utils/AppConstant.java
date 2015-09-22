@@ -6,6 +6,8 @@ public interface AppConstant {
 	//public static final String BASE_RESOURCE_PATH = "android.resource://com.moderneng/";
 	String BASE_RESOURCE_PATH = "android.resource://"+ WeShineApp.getInstance().getPackageName()+"/";
 	String VIDEO_FILE_NAME = "VIDEO_FILE_NAME";
+	String VIDEO_FILE_NAME_WITH_EXTENSION = "VIDEO_FILE_NAME_WITH_EXTENSION";
+
 	String APP_TAG = "[WeShine]";
 	boolean APP_DEBUG = true;
 	String POSITION = "position";
@@ -25,6 +27,10 @@ public interface AppConstant {
 	String EXTRA_VIDEO_TYPE = "video_type";
 
 	String VIDEO_TYPE_STORY = "video_type_story";
+	String EXTRA_VIDEO_LOCATION = "video_location";
+	String EXTRA_VIDEO_LOCATION_APK= "video_location_apk";
+	String EXTRA_VIDEO_LOCATION_OBB = "video_location_obb";
+	String EXTRA_VIDEO_NAME = "video_name";
 
 
 

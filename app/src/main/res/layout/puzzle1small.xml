@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    android:id="@+id/mainlay"
+    android:id="@+id/relative_layout_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/pbg">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/contentlay"
@@ -13,8 +12,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="20dip"
-        android:layout_marginLeft="20dip"
-        android:background="@drawable/frame">
+        android:layout_marginLeft="20dip">
 
         <ImageView
             android:id="@+id/ltop"

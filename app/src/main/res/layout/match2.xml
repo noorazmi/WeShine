@@ -5,10 +5,9 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:id="@+id/RelativeLayout1"
+        android:id="@+id/relative_layout_parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/matchbg2"
         android:gravity="center">
 
         <RelativeLayout

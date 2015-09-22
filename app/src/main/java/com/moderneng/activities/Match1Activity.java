@@ -5,6 +5,7 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,18 +26,19 @@ import com.moderneng.WeShineApp;
 import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
 import com.moderneng.utils.AppConstant;
-import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.GameMusic;
 import com.moderneng.utils.ImageAndMediaResources;
 import com.moderneng.views.ImageDragShadowBuilder;
 
 public class Match1Activity extends Activity {
     private ImageView drag, sun, tree, golf, house, cloud;
     private int count = 1;
-    private Boolean play = false;
-    private Gamemusic mp;
-    private RelativeLayout li;
+    private GameMusic mp;
     private Bitmap mBitmapText;
     private MediaPlayer mMediaPlayer;
+    private RelativeLayout mRelativeLayoutParent;
+    private Bitmap mBitmapBg;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,7 @@ public class Match1Activity extends Activity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.match1);
-        mp = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdMatching1);
+        mp = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdMatching1);
         mp.start();
         drag = (ImageView) findViewById(R.id.draglayout);
         golf = (ImageView) findViewById(R.id.golfblank);
@@ -53,7 +55,6 @@ public class Match1Activity extends Activity {
         tree = (ImageView) findViewById(R.id.treeblank);
         house = (ImageView) findViewById(R.id.solarblank);
         cloud = (ImageView) findViewById(R.id.cloudblank);
-        li = (RelativeLayout) findViewById(R.id.RelativeLayout1);
         golf.setOnDragListener(new MyDragListener());
         sun.setOnDragListener(new MyDragListener());
         tree.setOnDragListener(new MyDragListener());
@@ -69,7 +70,7 @@ public class Match1Activity extends Activity {
         public boolean onTouch(View view, MotionEvent motionEvent) {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 DragShadowBuilder view1 = null;
-                mp = new Gamemusic(getApplicationContext(), R.raw.drag);
+                mp = new GameMusic(getApplicationContext(), "drag");
                 mp.start();
                 ImageView img = (ImageView) view;
                 ClipData data = ClipData.newPlainText("", "");
@@ -78,7 +79,7 @@ public class Match1Activity extends Activity {
                     view1 = ImageDragShadowBuilder.fromResource(getApplicationContext(), R.drawable.cloud);
                     view.startDrag(data, view1, img, 0);
                 } else if (count == 2) {
-                    view1 = ImageDragShadowBuilder.fromResource(getApplicationContext(), R.drawable.sun);
+                    view1 = ImageDragShadowBuilder.fromResource(getApplicationContext(), R.drawable.sun1);
                     view.startDrag(data, view1, img, 0);
                 } else if (count == 3) {
                     view1 = ImageDragShadowBuilder.fromResource(getApplicationContext(), R.drawable.solar);
@@ -115,37 +116,35 @@ public class Match1Activity extends Activity {
                     // Dropped, reassign View to ViewGroup
                     View view = (View) event.getLocalState();
                     if (count == 1 && v.getId() == R.id.cloudblank) {
-                        mp = new Gamemusic(getApplicationContext(), R.raw.clouds);
+                        mp = new GameMusic(getApplicationContext(), "clouds");
                         mp.start();
                         cloud.setImageResource(R.drawable.cloud);
                         count++;
                         return true;
                     } else if (count == 2 && v.getId() == R.id.Sunblank) {
-                        sun.setImageResource(R.drawable.sun);
-                        mp = new Gamemusic(getApplicationContext(), R.raw.suns);
+                        sun.setImageResource(R.drawable.sun1);
+                        mp = new GameMusic(getApplicationContext(), "suns");
                         mp.start();
                         count++;
                         return true;
                     } else if (count == 3 && v.getId() == R.id.solarblank) {
                         house.setImageResource(R.drawable.solar);
-                        mp = new Gamemusic(getApplicationContext(),
-                                R.raw.solarpanels);
+                        mp = new GameMusic(getApplicationContext(), "solarpanels");
                         mp.start();
                         count++;
                         return true;
                     } else if (count == 4 && v.getId() == R.id.golfblank) {
                         golf.setImageResource(R.drawable.golf);
-                        mp = new Gamemusic(getApplicationContext(), R.raw.golfcart);
+                        mp = new GameMusic(getApplicationContext(), "golfcart");
                         mp.start();
                         count++;
                         return true;
                     } else if (count == 5 && v.getId() == R.id.treeblank) {
                         tree.setImageResource(R.drawable.tree);
                         count++;
-                        play = true;
                         return true;
                     } else {
-                        mp = new Gamemusic(getApplicationContext(), R.raw.wrongs);
+                        mp = new GameMusic(getApplicationContext(), "wrongs");
                         mp.start();
                         //count = count;
                         return false;
@@ -155,7 +154,7 @@ public class Match1Activity extends Activity {
                         drag.setImageResource(R.drawable.cloud);
                         drag.setVisibility(View.VISIBLE);
                     } else if (count == 2) {
-                        drag.setImageResource(R.drawable.sun);
+                        drag.setImageResource(R.drawable.sun1);
                         drag.setVisibility(View.VISIBLE);
                     } else if (count == 3) {
                         drag.setImageResource(R.drawable.solar);
@@ -199,8 +198,8 @@ public class Match1Activity extends Activity {
             @Override
             public void onAnimationEnd(Animation animation) {
 
-                Intent intent = new Intent(Match1Activity.this, Videoplay.class);
-                intent.putExtra(AppConstant.EXTRA_VIDEO_ID, R.raw.matching1_video);
+                Intent intent = new Intent(Match1Activity.this, VideoPlayActivity.class);
+                intent.putExtra(AppConstant.EXTRA_VIDEO_ID, "matching1_video");
                 intent.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.MACHING_ONE_VIDEO_DURATION);
                 startActivity(intent);
                 finish();
@@ -214,6 +213,14 @@ public class Match1Activity extends Activity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMatch1Bg);
+        findViewById(R.id.relative_layout_parent).setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapBg));
+    }
+
+
+    @Override
     protected void onStop() {
         super.onStop();
         if (mBitmapText != null) {
@@ -223,6 +230,11 @@ public class Match1Activity extends Activity {
         if(mMediaPlayer != null){
             mMediaPlayer.release();
             mMediaPlayer = null;
+        }
+
+        if(mBitmapBg != null){
+            mBitmapBg.recycle();
+            mBitmapBg = null;
         }
     }
 }

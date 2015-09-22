@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageview_animation"
         android:layout_gravity="center"
-        android:src="@drawable/welldone1"/>
+        android:src="@drawable/well_done"/>
 
     <AbsoluteLayout
 

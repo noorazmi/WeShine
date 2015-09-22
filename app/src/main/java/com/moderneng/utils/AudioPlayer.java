@@ -2,10 +2,13 @@ package com.moderneng.utils;
 
 
 import android.content.Context;
+import android.content.res.AssetFileDescriptor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 
-import com.moderneng.views.HorizontalPage;
+import com.moderneng.WeShineApp;
+
+import java.io.IOException;
 
 public class AudioPlayer {
 	private MediaPlayer mp;
@@ -19,13 +22,17 @@ public class AudioPlayer {
 		mp.setLooping(false);
 	}
 
-	public AudioPlayer(HorizontalPage.OnScreenSwitchListener onScreenSwitchListener, int id) {
-		mp = new MediaPlayer();
-		mp.reset();
-		mp.release();
-		mp = MediaPlayer.create(mContext, id);
-		mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
-		mp.setLooping(false);
+	public AudioPlayer(Context ctx, String fileName) {
+		this.mContext = ctx;
+        try {
+			AssetFileDescriptor fd = WeShineApp.getAssetFileDescriptor(fileName+".mp3");
+			mp = new MediaPlayer();
+			mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
+			mp.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(), fd.getLength());
+			mp.prepare();
+		} catch (IOException e) {
+			e.printStackTrace();
+        }
 	}
 
 	public void start() {
@@ -51,5 +58,9 @@ public class AudioPlayer {
 			mp.release();
 		}
 
+	}
+
+	public void setLooping(boolean lopping) {
+		mp.setLooping(lopping);
 	}
 }

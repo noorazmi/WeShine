@@ -110,6 +110,19 @@ public class ImageAndMediaResources {
     public static int sImageIdEducation3;
     public static int sImageIdEducation4;
     public static int sImageIdEducation5;
+    public static int sImageIdGameHomeScreen;
+    public static int sImageIdPuzzle1Bg;
+    public static int sImageIdPuzzle2Bg;
+    public static int sImageIdPuzzle3Bg;
+    public static int sImageIdPuzzle4Bg;
+    public static int sImageIdPuzzle5Bg;
+    public static int sImageIdMatch1Bg;
+    public static int sImageIdMatch2Bg;
+    public static int sImageIdMatch3Bg;
+    public static int sImageIdMatch4Bg;
+    public static int sImageIdMatch5Bg;
+    public static int sImageIdMazeMenuBg;
+
 
 
     //Video Durations
@@ -159,9 +172,21 @@ public class ImageAndMediaResources {
             sImageIdEducation3 = R.drawable.aedu3;
             sImageIdEducation4 = R.drawable.aedu4;
             sImageIdEducation5 = R.drawable.aedu5;
+            sImageIdGameHomeScreen = R.drawable.game_home_screen;
+            sImageIdPuzzle1Bg = R.drawable.puzzle1_bg;
+            sImageIdPuzzle2Bg = R.drawable.puzzle2_bg;
+            sImageIdPuzzle3Bg = R.drawable.puzzle3_bg;
+            sImageIdPuzzle4Bg = R.drawable.puzzle4_bg;
+            sImageIdPuzzle5Bg = R.drawable.puzzle5_bg;
+            sImageIdMatch1Bg = R.drawable.match1_bg;
+            sImageIdMatch2Bg = R.drawable.match2_bg;
+            sImageIdMatch3Bg = R.drawable.match3_bg;
+            sImageIdMatch4Bg = R.drawable.match4_bg;
+            sImageIdMatch5Bg = R.drawable.match5_bg;
+            sImageIdMazeMenuBg = R.drawable.maze_menu_bg;
 
         }else if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
-            sImageIdWellDone = R.drawable.arb_well_done;
+            sImageIdWellDone = R.drawable.well_done_arb;
             sImageIdCongratulations = R.drawable.congratulations_arb;
             sImageIdYouAreSmart = R.drawable.you_are_smart_arb;
             sImageIdEduMenuImg1 = R.drawable.edu_menu_img1_arb;
@@ -197,12 +222,24 @@ public class ImageAndMediaResources {
             sImageIdMemoryGamesLevel3 = R.drawable.memory_games_bg_level3;
             sImageIdEducation = R.drawable.education_arb;
             sImageIdHomeScreen = R.drawable.home_screen_arb;
-            sImageIdStoryEndThankYouImage = R.drawable.arb_story_end_image;
+            sImageIdStoryEndThankYouImage = R.drawable.story_end_image_arb;
             sImageIdEducation1 = R.drawable.edu1_arb;
             sImageIdEducation2 = R.drawable.edu2_arb;
             sImageIdEducation3 = R.drawable.edu3_arb;
             sImageIdEducation4 = R.drawable.edu4_arb;
             sImageIdEducation5 = R.drawable.edu5_arb;
+            sImageIdGameHomeScreen = R.drawable.game_home_screen_arb;
+            sImageIdPuzzle1Bg = R.drawable.puzzle1_bg;
+            sImageIdPuzzle2Bg = R.drawable.puzzle2_bg;
+            sImageIdPuzzle3Bg = R.drawable.puzzle3_bg;
+            sImageIdPuzzle4Bg = R.drawable.puzzle4_bg;
+            sImageIdPuzzle5Bg = R.drawable.puzzle5_bg;
+            sImageIdMatch1Bg = R.drawable.match1_bg;
+            sImageIdMatch2Bg = R.drawable.match2_bg;
+            sImageIdMatch3Bg = R.drawable.match3_bg;
+            sImageIdMatch4Bg = R.drawable.match4_bg;
+            sImageIdMatch5Bg = R.drawable.match5_bg;
+            sImageIdMazeMenuBg = R.drawable.maze_menu_bg;
         }
     }
 

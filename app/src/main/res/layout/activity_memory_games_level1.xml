@@ -120,6 +120,6 @@
         android:layout_height="@dimen/title_text_height"
         android:layout_gravity="top|center_horizontal"
         android:layout_marginTop="@dimen/margin_top_memory_games"
-        android:src="@drawable/memory_game_arb"/>
+        android:src="@drawable/memory_game"/>
 
 </FrameLayout>

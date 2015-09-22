@@ -39,8 +39,8 @@
 
                         <ImageButton
                             android:id="@+id/match1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/scroll_menu_img_width"
+                            android:layout_height="@dimen/scroll_menu_img_height"
                             android:background="@drawable/matchn1" />
                     </LinearLayout>
 
@@ -53,8 +53,8 @@
 
                         <ImageButton
                             android:id="@+id/match2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/scroll_menu_img_width"
+                            android:layout_height="@dimen/scroll_menu_img_height"
                             android:background="@drawable/matchn2" />
                     </LinearLayout>
 
@@ -67,8 +67,8 @@
 
                         <ImageButton
                             android:id="@+id/match3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/scroll_menu_img_width"
+                            android:layout_height="@dimen/scroll_menu_img_height"
                             android:background="@drawable/matchn3" />
                     </LinearLayout>
 
@@ -81,8 +81,8 @@
 
                         <ImageButton
                             android:id="@+id/match4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/scroll_menu_img_width"
+                            android:layout_height="@dimen/scroll_menu_img_height"
                             android:background="@drawable/matchn4" />
                     </LinearLayout>
 
@@ -95,8 +95,8 @@
 
                         <ImageButton
                             android:id="@+id/match5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/scroll_menu_img_width"
+                            android:layout_height="@dimen/scroll_menu_img_height"
                             android:background="@drawable/matchn5" />
                     </LinearLayout>
                 </LinearLayout>

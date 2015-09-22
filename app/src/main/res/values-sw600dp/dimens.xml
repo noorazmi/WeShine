@@ -6,4 +6,7 @@
     <dimen name="title_text_height">64dp</dimen>
     <dimen name="margin_top_memory_games">-7dp</dimen>
 
+    <dimen name="scroll_menu_img_width">567dp</dimen>
+    <dimen name="scroll_menu_img_height">340dp</dimen>
+
 </resources>

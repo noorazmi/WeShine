@@ -8,11 +8,15 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.VideoView;
 
-import com.moderneng.utils.AppConstant;
 import com.moderneng.R;
+import com.moderneng.WeShineApp;
 import com.moderneng.activities.MazeMenuActivity;
+import com.moderneng.providers.CustomAPEZProvider;
+import com.moderneng.utils.AppConstant;
 
 public class GameEndVideoFragment extends BaseFragment {
+
+    private String mVideoFileName;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,11 +29,10 @@ public class GameEndVideoFragment extends BaseFragment {
 
         getActivity().getWindow().setFormat(PixelFormat.UNKNOWN);
         int videoDuration = getArguments().getInt(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION);
-        // Displays a video file.
         View v = getFragmentView();
         VideoView mVideoView = (VideoView) v.findViewById(R.id.videoview);
-        String uriPath = AppConstant.BASE_RESOURCE_PATH + getArguments().getInt(AppConstant.VIDEO_FILE_NAME);
-        Uri uri = Uri.parse(uriPath);
+        mVideoFileName = getArguments().getString(AppConstant.VIDEO_FILE_NAME);
+        Uri uri = CustomAPEZProvider.buildUri(WeShineApp.MEDIA_FILE_BASE_PATH + mVideoFileName + ".mp4");
         mVideoView.setVideoURI(uri);
         mVideoView.requestFocus();
         mVideoView.setOnCompletionListener(this);
@@ -38,10 +41,11 @@ public class GameEndVideoFragment extends BaseFragment {
         new CountDownTimer(videoDuration, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                if(millisUntilFinished <= 2500){
+                if (millisUntilFinished <= 2500) {
                     startNextMaze();
                 }
             }
+
             @Override
             public void onFinish() {
 
@@ -59,22 +63,22 @@ public class GameEndVideoFragment extends BaseFragment {
         mp = null;
     }
 
-    private void startNextMaze(){
-        if(getArguments().getInt(AppConstant.VIDEO_FILE_NAME) == R.raw.maze1_end_video){
-            ((MazeMenuActivity)getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_1);
-        }else if(getArguments().getInt(AppConstant.VIDEO_FILE_NAME) == R.raw.maze2_end_video){
-            ((MazeMenuActivity)getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_2);
-        }else if(getArguments().getInt(AppConstant.VIDEO_FILE_NAME) == R.raw.maze3_end_video){
-            ((MazeMenuActivity)getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_3);
-        }else if(getArguments().getInt(AppConstant.VIDEO_FILE_NAME) == R.raw.maze4_end_video){
-            ((MazeMenuActivity)getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_4);
-        }else if(getArguments().getInt(AppConstant.VIDEO_FILE_NAME) == R.raw.maze5_end_video){
-            ((MazeMenuActivity)getActivity()).gotToMazeGameMenu();
-
+    private void startNextMaze() {
+        if (mVideoFileName.equals("maze1_end_video")) {
+            ((MazeMenuActivity) getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_1);
+        } else if (mVideoFileName.equals("maze2_end_video")) {
+            ((MazeMenuActivity) getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_2);
+        } else if (mVideoFileName.equals("maze3_end_video")) {
+            ((MazeMenuActivity) getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_3);
+        } else if (mVideoFileName.equals("maze4_end_video")) {
+            ((MazeMenuActivity) getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_4);
+        } else if (mVideoFileName.equals("maze5_end_video")) {
+            ((MazeMenuActivity) getActivity()).gotToMazeGameMenu();
         }
     }
+
     @Override
-    protected void onAudioComplete(int audioFileId) {
+    protected void onAudioComplete(String audioFileId) {
     }
 
 }

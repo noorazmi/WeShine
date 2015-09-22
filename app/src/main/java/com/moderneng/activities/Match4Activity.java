@@ -5,6 +5,7 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,7 +19,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
@@ -26,7 +26,7 @@ import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
 import com.moderneng.utils.AppConstant;
 import com.moderneng.utils.AudioPlayer;
-import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.GameMusic;
 import com.moderneng.utils.ImageAndMediaResources;
 import com.moderneng.views.ImageDragShadowBuilder;
 
@@ -34,13 +34,10 @@ public class Match4Activity extends Activity {
     private ImageView sun4, redbuoy, ship, dolfin, greenb, drag4;
     private int count = 1;
     private AudioPlayer mp;
-    private Gamemusic mp3, mp5;
-    private int sunx, suny, redx, redy, redy3, shipx, shipy, dolfinx, dolfiny;
-    private RelativeLayout li;
-    private int delayMillis = 800;
-    private Boolean mp5play = true;
+    private GameMusic mp3;
     private Bitmap mBitmapText;
     private MediaPlayer mMediaPlayer;
+    private Bitmap mBitmapBg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +60,6 @@ public class Match4Activity extends Activity {
         ship.setOnDragListener(new Mydraglistener());
         dolfin.setOnDragListener(new Mydraglistener());
         greenb.setOnDragListener(new Mydraglistener());
-        li = (RelativeLayout) findViewById(R.id.m4mainl);
         drag4.setOnTouchListener(new Mytouchlistener());
 
         mBitmapText = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdGoogJob);
@@ -80,7 +76,7 @@ public class Match4Activity extends Activity {
                 DragShadowBuilder view3 = null;
                 ClipData data = ClipData.newPlainText("", "");
                 ImageView img = (ImageView) v;
-                mp3 = new Gamemusic(getApplicationContext(), R.raw.drag);
+                mp3 = new GameMusic(getApplicationContext(), "drag");
                 mp3.start();
                 if (count == 1) {
                     view3 = ImageDragShadowBuilder.fromResource(
@@ -124,7 +120,7 @@ public class Match4Activity extends Activity {
                 case DragEvent.ACTION_DROP:
                     if (count == 1 && dragview.getId() == R.id.sun4v) {
                         sun4.setImageResource(R.drawable.sun4);
-                        mp3 = new Gamemusic(getApplicationContext(), R.raw.suns);
+                        mp3 = new GameMusic(getApplicationContext(), "suns");
                         mp3.start();
                         count++;
 
@@ -132,33 +128,33 @@ public class Match4Activity extends Activity {
                     } else if (count == 2 && dragview.getId() == R.id.redbuoyv) {
                         redbuoy.setImageResource(R.drawable.redbouy);
                         count++;
-                        mp3 = new Gamemusic(getApplicationContext(), R.raw.bouy);
+                        mp3 = new GameMusic(getApplicationContext(), "bouy");
                         mp3.start();
 
                         return true;
                     } else if (count == 3 && dragview.getId() == R.id.vessel1v) {
                         ship.setImageResource(R.drawable.vessal1);
                         count++;
-                        mp3 = new Gamemusic(getApplicationContext(), R.raw.vessel);
+                        mp3 = new GameMusic(getApplicationContext(), "vessel");
                         mp3.start();
 
                         return true;
                     } else if (count == 4 && dragview.getId() == R.id.dolfinv) {
                         dolfin.setImageResource(R.drawable.dolfin);
                         count++;
-                        mp3 = new Gamemusic(getApplicationContext(), R.raw.dolfina);
+                        mp3 = new GameMusic(getApplicationContext(), "dolfina");
                         mp3.start();
 
                         return true;
                     } else if (count == 5 && dragview.getId() == R.id.greenbouyv) {
                         greenb.setImageResource(R.drawable.greenbouy);
                         count++;
-                        mp3 = new Gamemusic(getApplicationContext(), R.raw.bouy);
+                        mp3 = new GameMusic(getApplicationContext(), "bouy");
                         mp3.start();
                         return true;
                     } else {
                         count = count;
-                        mp3 = new Gamemusic(getApplicationContext(), R.raw.wrongs);
+                        mp3 = new GameMusic(getApplicationContext(), "wrongs");
                         mp3.start();
                         return false;
                     }
@@ -208,8 +204,8 @@ public class Match4Activity extends Activity {
             @Override
             public void onAnimationEnd(Animation animation) {
 
-                Intent intent = new Intent(Match4Activity.this, Videoplay.class);
-                intent.putExtra(AppConstant.EXTRA_VIDEO_ID, R.raw.matching4_video);
+                Intent intent = new Intent(Match4Activity.this, VideoPlayActivity.class);
+                intent.putExtra(AppConstant.EXTRA_VIDEO_ID, "matching4_video");
                 intent.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.MACHING_FOUR_VIDEO_DURATION);
                 startActivity(intent);
                 finish();
@@ -222,9 +218,24 @@ public class Match4Activity extends Activity {
         });
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMatch4Bg);
+        findViewById(R.id.relative_layout_parent).setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapBg));
+    }
+
+
     @Override
     protected void onStop() {
         super.onStop();
+
+        if(mBitmapBg != null){
+            mBitmapBg.recycle();
+            mBitmapBg = null;
+        }
+
         if(mBitmapText != null){
             mBitmapText.recycle();
             mBitmapText = null;

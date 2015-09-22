@@ -14,11 +14,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-import com.moderneng.utils.AppConstant;
 import com.moderneng.R;
-import com.moderneng.WeShineApp;
 import com.moderneng.utils.AudioPlayer;
 import com.moderneng.utils.ColorTool;
+import com.moderneng.utils.ImageAndMediaResources;
 
 public class GameMenuActivity extends Activity implements OnTouchListener {
     private AudioPlayer mp;
@@ -121,16 +120,21 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
     protected void onResume() {
         super.onResume();
         System.gc();
-        mp = new AudioPlayer(this, R.raw.homesound);
-        mp.start();
+        mp = new AudioPlayer(this, "homesound");
+        if(mp != null){
+            mp.start();
+        }
+
 
         mImageViewTop = (ImageView) findViewById(R.id.frontimg);
-        mBitmapBottom = BitmapFactory.decodeResource(getResources(), R.drawable.arb_game_home_screen_hotspot);
-        if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
-            mBitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.game_home_screen);
-        }else{
-            mBitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.game_home_screen_arb);
-        }
+        mBitmapBottom = BitmapFactory.decodeResource(getResources(), R.drawable.game_home_screen_hotspot);
+//        if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
+//            mBitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.game_home_screen);
+//        }else{
+//            mBitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.game_home_screen_arb);
+//        }
+
+        mBitmapTop = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdGameHomeScreen);
 
         mImageViewTop.setImageBitmap(mBitmapTop);
         ((ImageView) findViewById(R.id.backimg)).setImageBitmap(mBitmapBottom);

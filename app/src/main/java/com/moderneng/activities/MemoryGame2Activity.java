@@ -2,12 +2,13 @@ package com.moderneng.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -27,9 +28,10 @@ import com.moderneng.WeShineApp;
 import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
 import com.moderneng.utils.AppConstant;
-import com.moderneng.utils.Gamemusic;
+import com.moderneng.utils.GameMusic;
 import com.moderneng.utils.ImageAndMediaResources;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -44,7 +46,7 @@ public class MemoryGame2Activity extends Activity implements OnClickListener, An
     private AnimationDrawable clockanim;
     private CountDownTimer t;
     private TextView tv;
-    private Gamemusic findsame;
+    private GameMusic findsame;
     private MediaPlayer mMediaPlayerClock;
     private RelativeLayout textl;
     private ScaleAnimation gameover, scale1;
@@ -73,17 +75,33 @@ public class MemoryGame2Activity extends Activity implements OnClickListener, An
         scale1.setDuration(1000);
         scale1.setFillAfter(true);
         scale1.setAnimationListener(this);
-        findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdFindTheSimilarCards);
+        findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdFindTheSimilarCards);
         findsame.start();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.clocksound;
-                Uri uri = Uri.parse(uriPath);
-                mMediaPlayerClock = MediaPlayer.create(WeShineApp.getInstance(), uri);
-                if(mMediaPlayerClock != null){
-                    mMediaPlayerClock.setVolume(0.25f,0.25f);
-                    mMediaPlayerClock.start();
+//                String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.clocksound;
+//                Uri uri = Uri.parse(uriPath);
+//                mMediaPlayerClock = MediaPlayer.create(WeShineApp.getInstance(), uri);
+//                if(mMediaPlayerClock != null){
+//                    mMediaPlayerClock.setVolume(0.25f,0.25f);
+//                    mMediaPlayerClock.start();
+//                }
+
+                try {
+                    AssetFileDescriptor fd = WeShineApp.getAssetFileDescriptor("clocksound.mp3");
+                    mMediaPlayerClock = new MediaPlayer();
+                    mMediaPlayerClock.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                    mMediaPlayerClock.setLooping(false);
+                    mMediaPlayerClock.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(), fd.getLength());
+                    mMediaPlayerClock.prepare();
+                    if (mMediaPlayerClock != null) {
+                        mMediaPlayerClock.setVolume(0.25f, 0.25f);
+                        mMediaPlayerClock.start();
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         }, 800);
@@ -101,8 +119,8 @@ public class MemoryGame2Activity extends Activity implements OnClickListener, An
                 clockanim.stop();
                 if (!isGameWon) {
 
-                    findsame = new Gamemusic(getApplicationContext(), R.raw.game_over_ting_ting);
-                    findsame.setOnCompleteListener(new Gamemusic.OnCompleteListener() {
+                    findsame = new GameMusic(getApplicationContext(), R.raw.game_over_ting_ting);
+                    findsame.setOnCompleteListener(new GameMusic.OnCompleteListener() {
                         @Override
                         public void onComplete() {
                             finish();
@@ -191,42 +209,42 @@ public class MemoryGame2Activity extends Activity implements OnClickListener, An
         }
         if (ncount == 1) {
             if (id == R.id.tcard1) {
-                findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarSignal);
+                findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarSignal);
                 findsame.start();
             }
         } else if (ncount == 2) {
             if (id == R.id.tcard2) {
-                findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdRedBilli);
+                findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdRedBilli);
                 findsame.start();
             }
         } else if (ncount == 3) {
             if (id == R.id.tcard3) {
-                findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarCamera);
+                findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarCamera);
                 findsame.start();
             }
         } else if (ncount == 4) {
             if (id == R.id.lcard1) {
-                findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGolfCart);
+                findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGolfCart);
                 findsame.start();
             }
         } else if (ncount == 5) {
             if (id == R.id.lcard2) {
-                findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGreenBilli);
+                findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGreenBilli);
                 findsame.start();
             }
         } else if (ncount == 6) {
             if (id == R.id.lcard3) {
-                findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdLovelySun);
+                findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdLovelySun);
                 findsame.start();
             }
         } else if (ncount == 7) {
             if (id == R.id.lcard4) {
-                findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarStation);
+                findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarStation);
                 findsame.start();
             }
         } else if (ncount == 8) {
             if (id == R.id.lcard5) {
-                findsame = new Gamemusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarLight);
+                findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarLight);
                 findsame.start();
             }
         }
@@ -522,7 +540,7 @@ public class MemoryGame2Activity extends Activity implements OnClickListener, An
     public void onAnimationStart(Animation animation) {
         if (clickcount > 1) {
             if (animation == anim1) {
-                findsame = new Gamemusic(getApplicationContext(), R.raw.wrongs);
+                findsame = new GameMusic(getApplicationContext(), "wrongs");
                 findsame.start();
             }
         }

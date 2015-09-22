@@ -3,6 +3,7 @@ package com.moderneng.framents;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.FrameLayout.LayoutParams;
@@ -12,6 +13,7 @@ import com.moderneng.listeners.OnGameEndListener;
 import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
 import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.GameMusic;
 import com.moderneng.utils.ImageAndMediaResources;
 import com.moderneng.utils.UtilityMethods;
 import com.moderneng.views.DrawingSurface;
@@ -29,6 +31,10 @@ public class MazeGame4Fragment extends BaseFragment implements OnGameEndListener
 	private Bitmap mBottomBitmap;
 	private Bitmap mBitmapSuper;
 
+	private GameMusic mGameMusic1;
+	private GameMusic mGameMusic2;
+	private GameMusic mGameMusicEnd;
+
 
 	@Override
 	protected int getFragmentLayoutId() {
@@ -44,7 +50,16 @@ public class MazeGame4Fragment extends BaseFragment implements OnGameEndListener
 
 		setBackgroundImages();
 		setAnimatedSunView();
-		startAudioSound(R.raw.maze1_ondraw);
+		//startAudioSound(R.raw.maze1_ondraw);
+		mGameMusic1 = new GameMusic(getActivity(), "maze1_ondraw");
+		mGameMusic1.start();
+		new Handler().postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				mGameMusic2 = new GameMusic(getActivity(), ImageAndMediaResources.sSoundIdMaze4);
+				mGameMusic2.start();
+			}
+		}, 500);
 	}
 
 
@@ -101,7 +116,9 @@ public class MazeGame4Fragment extends BaseFragment implements OnGameEndListener
 
 	@Override
 	public void onAnimationStart(Animation animation) {
-		startAudioSound(ImageAndMediaResources.sSoundIdSuper);
+		//startAudioSound(ImageAndMediaResources.sSoundIdSuper);
+		mGameMusicEnd = new GameMusic(getActivity(), ImageAndMediaResources.sSoundIdSuper);
+		mGameMusicEnd.start();
 	}
 
 	@Override
@@ -111,7 +128,8 @@ public class MazeGame4Fragment extends BaseFragment implements OnGameEndListener
 		if (bundle == null) {
 			bundle = new Bundle();
 		}
-		bundle.putInt(AppConstant.VIDEO_FILE_NAME, R.raw.maze4_end_video);
+		//bundle.putInt(AppConstant.VIDEO_FILE_NAME, R.raw.maze4_end_video);
+		bundle.putString(AppConstant.VIDEO_FILE_NAME, "maze4_end_video");
 		bundle.putInt(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.MAZE_FOUR_VIDEO_DURATION);
 		((MazeMenuActivity) getActivity()).attachGameEndVideoFragment(bundle);
 		AnimationUtil.performAnimation(getFragmentView().findViewById(R.id.mazeGame4_superImageView), AnimType.ZOOM_OUT, null);
@@ -131,9 +149,9 @@ public class MazeGame4Fragment extends BaseFragment implements OnGameEndListener
 	}
 
 	@Override
-	protected void onAudioComplete(int audioFileId) {
+	protected void onAudioComplete(String audioFileId) {
 		switch (audioFileId) {
-		case R.raw.maze1_ondraw:
+		case "maze1_ondraw":
 			startAudioSound(ImageAndMediaResources.sSoundIdMaze4);
 			break;
 
@@ -156,6 +174,19 @@ public class MazeGame4Fragment extends BaseFragment implements OnGameEndListener
 
 		mBitmapSuper.recycle();
 		mBitmapSuper = null;
+
+		if(mGameMusic1 != null){
+			mGameMusic1.release();
+		}
+
+		if(mGameMusic2 != null){
+			mGameMusic2.release();
+		}
+
+		if(mGameMusicEnd != null){
+			mGameMusicEnd.release();
+			mGameMusicEnd = null;
+		}
 	}
 
 
