@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.moderneng.R;
+import com.moderneng.WeShineApp;
 import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
 import com.moderneng.utils.GameMusic;
@@ -101,6 +102,7 @@ public class PuzzleMenuActivity extends Activity implements OnClickListener {
 
 		mBitmapTitle.recycle();
 		mBitmapTitle = null;
+
 	}
 
 
@@ -108,7 +110,8 @@ public class PuzzleMenuActivity extends Activity implements OnClickListener {
 	protected void onResume() {
 		super.onResume();
 
-		mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdPuzzleMenuBg);
+		//mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdPuzzleMenuBg);
+		mBitmapBg = WeShineApp.getBitmapFromObb("puzzle_menu_bg.png");
 		findViewById(R.id.linear_layout_container).setBackgroundDrawable(new BitmapDrawable(mBitmapBg));
 
 		mBitmapTitle =  BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdPuzzle);

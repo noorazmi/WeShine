@@ -86,13 +86,16 @@ public class MazeGame1Fragment extends BaseFragment implements OnGameEndListener
 
     private void setBackgroundImages() {
 
-        mTopBitmap =  BitmapFactory.decodeResource(getResources(), R.drawable.maze1_top_img);
+        //mTopBitmap =  BitmapFactory.decodeResource(getResources(), R.drawable.maze1_top_img);
+        mTopBitmap =  WeShineApp.getBitmapFromObb("maze1_top_img.png");
         ((ImageView)getFragmentView().findViewById(R.id.mazeGame1_topImageView)).setImageBitmap(mTopBitmap);
 
-        mMiddleBitmap =  BitmapFactory.decodeResource(getResources(), R.drawable.maze1_middle_img);
+        //mMiddleBitmap =  BitmapFactory.decodeResource(getResources(), R.drawable.maze1_middle_img);
+        mMiddleBitmap =  WeShineApp.getBitmapFromObb("maze1_middle_img.png");
         mDrawingSurface.setImageBitmap(mMiddleBitmap);
 
-        mBottomBitmap =  BitmapFactory.decodeResource(getResources(), R.drawable.maze1_bottom_img);
+        //mBottomBitmap =  BitmapFactory.decodeResource(getResources(), R.drawable.maze1_bottom_img);
+        mBottomBitmap = WeShineApp.getBitmapFromObb("maze1_bottom_img.png");
         ((ImageView)getFragmentView().findViewById(R.id.mazeGame1_bottomImageView)).setImageBitmap(mBottomBitmap);
 
 		mBitmapTerrific = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdTerrific);

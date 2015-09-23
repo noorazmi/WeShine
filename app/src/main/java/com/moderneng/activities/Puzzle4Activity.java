@@ -93,38 +93,31 @@ public class Puzzle4Activity extends Activity {
                 ImageView img = (ImageView) v;
                 ClipData data = ClipData.newPlainText("", "");
                 if (count == 1) {
-                    p4img = ImageDragShadowBuilder.fromResource(
-                            getApplicationContext(), R.drawable.p4m5);
+                    p4img = ImageDragShadowBuilder.fromResource(getApplicationContext(), R.drawable.p4m5);
                     v.startDrag(data, p4img, img, 0);
 
                 } else if (count == 2) {
-                    p4img = ImageDragShadowBuilder.fromResource(
-                            getApplicationContext(), R.drawable.p4m4);
+                    p4img = ImageDragShadowBuilder.fromResource(getApplicationContext(), R.drawable.p4m4);
                     v.startDrag(data, p4img, img, 0);
 
                 } else if (count == 3) {
-                    p4img = ImageDragShadowBuilder.fromResource(
-                            getApplicationContext(), R.drawable.p4m3);
+                    p4img = ImageDragShadowBuilder.fromResource(getApplicationContext(), R.drawable.p4m3);
                     v.startDrag(data, p4img, img, 0);
 
                 } else if (count == 4) {
-                    p4img = ImageDragShadowBuilder.fromResource(
-                            getApplicationContext(), R.drawable.p4m1);
+                    p4img = ImageDragShadowBuilder.fromResource(getApplicationContext(), R.drawable.p4m1);
                     v.startDrag(data, p4img, img, 0);
 
                 } else if (count == 5) {
-                    p4img = ImageDragShadowBuilder.fromResource(
-                            getApplicationContext(), R.drawable.p4m6);
+                    p4img = ImageDragShadowBuilder.fromResource(getApplicationContext(), R.drawable.p4m6);
                     v.startDrag(data, p4img, img, 0);
 
                 } else if (count == 6) {
-                    p4img = ImageDragShadowBuilder.fromResource(
-                            getApplicationContext(), R.drawable.p4m2);
+                    p4img = ImageDragShadowBuilder.fromResource(getApplicationContext(), R.drawable.p4m2);
                     v.startDrag(data, p4img, img, 0);
 
                 } else if (count == 7) {
-                    p4img = ImageDragShadowBuilder.fromResource(
-                            getApplicationContext(), R.drawable.p4m7);
+                    p4img = ImageDragShadowBuilder.fromResource(getApplicationContext(), R.drawable.p4m7);
                     v.startDrag(data, p4img, img, 0);
 
                 }
@@ -163,10 +156,10 @@ public class Puzzle4Activity extends Activity {
                 case DragEvent.ACTION_DRAG_STARTED:
                     p4dragv.setVisibility(View.INVISIBLE);
                     //mp3 = new GameMusic(getApplicationContext(), R.raw.drag);
-                    mp3 = new GameMusic(getApplicationContext(), "drag");
-                    if (mp3 != null) {
-                        mp3.start();
-                    }
+//                    mp3 = new GameMusic(getApplicationContext(), "drag");
+//                    if (mp3 != null) {
+//                        mp3.start();
+//                    }
 
                     break;
                 case DragEvent.ACTION_DRAG_EXITED:
@@ -325,7 +318,7 @@ public class Puzzle4Activity extends Activity {
                         Intent intent = new Intent(Puzzle4Activity.this, BalloonAnimationActivity.class);
                         intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, ImageAndMediaResources.sImageIdGoogJob);
                         intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, ImageAndMediaResources.sSoundIdGoodjob);
-                        intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.hey);
+                        //intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.hey);
                         intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, AppConstant.BALLOON_ANIMATION_SOUND_DELAY);
 
                         startActivityForResult(intent, 100);

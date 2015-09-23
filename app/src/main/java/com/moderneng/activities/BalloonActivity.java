@@ -7,6 +7,8 @@ import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
@@ -29,6 +31,7 @@ import com.moderneng.WeShineApp;
 import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
 import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.AudioPlayer;
 import com.moderneng.utils.ImageAndMediaResources;
 import com.moderneng.utils.Logger;
 import com.moderneng.utils.UtilityMethods;
@@ -100,11 +103,11 @@ public class BalloonActivity extends Activity {
 	private MediaPlayer greatPlayer;
 	private MediaPlayer popBalloonPlayer;
 	private MediaPlayer excellentPlayer;
-	private MediaPlayer popPlayer1;
-	private MediaPlayer popPlayer2;
-	private MediaPlayer popPlayer3;
-	private MediaPlayer popPlayer4;
-	private MediaPlayer popPlayer5;
+	private AudioPlayer popPlayer1;
+	private AudioPlayer popPlayer2;
+	private AudioPlayer popPlayer3;
+	private AudioPlayer popPlayer4;
+	private AudioPlayer popPlayer5;
 	private int tickCount = 60;
 	private CountDownTimer tickTimer;
 	private boolean isGameFinish = false;
@@ -118,13 +121,19 @@ public class BalloonActivity extends Activity {
 	private CountDownTimer balloonTimer;
 	private int WINING_SCORE = 330;
 
+	private Bitmap mBitmapBg;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_baloon);
-		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+		mBitmapBg = WeShineApp.getBitmapFromObb("baloon_game_bg.png");
+		findViewById(R.id.frame_layout_container).setBackgroundDrawable(new BitmapDrawable(mBitmapBg));
+
 		screenSize = UtilityMethods.getScreenSizeInInches(WeShineApp.getInstance());
 		SCREEN_WIDTH = UtilityMethods.getScreenWidth(this);
 		SCREEN_HEIGHT = UtilityMethods.getScreenHeight(this);
@@ -1490,10 +1499,10 @@ public class BalloonActivity extends Activity {
 
 	private void playBalloonSound() {
 
-		String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.balloon_sound;
-		Uri uri = Uri.parse(uriPath);
+		//String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.balloon_sound;
+		//Uri uri = Uri.parse(uriPath);
 		if (currentPopPlayer == BALOON_POP_PLAYER1) {
-			popPlayer2 = MediaPlayer.create(WeShineApp.getInstance(), uri);
+			popPlayer2 = new AudioPlayer(this, "balloon_sound");
 			popPlayer2.start();
 			currentPopPlayer = BALOON_POP_PLAYER2;
 			if (popPlayer5 != null) {
@@ -1501,7 +1510,7 @@ public class BalloonActivity extends Activity {
 				popPlayer5 = null;
 			}
 		} else if (currentPopPlayer == BALOON_POP_PLAYER2) {
-			popPlayer3 = MediaPlayer.create(WeShineApp.getInstance(), uri);
+			popPlayer3 = new AudioPlayer(this, "balloon_sound");
 			popPlayer3.start();
 			currentPopPlayer = BALOON_POP_PLAYER3;
 			if (popPlayer1 != null) {
@@ -1509,7 +1518,7 @@ public class BalloonActivity extends Activity {
 				popPlayer1 = null;
 			}
 		} else if (currentPopPlayer == BALOON_POP_PLAYER3) {
-			popPlayer4 = MediaPlayer.create(WeShineApp.getInstance(), uri);
+			popPlayer4 = new AudioPlayer(this, "balloon_sound");
 			popPlayer4.start();
 			currentPopPlayer = BALOON_POP_PLAYER4;
 			if (popPlayer2 != null) {
@@ -1517,7 +1526,7 @@ public class BalloonActivity extends Activity {
 				popPlayer2 = null;
 			}
 		} else if (currentPopPlayer == BALOON_POP_PLAYER4) {
-			popPlayer5 = MediaPlayer.create(WeShineApp.getInstance(), uri);
+			popPlayer5 = new AudioPlayer(this, "balloon_sound");
 			popPlayer5.start();
 			currentPopPlayer = BALOON_POP_PLAYER5;
 			if (popPlayer3 != null) {
@@ -1525,7 +1534,7 @@ public class BalloonActivity extends Activity {
 				popPlayer3 = null;
 			}
 		} else if (currentPopPlayer == BALOON_POP_PLAYER5) {
-			popPlayer1 = MediaPlayer.create(WeShineApp.getInstance(), uri);
+			popPlayer1 = new AudioPlayer(this, "balloon_sound");
 			popPlayer1.start();
 			currentPopPlayer = BALOON_POP_PLAYER1;
 			if (popPlayer4 != null) {
@@ -1640,6 +1649,10 @@ public class BalloonActivity extends Activity {
 		tickTimer.cancel();
 		tickTimer = null;
 		System.gc();
+		if(mBitmapBg != null){
+			mBitmapBg.recycle();
+			mBitmapBg = null;
+		}
 	}
 
 }

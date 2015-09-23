@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.moderneng.R;
+import com.moderneng.WeShineApp;
 import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
 import com.moderneng.utils.AudioPlayer;
@@ -153,8 +154,14 @@ public class MemoryGamesMenuActivity extends Activity implements View.OnTouchLis
             }
         }, 1100);
 
-        mBitmapFront = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryBg);
-        mBitmapBack = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryBgHotspot);
+
+
+        //mBitmapFront = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryBg);
+        //mBitmapBack = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryBgHotspot);
+
+        mBitmapFront = WeShineApp.getBitmapFromObb("memory_games_bg.png");
+        mBitmapBack = WeShineApp.getBitmapFromObb("memory_games_bg_hotspot.png");
+
 
         frontimg.setImageBitmap(mBitmapFront);
         backimg.setImageBitmap(mBitmapBack);

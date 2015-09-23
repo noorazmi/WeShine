@@ -24,7 +24,7 @@ public class BalloonAnimationActivity extends Activity {
         Bundle bundle = new Bundle();
         bundle.putInt(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID,getIntent().getIntExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, 0));
         bundle.putInt(AppConstant.EXTRA_GREETING_SOUND_ID,getIntent().getIntExtra(AppConstant.EXTRA_GREETING_SOUND_ID, 0));
-        bundle.putInt(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID,getIntent().getIntExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, 0));
+        //bundle.putInt(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID,getIntent().getIntExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, 0));
         bundle.putInt(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY,getIntent().getIntExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, 0));
         fragment.setArguments(bundle);
         getFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();

@@ -6,9 +6,11 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.res.AssetFileDescriptor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
@@ -84,6 +86,8 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 	private MediaPlayer backgroundMusicMediaPlayer;
 	private int sunWidth;
 
+	private Bitmap mBitmapBg;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -91,6 +95,10 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		setContentView(R.layout.activity_sun_catcher);
+
+		mBitmapBg = WeShineApp.getBitmapFromObb("sun_catcher_bg.png");
+		findViewById(R.id.frame_layout_container).setBackgroundDrawable(new BitmapDrawable(mBitmapBg));
+
 		screenSize = UtilityMethods.getScreenSizeInInches(WeShineApp.getInstance());
 		SCREEN_WIDTH = UtilityMethods.getScreenWidth(this);
 		SCREEN_HEIGHT = UtilityMethods.getScreenHeight(this);
@@ -769,6 +777,11 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 					e.printStackTrace();
 				}
 			}
+		}
+
+		if(mBitmapBg != null){
+			mBitmapBg.recycle();
+			mBitmapBg = null;
 		}
 
 		super.onDestroy();

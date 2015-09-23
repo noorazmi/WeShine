@@ -231,7 +231,7 @@ public class Puzzle2Activity extends Activity {
                         Intent intent = new Intent(Puzzle2Activity.this, BalloonAnimationActivity.class);
                         intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID,  ImageAndMediaResources.sImageIdPerfect);
                         intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, ImageAndMediaResources.sSoundIdPerfect);
-                        intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.hey);
+                        //intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.hey);
                         intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, AppConstant.BALLOON_ANIMATION_SOUND_DELAY);
                         startActivityForResult(intent, 100);
 

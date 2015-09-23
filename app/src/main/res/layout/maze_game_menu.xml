@@ -40,8 +40,7 @@
                         <ImageButton
                             android:id="@+id/maze_menu_image1"
                             android:layout_width="@dimen/scroll_menu_img_width"
-                            android:layout_height="@dimen/scroll_menu_img_height"
-                            android:background="@drawable/maze1_menu_img"/>
+                            android:layout_height="@dimen/scroll_menu_img_height"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -54,8 +53,7 @@
                         <ImageButton
                             android:id="@+id/maze_menu_image2"
                             android:layout_width="@dimen/scroll_menu_img_width"
-                            android:layout_height="@dimen/scroll_menu_img_height"
-                            android:background="@drawable/maze2_menu_img"/>
+                            android:layout_height="@dimen/scroll_menu_img_height"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -68,8 +66,7 @@
                         <ImageButton
                             android:id="@+id/maze_menu_image3"
                             android:layout_width="@dimen/scroll_menu_img_width"
-                            android:layout_height="@dimen/scroll_menu_img_height"
-                            android:background="@drawable/maze3_menu_img"/>
+                            android:layout_height="@dimen/scroll_menu_img_height"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -82,8 +79,7 @@
                         <ImageButton
                             android:id="@+id/maze_menu_image4"
                             android:layout_width="@dimen/scroll_menu_img_width"
-                            android:layout_height="@dimen/scroll_menu_img_height"
-                            android:background="@drawable/maze4_menu_img"/>
+                            android:layout_height="@dimen/scroll_menu_img_height"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -96,8 +92,7 @@
                         <ImageButton
                             android:id="@+id/maze_menu_image5"
                             android:layout_width="@dimen/scroll_menu_img_width"
-                            android:layout_height="@dimen/scroll_menu_img_height"
-                            android:background="@drawable/maze5_menu_img"/>
+                            android:layout_height="@dimen/scroll_menu_img_height"/>
                     </LinearLayout>
                 </LinearLayout>
             </HorizontalScrollView>

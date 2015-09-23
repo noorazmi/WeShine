@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.moderneng.R;
+import com.moderneng.WeShineApp;
 import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
 import com.moderneng.utils.AudioPlayer;
@@ -110,7 +111,8 @@ public class EducationMenuActivity extends Activity implements OnClickListener {
         mBitmapEduMenu4 = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdEduMenuImg4);
         mBitmapEduMenu5 = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdEduMenuImg5);
 
-        mBitmapEduBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdEduBg);
+        //mBitmapEduBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdEduBg);
+        mBitmapEduBg = WeShineApp.getBitmapFromObb("edubg.png");
 
         slide1.setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapEduMenu1));
         slide2.setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapEduMenu2));

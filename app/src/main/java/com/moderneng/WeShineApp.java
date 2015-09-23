@@ -3,12 +3,15 @@ package com.moderneng;
 import android.app.Application;
 import android.content.pm.PackageManager;
 import android.content.res.AssetFileDescriptor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import com.android.vending.expansion.zipfile.APKExpansionSupport;
 import com.android.vending.expansion.zipfile.ZipResourceFile;
 import com.moderneng.utils.ImageAndMediaResources;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 public class WeShineApp extends Application {
     private static WeShineApp singleton;
@@ -58,5 +61,20 @@ public class WeShineApp extends Application {
 
     public static AssetFileDescriptor getAssetFileDescriptor(String fileName) {
         return mExpansionFile.getAssetFileDescriptor(MEDIA_FILE_BASE_PATH + fileName);
+    }
+
+
+    public static Bitmap getBitmapFromObb(String drawableNameWithExtension){
+
+        InputStream inputStream = null;
+        try {
+            inputStream = mExpansionFile.getInputStream("main/drawable/"+drawableNameWithExtension);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
+        bitmapOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        Bitmap bitmap = BitmapFactory.decodeStream(inputStream, null, bitmapOptions);
+        return bitmap;
     }
 }

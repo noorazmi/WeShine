@@ -177,7 +177,8 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
     protected void onResume() {
         super.onResume();
 
-        mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryGamesLevel2);
+        //mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryGamesLevel2);
+        mBitmapBg = WeShineApp.getBitmapFromObb("memory_games_bg_level3.png");
         findViewById(R.id.relative_layout_parent).setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapBg));
 
         mBitmapTitle = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryGame);
@@ -429,7 +430,7 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
                             Intent intent = new Intent(MemoryGame3Activity.this, BalloonAnimationActivity.class);
                             intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, ImageAndMediaResources.sImageIdCongratulations);
                             intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, ImageAndMediaResources.sSoundIdCongratulationsShort);
-                            intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.ballon_playing);
+                            //intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.ballon_playing);
                             intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, AppConstant.BALLOON_ANIMATION_SOUND_DELAY);
                             startActivityForResult(intent, 100);
                         }

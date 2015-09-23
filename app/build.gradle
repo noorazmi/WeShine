@@ -19,10 +19,9 @@ android {
 
     productFlavors {
         english {
-            //applicationId = "com.moderneng.eng"
-            applicationId = "com.test.apk"
-            versionCode = 7;
-            versionName = "V1.7"
+            applicationId = "com.moderneng.eng"
+            versionCode = 2;
+            versionName = "1.1"
         }
         english_arabic {
             applicationId = "com.moderneng.engarb"

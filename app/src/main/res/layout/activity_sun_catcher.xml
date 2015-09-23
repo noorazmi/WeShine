@@ -1,39 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    android:id="@+id/frame_layout_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sun_catcher_bg"
-    android:orientation="vertical" >
-
-    <!--
-         <ImageView
-        android:id="@+id/sunCatcher_sunImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/maze2_sun_top_margin" />
-    -->
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/sunCatcher_lakeImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left|bottom"
-        android:layout_marginTop="@dimen/maze2_sun_top_margin" />
+        android:layout_marginTop="@dimen/maze2_sun_top_margin"/>
 
     <ImageView
         android:id="@+id/sunCatcher_birdImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left|bottom"
-        android:layout_marginTop="@dimen/maze2_sun_top_margin" />
+        android:layout_marginTop="@dimen/maze2_sun_top_margin"/>
 
     <ImageView
         android:id="@+id/sunCatcher_batteryImageView"
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_gravity="top|right"
-        android:src="@drawable/battery" />
+        android:src="@drawable/battery"/>
 
     <TextView
         android:id="@+id/sunCatcher_circleTextView"
@@ -45,57 +37,58 @@
         android:text="25"
         android:textColor="#ff0000"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
 
     <AbsoluteLayout
         android:id="@+id/mainLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/sunCatcher_sunImageView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 
         <ImageView
             android:id="@+id/sunCatcher_raysImageView"
             android:layout_width="150dp"
             android:layout_height="100dp"
-            android:src="@drawable/rays1" />
+            android:src="@drawable/rays1"/>
 
         <ImageView
             android:id="@+id/sunCatcher_golfCarImageView"
             android:layout_width="150dp"
             android:layout_height="100dp"
-            android:src="@drawable/golf_car" />
+            android:src="@drawable/golf_car"/>
 
         <ImageView
             android:id="@+id/sunCatcher_starsImageView"
             android:layout_width="80dp"
             android:layout_height="60dp"
             android:src="@drawable/stars_animation_drawable"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
     </AbsoluteLayout>
 
     <LinearLayout
-        android:id="@+id/sunCatcher_batteryFullLinearLayout" 
+        android:id="@+id/sunCatcher_batteryFullLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:visibility="gone" >
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/sunCatcher_batteryFullImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/battery_is_full_thankyou" />
+            android:src="@drawable/battery_is_full_thankyou"/>
     </LinearLayout>
+
     <LinearLayout
-        android:id="@+id/sunCatcher_gameOverLinearLayout" 
+        android:id="@+id/sunCatcher_gameOverLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:visibility="gone" >
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/imageview_gameover"

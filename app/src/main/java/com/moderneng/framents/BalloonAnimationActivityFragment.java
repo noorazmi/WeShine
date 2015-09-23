@@ -8,6 +8,8 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,12 +22,15 @@ import android.widget.AbsoluteLayout;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.moderneng.R;
+import com.moderneng.WeShineApp;
 import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
 import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.AudioPlayer;
 import com.moderneng.utils.UtilityMethods;
-import com.moderneng.R;
-import com.moderneng.WeShineApp;
+
+import java.io.IOException;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -35,7 +40,6 @@ public class BalloonAnimationActivityFragment extends Fragment implements View.O
     private double screenSize;
     private View baloonFrame;
     private View balloon1, balloon2, balloon3, balloon4, balloon5, balloon6, balloon7, balloon8, balloon9, balloon10, balloon11, balloon12, balloon13;
-    private int SCREEN_WIDTH;
     private int SCREEN_HEIGHT;
     private AnimatorSet baloonPanelAnimatorSet;
 
@@ -46,18 +50,19 @@ public class BalloonAnimationActivityFragment extends Fragment implements View.O
     private static final int BALOON_POP_PLAYER5 = 105;
     private int currentPopPlayer = BALOON_POP_PLAYER1;
 
-    private MediaPlayer popPlayer1;
-    private MediaPlayer popPlayer2;
-    private MediaPlayer popPlayer3;
-    private MediaPlayer popPlayer4;
-    private MediaPlayer popPlayer5;
-    private MediaPlayer balloonAnimationSoundPlayer;
+    private AudioPlayer popPlayer1;
+    private AudioPlayer popPlayer2;
+    private AudioPlayer popPlayer3;
+    private AudioPlayer popPlayer4;
+    private AudioPlayer popPlayer5;
+    private MediaPlayer mMediaPlayerGreeting;
+    private MediaPlayer mMediaPlayerBalloonPlay;
     private AbsoluteLayout mAbsoluteLayoutContainer;
     private ImageView mImageViewAnimation;
     private Activity mActivity;
     private int mGreetingImageDrawableId;
     private int mGreetingSoundId;
-    private int mBalloonAnimationSoundId;
+    //private int mBalloonAnimationSoundId;
 
     private int mBalloonAnimationDelay = 1000;
 
@@ -74,7 +79,7 @@ public class BalloonAnimationActivityFragment extends Fragment implements View.O
         Bundle bundle = getArguments();
         mGreetingImageDrawableId = bundle.getInt(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID);
         mGreetingSoundId = bundle.getInt(AppConstant.EXTRA_GREETING_SOUND_ID);
-        mBalloonAnimationSoundId = bundle.getInt(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID);
+        //mBalloonAnimationSoundId = bundle.getInt(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID);
         mBalloonAnimationDelay = bundle.getInt(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY);
     }
 
@@ -82,7 +87,6 @@ public class BalloonAnimationActivityFragment extends Fragment implements View.O
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         screenSize = UtilityMethods.getScreenSizeInInches(WeShineApp.getInstance());
-        SCREEN_WIDTH = UtilityMethods.getScreenWidth(getActivity());
         SCREEN_HEIGHT = UtilityMethods.getScreenHeight(getActivity());
         View rootView = inflater.inflate(R.layout.fragment_balloon_animation, container, false);
         mImageViewAnimation = (ImageView) rootView.findViewById(R.id.imageview_animation);
@@ -212,10 +216,12 @@ public class BalloonAnimationActivityFragment extends Fragment implements View.O
 
     private void playBalloonSound() {
 
-        String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.balloon_sound;
-        Uri uri = Uri.parse(uriPath);
+        //String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.balloon_sound;
+       // Uri uri = Uri.parse(uriPath);
+
         if (currentPopPlayer == BALOON_POP_PLAYER1) {
-            popPlayer2 = MediaPlayer.create(WeShineApp.getInstance(), uri);
+            //popPlayer2 = MediaPlayer.create(WeShineApp.getInstance(), uri);
+            popPlayer2 = new AudioPlayer(getActivity(), "balloon_sound");
             popPlayer2.start();
             currentPopPlayer = BALOON_POP_PLAYER2;
             if (popPlayer5 != null) {
@@ -223,7 +229,8 @@ public class BalloonAnimationActivityFragment extends Fragment implements View.O
                 popPlayer5 = null;
             }
         } else if (currentPopPlayer == BALOON_POP_PLAYER2) {
-            popPlayer3 = MediaPlayer.create(WeShineApp.getInstance(), uri);
+            //popPlayer3 = MediaPlayer.create(WeShineApp.getInstance(), uri);
+            popPlayer3 = new AudioPlayer(getActivity(), "balloon_sound");
             popPlayer3.start();
             currentPopPlayer = BALOON_POP_PLAYER3;
             if (popPlayer1 != null) {
@@ -231,7 +238,8 @@ public class BalloonAnimationActivityFragment extends Fragment implements View.O
                 popPlayer1 = null;
             }
         } else if (currentPopPlayer == BALOON_POP_PLAYER3) {
-            popPlayer4 = MediaPlayer.create(WeShineApp.getInstance(), uri);
+            //popPlayer4 = MediaPlayer.create(WeShineApp.getInstance(), uri);
+            popPlayer4 = new AudioPlayer(getActivity(), "balloon_sound");
             popPlayer4.start();
             currentPopPlayer = BALOON_POP_PLAYER4;
             if (popPlayer2 != null) {
@@ -239,7 +247,8 @@ public class BalloonAnimationActivityFragment extends Fragment implements View.O
                 popPlayer2 = null;
             }
         } else if (currentPopPlayer == BALOON_POP_PLAYER4) {
-            popPlayer5 = MediaPlayer.create(WeShineApp.getInstance(), uri);
+            //popPlayer5 = MediaPlayer.create(WeShineApp.getInstance(), uri);
+            popPlayer5 = new AudioPlayer(getActivity(), "balloon_sound");
             popPlayer5.start();
             currentPopPlayer = BALOON_POP_PLAYER5;
             if (popPlayer3 != null) {
@@ -247,7 +256,8 @@ public class BalloonAnimationActivityFragment extends Fragment implements View.O
                 popPlayer3 = null;
             }
         } else if (currentPopPlayer == BALOON_POP_PLAYER5) {
-            popPlayer1 = MediaPlayer.create(WeShineApp.getInstance(), uri);
+            //popPlayer1 = MediaPlayer.create(WeShineApp.getInstance(), uri);
+            popPlayer1 = new AudioPlayer(getActivity(), "balloon_sound");
             popPlayer1.start();
             currentPopPlayer = BALOON_POP_PLAYER1;
             if (popPlayer4 != null) {
@@ -260,30 +270,41 @@ public class BalloonAnimationActivityFragment extends Fragment implements View.O
     private void playWelldoneSound() {
         String uriPath = AppConstant.BASE_RESOURCE_PATH + mGreetingSoundId;
         Uri uri = Uri.parse(uriPath);
-        balloonAnimationSoundPlayer = MediaPlayer.create(getActivity(), uri);
-        balloonAnimationSoundPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+        mMediaPlayerGreeting = MediaPlayer.create(getActivity(), uri);
+        mMediaPlayerGreeting.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 
             @Override
             public void onCompletion(MediaPlayer mp) {
-                balloonAnimationSoundPlayer.release();
-                balloonAnimationSoundPlayer = null;
+                mMediaPlayerGreeting.release();
+                mMediaPlayerGreeting = null;
                 playBallonAnimationSound();
             }
         });
-        balloonAnimationSoundPlayer.start();
+        mMediaPlayerGreeting.start();
 
     }
 
     private void playBallonAnimationSound() {
-        String uriPath = AppConstant.BASE_RESOURCE_PATH + mBalloonAnimationSoundId;
-        Uri uri = Uri.parse(uriPath);
-        balloonAnimationSoundPlayer = MediaPlayer.create(getActivity(), uri);
-        balloonAnimationSoundPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+        //String uriPath = AppConstant.BASE_RESOURCE_PATH + mBalloonAnimationSoundId;
+        //Uri uri = Uri.parse(uriPath);
+        //mMediaPlayerGreeting = MediaPlayer.create(getActivity(), uri);
+
+        try {
+            AssetFileDescriptor fd = WeShineApp.getAssetFileDescriptor("ballon_playing.mp3");
+            mMediaPlayerBalloonPlay = new MediaPlayer();
+            mMediaPlayerBalloonPlay.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            mMediaPlayerBalloonPlay.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(), fd.getLength());
+            mMediaPlayerBalloonPlay.prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        mMediaPlayerBalloonPlay.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 
             @Override
             public void onCompletion(MediaPlayer mp) {
-                balloonAnimationSoundPlayer.release();
-                balloonAnimationSoundPlayer = null;
+                mMediaPlayerBalloonPlay.release();
+                mMediaPlayerBalloonPlay = null;
             }
         });
 
@@ -291,7 +312,7 @@ public class BalloonAnimationActivityFragment extends Fragment implements View.O
         mImageViewAnimation.postDelayed(new Runnable() {
             @Override
             public void run() {
-                balloonAnimationSoundPlayer.start();
+                mMediaPlayerBalloonPlay.start();
             }
         }, mBalloonAnimationDelay);
 

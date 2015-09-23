@@ -74,13 +74,16 @@ public class MazeGame3Fragment extends BaseFragment implements OnGameEndListener
 
 	private void setBackgroundImages() {
 
-		mTopBitmap =  BitmapFactory.decodeResource(getResources(), R.drawable.maze3_top_img);
+		//mTopBitmap =  BitmapFactory.decodeResource(getResources(), R.drawable.maze3_top_img);
+		mTopBitmap =  WeShineApp.getBitmapFromObb("maze3_top_img.png");
 		((ImageView)getFragmentView().findViewById(R.id.mazeGame3_topImageView)).setImageBitmap(mTopBitmap);
 
-		mMiddleBitmap =  BitmapFactory.decodeResource(getResources(), R.drawable.maze3_middle_img);
+		//mMiddleBitmap =  BitmapFactory.decodeResource(getResources(), R.drawable.maze3_middle_img);
+		mMiddleBitmap =  WeShineApp.getBitmapFromObb("maze3_middle_img.png");
 		mDrawingSurface.setImageBitmap(mMiddleBitmap);
 
-		mBottomBitmap =  BitmapFactory.decodeResource(getResources(), R.drawable.maze3_bottom_img);
+		//mBottomBitmap =  BitmapFactory.decodeResource(getResources(), R.drawable.maze3_bottom_img);
+		mBottomBitmap =  WeShineApp.getBitmapFromObb("maze3_bottom_img.png");
 		((ImageView)getFragmentView().findViewById(R.id.mazeGame3_bottomImageView)).setImageBitmap(mBottomBitmap);
 
 

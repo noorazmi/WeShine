@@ -176,20 +176,6 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
             }
         }.start();
 
-		/*
-         * new Handler().postDelayed(new Runnable() {
-		 *
-		 * @Override public void run() { // TODO Auto-generated method stub if
-		 * (isface == false) { mMediaPlayerClock.stop(); clockanimation.stop(); gamemusic =
-		 * new Gamemusic(getApplicationContext(), R.raw.gameover);
-		 * gamemusic.start(); textimg.setImageResource(R.drawable.gameover);
-		 * textlay.setVisibility(View.VISIBLE);
-		 *
-		 * plate1.setOnClickListener(null); cart1.setOnClickListener(null);
-		 * blue1.setOnClickListener(null); plate2.setOnClickListener(null);
-		 * cart2.setOnClickListener(null); blue2.setOnClickListener(null); } }
-		 * }, 30000);
-		 */
     }
 
 
@@ -212,16 +198,6 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
     public void onAnimationEnd(Animation animation) {
         if (animation == scal) {
             t.cancel();
-//		new Handler().postDelayed(new Runnable() {
-//
-//				@Override
-//				public void run() {
-//					Intent i = new Intent(Level1.this, Mlevel2.class);
-//					startActivity(i);
-//					finish();
-//				}
-//			}, 2500);
-
         }
         if (count == 0) {
             if (animation == animation1) {
@@ -294,7 +270,6 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
                             ImageAndMediaResources.sSoundIdGreenBilli);
                     gamemusic.start();
                 }
-                // isface = true;
             }
         } else if (clickcount == 2) {
             if (animation == animation1) {
@@ -396,20 +371,13 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
                         if (isface == true) {
                             isGameWon = true;
                             mMediaPlayerClock.stop();
-                            //textlay.bringToFront();
-                            //textlay.setVisibility(View.VISIBLE);
-                            //textimg.setImageResource(R.drawable.welldone1);
-                            //textimg.setAnimation(scal);
-                            //gamemusic = new Gamemusic(getApplicationContext(), R.raw.welldonesound);
-                            //gamemusic.start();
                             t.cancel();
-
                             clockanimation.stop();
                             Intent intent = new Intent(MemoryGame1Activity.this, BalloonAnimationActivity.class);
                             intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, ImageAndMediaResources.sImageIdWellDone);
                             //intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, R.raw.well_done);
                             intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, ImageAndMediaResources.sSoundIdWellDone);
-                            intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.ballon_playing);
+                            //intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.ballon_playing);
                             intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, AppConstant.BALLOON_ANIMATION_SOUND_DELAY);
 
                             startActivityForResult(intent, 100);
@@ -484,13 +452,8 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
         super.onResume();
         System.gc();
         super.onResume();
-//		if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
-//			mBitmapBg = BitmapFactory.decodeResource(getResources(), R.drawable.memlevel1);
-//		}else if (WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
-//			mBitmapBg = BitmapFactory.decodeResource(getResources(), R.drawable.memory_games_level_one_bg);
-//		}
-
-        mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryGamesLevel1);
+        //mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryGamesLevel1);
+        mBitmapBg = WeShineApp.getBitmapFromObb("memory_games_bg_level1.png");
         findViewById(R.id.relative_layout_parent).setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapBg));
 
         mBitmapTitle = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryGame);

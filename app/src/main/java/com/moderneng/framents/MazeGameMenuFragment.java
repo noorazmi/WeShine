@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.moderneng.R;
+import com.moderneng.WeShineApp;
 import com.moderneng.activities.MazeMenuActivity;
 import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
@@ -39,6 +40,14 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
         mImageButtonMaze3 = (ImageButton) getFragmentView().findViewById(R.id.maze_menu_image3);
         mImageButtonMaze4 = (ImageButton) getFragmentView().findViewById(R.id.maze_menu_image4);
         mImageButtonMaze5 = (ImageButton) getFragmentView().findViewById(R.id.maze_menu_image5);
+
+        mImageButtonMaze1.setImageBitmap(WeShineApp.getBitmapFromObb("maze1_menu_img.png"));
+        mImageButtonMaze2.setImageBitmap(WeShineApp.getBitmapFromObb("maze2_menu_img.png"));
+        mImageButtonMaze3.setImageBitmap(WeShineApp.getBitmapFromObb("maze3_menu_img.png"));
+        mImageButtonMaze4.setImageBitmap(WeShineApp.getBitmapFromObb("maze4_menu_img.png"));
+        mImageButtonMaze5.setImageBitmap(WeShineApp.getBitmapFromObb("maze5_menu_img.png"));
+
+
 
         mBitmapTitle =  BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMaze);
         ((ImageView)getFragmentView().findViewById(R.id.imageview_title)).setImageBitmap(mBitmapTitle);
