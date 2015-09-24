@@ -1160,9 +1160,7 @@ public class BalloonActivity extends Activity {
 					mp.release();
 				}
 			});
-			if(mediaPlayer != null){
-				mediaPlayer.start();
-			}
+			mediaPlayer.start();
 
 		} catch (IOException e) {
 			e.printStackTrace();

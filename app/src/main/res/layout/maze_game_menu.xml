@@ -37,10 +37,11 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <ImageButton
+                        <ImageView
                             android:id="@+id/maze_menu_image1"
                             android:layout_width="@dimen/scroll_menu_img_width"
-                            android:layout_height="@dimen/scroll_menu_img_height"/>
+                            android:layout_height="@dimen/scroll_menu_img_height"
+                            android:scaleType="fitXY"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -50,10 +51,11 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <ImageButton
+                        <ImageView
                             android:id="@+id/maze_menu_image2"
                             android:layout_width="@dimen/scroll_menu_img_width"
-                            android:layout_height="@dimen/scroll_menu_img_height"/>
+                            android:layout_height="@dimen/scroll_menu_img_height"
+                            android:scaleType="fitXY"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -63,10 +65,11 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <ImageButton
+                        <ImageView
                             android:id="@+id/maze_menu_image3"
                             android:layout_width="@dimen/scroll_menu_img_width"
-                            android:layout_height="@dimen/scroll_menu_img_height"/>
+                            android:layout_height="@dimen/scroll_menu_img_height"
+                            android:scaleType="fitXY"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -76,10 +79,11 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <ImageButton
+                        <ImageView
                             android:id="@+id/maze_menu_image4"
                             android:layout_width="@dimen/scroll_menu_img_width"
-                            android:layout_height="@dimen/scroll_menu_img_height"/>
+                            android:layout_height="@dimen/scroll_menu_img_height"
+                            android:scaleType="fitXY"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -89,10 +93,11 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <ImageButton
+                        <ImageView
                             android:id="@+id/maze_menu_image5"
                             android:layout_width="@dimen/scroll_menu_img_width"
-                            android:layout_height="@dimen/scroll_menu_img_height"/>
+                            android:layout_height="@dimen/scroll_menu_img_height"
+                            android:scaleType="fitXY"/>
                     </LinearLayout>
                 </LinearLayout>
             </HorizontalScrollView>

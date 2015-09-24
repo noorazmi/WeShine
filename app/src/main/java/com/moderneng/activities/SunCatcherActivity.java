@@ -277,15 +277,15 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 			if (screenSize >= 9.4) {
 				raysImageView.setImageResource(R.drawable.rays1);
 				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 - (int) UtilityMethods.convertDpToPixel(45, WeShineApp.getInstance());
-				xToPosSunRay = 1 * oneSixScreen;
+				xToPosSunRay = oneSixScreen;
 			} else if (screenSize >= 6.9) {
 				raysImageView.setImageResource(R.drawable.rays1_medium);
 				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 - (int) UtilityMethods.convertDpToPixel(48, WeShineApp.getInstance());
-				xToPosSunRay = 1 * oneSixScreen;
+				xToPosSunRay = oneSixScreen;
 			} else {
 				raysImageView.setImageResource(R.drawable.rays1_small);
 				xFromPosSunRay = SCREEN_WIDTH / 2 - sunWidth / 2 - (int) UtilityMethods.convertDpToPixel(87, WeShineApp.getInstance());
-				xToPosSunRay = 1 * oneSixScreen - (int) UtilityMethods.convertDpToPixel(60, WeShineApp.getInstance());
+				xToPosSunRay = oneSixScreen - (int) UtilityMethods.convertDpToPixel(60, WeShineApp.getInstance());
 			}
 			break;
 		case RAY_TWO:

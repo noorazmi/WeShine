@@ -22,8 +22,7 @@ import java.io.IOException;
 public abstract class BaseFragment extends Fragment implements OnCompletionListener {
 
 	private View mFragmentView;
-	private int mAudioFileId = -1;
-	private String mAudioFileName ;
+    private String mAudioFileName ;
 
     //protected Bitmap mTopBitmap;
     //protected Bitmap mMiddleBitmap;
@@ -47,7 +46,7 @@ public abstract class BaseFragment extends Fragment implements OnCompletionListe
     protected void startAudioSound(int audioFileId) {
 
 //		String uriPath = AppConstant.BASE_RESOURCE_PATH + audioFileId;
-		mAudioFileId = audioFileId;
+        int mAudioFileId = audioFileId;
 //		Uri uri = Uri.parse(uriPath);
 //		MediaPlayer mediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
 //		if(mediaPlayer != null){
@@ -89,11 +88,9 @@ public abstract class BaseFragment extends Fragment implements OnCompletionListe
             mediaPlayer.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(), fd.getLength());
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             mediaPlayer.prepare();
-            if (mediaPlayer != null) {
-                mediaPlayer.setOnCompletionListener(this);
-                mediaPlayer.start();
-            }
-//			mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
+            mediaPlayer.setOnCompletionListener(this);
+            mediaPlayer.start();
+            //			mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
 //				@Override
 //				public void onCompletion(MediaPlayer mp) {
 //					mp.release();

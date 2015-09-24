@@ -3,8 +3,6 @@ package com.moderneng.views;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import com.moderneng.utils.Logger;
-
 public class MazeGame1View extends DrawingSurface {
 
 	public MazeGame1View(Context context, AttributeSet attrs) {

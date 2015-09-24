@@ -60,9 +60,13 @@ public class WeShineApp extends Application {
     }
 
     public static AssetFileDescriptor getAssetFileDescriptor(String fileName) {
+        //TODO handle null pointer exception here and give user message that obb file not found please reinstall the app again
         return mExpansionFile.getAssetFileDescriptor(MEDIA_FILE_BASE_PATH + fileName);
     }
 
+    public static ZipResourceFile getExpansionFile() {
+        return mExpansionFile;
+    }
 
     public static Bitmap getBitmapFromObb(String drawableNameWithExtension){
 

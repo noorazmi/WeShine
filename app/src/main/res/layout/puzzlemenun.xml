@@ -8,9 +8,9 @@
         android:id="@+id/linear_layout_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:gravity="center_vertical|center_horizontal"
-        android:orientation="vertical"
-        android:layout_gravity="center">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -36,11 +36,10 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <ImageButton
+                        <ImageView
                             android:id="@+id/puzzle1"
                             android:layout_width="@dimen/scroll_menu_img_width"
-                            android:layout_height="@dimen/scroll_menu_img_height"
-                            android:background="@drawable/puzzlen1"/>
+                            android:layout_height="@dimen/scroll_menu_img_height"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -50,11 +49,11 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <ImageButton
+                        <ImageView
                             android:id="@+id/puzzle2"
                             android:layout_width="@dimen/scroll_menu_img_width"
                             android:layout_height="@dimen/scroll_menu_img_height"
-                            android:background="@drawable/puzzlen2"/>
+                            android:scaleType="fitXY"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -64,11 +63,11 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <ImageButton
+                        <ImageView
                             android:id="@+id/puzzle3"
                             android:layout_width="@dimen/scroll_menu_img_width"
                             android:layout_height="@dimen/scroll_menu_img_height"
-                            android:background="@drawable/puzzlen3"/>
+                            android:scaleType="fitXY"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -78,11 +77,11 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <ImageButton
+                        <ImageView
                             android:id="@+id/puzzle4"
                             android:layout_width="@dimen/scroll_menu_img_width"
                             android:layout_height="@dimen/scroll_menu_img_height"
-                            android:background="@drawable/puzzlen4"/>
+                            android:scaleType="fitXY"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -92,16 +91,17 @@
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
-                        <ImageButton
+                        <ImageView
                             android:id="@+id/puzzle5"
                             android:layout_width="@dimen/scroll_menu_img_width"
                             android:layout_height="@dimen/scroll_menu_img_height"
-                            android:background="@drawable/puzzlen5"/>
+                            android:scaleType="fitXY"/>
                     </LinearLayout>
                 </LinearLayout>
             </HorizontalScrollView>
         </LinearLayout>
     </LinearLayout>
+
     <ImageView
         android:id="@+id/imageview_title"
         android:layout_width="@dimen/title_text_width"

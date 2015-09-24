@@ -144,9 +144,7 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
     protected void onResume() {
         super.onResume();
         mp = new AudioPlayer(this, "homesound");
-        if(mp != null){
-            mp.start();
-        }
+        mp.start();
         mImageViewTop = (ImageView) findViewById(R.id.image);
         mBitmapBottom = BitmapFactory.decodeResource(getResources(), R.drawable.home_screen_hotspot);
         mBitmapTop = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdHomeScreen);

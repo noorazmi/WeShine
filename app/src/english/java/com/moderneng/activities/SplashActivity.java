@@ -1,6 +1,8 @@
 package com.moderneng.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -29,17 +31,36 @@ public class SplashActivity extends Activity {
         opts.inPreferredConfig = Bitmap.Config.RGB_565;
         mBitmapSplash = BitmapFactory.decodeResource(getResources(), R.drawable.splash, opts);
         ((ImageView) findViewById(R.id.imageview_splash)).setImageBitmap(mBitmapSplash);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                WeShineApp.setLanguage(AppConstant.LANGUAGE_ENGLISH);
-                Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
-                startActivity(i);
-                mBitmapSplash.recycle();
-                mBitmapSplash = null;
-                finish();
-            }
-        }, TIME_OUT_MILLISEC);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(WeShineApp.getExpansionFile() == null){
+            new AlertDialog.Builder(this)
+                    .setTitle("Error!")
+                    .setMessage("Game resources not found. Please uninstall the app and install again from Play Store.")
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+        }else {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    WeShineApp.setLanguage(AppConstant.LANGUAGE_ENGLISH);
+                    Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
+                    startActivity(i);
+                    mBitmapSplash.recycle();
+                    mBitmapSplash = null;
+                    finish();
+                }
+            }, TIME_OUT_MILLISEC);
+        }
     }
 
     @Override

@@ -67,7 +67,7 @@ public class UtilityMethods {
 	 *            y value in px
 	 * @return Point which x and y Values are in dp
 	 */
-	public static final Point getPointPXToDP(int x, int y, Context context) {
+	public static Point getPointPXToDP(int x, int y, Context context) {
 		return new Point((int) UtilityMethods.convertPixelsToDp(x, context), (int) UtilityMethods.convertPixelsToDp(y, context));
 	}
 
@@ -79,7 +79,7 @@ public class UtilityMethods {
 	 * @return true if the point falls under the provided ValidationRegion
 	 */
 
-	public static final boolean isMachingRegion(Rect validationRegion, Point machingPoint) {
+	public static boolean isMachingRegion(Rect validationRegion, Point machingPoint) {
 		return validationRegion.contains(machingPoint.x, machingPoint.y);
 	}
 

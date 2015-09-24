@@ -121,9 +121,7 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
         super.onResume();
         System.gc();
         mp = new AudioPlayer(this, "homesound");
-        if(mp != null){
-            mp.start();
-        }
+        mp.start();
 
 
         mImageViewTop = (ImageView) findViewById(R.id.frontimg);
