@@ -208,7 +208,9 @@ public class Match5Activity extends Activity {
             public void onAnimationEnd(Animation animation) {
 
                 Intent intent = new Intent(Match5Activity.this, VideoPlayActivity.class);
-                intent.putExtra(AppConstant.EXTRA_VIDEO_ID, "matching5_video");
+                //intent.putExtra(AppConstant.EXTRA_VIDEO_ID, "matching5_video");
+                intent.putExtra(AppConstant.EXTRA_VIDEO_NAME, "matching5_video");
+                intent.putExtra(AppConstant.EXTRA_VIDEO_LOCATION, AppConstant.EXTRA_VIDEO_LOCATION_OBB);
                 intent.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.MACHING_FIVE_VIDEO_DURATION);
                 startActivity(intent);
                 finish();

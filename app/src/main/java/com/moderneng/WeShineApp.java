@@ -1,13 +1,13 @@
 package com.moderneng;
 
 import android.app.Application;
-import android.content.pm.PackageManager;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import com.android.vending.expansion.zipfile.APKExpansionSupport;
 import com.android.vending.expansion.zipfile.ZipResourceFile;
+import com.moderneng.utils.FlavourConstants;
 import com.moderneng.utils.ImageAndMediaResources;
 
 import java.io.IOException;
@@ -31,11 +31,10 @@ public class WeShineApp extends Application {
         try {
             //mExpansionFile = APKExpansionSupport.getAPKExpansionZipFile(getApplicationContext(), APP_VERSION, -1);
             //mainExpansionVersion == version code of the apk.   Only main expansion file is being used
-            int mainExpansionVersion = getPackageManager().getPackageInfo(getPackageName(), 0).versionCode;
-            mExpansionFile = APKExpansionSupport.getAPKExpansionZipFile(getApplicationContext(), mainExpansionVersion, -1/* patch file is not being used hence using patch version number less than 1*/);
+            //int mainExpansionVersion = getPackageManager().getPackageInfo(getPackageName(), 0).versionCode;
+            //mExpansionFile = APKExpansionSupport.getAPKExpansionZipFile(getApplicationContext(), mainExpansionVersion, -1/* patch file is not being used hence using patch version number less than 1*/);
+            mExpansionFile = APKExpansionSupport.getAPKExpansionZipFile(getApplicationContext(), FlavourConstants.MAIN_EXPANSION_FILE_VERSION, -1/* patch file is not being used hence using patch version number less than 1*/);
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
     }
@@ -60,7 +59,6 @@ public class WeShineApp extends Application {
     }
 
     public static AssetFileDescriptor getAssetFileDescriptor(String fileName) {
-        //TODO handle null pointer exception here and give user message that obb file not found please reinstall the app again
         return mExpansionFile.getAssetFileDescriptor(MEDIA_FILE_BASE_PATH + fileName);
     }
 

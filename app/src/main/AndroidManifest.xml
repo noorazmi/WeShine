@@ -135,7 +135,7 @@
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".activities.MemoryGame3Activity"
+            android:name=".activities.MemoryGame2Activity"
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>
@@ -150,7 +150,7 @@
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name=".activities.MemoryGame2Activity"
+            android:name=".activities.MemoryGame3Activity"
             android:configChanges="orientation|navigation|screenLayout"
             android:screenOrientation="landscape" >
         </activity>

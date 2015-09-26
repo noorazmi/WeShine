@@ -14,7 +14,6 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
@@ -33,34 +32,42 @@ import com.moderneng.utils.GameMusic;
 import com.moderneng.utils.ImageAndMediaResources;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class MemoryGame3Activity extends Activity implements OnClickListener, AnimationListener {
-    private ImageView ucard1, ucard2, ucard3, ucard4, ucard5, mcard1, mcard2, mcard3, mcard4, mcard5, clocka, textv;
+    private ImageView mcard, tc1, tc2, tc3, bc1, bc2, bc3, bc4, bc5, clockv, textimage;
     private Animation anim1, anim2;
-    private View v1, v2;
-    private int count = 0, clickcount = 0;
-    private MediaPlayer mMediaPlayerClock;
-    private GameMusic findsame;
+    private int count = 1, clickcount = 1;
+    private View v1;
+    private int mcount = 0;
+    private int ncount;
+    private RandomNumberGenerator g;
     private AnimationDrawable clockanim;
-    private TextView tv;
-    private RelativeLayout textlay;
     private CountDownTimer t;
+    private TextView tv;
+    private GameMusic findsame;
+    private MediaPlayer mMediaPlayerClock;
+    private RelativeLayout textl;
     private ScaleAnimation gameover, scale1;
-    private Boolean gamefinish = false;
-    int nomatch = 0;
     private boolean isGameWon = false;
     private Bitmap mBitmapBg;
     private Bitmap mBitmapTitle;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED, WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        setContentView(R.layout.activity_memory_games_level2);
+        setContentView(R.layout.activity_memory_games_level3);
+        tv = (TextView) findViewById(R.id.time2);
+        clockv = (ImageView) findViewById(R.id.clock);
+        clockv.setBackgroundResource(R.drawable.clock);
+        clockanim = (AnimationDrawable) clockv.getBackground();
+        clockanim.start();
+        textimage = (ImageView) findViewById(R.id.textimg);
+        textl = (RelativeLayout) findViewById(R.id.textlay);
         gameover = new ScaleAnimation(0, 1f, 0, 1f, Animation.RELATIVE_TO_SELF, (float) 0.5, Animation.RELATIVE_TO_SELF, (float) 0.5);
         gameover.setDuration(1000);
         gameover.setFillAfter(true);
@@ -68,69 +75,9 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
         scale1.setDuration(1000);
         scale1.setFillAfter(true);
         scale1.setAnimationListener(this);
-        tv = (TextView) findViewById(R.id.time2);
-        clocka = (ImageView) findViewById(R.id.clock);
-        clocka.setBackgroundResource(R.drawable.clock);
-        clockanim = (AnimationDrawable) clocka.getBackground();
-        clockanim.start();
-        anim1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.tomid);
-        anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.toend);
-        anim1.setAnimationListener(this);
-        anim2.setAnimationListener(this);
-        ucard1 = (ImageView) findViewById(R.id.cardu1);
-        ucard2 = (ImageView) findViewById(R.id.cardu2);
-        ucard3 = (ImageView) findViewById(R.id.cardu3);
-        ucard4 = (ImageView) findViewById(R.id.cardu4);
-        ucard5 = (ImageView) findViewById(R.id.cardu5);
-        mcard1 = (ImageView) findViewById(R.id.cardb1);
-        mcard2 = (ImageView) findViewById(R.id.cardb2);
-        mcard3 = (ImageView) findViewById(R.id.cardb3);
-        mcard4 = (ImageView) findViewById(R.id.cardb4);
-        mcard5 = (ImageView) findViewById(R.id.cardb5);
-
         findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdFindTheSimilarCard);
+        //findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdFindTheSimilarCard);
         findsame.start();
-        textlay = (RelativeLayout) findViewById(R.id.textlay);
-        textv = (ImageView) findViewById(R.id.textimg);
-        t = new CountDownTimer(60000, 1000) {
-
-            @Override
-            public void onTick(long millisUntilFinished) {
-                int time = (int) (millisUntilFinished / 1000);
-                tv.setText("" + time);
-            }
-
-            @Override
-            public void onFinish() {
-                tv.setText("0");
-                mMediaPlayerClock.stop();
-                clockanim.stop();
-                findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGameOverTingTing);
-                findsame.setOnCompleteListener(new GameMusic.OnCompleteListener() {
-                    @Override
-                    public void onComplete() {
-                        finish();
-                    }
-                });
-                if (!isGameWon) {
-                    findsame.start();
-                    ucard1.setOnClickListener(null);
-                    mcard1.setOnClickListener(null);
-                    ucard2.setOnClickListener(null);
-                    mcard2.setOnClickListener(null);
-                    ucard3.setOnClickListener(null);
-                    mcard3.setOnClickListener(null);
-                    ucard4.setOnClickListener(null);
-                    mcard4.setOnClickListener(null);
-                    ucard5.setOnClickListener(null);
-                    mcard5.setOnClickListener(null);
-                    textlay.setVisibility(View.VISIBLE);
-                    textv.setAnimation(gameover);
-                    gameover.start();
-                }
-
-            }
-        }.start();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -157,351 +104,461 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             }
         }, 800);
-        ucard1.startAnimation(anim1);
-        mcard1.startAnimation(anim1);
-        ucard2.startAnimation(anim1);
-        mcard2.startAnimation(anim1);
-        ucard3.startAnimation(anim1);
-        mcard3.startAnimation(anim1);
-        ucard4.startAnimation(anim1);
-        mcard5.startAnimation(anim1);
-        ucard5.startAnimation(anim1);
-        mcard5.startAnimation(anim1);
+        t = new CountDownTimer(60000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                int time = (int) (millisUntilFinished / 1000);
+                tv.setText("" + time);
+            }
 
+            @Override
+            public void onFinish() {
+                // TODO Auto-generated method stub
+                tv.setText("0");
+                clockanim.stop();
+                if (!isGameWon) {
+
+                    findsame = new GameMusic(getApplicationContext(), R.raw.game_over_ting_ting);
+                    findsame.setOnCompleteListener(new GameMusic.OnCompleteListener() {
+                        @Override
+                        public void onComplete() {
+                            finish();
+                        }
+                    });
+
+                    textl.setVisibility(View.VISIBLE);
+                    textimage.setAnimation(gameover);
+                    gameover.start();
+                    findsame.start();
+                    tc1.setOnClickListener(null);
+                    tc2.setOnClickListener(null);
+                    tc3.setOnClickListener(null);
+                    bc1.setOnClickListener(null);
+                    bc2.setOnClickListener(null);
+                    bc3.setOnClickListener(null);
+                    bc4.setOnClickListener(null);
+                    bc5.setOnClickListener(null);
+                }
+
+            }
+        }.start();
+        g = new RandomNumberGenerator(8);
+        ncount = g.generateNewRandom(mcount);
+        anim1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.anim3);
+        anim1.setAnimationListener(this);
+        anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.toend);
+        anim2.setAnimationListener(this);
+        mcard = (ImageView) findViewById(R.id.cmain);
+        tc1 = (ImageView) findViewById(R.id.tcard1);
+        tc2 = (ImageView) findViewById(R.id.tcard2);
+        tc3 = (ImageView) findViewById(R.id.tcard3);
+        bc1 = (ImageView) findViewById(R.id.lcard1);
+        bc2 = (ImageView) findViewById(R.id.lcard2);
+        bc3 = (ImageView) findViewById(R.id.lcard3);
+        bc4 = (ImageView) findViewById(R.id.lcard4);
+        bc5 = (ImageView) findViewById(R.id.lcard5);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mcard.startAnimation(anim1);
+                tc1.startAnimation(anim1);
+                tc2.startAnimation(anim1);
+                tc3.startAnimation(anim1);
+                bc1.startAnimation(anim1);
+                bc2.startAnimation(anim1);
+                bc3.startAnimation(anim1);
+                bc4.startAnimation(anim1);
+                bc5.startAnimation(anim1);
+            }
+        }, 2500);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
-        //mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryGamesLevel2);
-        mBitmapBg = WeShineApp.getBitmapFromObb("memory_games_bg_level3.png");
+        //mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryGamesLevel1);
+        mBitmapBg = WeShineApp.getBitmapFromObb("memory_games_bg_level2.png");
         findViewById(R.id.relative_layout_parent).setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapBg));
 
         mBitmapTitle = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryGame);
         ((ImageView) findViewById(R.id.imageview_title)).setImageBitmap(mBitmapTitle);
         AnimationUtil.performAnimation(findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
+
     }
 
     @Override
     public void onClick(View v) {
-        int id = v.getId();
-        clickcount++;
-        if (clickcount == 1) {
-            v1 = v;
-            v1.startAnimation(anim1);
-        } else if (clickcount == 2) {
-            v2 = v;
-            v2.startAnimation(anim1);
+        final int id = v.getId();
+        v1 = v;
+        if (id == R.id.tcard1) {
+            tc1.setImageResource(R.drawable.light);
+        } else if (id == R.id.tcard2) {
+            tc2.setImageResource(R.drawable.credb);
+        } else if (id == R.id.tcard3) {
+            tc3.setImageResource(R.drawable.ctrafic);
+        } else if (id == R.id.lcard1) {
+            bc1.setImageResource(R.drawable.cgolf);
+        } else if (id == R.id.lcard2) {
+            bc2.setImageResource(R.drawable.cblue);
+        } else if (id == R.id.lcard3) {
+            bc3.setImageResource(R.drawable.csun);
+        } else if (id == R.id.lcard4) {
+            bc4.setImageResource(R.drawable.csplate);
+        } else if (id == R.id.lcard5) {
+            bc5.setImageResource(R.drawable.plate);
         }
-    }
+        if (ncount == 1) {
+            if (id == R.id.tcard1) {
+                findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarSignal);
+                findsame.start();
+            }
+        } else if (ncount == 2) {
+            if (id == R.id.tcard2) {
+                findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdRedBilli);
+                findsame.start();
+            }
+        } else if (ncount == 3) {
+            if (id == R.id.tcard3) {
+                findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarCamera);
+                findsame.start();
+            }
+        } else if (ncount == 4) {
+            if (id == R.id.lcard1) {
+                findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGolfCart);
+                findsame.start();
+            }
+        } else if (ncount == 5) {
+            if (id == R.id.lcard2) {
+                findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGreenBilli);
+                findsame.start();
+            }
+        } else if (ncount == 6) {
+            if (id == R.id.lcard3) {
+                findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdLovelySun);
+                findsame.start();
+            }
+        } else if (ncount == 7) {
+            if (id == R.id.lcard4) {
+                findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarStation);
+                findsame.start();
+            }
+        } else if (ncount == 8) {
+            if (id == R.id.lcard5) {
+                findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarLight);
+                findsame.start();
+            }
+        }
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (ncount == 1) {
+                    if (id == R.id.tcard1) {
 
-    @Override
-    public void onAnimationEnd(Animation animation) {
-        if (animation == scale1) {
-            t.cancel();
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Intent i = new Intent(MemoryGame3Activity.this, MemoryGame2Activity.class);
-                    startActivity(i);
-                    finish();
+                        v1.setVisibility(View.INVISIBLE);
+                        if (mcount < 7) {
+                            mcount = mcount + 1;
+                            ncount = g.generateNewRandom(mcount);
+                            setmaincard(ncount);
+                        } else {
+                            mcard.setVisibility(View.INVISIBLE);
+                            gameover();
+                        }
+                    } else {
+                        v1.startAnimation(anim1);
+                        ncount = ncount;
+                        mcount = mcount;
+                    }
+                } else if (ncount == 2) {
+                    if (id == R.id.tcard2) {
+                        v1.setVisibility(View.INVISIBLE);
+                        if (mcount < 7) {
+                            mcount = mcount + 1;
+                            ncount = g.generateNewRandom(mcount);
+                            setmaincard(ncount);
+                        } else {
+                            mcard.setVisibility(View.INVISIBLE);
+                            gameover();
+                        }
+
+                    } else {
+                        v1.startAnimation(anim1);
+                        ncount = ncount;
+                        mcount = mcount;
+                    }
+
+                } else if (ncount == 3) {
+                    if (id == R.id.tcard3) {
+
+                        v1.setVisibility(View.INVISIBLE);
+                        if (mcount < 7) {
+                            mcount = mcount + 1;
+                            ncount = g.generateNewRandom(mcount);
+                            setmaincard(ncount);
+                        } else {
+                            mcard.setVisibility(View.INVISIBLE);
+                            gameover();
+                        }
+                    } else {
+                        v1.startAnimation(anim1);
+                        ncount = ncount;
+                        mcount = mcount;
+                    }
+
+                } else if (ncount == 4) {
+                    if (id == R.id.lcard1) {
+
+                        v1.setVisibility(View.INVISIBLE);
+                        if (mcount < 7) {
+                            mcount = mcount + 1;
+                            ncount = g.generateNewRandom(mcount);
+                            setmaincard(ncount);
+                        } else {
+                            mcard.setVisibility(View.INVISIBLE);
+                            gameover();
+                        }
+                    } else {
+                        v1.startAnimation(anim1);
+                        ncount = ncount;
+                        mcount = mcount;
+                    }
+
+                } else if (ncount == 5) {
+                    if (id == R.id.lcard2) {
+
+                        v1.setVisibility(View.INVISIBLE);
+                        if (mcount < 7) {
+                            mcount = mcount + 1;
+                            ncount = g.generateNewRandom(mcount);
+                            // mcard.setImageResource(R.drawable.csun);
+                            setmaincard(ncount);
+                        } else {
+                            mcard.setVisibility(View.INVISIBLE);
+                            gameover();
+                        }
+                    } else {
+                        v1.startAnimation(anim1);
+                        ncount = ncount;
+                        mcount = mcount;
+                    }
+
+                } else if (ncount == 6) {
+                    if (id == R.id.lcard3) {
+                        v1.setVisibility(View.INVISIBLE);
+                        if (mcount < 7) {
+                            mcount = mcount + 1;
+                            ncount = g.generateNewRandom(mcount);
+                            // mcard.setImageResource(R.drawable.csplate);
+                            setmaincard(ncount);
+                        } else {
+                            mcard.setVisibility(View.INVISIBLE);
+                            gameover();
+                        }
+
+                    } else {
+                        v1.startAnimation(anim1);
+                        ncount = ncount;
+                        mcount = mcount;
+                    }
+
+                } else if (ncount == 7) {
+                    if (id == R.id.lcard4) {
+                        v1.setVisibility(View.INVISIBLE);
+                        if (mcount < 7) {
+                            mcount = mcount + 1;
+                            ncount = g.generateNewRandom(mcount);
+                            // mcard.setImageResource(R.drawable.plate);
+                            setmaincard(ncount);
+                        } else {
+                            mcard.setVisibility(View.INVISIBLE);
+                            gameover();
+                        }
+
+                    } else {
+                        v1.startAnimation(anim1);
+                        ncount = ncount;
+                        mcount = mcount;
+                    }
+
+                } else if (ncount == 8) {
+                    if (id == R.id.lcard5) {
+                        v1.setVisibility(View.INVISIBLE);
+                        if (mcount < 7) {
+                            mcount = mcount + 1;
+                            ncount = g.generateNewRandom(mcount);
+                            // mcard.setImageResource(R.drawable.plate);
+                            setmaincard(ncount);
+                        } else {
+                            mcard.setVisibility(View.INVISIBLE);
+                            gameover();
+                        }
+                    } else {
+                        v1.startAnimation(anim1);
+                        ncount = ncount;
+                        mcount = mcount;
+                    }
+
                 }
-            }, 2500);
-        }
-        if (count == 0) {
-            if (animation == anim1) {
-                ucard1.setImageResource(R.drawable.cgolf);
-                mcard1.setImageResource(R.drawable.csplate);
-                ucard2.setImageResource(R.drawable.cblue);
-                mcard2.setImageResource(R.drawable.plate);
-                ucard3.setImageResource(R.drawable.csun);
-                mcard3.setImageResource(R.drawable.cgolf);
-                ucard4.setImageResource(R.drawable.csplate);
-                mcard4.setImageResource(R.drawable.cblue);
-                ucard5.setImageResource(R.drawable.plate);
-                mcard5.setImageResource(R.drawable.csun);
+            }
+
+            private void gameover() {
+                // TODO Auto-generated method stub
                 new Handler().postDelayed(new Runnable() {
+
                     @Override
                     public void run() {
-                        ucard1.startAnimation(anim2);
-                        mcard1.startAnimation(anim2);
-                        ucard2.startAnimation(anim2);
-                        mcard2.startAnimation(anim2);
-                        ucard3.startAnimation(anim2);
-                        mcard3.startAnimation(anim2);
-                        ucard4.startAnimation(anim2);
-                        mcard4.startAnimation(anim2);
-                        ucard5.startAnimation(anim2);
-                        mcard5.startAnimation(anim2);
-                    }
-                }, 2700);
-            }
-            if (animation == anim2) {
-                ucard1.setImageResource(R.drawable.front);
-                mcard1.setImageResource(R.drawable.front);
-                ucard2.setImageResource(R.drawable.front);
-                mcard2.setImageResource(R.drawable.front);
-                ucard3.setImageResource(R.drawable.front);
-                mcard3.setImageResource(R.drawable.front);
-                ucard4.setImageResource(R.drawable.front);
-                mcard4.setImageResource(R.drawable.front);
-                ucard5.setImageResource(R.drawable.front);
-                mcard5.setImageResource(R.drawable.front);
-                count++;
-                ucard1.setOnClickListener(this);
-                mcard1.setOnClickListener(this);
-                ucard2.setOnClickListener(this);
-                mcard2.setOnClickListener(this);
-                ucard3.setOnClickListener(this);
-                mcard3.setOnClickListener(this);
-                ucard4.setOnClickListener(this);
-                mcard4.setOnClickListener(this);
-                ucard5.setOnClickListener(this);
-                mcard5.setOnClickListener(this);
-            }
-        }
-        if (clickcount == 1) {
-            if (animation == anim1) {
-                if (v1.getId() == R.id.cardu1) {
-                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGolfCart);
-                    findsame.start();
-                    ucard1.setImageResource(R.drawable.cgolf);
-                } else if (v1.getId() == R.id.cardb1) {
-                    mcard1.setImageResource(R.drawable.csplate);
-                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarStation);
-                    findsame.start();
-                } else if (v1.getId() == R.id.cardu2) {
-                    ucard2.setImageResource(R.drawable.cblue);
-                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGreenBilli);
-                    findsame.start();
-                } else if (v1.getId() == R.id.cardb2) {
-                    mcard2.setImageResource(R.drawable.plate);
-                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarLight);
-                    findsame.start();
-                } else if (v1.getId() == R.id.cardu3) {
-                    ucard3.setImageResource(R.drawable.csun);
-                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdLovelySun);
-                    findsame.start();
-                } else if (v1.getId() == R.id.cardb3) {
-                    mcard3.setImageResource(R.drawable.cgolf);
-                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGolfCart);
-                    findsame.start();
-                } else if (v1.getId() == R.id.cardu4) {
-                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarStation);
-                    findsame.start();
-                    ucard4.setImageResource(R.drawable.csplate);
-                } else if (v1.getId() == R.id.cardb4) {
-                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGreenBilli);
-                    findsame.start();
-                    mcard4.setImageResource(R.drawable.cblue);
-                } else if (v1.getId() == R.id.cardu5) {
-                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarLight);
-                    findsame.start();
-                    ucard5.setImageResource(R.drawable.plate);
-                } else if (v1.getId() == R.id.cardb5) {
-                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdLovelySun);
-                    findsame.start();
-                    mcard5.setImageResource(R.drawable.csun);
-                }
-            }
-        } else if (clickcount == 2) {
-            if (animation == anim1) {
-                if (v2.getId() == R.id.cardu1) {
-                    ucard1.setImageResource(R.drawable.cgolf);
-                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGolfCart);
-                    findsame.start();
-                } else if (v2.getId() == R.id.cardb1) {
-                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarStation);
-                    findsame.start();
-                    mcard1.setImageResource(R.drawable.csplate);
-                } else if (v2.getId() == R.id.cardu2) {
-                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGreenBilli);
-                    findsame.start();
-                    ucard2.setImageResource(R.drawable.cblue);
-                } else if (v2.getId() == R.id.cardb2) {
-                    mcard2.setImageResource(R.drawable.plate);
-                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarLight);
-                    findsame.start();
-                } else if (v2.getId() == R.id.cardu3) {
-                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdLovelySun);
-                    findsame.start();
-                    ucard3.setImageResource(R.drawable.csun);
-                } else if (v2.getId() == R.id.cardb3) {
-                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGolfCart);
-                    findsame.start();
-                    mcard3.setImageResource(R.drawable.cgolf);
-                } else if (v2.getId() == R.id.cardu4) {
-                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarStation);
-                    findsame.start();
-                    ucard4.setImageResource(R.drawable.csplate);
-                } else if (v2.getId() == R.id.cardb4) {
-                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGreenBilli);
-                    findsame.start();
-                    mcard4.setImageResource(R.drawable.cblue);
-                } else if (v2.getId() == R.id.cardu5) {
-                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdSolarLight);
-                    findsame.start();
-                    ucard5.setImageResource(R.drawable.plate);
-                } else if (v2.getId() == R.id.cardb5) {
-                    findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdLovelySun);
-                    findsame.start();
-                    mcard5.setImageResource(R.drawable.csun);
-                }
-            } else if (clickcount == 2) {
-                if (animation == anim2) {
-                    ImageView img1 = (ImageView) v1;
-                    ImageView img2 = (ImageView) v2;
-                    img1.setImageResource(R.drawable.front);
-                    img2.setImageResource(R.drawable.front);
-                    clickcount = 0;
-                }
-            }
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if ((v1.getId() == R.id.cardu1 && v2.getId() == R.id.cardb3) || v2.getId() == R.id.cardu1 && v1.getId() == R.id.cardb3) {
-                        findsame = new GameMusic(getApplicationContext(), "p2drop");
-                        findsame.start();
-                        v1.setVisibility(View.INVISIBLE);
-                        v2.setVisibility(View.INVISIBLE);
-                        clickcount = 0;
-                        gamefinish = true;
-                        nomatch++;
+                        isGameWon = true;
+                        mMediaPlayerClock.pause();
+                        t.cancel();
+                        clockanim.stop();
+//						textl.bringToFront();
+//						textl.setVisibility(View.VISIBLE);
+//						textimage.setImageResource(R.drawable.p1_congrats);
+//						textimage.setAnimation(scale1);
+//						findsame = new Gamemusic(getApplicationContext(),
+//								R.raw.congrats);
+//						findsame.start();
 
-                    } else if ((v1.getId() == R.id.cardu2 && v2.getId() == R.id.cardb4) || v2.getId() == R.id.cardu2 && v1.getId() == R.id.cardb4) {
-                        findsame = new GameMusic(getApplicationContext(), "p2drop");
-                        findsame.start();
-                        v1.setVisibility(View.INVISIBLE);
-                        v2.setVisibility(View.INVISIBLE);
-                        gamefinish = true;
-                        nomatch++;
-                        clickcount = 0;
-                    } else if ((v1.getId() == R.id.cardu3 && v2.getId() == R.id.cardb5) || v2.getId() == R.id.cardu3 && v1.getId() == R.id.cardb5) {
-                        findsame = new GameMusic(getApplicationContext(), "p2drop");
-                        findsame.start();
-                        v1.setVisibility(View.INVISIBLE);
-                        v2.setVisibility(View.INVISIBLE);
-                        gamefinish = true;
-                        nomatch++;
-                        clickcount = 0;
-                    } else if ((v1.getId() == R.id.cardu4 && v2.getId() == R.id.cardb1) || v2.getId() == R.id.cardu4 && v1.getId() == R.id.cardb1) {
-                        findsame = new GameMusic(getApplicationContext(), "p2drop");
-                        findsame.start();
-                        v1.setVisibility(View.INVISIBLE);
-                        v2.setVisibility(View.INVISIBLE);
-                        gamefinish = true;
-                        nomatch++;
-                        clickcount = 0;
-                    } else if ((v1.getId() == R.id.cardu5 && v2.getId() == R.id.cardb2) || v2.getId() == R.id.cardu5 && v1.getId() == R.id.cardb2) {
-                        findsame = new GameMusic(getApplicationContext(), "p2drop");
-                        findsame.start();
-                        v1.setVisibility(View.INVISIBLE);
-                        v2.setVisibility(View.INVISIBLE);
-                        gamefinish = true;
-                        nomatch++;
-                        clickcount = 0;
-                    } else {
-                        ImageView img1 = (ImageView) v1;
-                        ImageView img2 = (ImageView) v2;
-                        findsame = new GameMusic(getApplicationContext(), "wrongs");
-                        findsame.start();
-                        img1.setImageResource(R.drawable.front);
-                        img2.setImageResource(R.drawable.front);
-                        clickcount = 0;
-                        nomatch = nomatch;
-                        gamefinish = false;
-                    }
-                }
-            }, 900);
-            new Handler().postDelayed(new Runnable() {
+                        t.cancel();
 
-                @Override
-                public void run() {
-                    if (nomatch == 5) {
-                        if (gamefinish == true) {
-                            isGameWon = true;
-                            mMediaPlayerClock.stop();
-                            t.cancel();
-                            clockanim.stop();
-                            Intent intent = new Intent(MemoryGame3Activity.this, BalloonAnimationActivity.class);
-                            intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, ImageAndMediaResources.sImageIdCongratulations);
-                            intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, ImageAndMediaResources.sSoundIdCongratulationsShort);
-                            //intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.ballon_playing);
-                            intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, AppConstant.BALLOON_ANIMATION_SOUND_DELAY);
-                            startActivityForResult(intent, 100);
-                        }
+                        clockanim.stop();
+                        Intent intent = new Intent(MemoryGame3Activity.this, BalloonAnimationActivity.class);
+                        intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, ImageAndMediaResources.sImageIdYouAreSmart);
+                        intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, ImageAndMediaResources.sSoundIdYouAreSmart);
+                        //intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.ballon_playing);
+                        intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, AppConstant.BALLOON_ANIMATION_SOUND_DELAY);
+
+                        startActivityForResult(intent, 100);
                     }
+                }, 1500);
+            }
+
+            private void setmaincard(int ncount) {
+                if (ncount == 1) {
+                    mcard.setImageResource(R.drawable.light);
+                } else if (ncount == 2) {
+                    mcard.setImageResource(R.drawable.credb);
+                } else if (ncount == 3) {
+                    mcard.setImageResource(R.drawable.ctrafic);
+                } else if (ncount == 4) {
+                    mcard.setImageResource(R.drawable.cgolf);
+                } else if (ncount == 5) {
+                    mcard.setImageResource(R.drawable.cblue);
+                } else if (ncount == 6) {
+                    mcard.setImageResource(R.drawable.csun);
+                } else if (ncount == 7) {
+                    mcard.setImageResource(R.drawable.csplate);
+                } else if (ncount == 8) {
+                    mcard.setImageResource(R.drawable.plate);
                 }
-            }, 2000);
-        }
+            }
+        }, 1000);
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Intent i = new Intent(MemoryGame3Activity.this, MemoryGame2Activity.class);
-        startActivity(i);
+        //Intent i = new Intent(Mlevel3.this, Mlevel3.class);
+        //startActivity(i);
         finish();
 
     }
 
 
     @Override
-    public void onAnimationRepeat(Animation arg0) {
+    public void onAnimationEnd(Animation animation) {
+        // TODO Auto-generated method stub
+        if (clickcount == 1) {
+            if (animation == anim1) {
+                // mcard.setImageResource(R.drawable.light);
+                tc1.setImageResource(R.drawable.front);
+                tc2.setImageResource(R.drawable.front);
+                tc3.setImageResource(R.drawable.front);
+                bc1.setImageResource(R.drawable.front);
+                bc2.setImageResource(R.drawable.front);
+                bc3.setImageResource(R.drawable.front);
+                bc4.setImageResource(R.drawable.front);
+                bc5.setImageResource(R.drawable.front);
+                if (ncount == 1) {
+                    mcard.setImageResource(R.drawable.light);
+                } else if (ncount == 2) {
+                    mcard.setImageResource(R.drawable.credb);
+                } else if (ncount == 3) {
+                    mcard.setImageResource(R.drawable.ctrafic);
+                } else if (ncount == 4) {
+                    mcard.setImageResource(R.drawable.cgolf);
+                } else if (ncount == 5) {
+                    mcard.setImageResource(R.drawable.cblue);
+                } else if (ncount == 6) {
+                    mcard.setImageResource(R.drawable.csun);
+                } else if (ncount == 7) {
+                    mcard.setImageResource(R.drawable.csplate);
+                } else if (ncount == 8) {
+                    mcard.setImageResource(R.drawable.plate);
+                }
+                tc1.setOnClickListener(this);
+                tc2.setOnClickListener(this);
+                tc3.setOnClickListener(this);
+                bc1.setOnClickListener(this);
+                bc2.setOnClickListener(this);
+                bc3.setOnClickListener(this);
+                bc4.setOnClickListener(this);
+                bc5.setOnClickListener(this);
+                clickcount++;
+                // count=uniquenumber();
+            }
+        }
+        if (clickcount > 1) {
+            if (animation == anim1) {
+                tc1.setImageResource(R.drawable.front);
+                tc2.setImageResource(R.drawable.front);
+                tc3.setImageResource(R.drawable.front);
+                bc1.setImageResource(R.drawable.front);
+                bc2.setImageResource(R.drawable.front);
+                bc3.setImageResource(R.drawable.front);
+                bc4.setImageResource(R.drawable.front);
+                bc5.setImageResource(R.drawable.front);
+            }
+        }
+        if (animation == scale1) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    t.cancel();
+                    mMediaPlayerClock.pause();
+                    finish();
+                }
+            }, 3000);
+        }
+    }
+
+    @Override
+    public void onAnimationRepeat(Animation animation) {
     }
 
     @Override
     public void onAnimationStart(Animation animation) {
-        if (count == 0) {
+        if (clickcount > 1) {
             if (animation == anim1) {
-                ucard1.setImageResource(R.drawable.front);
-                mcard1.setImageResource(R.drawable.front);
-                ucard2.setImageResource(R.drawable.front);
-                mcard2.setImageResource(R.drawable.front);
-                ucard3.setImageResource(R.drawable.front);
-                mcard3.setImageResource(R.drawable.front);
-                ucard4.setImageResource(R.drawable.front);
-                mcard4.setImageResource(R.drawable.front);
-                ucard5.setImageResource(R.drawable.front);
-                mcard5.setImageResource(R.drawable.front);
-            }
-            if (animation == anim2) {
-                ucard1.setImageResource(R.drawable.front);
-                mcard1.setImageResource(R.drawable.front);
-                ucard2.setImageResource(R.drawable.front);
-                mcard2.setImageResource(R.drawable.front);
-                ucard3.setImageResource(R.drawable.front);
-                mcard3.setImageResource(R.drawable.front);
-                ucard4.setImageResource(R.drawable.front);
-                mcard4.setImageResource(R.drawable.front);
-                ucard5.setImageResource(R.drawable.front);
-                mcard5.setImageResource(R.drawable.front);
+                findsame = new GameMusic(getApplicationContext(), "wrongs");
+                findsame.start();
             }
         }
-        if (clickcount == 1) {
-            if (animation == anim1) {
-                ImageView img = (ImageView) v1;
-                img.setImageResource(R.drawable.front);
-            }
-        } else if (clickcount == 2) {
-            if (animation == anim1) {
-                ImageView img = (ImageView) v2;
-                img.setImageResource(R.drawable.front);
-            } else if (animation == anim2) {
-                ImageView img = (ImageView) v1;
-                img.setImageResource(R.drawable.front);
-                ImageView img1 = (ImageView) v2;
-                img1.setImageResource(R.drawable.front);
-            }
-        } else if (clickcount > 2) {
-            if (animation == anim2) {
-                ImageView v = (ImageView) v1;
-                v.setImageResource(R.drawable.front);
-            }
+    }
+
+    public class RandomNumberGenerator {
+        ArrayList numbersList = new ArrayList();
+
+        public RandomNumberGenerator(int length) {
+            for (int x = 1; x <= length; x++)
+                numbersList.add(x);
+            Collections.shuffle(numbersList);
+        }
+
+        public int generateNewRandom(int n) {
+            return (Integer) numbersList.get(n);
         }
     }
 
@@ -519,17 +576,18 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
             mBitmapBg.recycle();
             mBitmapBg = null;
         }
-
         if (mBitmapTitle != null) {
             mBitmapTitle.recycle();
             mBitmapTitle = null;
         }
     }
 
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         t.cancel();
-        mMediaPlayerClock.stop();
     }
+
+
 }

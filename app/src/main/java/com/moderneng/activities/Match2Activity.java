@@ -224,7 +224,9 @@ public class Match2Activity extends Activity {
 			public void onAnimationEnd(Animation animation) {
 
 				Intent intent = new Intent(Match2Activity.this, VideoPlayActivity.class);
-				intent.putExtra(AppConstant.EXTRA_VIDEO_ID, "matching2_video");
+				//intent.putExtra(AppConstant.EXTRA_VIDEO_ID, "matching2_video");
+				intent.putExtra(AppConstant.EXTRA_VIDEO_NAME, "matching2_video");
+				intent.putExtra(AppConstant.EXTRA_VIDEO_LOCATION, AppConstant.EXTRA_VIDEO_LOCATION_OBB);
 				intent.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.MACHING_TWO_VIDEO_DURATION);
 				startActivity(intent);
 				finish();

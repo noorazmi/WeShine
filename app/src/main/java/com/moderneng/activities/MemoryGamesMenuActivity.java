@@ -78,16 +78,14 @@ public class MemoryGamesMenuActivity extends Activity implements View.OnTouchLis
                     Intent i = new Intent(MemoryGamesMenuActivity.this, MemoryGame1Activity.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(i);
-                } else if (ct.closeMatch(Color.RED, touchColor, tolerance)) {
-                    Intent i2 = new Intent(MemoryGamesMenuActivity.this, MemoryGame3Activity.class);
-                    i2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(i2);
                 } else if (ct.closeMatch(Color.GREEN, touchColor, tolerance)) {
-                    Intent i3 = new Intent(MemoryGamesMenuActivity.this, MemoryGame2Activity.class);
+                    Intent i3 = new Intent(MemoryGamesMenuActivity.this, MemoryGame3Activity.class);
                     i3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(i3);
-                } else if (ct.closeMatch(Color.WHITE, touchColor, tolerance)) {
-
+                }else if (ct.closeMatch(Color.RED, touchColor, tolerance)) {
+                    Intent i2 = new Intent(MemoryGamesMenuActivity.this, MemoryGame2Activity.class);
+                    i2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(i2);
                 }
                 break;
         }

@@ -392,7 +392,7 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Intent i = new Intent(MemoryGame1Activity.this, MemoryGame3Activity.class);
+        Intent i = new Intent(MemoryGame1Activity.this, MemoryGame2Activity.class);
         startActivity(i);
         finish();
 

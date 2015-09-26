@@ -202,7 +202,9 @@ public class Match3Activity extends Activity {
 
                 Intent intent = new Intent(Match3Activity.this, VideoPlayActivity.class);
                 //intent.putExtra(AppConstant.EXTRA_VIDEO_ID, R.raw.matching3_video);
-                intent.putExtra(AppConstant.EXTRA_VIDEO_ID, "matching3_video");
+                //intent.putExtra(AppConstant.EXTRA_VIDEO_ID, "matching3_video");
+                intent.putExtra(AppConstant.EXTRA_VIDEO_NAME, "matching3_video");
+                intent.putExtra(AppConstant.EXTRA_VIDEO_LOCATION, AppConstant.EXTRA_VIDEO_LOCATION_OBB);
                 intent.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.MACHING_THREE_VIDEO_DURATION);
                 startActivity(intent);
                 finish();

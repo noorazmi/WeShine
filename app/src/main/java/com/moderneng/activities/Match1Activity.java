@@ -199,7 +199,9 @@ public class Match1Activity extends Activity {
             public void onAnimationEnd(Animation animation) {
 
                 Intent intent = new Intent(Match1Activity.this, VideoPlayActivity.class);
-                intent.putExtra(AppConstant.EXTRA_VIDEO_ID, "matching1_video");
+                //intent.putExtra(AppConstant.EXTRA_VIDEO_ID, "matching1_video");
+                intent.putExtra(AppConstant.EXTRA_VIDEO_NAME, "matching1_video");
+                intent.putExtra(AppConstant.EXTRA_VIDEO_LOCATION, AppConstant.EXTRA_VIDEO_LOCATION_OBB);
                 intent.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, AppConstant.MACHING_ONE_VIDEO_DURATION);
                 startActivity(intent);
                 finish();

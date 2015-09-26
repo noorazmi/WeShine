@@ -187,6 +187,9 @@ public class ImageAndMediaResources {
 
     public static void assignSoundAndVideosIds(){
 
+        //sSoundIdFindTheSimilarCards = R.raw.find_the_similar_cards;
+        //sSoundIdFindTheSimilarCard = R.raw.find_the_similar_card;
+
         sSoundIdFindTheSimilarCards = R.raw.find_the_similar_cards;
         sSoundIdFindTheSimilarCard = R.raw.find_the_similar_card;
         sSoundIdGameOver = R.raw.game_over;
