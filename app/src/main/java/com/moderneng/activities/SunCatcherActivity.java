@@ -68,10 +68,10 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 	private int xToPosSunRay;
 	private int xPositionGolfCar;
 	private int rayHitCount = 0;
-	private final int BATTERY_25_HIT_COUNT = 10;
-	private final int BATTERY_50_HIT_COUNT = 20;
-	private final int BATTERY_75_HIT_COUNT = 30;
-	private final int BATTERY_100_HIT_COUNT = 40;
+	private final int BATTERY_25_HIT_COUNT = 9; //10;
+	private final int BATTERY_50_HIT_COUNT = 18; //20;
+	private final int BATTERY_75_HIT_COUNT = 27; //30;
+	private final int BATTERY_100_HIT_COUNT = 36; //40;
 	private final int RAY_ONE = 1;
 	private final int RAY_TWO = 2;
 	private final int RAY_THREE = 3;
@@ -357,7 +357,7 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 
 		AnimationSet replaceAnimation = new AnimationSet(false);
 		TranslateAnimation trans = new TranslateAnimation(0, xFromPosSunRay, TranslateAnimation.ABSOLUTE, xToPosSunRay, 0, yFromPosSunRay, TranslateAnimation.ABSOLUTE, yToPosSunRay);
-		trans.setDuration(1000);
+		trans.setDuration(970);
 		replaceAnimation.addAnimation(trans);
 		replaceAnimation.setAnimationListener(new Animation.AnimationListener() {
 

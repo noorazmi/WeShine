@@ -62,7 +62,7 @@ public class Match4Activity extends Activity {
         greenb.setOnDragListener(new Mydraglistener());
         drag4.setOnTouchListener(new Mytouchlistener());
 
-        mBitmapText = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdGoogJob);
+        mBitmapText = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdCongratulations);
         ((ImageView) findViewById(R.id.imageview_greeting)).setImageBitmap(mBitmapText);
 
     }
@@ -108,7 +108,6 @@ public class Match4Activity extends Activity {
     private class Mydraglistener implements OnDragListener {
         @Override
         public boolean onDrag(View dragview, DragEvent dragEvent) {
-            // TODO Auto-generated method stub
             switch (dragEvent.getAction()) {
                 case DragEvent.ACTION_DRAG_ENTERED:
                     break;
@@ -186,7 +185,7 @@ public class Match4Activity extends Activity {
     }
 
     protected void startAudioSound() {
-        String uriPath = AppConstant.BASE_RESOURCE_PATH + ImageAndMediaResources.sSoundIdGoodjob;
+        String uriPath = AppConstant.BASE_RESOURCE_PATH + ImageAndMediaResources.sSoundIdCongratulationsShort;
         Uri uri = Uri.parse(uriPath);
         mMediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
         mMediaPlayer.start();

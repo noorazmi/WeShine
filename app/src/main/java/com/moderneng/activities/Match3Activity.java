@@ -105,7 +105,6 @@ public class Match3Activity extends Activity {
 
         @Override
         public boolean onDrag(View v3, DragEvent dragevent) {
-            // TODO Auto-generated method stub
             switch (dragevent.getAction()) {
                 case DragEvent.ACTION_DRAG_ENTERED:
                     break;
