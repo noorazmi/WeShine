@@ -44,13 +44,14 @@ public class MemoryGame2Activity extends Activity implements OnClickListener, An
     private AnimationDrawable clockanim;
     private TextView tv;
     private RelativeLayout textlay;
-    private CountDownTimer t;
+    private CountDownTimer mCountDownTimer;
     private ScaleAnimation gameover, scale1;
     private Boolean gamefinish = false;
     int nomatch = 0;
     private boolean isGameWon = false;
     private Bitmap mBitmapBg;
     private Bitmap mBitmapTitle;
+    private boolean mIsStoppedCalled;
 
 
     @Override
@@ -92,7 +93,7 @@ public class MemoryGame2Activity extends Activity implements OnClickListener, An
         findsame.start();
         textlay = (RelativeLayout) findViewById(R.id.textlay);
         textv = (ImageView) findViewById(R.id.textimg);
-        t = new CountDownTimer(60000, 1000) {
+        mCountDownTimer = new CountDownTimer(60000, 1000) {
 
             @Override
             public void onTick(long millisUntilFinished) {
@@ -103,7 +104,10 @@ public class MemoryGame2Activity extends Activity implements OnClickListener, An
             @Override
             public void onFinish() {
                 tv.setText("0");
-                mMediaPlayerClock.stop();
+                if(mMediaPlayerClock != null){
+                    mMediaPlayerClock.release();
+                    mMediaPlayerClock = null;
+                }
                 clockanim.stop();
                 findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGameOverTingTing);
                 findsame.setOnCompleteListener(new GameMusic.OnCompleteListener() {
@@ -113,7 +117,12 @@ public class MemoryGame2Activity extends Activity implements OnClickListener, An
                     }
                 });
                 if (!isGameWon) {
-                    findsame.start();
+                    if(!mIsStoppedCalled){
+                        findsame.start();
+                    }else{
+                        finish();
+                    }
+
                     ucard1.setOnClickListener(null);
                     mcard1.setOnClickListener(null);
                     ucard2.setOnClickListener(null);
@@ -130,18 +139,31 @@ public class MemoryGame2Activity extends Activity implements OnClickListener, An
                 }
 
             }
-        }.start();
+        };
+        mCountDownTimer.start();
+
+        ucard1.startAnimation(anim1);
+        mcard1.startAnimation(anim1);
+        ucard2.startAnimation(anim1);
+        mcard2.startAnimation(anim1);
+        ucard3.startAnimation(anim1);
+        mcard3.startAnimation(anim1);
+        ucard4.startAnimation(anim1);
+        mcard5.startAnimation(anim1);
+        ucard5.startAnimation(anim1);
+        mcard5.startAnimation(anim1);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mIsStoppedCalled = false;
+
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-//                String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.clocksound;
-//                Uri uri = Uri.parse(uriPath);
-//                mMediaPlayerClock = MediaPlayer.create(WeShineApp.getInstance(), uri);
-//                if(mMediaPlayerClock != null){
-//                    mMediaPlayerClock.setVolume(0.25f,0.25f);
-//                    mMediaPlayerClock.start();
-//                }
-
                 try {
                     AssetFileDescriptor fd = WeShineApp.getAssetFileDescriptor("clocksound.mp3");
                     mMediaPlayerClock = new MediaPlayer();
@@ -160,22 +182,7 @@ public class MemoryGame2Activity extends Activity implements OnClickListener, An
 
             }
         }, 800);
-        ucard1.startAnimation(anim1);
-        mcard1.startAnimation(anim1);
-        ucard2.startAnimation(anim1);
-        mcard2.startAnimation(anim1);
-        ucard3.startAnimation(anim1);
-        mcard3.startAnimation(anim1);
-        ucard4.startAnimation(anim1);
-        mcard5.startAnimation(anim1);
-        ucard5.startAnimation(anim1);
-        mcard5.startAnimation(anim1);
 
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
 
         //mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryGamesLevel2);
         mBitmapBg = WeShineApp.getBitmapFromObb("memory_games_bg_level3.png");
@@ -202,7 +209,7 @@ public class MemoryGame2Activity extends Activity implements OnClickListener, An
     @Override
     public void onAnimationEnd(Animation animation) {
         if (animation == scale1) {
-            t.cancel();
+            mCountDownTimer.cancel();
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -424,8 +431,11 @@ public class MemoryGame2Activity extends Activity implements OnClickListener, An
                     if (nomatch == 5) {
                         if (gamefinish == true) {
                             isGameWon = true;
-                            mMediaPlayerClock.stop();
-                            t.cancel();
+                            if(mMediaPlayerClock != null){
+                                mMediaPlayerClock.release();
+                                mMediaPlayerClock = null;
+                            }
+                            mCountDownTimer.cancel();
                             clockanim.stop();
                             Intent intent = new Intent(MemoryGame2Activity.this, BalloonAnimationActivity.class);
                             intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, ImageAndMediaResources.sImageIdCongratulations);
@@ -508,13 +518,21 @@ public class MemoryGame2Activity extends Activity implements OnClickListener, An
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        t.cancel();
-        mMediaPlayerClock.pause();
+        mCountDownTimer.cancel();
+        if(mMediaPlayerClock != null){
+            mMediaPlayerClock.release();
+            mMediaPlayerClock = null;
+        }
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        mIsStoppedCalled = true;
+        if(mMediaPlayerClock != null){
+            mMediaPlayerClock.release();
+            mMediaPlayerClock = null;
+        }
         if (mBitmapBg != null) {
             mBitmapBg.recycle();
             mBitmapBg = null;
@@ -529,7 +547,10 @@ public class MemoryGame2Activity extends Activity implements OnClickListener, An
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        t.cancel();
-        mMediaPlayerClock.stop();
+        if(mMediaPlayerClock != null){
+            mMediaPlayerClock.release();
+            mMediaPlayerClock = null;
+        }
+        mCountDownTimer.cancel();
     }
 }

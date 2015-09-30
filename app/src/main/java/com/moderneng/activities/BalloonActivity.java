@@ -122,6 +122,7 @@ public class BalloonActivity extends Activity {
 	private int WINING_SCORE = 330;
 
 	private Bitmap mBitmapBg;
+	private boolean mIsStoppedCalled;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -186,7 +187,12 @@ public class BalloonActivity extends Activity {
 						baloonPanelAnimatorSet.end();
 						(findViewById(R.id.gameOverImageView)).setBackgroundResource(ImageAndMediaResources.sImageIdGameOver);
 						(findViewById(R.id.gameOverImageView)).setVisibility(View.VISIBLE);
-						startAudioSound(ImageAndMediaResources.sSoundIdGameOver);
+						if(!mIsStoppedCalled){
+							startAudioSound(ImageAndMediaResources.sSoundIdGameOver);
+						}else{
+							finish();
+						}
+
 						isGameFinish = true;
 						tickTimer.cancel();
 					}
@@ -1627,6 +1633,7 @@ public class BalloonActivity extends Activity {
 
 	@Override
 	protected void onResume() {
+		mIsStoppedCalled = false;
 		if (backgroundMusicMediaPlayer != null && !isGameFinish) {
 			backgroundMusicMediaPlayer.start();
 		}
@@ -1636,9 +1643,9 @@ public class BalloonActivity extends Activity {
 
 	@Override
 	protected void onStop() {
+		mIsStoppedCalled = true;
 		stopBackgroundMusic();
 		super.onStop();
-		System.gc();
 	}
 
 	@Override

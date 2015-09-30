@@ -3,6 +3,7 @@ package com.moderneng.providers;
 import android.net.Uri;
 
 import com.android.vending.expansion.zipfile.APEZProvider;
+import com.moderneng.utils.FlavourConstants;
 
 import java.io.File;
 
@@ -14,18 +15,18 @@ import java.io.File;
  * <p/>
  */
 public class CustomAPEZProvider extends APEZProvider {
-    private static final String AUTHORITY = "com.moderneng.provider";
+
 
     @Override
     public String getAuthority() {
-        return AUTHORITY;
+        return FlavourConstants.AUTHORITY;
     }
 
 
     public static Uri buildUri(String path) {
         StringBuilder contentPath = new StringBuilder("content://");
 
-        contentPath.append(AUTHORITY);
+        contentPath.append(FlavourConstants.AUTHORITY);
         contentPath.append(File.separator);
         contentPath.append(path);
 

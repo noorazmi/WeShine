@@ -44,7 +44,7 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
     private int ncount;
     private RandomNumberGenerator g;
     private AnimationDrawable clockanim;
-    private CountDownTimer t;
+    private CountDownTimer mCountDownTimer;
     private TextView tv;
     private GameMusic findsame;
     private MediaPlayer mMediaPlayerClock;
@@ -53,6 +53,7 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
     private boolean isGameWon = false;
     private Bitmap mBitmapBg;
     private Bitmap mBitmapTitle;
+    private boolean mIsStoppedCalled;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,35 +79,8 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
         findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdFindTheSimilarCard);
         //findsame = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdFindTheSimilarCard);
         findsame.start();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-//                String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.clocksound;
-//                Uri uri = Uri.parse(uriPath);
-//                mMediaPlayerClock = MediaPlayer.create(WeShineApp.getInstance(), uri);
-//                if(mMediaPlayerClock != null){
-//                    mMediaPlayerClock.setVolume(0.25f,0.25f);
-//                    mMediaPlayerClock.start();
-//                }
 
-                try {
-                    AssetFileDescriptor fd = WeShineApp.getAssetFileDescriptor("clocksound.mp3");
-                    mMediaPlayerClock = new MediaPlayer();
-                    mMediaPlayerClock.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                    mMediaPlayerClock.setLooping(false);
-                    mMediaPlayerClock.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(), fd.getLength());
-                    mMediaPlayerClock.prepare();
-                    if (mMediaPlayerClock != null) {
-                        mMediaPlayerClock.setVolume(0.25f, 0.25f);
-                        mMediaPlayerClock.start();
-                    }
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, 800);
-        t = new CountDownTimer(60000, 1000) {
+        mCountDownTimer = new CountDownTimer(60000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 int time = (int) (millisUntilFinished / 1000);
@@ -115,10 +89,11 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
 
             @Override
             public void onFinish() {
-                // TODO Auto-generated method stub
                 tv.setText("0");
                 clockanim.stop();
                 if (!isGameWon) {
+
+
 
                     findsame = new GameMusic(getApplicationContext(), R.raw.game_over_ting_ting);
                     findsame.setOnCompleteListener(new GameMusic.OnCompleteListener() {
@@ -130,8 +105,13 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
 
                     textl.setVisibility(View.VISIBLE);
                     textimage.setAnimation(gameover);
+
+                    if(!mIsStoppedCalled){
+                        findsame.start();
+                    }else{
+                        finish();
+                    }
                     gameover.start();
-                    findsame.start();
                     tc1.setOnClickListener(null);
                     tc2.setOnClickListener(null);
                     tc3.setOnClickListener(null);
@@ -143,7 +123,8 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
                 }
 
             }
-        }.start();
+        };
+        mCountDownTimer.start();
         g = new RandomNumberGenerator(8);
         ncount = g.generateNewRandom(mcount);
         anim1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.anim3);
@@ -178,7 +159,28 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
     @Override
     protected void onResume() {
         super.onResume();
-        //mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryGamesLevel1);
+        mIsStoppedCalled = false;
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    AssetFileDescriptor fd = WeShineApp.getAssetFileDescriptor("clocksound.mp3");
+                    mMediaPlayerClock = new MediaPlayer();
+                    mMediaPlayerClock.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                    mMediaPlayerClock.setLooping(false);
+                    mMediaPlayerClock.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(), fd.getLength());
+                    mMediaPlayerClock.prepare();
+                    if (mMediaPlayerClock != null) {
+                        mMediaPlayerClock.setVolume(0.25f, 0.25f);
+                        mMediaPlayerClock.start();
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, 800);
+
         mBitmapBg = WeShineApp.getBitmapFromObb("memory_games_bg_level2.png");
         findViewById(R.id.relative_layout_parent).setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapBg));
 
@@ -331,7 +333,6 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
                         if (mcount < 7) {
                             mcount = mcount + 1;
                             ncount = g.generateNewRandom(mcount);
-                            // mcard.setImageResource(R.drawable.csun);
                             setmaincard(ncount);
                         } else {
                             mcard.setVisibility(View.INVISIBLE);
@@ -349,7 +350,6 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
                         if (mcount < 7) {
                             mcount = mcount + 1;
                             ncount = g.generateNewRandom(mcount);
-                            // mcard.setImageResource(R.drawable.csplate);
                             setmaincard(ncount);
                         } else {
                             mcard.setVisibility(View.INVISIBLE);
@@ -368,7 +368,6 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
                         if (mcount < 7) {
                             mcount = mcount + 1;
                             ncount = g.generateNewRandom(mcount);
-                            // mcard.setImageResource(R.drawable.plate);
                             setmaincard(ncount);
                         } else {
                             mcard.setVisibility(View.INVISIBLE);
@@ -387,7 +386,6 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
                         if (mcount < 7) {
                             mcount = mcount + 1;
                             ncount = g.generateNewRandom(mcount);
-                            // mcard.setImageResource(R.drawable.plate);
                             setmaincard(ncount);
                         } else {
                             mcard.setVisibility(View.INVISIBLE);
@@ -403,32 +401,23 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
             }
 
             private void gameover() {
-                // TODO Auto-generated method stub
                 new Handler().postDelayed(new Runnable() {
 
                     @Override
                     public void run() {
                         isGameWon = true;
-                        mMediaPlayerClock.pause();
-                        t.cancel();
+                        if(mMediaPlayerClock != null){
+                            mMediaPlayerClock.release();
+                            mMediaPlayerClock = null;
+                        }
+                        mCountDownTimer.cancel();
                         clockanim.stop();
-//						textl.bringToFront();
-//						textl.setVisibility(View.VISIBLE);
-//						textimage.setImageResource(R.drawable.p1_congrats);
-//						textimage.setAnimation(scale1);
-//						findsame = new Gamemusic(getApplicationContext(),
-//								R.raw.congrats);
-//						findsame.start();
-
-                        t.cancel();
-
+                        mCountDownTimer.cancel();
                         clockanim.stop();
                         Intent intent = new Intent(MemoryGame3Activity.this, BalloonAnimationActivity.class);
                         intent.putExtra(AppConstant.EXTRA_GREETING_IMAGE_RESOURCE_ID, ImageAndMediaResources.sImageIdYouAreSmart);
                         intent.putExtra(AppConstant.EXTRA_GREETING_SOUND_ID, ImageAndMediaResources.sSoundIdYouAreSmart);
-                        //intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_ID, R.raw.ballon_playing);
                         intent.putExtra(AppConstant.EXTRA_BALLOON_ANIMATION_SOUND_DELAY, AppConstant.BALLOON_ANIMATION_SOUND_DELAY);
-
                         startActivityForResult(intent, 100);
                     }
                 }, 1500);
@@ -469,7 +458,6 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
 
     @Override
     public void onAnimationEnd(Animation animation) {
-        // TODO Auto-generated method stub
         if (clickcount == 1) {
             if (animation == anim1) {
                 // mcard.setImageResource(R.drawable.light);
@@ -526,8 +514,11 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    t.cancel();
-                    mMediaPlayerClock.pause();
+                    mCountDownTimer.cancel();
+                    if(mMediaPlayerClock != null){
+                        mMediaPlayerClock.release();
+                        mMediaPlayerClock = null;
+                    }
                     finish();
                 }
             }, 3000);
@@ -565,13 +556,22 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        t.cancel();
-        mMediaPlayerClock.pause();
+        mCountDownTimer.cancel();
+        if(mMediaPlayerClock != null){
+            mMediaPlayerClock.release();
+            mMediaPlayerClock = null;
+        }
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        mIsStoppedCalled = true;
+        if(mMediaPlayerClock != null){
+            mMediaPlayerClock.release();
+            mMediaPlayerClock = null;
+        }
+
         if (mBitmapBg != null) {
             mBitmapBg.recycle();
             mBitmapBg = null;
@@ -586,8 +586,10 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        t.cancel();
+        if(mMediaPlayerClock != null){
+            mMediaPlayerClock.release();
+            mMediaPlayerClock = null;
+        }
+        mCountDownTimer.cancel();
     }
-
-
 }

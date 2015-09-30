@@ -54,6 +54,8 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
     private boolean isGameWon = false;
     private Bitmap mBitmapBg;
     private Bitmap mBitmapTitle;
+    private int mClockSoundDelay = 800;
+    boolean mIsStoppedCalled = false;
 
 
     @Override
@@ -91,40 +93,6 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
 
         gamemusic = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdFindTheSimilarCards);
         gamemusic.start();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                //mMediaPlayerClock = new MediaPlayer(getApplicationContext(), R.raw.clocksound);
-                //mMediaPlayerClock = new MediaPlayer();
-                //mMediaPlayerClock.start();
-//                String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.clocksound;
-//                Uri uri = Uri.parse(uriPath);
-//                mMediaPlayerClock = MediaPlayer.create(WeShineApp.getInstance(), uri);
-//                if (mMediaPlayerClock != null) {
-//                    mMediaPlayerClock.setVolume(0.25f, 0.25f);
-//                    mMediaPlayerClock.start();
-//                }
-
-
-                try {
-                    AssetFileDescriptor fd = WeShineApp.getAssetFileDescriptor("clocksound.mp3");
-                    mMediaPlayerClock = new MediaPlayer();
-                    mMediaPlayerClock.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                    mMediaPlayerClock.setLooping(false);
-                    mMediaPlayerClock.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(), fd.getLength());
-                    mMediaPlayerClock.prepare();
-                    if (mMediaPlayerClock != null) {
-                        mMediaPlayerClock.setVolume(0.25f, 0.25f);
-                        mMediaPlayerClock.start();
-                    }
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }, 800);
-
 
         ImageView v = new ImageView(this);
         plate1.setAnimation(animation1);
@@ -150,7 +118,10 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
             @Override
             public void onFinish() {
                 tv.setText("0");
-                mMediaPlayerClock.stop();
+                if(mMediaPlayerClock != null){
+                    mMediaPlayerClock.release();
+                    mMediaPlayerClock = null;
+                }
                 clockanimation.stop();
                 gamemusic = new GameMusic(getApplicationContext(), ImageAndMediaResources.sSoundIdGameOverTingTing);
                 gamemusic.setOnCompleteListener(new GameMusic.OnCompleteListener() {
@@ -160,17 +131,16 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
                     }
                 });
                 if (!isGameWon) {
-                    gamemusic.start();
+                    if(!mIsStoppedCalled){
+                        gamemusic.start();
+                    }else{
+                        finish();
+                    }
+
                     textimg.setImageResource(R.drawable.p1_gameover);
                     textimg.setAnimation(scal1);
                     scal1.start();
                     textlay.setVisibility(View.VISIBLE);
-                    plate1.setOnClickListener(null);
-                    cart1.setOnClickListener(null);
-                    blue1.setOnClickListener(null);
-                    plate2.setOnClickListener(null);
-                    cart2.setOnClickListener(null);
-                    blue2.setOnClickListener(null);
                 }
 
             }
@@ -319,7 +289,6 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
 
                 @Override
                 public void run() {
-                    // TODO Auto-generated method stub
 
                     if ((v1.getId() == R.id.plate1 && v2.getId() == R.id.plate2) || v2.getId() == R.id.plate1 && v1.getId() == R.id.plate2) {
                         gamemusic = new GameMusic(getApplicationContext(), "p2drop");
@@ -370,7 +339,10 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
                     if (gamecount == 3) {
                         if (isface == true) {
                             isGameWon = true;
-                            mMediaPlayerClock.stop();
+                            if(mMediaPlayerClock != null){
+                                mMediaPlayerClock.release();
+                                mMediaPlayerClock = null;
+                            }
                             t.cancel();
                             clockanimation.stop();
                             Intent intent = new Intent(MemoryGame1Activity.this, BalloonAnimationActivity.class);
@@ -450,9 +422,28 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
     @Override
     protected void onResume() {
         super.onResume();
-        System.gc();
-        super.onResume();
-        //mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMemoryGamesLevel1);
+        mIsStoppedCalled = false;
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    AssetFileDescriptor fd = WeShineApp.getAssetFileDescriptor("clocksound.mp3");
+                    mMediaPlayerClock = new MediaPlayer();
+                    mMediaPlayerClock.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                    mMediaPlayerClock.setLooping(false);
+                    mMediaPlayerClock.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(), fd.getLength());
+                    mMediaPlayerClock.prepare();
+                    if (mMediaPlayerClock != null) {
+                        mMediaPlayerClock.setVolume(0.25f, 0.25f);
+                        mMediaPlayerClock.start();
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, mClockSoundDelay);
         mBitmapBg = WeShineApp.getBitmapFromObb("memory_games_bg_level1.png");
         findViewById(R.id.relative_layout_parent).setBackgroundDrawable(new BitmapDrawable(getResources(), mBitmapBg));
 
@@ -464,14 +455,23 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        mMediaPlayerClock.pause();
+        if(mMediaPlayerClock != null){
+            mMediaPlayerClock.release();
+            mMediaPlayerClock = null;
+        }
+
         t.cancel();
-        System.gc();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        mIsStoppedCalled = true;
+        if(mMediaPlayerClock != null){
+            mMediaPlayerClock.release();
+            mMediaPlayerClock = null;
+        }
+        mClockSoundDelay = 0;
         if (mBitmapBg != null) {
             mBitmapBg.recycle();
             mBitmapBg = null;
@@ -487,7 +487,10 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mMediaPlayerClock.stop();
+        if(mMediaPlayerClock != null){
+            mMediaPlayerClock.release();
+            mMediaPlayerClock = null;
+        }
         t.cancel();
         System.gc();
     }

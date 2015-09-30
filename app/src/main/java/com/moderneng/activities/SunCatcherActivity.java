@@ -85,8 +85,9 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 	private int golfCarWith;
 	private MediaPlayer backgroundMusicMediaPlayer;
 	private int sunWidth;
-
 	private Bitmap mBitmapBg;
+	boolean mIsStoppedCalled = false;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -144,7 +145,9 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 				} else {
 					(findViewById(R.id.sunCatcher_gameOverLinearLayout)).setVisibility(View.VISIBLE);
 					((ImageView)findViewById(R.id.imageview_gameover)).setImageBitmap(BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdGameOver));
-					startAudioSound(ImageAndMediaResources.sSoundIdGameOver);
+					if(!mIsStoppedCalled){
+                        startAudioSound(ImageAndMediaResources.sSoundIdGameOver);
+                    }
 				}
 
 			}
@@ -357,7 +360,7 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 
 		AnimationSet replaceAnimation = new AnimationSet(false);
 		TranslateAnimation trans = new TranslateAnimation(0, xFromPosSunRay, TranslateAnimation.ABSOLUTE, xToPosSunRay, 0, yFromPosSunRay, TranslateAnimation.ABSOLUTE, yToPosSunRay);
-		trans.setDuration(970);
+		trans.setDuration(1000);
 		replaceAnimation.addAnimation(trans);
 		replaceAnimation.setAnimationListener(new Animation.AnimationListener() {
 
@@ -747,6 +750,7 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 	protected void onResume() {
 		setAnimatedSunView();
 		backgroundMusicMediaPlayer.start();
+		mIsStoppedCalled = false;
 		super.onResume();
 	}
 
@@ -764,6 +768,7 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 				e.printStackTrace();
 			}
 		}
+		mIsStoppedCalled = true;
 		super.onStop();
 	}
 
