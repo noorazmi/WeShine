@@ -3,7 +3,6 @@ package com.moderneng.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -46,7 +45,7 @@ public class VideoPlayActivity extends Activity {
 		if(mIntent.getStringExtra(AppConstant.EXTRA_VIDEO_LOCATION).equals(AppConstant.EXTRA_VIDEO_LOCATION_APK)){
 			uri = Uri.parse("android.resource://" + getPackageName() + "/" + mVideoFileId);
 		}else {//Fetch file from .obb
-		  uri= CustomAPEZProvider.buildUri(WeShineApp.MEDIA_FILE_BASE_PATH + mVideoFileName+".mp4");
+			uri= CustomAPEZProvider.buildUri(WeShineApp.MEDIA_FILE_BASE_PATH + mVideoFileName+".mp4");
 		}
 		vv.setVideoURI(uri);
 		vv.start();
@@ -71,7 +70,7 @@ public class VideoPlayActivity extends Activity {
 		vv.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 			@Override
 			public void onCompletion(MediaPlayer mp) {
-				 mp.reset();
+				mp.reset();
 			}
 		});
 	}
@@ -103,6 +102,9 @@ public class VideoPlayActivity extends Activity {
 				case "story":
 					showStoryEndImage();
 					break;
+				case "story_arb":
+					showStoryEndImage();
+					break;
 			}
 
 			if(mVideoType!= null && mVideoType.equals(AppConstant.VIDEO_TYPE_STORY)){
@@ -118,8 +120,9 @@ public class VideoPlayActivity extends Activity {
 
 	private void showStoryEndImage(){
 
-		mBitmapThankyou = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdStoryEndThankYouImage);
-		((ImageView)findViewById(R.id.imageview_thankyou)).setImageBitmap(mBitmapThankyou);
+		//mBitmapThankyou = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdStoryEndThankYouImage);
+		mBitmapThankyou = WeShineApp.getBitmapFromObb(ImageAndMediaResources.sImageIdStoryEndThankYouImage);
+		((ImageView) findViewById(R.id.imageview_thankyou)).setImageBitmap(mBitmapThankyou);
 		findViewById(R.id.imageview_thankyou).setVisibility(View.VISIBLE);
 		findViewById(R.id.videoview_game_end).setVisibility(View.GONE);
 

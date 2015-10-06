@@ -56,12 +56,12 @@ public class ImageAndMediaResources {
     public static int sSoundIdTerrific;
     public static int sSoundIdIncredible;
     public static int sSoundIdMemoryGames;
-    public static int sSoundIdStory;
-    public static int sSoundIdEducation1;
-    public static int sSoundIdEducation2;
-    public static int sSoundIdEducation3;
-    public static int sSoundIdEducation4;
-    public static int sSoundIdEducation5;
+    public static String sSoundIdStory;
+    public static String sSoundIdEducation1;
+    public static String sSoundIdEducation2;
+    public static String sSoundIdEducation3;
+    public static String sSoundIdEducation4;
+    public static String sSoundIdEducation5;
 
 
 
@@ -103,8 +103,8 @@ public class ImageAndMediaResources {
     //public static int sImageIdMemoryGamesLevel2;
     //public static int sImageIdMemoryGamesLevel3;
     public static int sImageIdEducation;
-    public static int sImageIdHomeScreen;
-    public static int sImageIdStoryEndThankYouImage;
+    public static String sImageIdHomeScreen;
+    public static String sImageIdStoryEndThankYouImage;
     public static int sImageIdEducation1;
     public static int sImageIdEducation2;
     public static int sImageIdEducation3;
@@ -165,8 +165,8 @@ public class ImageAndMediaResources {
             //sImageIdMemoryGamesLevel2 = R.drawable.memory_games_bg_level2;
             //sImageIdMemoryGamesLevel3 = R.drawable.memory_games_bg_level3;
             sImageIdEducation = R.drawable.education;
-            sImageIdHomeScreen = R.drawable.home_screen;
-            sImageIdStoryEndThankYouImage = R.drawable.story_end_image;
+            sImageIdHomeScreen = "home_screen.png";
+            sImageIdStoryEndThankYouImage = "story_end_image.png";
             sImageIdEducation1 = R.drawable.aedu1;
             sImageIdEducation2 = R.drawable.aedu2;
             sImageIdEducation3 = R.drawable.aedu3;
@@ -221,8 +221,8 @@ public class ImageAndMediaResources {
             //sImageIdMemoryGamesLevel2 = R.drawable.memory_games_bg_level2;
             //sImageIdMemoryGamesLevel3 = R.drawable.memory_games_bg_level3;
             sImageIdEducation = R.drawable.education_arb;
-            sImageIdHomeScreen = R.drawable.home_screen_arb;
-            sImageIdStoryEndThankYouImage = R.drawable.story_end_image_arb;
+            sImageIdHomeScreen = "home_screen_arb.png";
+            sImageIdStoryEndThankYouImage = "story_end_image_arb.png";
             sImageIdEducation1 = R.drawable.edu1_arb;
             sImageIdEducation2 = R.drawable.edu2_arb;
             sImageIdEducation3 = R.drawable.edu3_arb;
@@ -288,12 +288,12 @@ public class ImageAndMediaResources {
             sSoundIdTerrific = R.raw.terrific;
             sSoundIdIncredible = R.raw.incredible;
             sSoundIdMemoryGames = R.raw.memmory_games;
-            sSoundIdStory = R.raw.story;
-            sSoundIdEducation1 = R.raw.aedu1;
-            sSoundIdEducation2 = R.raw.aedu2;
-            sSoundIdEducation3 = R.raw.aedu3;
-            sSoundIdEducation4 = R.raw.aedu4;
-            sSoundIdEducation5 = R.raw.aedu5;
+            sSoundIdStory = "story";
+            sSoundIdEducation1 = "aedu1";
+            sSoundIdEducation2 = "aedu2";
+            sSoundIdEducation3 = "aedu3";
+            sSoundIdEducation4 = "aedu4";
+            sSoundIdEducation5 = "aedu5";
 
 
         }else if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
@@ -339,13 +339,13 @@ public class ImageAndMediaResources {
             sSoundIdTerrific = R.raw.terrific_arb;
             sSoundIdIncredible = R.raw.incredible_arb;
             sSoundIdMemoryGames = R.raw.memmory_games_arb;
-            sSoundIdStory = R.raw.story_arb;
+            sSoundIdStory = "story_arb";
             sSoundIdFindTheSimilarCard = R.raw.find_the_similar_card_arb;
-            sSoundIdEducation1 = R.raw.aedu1_arb;
-            sSoundIdEducation2 = R.raw.aedu2_arb;
-            sSoundIdEducation3 = R.raw.aedu3_arb;
-            sSoundIdEducation4 = R.raw.aedu4_arb;
-            sSoundIdEducation5 = R.raw.aedu5_arb;
+            sSoundIdEducation1 = "aedu1_arb";
+            sSoundIdEducation2 = "aedu2_arb";
+            sSoundIdEducation3 = "aedu3_arb";
+            sSoundIdEducation4 = "aedu4_arb";
+            sSoundIdEducation5 = "aedu5_arb";
         }
     }
 
@@ -358,6 +358,7 @@ public class ImageAndMediaResources {
         }
 
     }
+
 
 
 }

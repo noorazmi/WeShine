@@ -27,9 +27,11 @@ public class SplashActivity extends Activity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.splash);
-        BitmapFactory.Options opts = new BitmapFactory.Options();
-        opts.inPreferredConfig = Bitmap.Config.RGB_565;
-        mBitmapSplash = BitmapFactory.decodeResource(getResources(), R.drawable.splash, opts);
+        //BitmapFactory.Options opts = new BitmapFactory.Options();
+        //opts.inPreferredConfig = Bitmap.Config.RGB_565;
+        //mBitmapSplash = BitmapFactory.decodeResource(getResources(), R.drawable.splash, opts);
+        //mBitmapSplash = WeShineApp.getBitmapFromObb("splash");
+        mBitmapSplash = WeShineApp.getBitmapFromObb("splash.png", UtilityMethods.getScreenWidth(), UtilityMethods.getScreenHeight());
         ((ImageView) findViewById(R.id.imageview_splash)).setImageBitmap(mBitmapSplash);
 
     }

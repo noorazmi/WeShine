@@ -8,5 +8,6 @@ package com.moderneng.utils;
  * <p/>
  */
 public interface FlavourConstants {
-    int MAIN_EXPANSION_FILE_VERSION = 1;
+    int MAIN_EXPANSION_FILE_VERSION = 2;
+    String AUTHORITY = "com.moderneng.arbeng.provider";
 }

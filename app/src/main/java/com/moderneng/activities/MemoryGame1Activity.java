@@ -434,7 +434,8 @@ public class MemoryGame1Activity extends Activity implements OnClickListener, An
                     mMediaPlayerClock.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(), fd.getLength());
                     mMediaPlayerClock.prepare();
                     if (mMediaPlayerClock != null) {
-                        mMediaPlayerClock.setVolume(0.25f, 0.25f);
+                        //mMediaPlayerClock.setVolume(0.25f, 0.25f);
+                        mMediaPlayerClock.setVolume(AppConstant.SOUND_VOLUME_LEFT, AppConstant.SOUND_VOLUME_RIGHT);
                         mMediaPlayerClock.start();
                     }
 

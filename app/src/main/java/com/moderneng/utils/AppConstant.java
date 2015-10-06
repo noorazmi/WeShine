@@ -57,4 +57,7 @@ public interface AppConstant {
 	String LANGUAGE_ARABIC = "arabic";
 	String LANGUAGE_ENGLISH = "english";
 
+	float SOUND_VOLUME_LEFT = 0.25f;
+	float SOUND_VOLUME_RIGHT = 0.25f;
+
 }

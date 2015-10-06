@@ -101,8 +101,8 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 		findViewById(R.id.frame_layout_container).setBackgroundDrawable(new BitmapDrawable(mBitmapBg));
 
 		screenSize = UtilityMethods.getScreenSizeInInches(WeShineApp.getInstance());
-		SCREEN_WIDTH = UtilityMethods.getScreenWidth(this);
-		SCREEN_HEIGHT = UtilityMethods.getScreenHeight(this);
+		SCREEN_WIDTH = UtilityMethods.getScreenWidth();
+		SCREEN_HEIGHT = UtilityMethods.getScreenHeight();
 		letterView = (ImageView) findViewById(R.id.sunCatcher_golfCarImageView);
 		letterView.setOnTouchListener(this);
 		mainLayout = (AbsoluteLayout) findViewById(R.id.mainLayout);
@@ -574,14 +574,6 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 	}
 
 	private void startBackgroundMusic() {
-
-		//String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.sun_cather_music;
-		// mAudioFileId = R.raw.sun_cather_music;
-		//Uri uri = Uri.parse(uriPath);
-		//backgroundMusicMediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
-
-
-
 		AssetFileDescriptor fd = WeShineApp.getAssetFileDescriptor("sun_cather_music" + ".mp3");
 		backgroundMusicMediaPlayer = new MediaPlayer();
 		backgroundMusicMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
@@ -593,6 +585,7 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 			e.printStackTrace();
 		}
 		backgroundMusicMediaPlayer.setOnCompletionListener(new MediaListener());
+		backgroundMusicMediaPlayer.setVolume(AppConstant.SOUND_VOLUME_LEFT, AppConstant.SOUND_VOLUME_RIGHT);
 		backgroundMusicMediaPlayer.start();
 	}
 
@@ -712,7 +705,7 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 		}
 
 		AnimationUtil.performFrameAnimation((ImageView) findViewById(R.id.sunCatcher_birdImageView), R.drawable.sun_catcher_bird_animation);
-		int toX = UtilityMethods.getScreenWidth(this);
+		int toX = UtilityMethods.getScreenWidth();
 		if (screenSize >= 9.4) {
 			toX = toX - (int) UtilityMethods.convertDpToPixel(98, WeShineApp.getInstance());
 			birdMarginTop = (int) UtilityMethods.convertDpToPixel(179, WeShineApp.getInstance());

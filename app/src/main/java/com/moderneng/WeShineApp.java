@@ -29,10 +29,6 @@ public class WeShineApp extends Application {
         super.onCreate();
         singleton = this;
         try {
-            //mExpansionFile = APKExpansionSupport.getAPKExpansionZipFile(getApplicationContext(), APP_VERSION, -1);
-            //mainExpansionVersion == version code of the apk.   Only main expansion file is being used
-            //int mainExpansionVersion = getPackageManager().getPackageInfo(getPackageName(), 0).versionCode;
-            //mExpansionFile = APKExpansionSupport.getAPKExpansionZipFile(getApplicationContext(), mainExpansionVersion, -1/* patch file is not being used hence using patch version number less than 1*/);
             mExpansionFile = APKExpansionSupport.getAPKExpansionZipFile(getApplicationContext(), FlavourConstants.MAIN_EXPANSION_FILE_VERSION, -1/* patch file is not being used hence using patch version number less than 1*/);
         } catch (IOException e) {
             e.printStackTrace();
@@ -66,11 +62,11 @@ public class WeShineApp extends Application {
         return mExpansionFile;
     }
 
-    public static Bitmap getBitmapFromObb(String drawableNameWithExtension){
+    public static Bitmap getBitmapFromObb(String imageNameWithExtension) {
 
         InputStream inputStream = null;
         try {
-            inputStream = mExpansionFile.getInputStream("main/drawable/"+drawableNameWithExtension);
+            inputStream = mExpansionFile.getInputStream(IMAGE_FILE_BASE_PATH + imageNameWithExtension);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -79,4 +75,78 @@ public class WeShineApp extends Application {
         Bitmap bitmap = BitmapFactory.decodeStream(inputStream, null, bitmapOptions);
         return bitmap;
     }
+
+
+    public static Bitmap getBitmapFromObb(String imageNameWithExtension, int reqWidth, int reqHeight) {
+
+        InputStream inputStream = null;
+        try {
+            inputStream = mExpansionFile.getInputStream(IMAGE_FILE_BASE_PATH + imageNameWithExtension);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
+        bitmapOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        bitmapOptions.inJustDecodeBounds = true;
+        BitmapFactory.decodeStream(inputStream, null, bitmapOptions);
+        bitmapOptions.inSampleSize = calculateInSampleSize(bitmapOptions, reqWidth, reqHeight);
+        try {
+            inputStream.close();
+            inputStream = null;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        try {
+            inputStream = mExpansionFile.getInputStream(IMAGE_FILE_BASE_PATH + imageNameWithExtension);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        bitmapOptions.inJustDecodeBounds = false;
+        Bitmap bitmap = BitmapFactory.decodeStream(inputStream, null, bitmapOptions);
+        try {
+            inputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bitmap;
+    }
+
+    public static Bitmap getBitmapFromResource(int resId, int reqWidth, int reqHeight){
+        // First decode with inJustDecodeBounds=true to check dimensions
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(getSingleton().getResources(), resId, options);
+
+        // Calculate inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+
+        // Decode bitmap with inSampleSize set
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeResource(getSingleton().getResources(), resId, options);
+    }
+
+    private static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) > reqHeight && (halfWidth / inSampleSize) > reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        return inSampleSize;
+    }
+
 }

@@ -15,7 +15,7 @@ import com.moderneng.views.HorizontalPage;
 public class Horizontalpager extends Activity {
     private int count;
     private AudioPlayer mp;
-    private int[] backgoundmusic;
+    private String[] backgoundmusic;
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {
@@ -27,7 +27,8 @@ public class Horizontalpager extends Activity {
         int[] backgroundDrawables = null;
 
         backgroundDrawables = new int[]{ImageAndMediaResources.sImageIdEducation1, ImageAndMediaResources.sImageIdEducation2, ImageAndMediaResources.sImageIdEducation3, ImageAndMediaResources.sImageIdEducation4, ImageAndMediaResources.sImageIdEducation5};
-        backgoundmusic = new int[]{ImageAndMediaResources.sSoundIdEducation1, ImageAndMediaResources.sSoundIdEducation2, ImageAndMediaResources.sSoundIdEducation3, ImageAndMediaResources.sSoundIdEducation4, ImageAndMediaResources.sSoundIdEducation5};
+        //backgoundmusic = new int[]{ImageAndMediaResources.sSoundIdEducation1, ImageAndMediaResources.sSoundIdEducation2, ImageAndMediaResources.sSoundIdEducation3, ImageAndMediaResources.sSoundIdEducation4, ImageAndMediaResources.sSoundIdEducation5};
+        backgoundmusic = new String[]{ImageAndMediaResources.sSoundIdEducation1, ImageAndMediaResources.sSoundIdEducation2, ImageAndMediaResources.sSoundIdEducation3, ImageAndMediaResources.sSoundIdEducation4, ImageAndMediaResources.sSoundIdEducation5};
 
 
         Intent mIntent = getIntent();

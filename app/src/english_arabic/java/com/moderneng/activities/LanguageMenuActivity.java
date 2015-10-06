@@ -3,7 +3,6 @@ package com.moderneng.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,11 +12,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.moderneng.R;
+import com.moderneng.WeShineApp;
 import com.moderneng.utils.AppConstant;
 import com.moderneng.utils.AudioPlayer;
 import com.moderneng.utils.ColorTool;
-import com.moderneng.R;
-import com.moderneng.WeShineApp;
+import com.moderneng.utils.UtilityMethods;
 
 public class LanguageMenuActivity extends Activity implements View.OnTouchListener {
 
@@ -91,18 +91,21 @@ public class LanguageMenuActivity extends Activity implements View.OnTouchListen
 
     @Override
     protected void onResume() {
-       // mAudioPlayer = new AudioPlayer(this, R.raw.homesound);
+        // mAudioPlayer = new AudioPlayer(this, R.raw.homesound);
         //mAudioPlayer = new AudioPlayer(this, R.raw.homesound);
-        mAudioPlayer = new AudioPlayer(this, "homesound.mp3");
+        mAudioPlayer = new AudioPlayer(this, "homesound");
         mAudioPlayer.start();
 
 
-        mBitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.arabic_english);
+        //mBitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.arabic_english);
+        mBitmapTop = WeShineApp.getBitmapFromObb("arabic_english.png", UtilityMethods.getScreenWidth(), UtilityMethods.getScreenHeight());
+
         mImageViewFront = ((ImageView) findViewById(R.id.imageview_arabic_english));
         mImageViewFront.setImageBitmap(mBitmapTop);
         mImageViewFront.setOnTouchListener(this);
 
-        mBitmapBottom = BitmapFactory.decodeResource(getResources(), R.drawable.arabic_english_hotspot);
+        //mBitmapBottom = BitmapFactory.decodeResource(getResources(), R.drawable.arabic_english_hotspot);
+        mBitmapBottom = WeShineApp.getBitmapFromObb("arabic_english_hotspot.png", UtilityMethods.getScreenWidth(), UtilityMethods.getScreenHeight());
         mImageViewHotspot = ((ImageView) findViewById(R.id.imageview_hotspot));
         mImageViewHotspot.setImageBitmap(mBitmapBottom);
 

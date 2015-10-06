@@ -11,12 +11,17 @@
         android:largeHeap="true"
         android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
 
+        <activity
+            android:name=".activities.LanguageMenuActivity"
+            android:screenOrientation="landscape" >
+        </activity>
+
         <provider android:name="com.moderneng.providers.CustomAPEZProvider"
-                  android:authorities="com.moderneng.provider"
+                  android:authorities="com.moderneng.arbeng.provider"
                   android:exported="false"
                   android:multiprocess="true">
             <!--provide main file version and patch file  otherwise file will not be accessible-->
-            <meta-data android:name="mainVersion" android:value="-1"></meta-data>
+            <meta-data android:name="mainVersion" android:value="2"></meta-data>
             <meta-data android:name="patchVersion" android:value="-1"></meta-data>
         </provider>
 

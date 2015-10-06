@@ -126,14 +126,7 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
 
         mImageViewTop = (ImageView) findViewById(R.id.frontimg);
         mBitmapBottom = BitmapFactory.decodeResource(getResources(), R.drawable.game_home_screen_hotspot);
-//        if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)){
-//            mBitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.game_home_screen);
-//        }else{
-//            mBitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.game_home_screen_arb);
-//        }
-
         mBitmapTop = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdGameHomeScreen);
-
         mImageViewTop.setImageBitmap(mBitmapTop);
         ((ImageView) findViewById(R.id.backimg)).setImageBitmap(mBitmapBottom);
 

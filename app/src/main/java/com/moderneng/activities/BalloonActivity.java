@@ -136,8 +136,8 @@ public class BalloonActivity extends Activity {
 		findViewById(R.id.frame_layout_container).setBackgroundDrawable(new BitmapDrawable(mBitmapBg));
 
 		screenSize = UtilityMethods.getScreenSizeInInches(WeShineApp.getInstance());
-		SCREEN_WIDTH = UtilityMethods.getScreenWidth(this);
-		SCREEN_HEIGHT = UtilityMethods.getScreenHeight(this);
+		SCREEN_WIDTH = UtilityMethods.getScreenWidth();
+		SCREEN_HEIGHT = UtilityMethods.getScreenHeight();
 		mainLayout = (AbsoluteLayout) findViewById(R.id.mainLayout);
 		if (screenSize >= 9.4) {
 			balloonRepeatTime = 2600;
@@ -1095,20 +1095,6 @@ public class BalloonActivity extends Activity {
 
 	private void startBackgroundMusic() {
 
-//		String uriPath = AppConstant.BASE_RESOURCE_PATH + R.raw.sun_cather_music;
-//		Uri uri = Uri.parse(uriPath);
-//		backgroundMusicMediaPlayer = MediaPlayer.create(WeShineApp.getInstance(), uri);
-//		backgroundMusicMediaPlayer.setOnCompletionListener(
-//				new OnCompletionListener() {
-//			@Override
-//			public void onCompletion(MediaPlayer mp) {
-//				if (mp != null) {
-//					mp.release();
-//				}
-//			}
-//		});
-//		backgroundMusicMediaPlayer.start();
-
 		try {
 			AssetFileDescriptor fd = WeShineApp.getAssetFileDescriptor("sun_cather_music.mp3");
 			backgroundMusicMediaPlayer = new MediaPlayer();
@@ -1122,16 +1108,13 @@ public class BalloonActivity extends Activity {
 				}
 			});
 			if(backgroundMusicMediaPlayer != null){
+				backgroundMusicMediaPlayer.setVolume(AppConstant.SOUND_VOLUME_LEFT, AppConstant.SOUND_VOLUME_RIGHT);
 				backgroundMusicMediaPlayer.start();
 			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-
-
-
 	}
 
 	protected void startAudioSound(int audioFileId) {

@@ -173,9 +173,5 @@
             android:screenOrientation="landscape"
             android:theme="@style/Theme.Transparent" >
         </activity>
-        <activity
-            android:name=".activities.LanguageMenuActivity"
-            android:screenOrientation="landscape" >
-        </activity>
     </application>
 </manifest>

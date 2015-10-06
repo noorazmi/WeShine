@@ -3,7 +3,6 @@ package com.moderneng.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,10 +14,12 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.moderneng.R;
+import com.moderneng.WeShineApp;
 import com.moderneng.utils.AppConstant;
 import com.moderneng.utils.AudioPlayer;
 import com.moderneng.utils.ColorTool;
 import com.moderneng.utils.ImageAndMediaResources;
+import com.moderneng.utils.UtilityMethods;
 
 public class MainMenuActivity extends Activity implements View.OnTouchListener {
     private AudioPlayer mp;
@@ -94,10 +95,9 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
             if (nextImage == 0) {
                 mp.release();
                 Intent storyVideoIntent = new Intent(getApplicationContext(), VideoPlayActivity.class);
-                storyVideoIntent.putExtra(AppConstant.EXTRA_VIDEO_ID, ImageAndMediaResources.sSoundIdStory);
-                storyVideoIntent.putExtra(AppConstant.EXTRA_VIDEO_NAME, "story");
+                storyVideoIntent.putExtra(AppConstant.EXTRA_VIDEO_NAME, ImageAndMediaResources.sSoundIdStory);
                 storyVideoIntent.putExtra(AppConstant.EXTRA_VIDEO_TYPE, AppConstant.VIDEO_TYPE_STORY);
-                storyVideoIntent.putExtra(AppConstant.EXTRA_VIDEO_LOCATION, AppConstant.EXTRA_VIDEO_LOCATION_APK);
+                storyVideoIntent.putExtra(AppConstant.EXTRA_VIDEO_LOCATION, AppConstant.EXTRA_VIDEO_LOCATION_OBB);
                 storyVideoIntent.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, ImageAndMediaResources.sStoryVideoDuration);
                 startActivity(storyVideoIntent);
             }
@@ -146,8 +146,10 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
         mp = new AudioPlayer(this, "homesound");
         mp.start();
         mImageViewTop = (ImageView) findViewById(R.id.image);
-        mBitmapBottom = BitmapFactory.decodeResource(getResources(), R.drawable.home_screen_hotspot);
-        mBitmapTop = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdHomeScreen);
+        //mBitmapBottom = BitmapFactory.decodeResource(getResources(), R.drawable.home_screen_hotspot);
+        mBitmapBottom = WeShineApp.getBitmapFromObb("home_screen_hotspot.png", UtilityMethods.getScreenWidth(), UtilityMethods.getScreenHeight());
+        //mBitmapTop = WeShineApp.getBitmapFromObb(ImageAndMediaResources.sImageIdHomeScreen);
+        mBitmapTop = WeShineApp.getBitmapFromObb(ImageAndMediaResources.sImageIdHomeScreen, UtilityMethods.getScreenWidth(), UtilityMethods.getScreenHeight());
 
         mImageViewTop.setImageBitmap(mBitmapTop);
         ((ImageView) findViewById(R.id.image_areas)).setImageBitmap(mBitmapBottom);

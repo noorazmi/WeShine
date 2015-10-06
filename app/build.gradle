@@ -24,9 +24,9 @@ android {
             versionName = "1.7"
         }
         english_arabic {
-            applicationId = "com.moderneng.engarb"
-            versionCode = 1.0;
-            versionName = "V1.0"
+            applicationId "com.moderneng.arbeng"
+            versionCode 3
+            versionName "1.2"
         }
 
     }

@@ -87,7 +87,7 @@ public class BalloonAnimationActivityFragment extends Fragment implements View.O
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         screenSize = UtilityMethods.getScreenSizeInInches(WeShineApp.getInstance());
-        SCREEN_HEIGHT = UtilityMethods.getScreenHeight(getActivity());
+        SCREEN_HEIGHT = UtilityMethods.getScreenHeight();
         View rootView = inflater.inflate(R.layout.fragment_balloon_animation, container, false);
         mImageViewAnimation = (ImageView) rootView.findViewById(R.id.imageview_animation);
         mImageViewAnimation.setImageResource(mGreetingImageDrawableId);
