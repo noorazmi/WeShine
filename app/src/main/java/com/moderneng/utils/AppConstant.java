@@ -32,6 +32,11 @@ public interface AppConstant {
 	String EXTRA_VIDEO_LOCATION_OBB = "video_location_obb";
 	String EXTRA_VIDEO_NAME = "video_name";
 
+	String EXTRA_FROM = "extra_from";
+	String FROM_SPLASH = "from_splash";
+	String FROM_MAIN_MANU = "from_main_manu";
+
+
 
 
 

@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
+import com.moderneng.utils.AppConstant;
 import com.moderneng.utils.FlavourConstants;
 import com.moderneng.utils.UtilityMethods;
 
@@ -38,6 +39,7 @@ public class SplashActivity extends Activity {
                 //startActivity(i);
                 if(FlavourConstants.SHOW_ADVERTISEMENT){
                     Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
+                    i.putExtra(AppConstant.EXTRA_FROM, AppConstant.FROM_SPLASH);
                     startActivity(i);
                 }else{
                     Intent i = new Intent(getApplicationContext(), LanguageMenuActivity.class);

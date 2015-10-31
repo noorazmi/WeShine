@@ -16,7 +16,7 @@
         android:layout_height="fill_parent" 
         android:scaleType="fitXY"/>
 
-    <com.moderneng.views.AdvertisementIconImageView
+    <com.moderneng.views.AdvertisementLogoImageView
         android:layout_width="@dimen/ic_advertisement_width"
         android:layout_height="@dimen/ic_advertisement_height"
         android:id="@+id/imageview_advertisement_icon"

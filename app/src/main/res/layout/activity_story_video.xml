@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/relative_layout_parent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+    <VideoView
+        android:id="@+id/videoview_game_end"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:scaleType="fitXY" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageview_thankyou"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
+        android:visibility="gone"/>
+    <com.moderneng.views.AdvertisementLogoImageView
+        android:layout_width="@dimen/ic_advertisement_width"
+        android:layout_height="@dimen/ic_advertisement_height"
+        android:id="@+id/imageview_advertisement_icon"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/ic_advertisement_margin_top"
+        android:layout_marginRight="@dimen/ic_addvertisement_margin_right"/>
+
+
+
+    <com.moderneng.views.AdvertisementBannerImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageview_advertisement_banner"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"/>
+
+</RelativeLayout>

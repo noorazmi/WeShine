@@ -175,8 +175,11 @@
         </activity>
         <activity
             android:name=".activities.AdvertisementActivity"
-            android:label="@string/title_activity_advertisement"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name=".activities.StoryVideoActivity"
+            android:screenOrientation="landscape" >
         </activity>
     </application>
 

@@ -99,7 +99,7 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
 
             if (nextImage == 0) {
                 mp.release();
-                Intent storyVideoIntent = new Intent(getApplicationContext(), VideoPlayActivity.class);
+                Intent storyVideoIntent = new Intent(getApplicationContext(), StoryVideoActivity.class);
                 storyVideoIntent.putExtra(AppConstant.EXTRA_VIDEO_TYPE, AppConstant.VIDEO_TYPE_STORY);
 
                 if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
@@ -114,6 +114,7 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
                     storyVideoIntent.putExtra(AppConstant.EXTRA_VIDEO_LOCATION, AppConstant.EXTRA_VIDEO_LOCATION_APK);
                 }
                 storyVideoIntent.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, ImageAndMediaResources.sStoryVideoDuration);
+                storyVideoIntent.putExtra(AppConstant.EXTRA_FROM, AppConstant.FROM_MAIN_MANU);
                 startActivity(storyVideoIntent);
             }
             if (nextImage == 1) {

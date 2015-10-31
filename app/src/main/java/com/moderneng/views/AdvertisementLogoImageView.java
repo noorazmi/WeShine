@@ -16,18 +16,18 @@ import com.moderneng.utils.UtilityMethods;
  * Skype id: mfsi_noora
  * <p/>
  */
-public class AdvertisementIconImageView extends ImageView implements View.OnClickListener{
-    public AdvertisementIconImageView(Context context) {
+public class AdvertisementLogoImageView extends ImageView implements View.OnClickListener{
+    public AdvertisementLogoImageView(Context context) {
         super(context);
         init();
     }
 
-    public AdvertisementIconImageView(Context context, AttributeSet attrs) {
+    public AdvertisementLogoImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public AdvertisementIconImageView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public AdvertisementLogoImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -37,7 +37,7 @@ public class AdvertisementIconImageView extends ImageView implements View.OnClic
         if(FlavourConstants.SHOW_ADVERTISEMENT){
             setVisibility(View.VISIBLE);
             setImageResource(R.drawable.ic_zain);
-            setOnClickListener(this);
+            //setOnClickListener(this);
         }else {
             setVisibility(View.GONE);
         }

@@ -27,7 +27,7 @@
         <!--android:src="@drawable/ic_zain"-->
         <!--android:layout_marginBottom="@dimen/ic_addvertisement_margin_bottom"/>-->
 
-    <com.moderneng.views.AdvertisementIconImageView
+    <com.moderneng.views.AdvertisementLogoImageView
         android:layout_width="@dimen/ic_advertisement_width"
         android:layout_height="@dimen/ic_advertisement_height"
         android:id="@+id/imageview_advertisement_icon"

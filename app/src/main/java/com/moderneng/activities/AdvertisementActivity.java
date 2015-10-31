@@ -28,8 +28,11 @@ public class AdvertisementActivity extends Activity {
 
 
     public void onCloseButtonClick(View v){
-        Intent i = new Intent(getApplicationContext(), LanguageMenuActivity.class);
-        startActivity(i);
+        String from = getIntent().getStringExtra(AppConstant.EXTRA_FROM);
+        if(from != null && from.equals(AppConstant.FROM_SPLASH)){
+            Intent i = new Intent(getApplicationContext(), LanguageMenuActivity.class);
+            startActivity(i);
+        }
         finish();
     }
 
