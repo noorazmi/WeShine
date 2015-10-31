@@ -44,13 +44,13 @@ public class StoryVideoActivity extends Activity {
         mVideoViewStory = (VideoView) this.findViewById(R.id.videoview_game_end);
     }
 
-    private void startNextLevel() {
-
-        if (mVideoType != null && mVideoType.equals(AppConstant.VIDEO_TYPE_STORY)) {
-            showStoryEndImage();
-        }
-
-    }
+//    private void startNextLevel() {
+//
+//        if (mVideoType != null && mVideoType.equals(AppConstant.VIDEO_TYPE_STORY)) {
+//            showStoryEndImage();
+//        }
+//
+//    }
 
     @Override
     protected void onResume() {
@@ -71,7 +71,8 @@ public class StoryVideoActivity extends Activity {
             @Override
             public void onTick(long millisUntilFinished) {
                 if (millisUntilFinished <= 1000) {
-                    startNextLevel();
+                    //startNextLevel();
+                    showStoryEndImage();
                 }
             }
 
