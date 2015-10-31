@@ -89,7 +89,7 @@ public class ImageAndMediaResources {
     public static int sImageIdFabulous;
     public static int sImageIdSuper;
     public static int sImageIdExcellent;
-    public static int sImageIdMatchingMenuBg;
+    public static String sImageIdMatchingMenuBg;
     public static int sImageIdPuzzleMenuBg;
     public static int sImageIdIncredible;
     public static int sImageIdMatching;
@@ -110,7 +110,7 @@ public class ImageAndMediaResources {
     public static int sImageIdEducation3;
     public static int sImageIdEducation4;
     public static int sImageIdEducation5;
-    public static int sImageIdGameHomeScreen;
+    public static String sImageIdGameHomeScreen;
     public static int sImageIdPuzzle1Bg;
     public static int sImageIdPuzzle2Bg;
     public static int sImageIdPuzzle3Bg;
@@ -121,7 +121,8 @@ public class ImageAndMediaResources {
     public static int sImageIdMatch3Bg;
     public static int sImageIdMatch4Bg;
     public static int sImageIdMatch5Bg;
-    public static int sImageIdMazeMenuBg;
+    public static String sImageIdMazeMenuBg;
+    public static String sImageIdAdvertisementFullScreen = "advertisement_full_screen_arb";
 
 
 
@@ -150,7 +151,7 @@ public class ImageAndMediaResources {
             sImageIdSuper = R.drawable.super_img;
             sImageIdExcellent = R.drawable.excellent;
             //sImageIdMatchingMenuBg = R.drawable.matchingmenu;
-            sImageIdMatchingMenuBg = R.drawable.maching_menu_bg;
+            sImageIdMatchingMenuBg = "maching_menu_bg.png";
             //sImageIdPuzzleMenuBg = R.drawable.puzzlemenu;
             //sImageIdPuzzleMenuBg = R.drawable.puzzle_menu_bg;
             sImageIdIncredible = R.drawable.incredible;
@@ -172,7 +173,8 @@ public class ImageAndMediaResources {
             sImageIdEducation3 = R.drawable.aedu3;
             sImageIdEducation4 = R.drawable.aedu4;
             sImageIdEducation5 = R.drawable.aedu5;
-            sImageIdGameHomeScreen = R.drawable.game_home_screen;
+            //sImageIdGameHomeScreen = R.drawable.game_home_screen;
+            sImageIdGameHomeScreen = "game_home_screen.png";
             sImageIdPuzzle1Bg = R.drawable.puzzle1_bg;
             sImageIdPuzzle2Bg = R.drawable.puzzle2_bg;
             sImageIdPuzzle3Bg = R.drawable.puzzle3_bg;
@@ -183,7 +185,8 @@ public class ImageAndMediaResources {
             sImageIdMatch3Bg = R.drawable.match3_bg;
             sImageIdMatch4Bg = R.drawable.match4_bg;
             sImageIdMatch5Bg = R.drawable.match5_bg;
-            sImageIdMazeMenuBg = R.drawable.maze_menu_bg;
+            sImageIdMazeMenuBg = "maze_menu_bg.png";
+            sImageIdAdvertisementFullScreen = "advertisement_full_screen_eng";
 
         }else if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
             sImageIdWellDone = R.drawable.well_done_arb;
@@ -206,7 +209,7 @@ public class ImageAndMediaResources {
             sImageIdSuper = R.drawable.super_img_arb;
             sImageIdExcellent = R.drawable.excellent_arb;
             //sImageIdMatchingMenuBg = R.drawable.maching_menu_bg_arb;
-            sImageIdMatchingMenuBg = R.drawable.maching_menu_bg;
+            sImageIdMatchingMenuBg = "maching_menu_bg.png";
             //sImageIdPuzzleMenuBg = R.drawable.puzzle_menu_bg_arb;
             //sImageIdPuzzleMenuBg = R.drawable.puzzle_menu_bg;
             sImageIdIncredible = R.drawable.incredible_arb;
@@ -228,7 +231,8 @@ public class ImageAndMediaResources {
             sImageIdEducation3 = R.drawable.edu3_arb;
             sImageIdEducation4 = R.drawable.edu4_arb;
             sImageIdEducation5 = R.drawable.edu5_arb;
-            sImageIdGameHomeScreen = R.drawable.game_home_screen_arb;
+            //sImageIdGameHomeScreen = R.drawable.game_home_screen_arb;
+            sImageIdGameHomeScreen = "game_home_screen_arb.png";
             sImageIdPuzzle1Bg = R.drawable.puzzle1_bg;
             sImageIdPuzzle2Bg = R.drawable.puzzle2_bg;
             sImageIdPuzzle3Bg = R.drawable.puzzle3_bg;
@@ -239,7 +243,8 @@ public class ImageAndMediaResources {
             sImageIdMatch3Bg = R.drawable.match3_bg;
             sImageIdMatch4Bg = R.drawable.match4_bg;
             sImageIdMatch5Bg = R.drawable.match5_bg;
-            sImageIdMazeMenuBg = R.drawable.maze_menu_bg;
+            sImageIdMazeMenuBg = "maze_menu_bg.png";
+            sImageIdAdvertisementFullScreen = "advertisement_full_screen_arb";
         }
     }
 

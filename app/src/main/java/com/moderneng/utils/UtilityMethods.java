@@ -1,6 +1,7 @@
 package com.moderneng.utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,6 +9,7 @@ import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.util.DisplayMetrics;
@@ -272,5 +274,18 @@ public class UtilityMethods {
 
 		return inSampleSize;
 	}
-	
+
+	public static void openAdvertisementInWebView(){
+		Intent i = new Intent(Intent.ACTION_VIEW);
+		if (WeShineApp.getLanguage() == null) {
+			i.setData(Uri.parse(AppConstant.ADVERTISEMENT_URL_ARABIC));
+		} else if (WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ENGLISH)) {
+			i.setData(Uri.parse(AppConstant.ADVERTISEMENT_URL_ENGLISH));
+		} else if ((WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC))){
+			i.setData(Uri.parse(AppConstant.ADVERTISEMENT_URL_ARABIC));
+		}
+		//If we dont write following line we will get the error: "Calling startActivity() from outside of an Activity  context requires the FLAG_ACTIVITY_NEW_TASK flag"
+		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		WeShineApp.getInstance().startActivity(i);
+	}
 }

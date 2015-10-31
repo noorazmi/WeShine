@@ -55,12 +55,12 @@ public class ImageAndMediaResources {
     public static int sSoundIdTerrific;
     public static int sSoundIdIncredible;
     public static int sSoundIdMemoryGames;
-    public static int sSoundIdStory;
-    public static int sSoundIdEducation1;
-    public static int sSoundIdEducation2;
-    public static int sSoundIdEducation3;
-    public static int sSoundIdEducation4;
-    public static int sSoundIdEducation5;
+    public static String sSoundIdStory;
+    public static String sSoundIdEducation1;
+    public static String sSoundIdEducation2;
+    public static String sSoundIdEducation3;
+    public static String sSoundIdEducation4;
+    public static String sSoundIdEducation5;
 
 
     //DrawableIds
@@ -83,7 +83,7 @@ public class ImageAndMediaResources {
     public static int sImageIdFabulous;
     public static int sImageIdSuper;
     public static int sImageIdExcellent;
-    public static int sImageIdMatchingMenuBg;
+    public static String sImageIdMatchingMenuBg;
     //public static int sImageIdPuzzleMenuBg;
     public static int sImageIdIncredible;
     public static int sImageIdMatching;
@@ -97,14 +97,14 @@ public class ImageAndMediaResources {
     //public static int sImageIdMemoryGamesLevel2;
     //public static int sImageIdMemoryGamesLevel3;
     public static int sImageIdEducation;
-    public static int sImageIdHomeScreen;
-    public static int sImageIdStoryEndThankYouImage;
+    public static String sImageIdHomeScreen;
+    public static String sImageIdStoryEndThankYouImage;
     public static int sImageIdEducation1;
     public static int sImageIdEducation2;
     public static int sImageIdEducation3;
     public static int sImageIdEducation4;
     public static int sImageIdEducation5;
-    public static int sImageIdGameHomeScreen;
+    public static String sImageIdGameHomeScreen;
     public static int sImageIdPuzzle1Bg;
     public static int sImageIdPuzzle2Bg;
     public static int sImageIdPuzzle3Bg;
@@ -116,11 +116,13 @@ public class ImageAndMediaResources {
     public static int sImageIdMatch4Bg;
     public static int sImageIdMatch5Bg;
 
+    public static String sImageIdAdvertisementFullScreen;
+
 
 
     //Video Durations
     public static int sStoryVideoDuration;
-    public static int sImageIdMazeMenuBg;
+    public static String sImageIdMazeMenuBg;
 
     public static void assignDrawableIds() {
 
@@ -144,7 +146,7 @@ public class ImageAndMediaResources {
         sImageIdSuper = R.drawable.super_img;
         sImageIdExcellent = R.drawable.excellent;
         //sImageIdMatchingMenuBg = R.drawable.matchingmenu;
-        sImageIdMatchingMenuBg = R.drawable.maching_menu_bg;
+        sImageIdMatchingMenuBg = "maching_menu_bg.png";
         //sImageIdPuzzleMenuBg = R.drawable.puzzlemenu;
         //sImageIdPuzzleMenuBg = R.drawable.puzzle_menu_bg;
         sImageIdIncredible = R.drawable.incredible;
@@ -159,14 +161,14 @@ public class ImageAndMediaResources {
         //sImageIdMemoryGamesLevel2 = R.drawable.memory_games_bg_level2;
         //sImageIdMemoryGamesLevel3 = R.drawable.memory_games_bg_level3;
         sImageIdEducation = R.drawable.education;
-        sImageIdHomeScreen = R.drawable.home_screen;
-        sImageIdStoryEndThankYouImage = R.drawable.story_end_image;
+        sImageIdHomeScreen = "home_screen.png";
+        sImageIdStoryEndThankYouImage = "story_end_image.png";
         sImageIdEducation1 = R.drawable.aedu1;
         sImageIdEducation2 = R.drawable.aedu2;
         sImageIdEducation3 = R.drawable.aedu3;
         sImageIdEducation4 = R.drawable.aedu4;
         sImageIdEducation5 = R.drawable.aedu5;
-        sImageIdGameHomeScreen = R.drawable.game_home_screen;
+        sImageIdGameHomeScreen = "game_home_screen.png";
         sImageIdPuzzle1Bg = R.drawable.puzzle1_bg;
         sImageIdPuzzle2Bg = R.drawable.puzzle2_bg;
         sImageIdPuzzle3Bg = R.drawable.puzzle3_bg;
@@ -177,12 +179,8 @@ public class ImageAndMediaResources {
         sImageIdMatch3Bg = R.drawable.match3_bg;
         sImageIdMatch4Bg = R.drawable.match4_bg;
         sImageIdMatch5Bg = R.drawable.match5_bg;
-        sImageIdMazeMenuBg = R.drawable.maze_menu_bg;
-
-
-
-
-
+        sImageIdMazeMenuBg = "maze_menu_bg.png";
+        sImageIdAdvertisementFullScreen = "advertisement_full_screen_eng";
     }
 
     public static void assignSoundAndVideosIds(){
@@ -233,12 +231,12 @@ public class ImageAndMediaResources {
         sSoundIdTerrific = R.raw.terrific;
         sSoundIdIncredible = R.raw.incredible;
         sSoundIdMemoryGames = R.raw.memmory_games;
-        sSoundIdStory = R.raw.story;
-        sSoundIdEducation1 = R.raw.aedu1;
-        sSoundIdEducation2 = R.raw.aedu2;
-        sSoundIdEducation3 = R.raw.aedu3;
-        sSoundIdEducation4 = R.raw.aedu4;
-        sSoundIdEducation5 = R.raw.aedu5;
+        sSoundIdStory = "story";
+        sSoundIdEducation1 = "aedu1";
+        sSoundIdEducation2 = "aedu2";
+        sSoundIdEducation3 = "aedu3";
+        sSoundIdEducation4 = "aedu4";
+        sSoundIdEducation5 = "aedu5";
     }
 
     public static void assignVideoDurations(){

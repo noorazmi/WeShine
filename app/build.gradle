@@ -20,13 +20,13 @@ android {
     productFlavors {
         english {
             applicationId = "com.moderneng.eng"
-            versionCode = 7;
-            versionName = "1.7"
+            versionCode = 9;
+            versionName = "1.9"
         }
         english_arabic {
             applicationId "com.moderneng.arbeng"
-            versionCode 3
-            versionName "1.2"
+            versionCode 4
+            versionName "1.3"
         }
 
     }

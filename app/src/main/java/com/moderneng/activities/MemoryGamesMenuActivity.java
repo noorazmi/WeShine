@@ -169,4 +169,12 @@ public class MemoryGamesMenuActivity extends Activity implements View.OnTouchLis
         ((ImageView) findViewById(R.id.imageview_title)).setImageBitmap(mBitmapTitle);
         AnimationUtil.performAnimation(findViewById(R.id.imageview_title), AnimType.ZOOM_IN, null);
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent i1 = new Intent(getApplicationContext(), GameMenuActivity.class);
+        i1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i1);
+        super.onBackPressed();
+    }
 }

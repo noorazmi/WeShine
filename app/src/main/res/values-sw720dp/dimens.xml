@@ -7,4 +7,11 @@
 
     <dimen name="scroll_menu_img_width">725dp</dimen>
     <dimen name="scroll_menu_img_height">435dp</dimen>
+
+    <dimen name="close_button_width_height">60dp</dimen>
+
+    <dimen name="ic_advertisement_width">100dp</dimen>
+    <dimen name="ic_advertisement_height">142dp</dimen>
+
+    <dimen name="ic_advertisement_margin_bottom">60dp</dimen>
 </resources>

@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -785,4 +786,11 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 		super.onDestroy();
 	}
 
+	@Override
+	public void onBackPressed() {
+		Intent i1 = new Intent(getApplicationContext(), GameMenuActivity.class);
+		i1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(i1);
+		super.onBackPressed();
+	}
 }

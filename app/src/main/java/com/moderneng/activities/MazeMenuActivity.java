@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
@@ -134,7 +135,14 @@ public class MazeMenuActivity extends Activity {
         if(fragment == null){
             gotToMazeGameMenu();
             return;
-        }
+        }else {
+			Intent i1 = new Intent(getApplicationContext(), GameMenuActivity.class);
+			i1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(i1);
+		}
+
+
         super.onBackPressed();
     }
+
 }

@@ -15,10 +15,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.moderneng.R;
+import com.moderneng.WeShineApp;
 import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
 import com.moderneng.utils.GameMusic;
 import com.moderneng.utils.ImageAndMediaResources;
+import com.moderneng.utils.UtilityMethods;
 
 public class MatchingMenuActivity extends Activity implements OnClickListener {
 	private ImageButton game1, game2, game3, game4, game5;
@@ -108,7 +110,8 @@ public class MatchingMenuActivity extends Activity implements OnClickListener {
 	@Override
 	protected void onResume() {
 		super.onResume();
-        mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMatchingMenuBg);
+        //mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMatchingMenuBg);
+        mBitmapBg = WeShineApp.getBitmapFromObb(ImageAndMediaResources.sImageIdMatchingMenuBg, UtilityMethods.getScreenWidth(), UtilityMethods.getScreenHeight());
         findViewById(R.id.linear_layout_container).setBackgroundDrawable(new BitmapDrawable(mBitmapBg));
 
 		mBitmapTitle =  BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMatching);
@@ -126,5 +129,13 @@ public class MatchingMenuActivity extends Activity implements OnClickListener {
 				mp4.start();
 			}
 		}, 500);
+	}
+
+	@Override
+	public void onBackPressed() {
+		Intent i1 = new Intent(getApplicationContext(), GameMenuActivity.class);
+		i1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(i1);
+		super.onBackPressed();
 	}
 }

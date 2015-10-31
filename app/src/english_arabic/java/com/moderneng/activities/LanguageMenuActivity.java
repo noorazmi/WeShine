@@ -35,6 +35,11 @@ public class LanguageMenuActivity extends Activity implements View.OnTouchListen
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_language_menu);
+//        if(FlavourConstants.SHOW_ADVERTISEMENT){
+//            findViewById(R.id.imageview_advertisement_icon).setVisibility(View.VISIBLE);
+//        }else {
+//            findViewById(R.id.imageview_advertisement_icon).setVisibility(View.GONE);
+//        }
     }
 
 
@@ -62,6 +67,7 @@ public class LanguageMenuActivity extends Activity implements View.OnTouchListen
                     mAudioPlayer.release();
                     Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
                     startActivity(i);
+                    finish();
                 }
                 break;
         }

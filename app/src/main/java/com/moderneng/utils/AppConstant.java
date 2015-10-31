@@ -60,4 +60,10 @@ public interface AppConstant {
 	float SOUND_VOLUME_LEFT = 0.25f;
 	float SOUND_VOLUME_RIGHT = 0.25f;
 
+	String RESOURCE_TYPE_DRAWABLE = "drawable";
+
+	String ADVERTISEMENT_URL_ENGLISH = "http://zain.to/apple";
+	String ADVERTISEMENT_URL_ARABIC = "http://zain.to/applear";
+
+
 }

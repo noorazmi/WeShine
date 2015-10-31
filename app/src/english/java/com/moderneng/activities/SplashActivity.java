@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
@@ -15,6 +14,7 @@ import android.widget.ImageView;
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
 import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.UtilityMethods;
 
 public class SplashActivity extends Activity {
     private int TIME_OUT_MILLISEC = 1500;
@@ -23,14 +23,13 @@ public class SplashActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.gc();
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.splash);
         //BitmapFactory.Options opts = new BitmapFactory.Options();
         //opts.inPreferredConfig = Bitmap.Config.RGB_565;
         //mBitmapSplash = BitmapFactory.decodeResource(getResources(), R.drawable.splash, opts);
-        //mBitmapSplash = WeShineApp.getBitmapFromObb("splash");
+        //mBitmapSplash = WeShineApp.getBitmapFromObb("splash.png");
         mBitmapSplash = WeShineApp.getBitmapFromObb("splash.png", UtilityMethods.getScreenWidth(), UtilityMethods.getScreenHeight());
         ((ImageView) findViewById(R.id.imageview_splash)).setImageBitmap(mBitmapSplash);
 

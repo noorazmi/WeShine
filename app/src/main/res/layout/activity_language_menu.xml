@@ -15,5 +15,22 @@
         android:id="@+id/imageview_arabic_english"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"/>
+        android:scaleType="fitXY"
+        android:src="@drawable/arabic_english"/>
+
+
+    <!--<ImageView-->
+        <!--android:layout_width="@dimen/ic_addvertisement_width"-->
+        <!--android:layout_height="@dimen/ic_addvertisement_height"-->
+        <!--android:id="@+id/imageview_advertisement_icon"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:src="@drawable/ic_zain"-->
+        <!--android:layout_marginBottom="@dimen/ic_addvertisement_margin_bottom"/>-->
+
+    <com.moderneng.views.AdvertisementIconImageView
+        android:layout_width="@dimen/ic_advertisement_width"
+        android:layout_height="@dimen/ic_advertisement_height"
+        android:id="@+id/imageview_advertisement_icon"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/ic_advertisement_margin_bottom"/>
 </FrameLayout>

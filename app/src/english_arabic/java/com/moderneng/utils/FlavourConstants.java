@@ -10,4 +10,5 @@ package com.moderneng.utils;
 public interface FlavourConstants {
     int MAIN_EXPANSION_FILE_VERSION = 2;
     String AUTHORITY = "com.moderneng.arbeng.provider";
+    boolean SHOW_ADVERTISEMENT = true;
 }

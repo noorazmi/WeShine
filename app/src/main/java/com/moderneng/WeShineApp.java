@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import com.android.vending.expansion.zipfile.APKExpansionSupport;
 import com.android.vending.expansion.zipfile.ZipResourceFile;
@@ -30,6 +31,7 @@ public class WeShineApp extends Application {
         singleton = this;
         try {
             mExpansionFile = APKExpansionSupport.getAPKExpansionZipFile(getApplicationContext(), FlavourConstants.MAIN_EXPANSION_FILE_VERSION, -1/* patch file is not being used hence using patch version number less than 1*/);
+            Log.d("TAG", "Print");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -126,6 +128,10 @@ public class WeShineApp extends Application {
         // Decode bitmap with inSampleSize set
         options.inJustDecodeBounds = false;
         return BitmapFactory.decodeResource(getSingleton().getResources(), resId, options);
+    }
+
+    public static int getResourceId(String resourceName, String resourceType){
+       return singleton.getResources().getIdentifier(resourceName, resourceType, singleton.getPackageName());
     }
 
     private static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {

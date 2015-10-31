@@ -17,6 +17,7 @@ import com.moderneng.utils.AppConstant;
 import com.moderneng.utils.AudioPlayer;
 import com.moderneng.utils.GameMusic;
 import com.moderneng.utils.ImageAndMediaResources;
+import com.moderneng.utils.UtilityMethods;
 
 public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItemClickListener, View.OnClickListener {
 
@@ -136,7 +137,9 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
             }
         }, 1000);
 
-        mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMazeMenuBg);
+        //mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMazeMenuBg);
+        mBitmapBg = WeShineApp.getBitmapFromObb(ImageAndMediaResources.sImageIdMazeMenuBg, UtilityMethods.getScreenWidth(), UtilityMethods.getScreenHeight());
+
         getView().findViewById(R.id.linear_layout_container).setBackgroundDrawable(new BitmapDrawable(mBitmapBg));
     }
 

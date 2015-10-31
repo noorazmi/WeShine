@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
+import com.moderneng.utils.FlavourConstants;
 import com.moderneng.utils.UtilityMethods;
 
 
@@ -33,8 +34,15 @@ public class SplashActivity extends Activity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(getApplicationContext(), LanguageMenuActivity.class);
-                startActivity(i);
+                //Intent i = new Intent(getApplicationContext(), LanguageMenuActivity.class);
+                //startActivity(i);
+                if(FlavourConstants.SHOW_ADVERTISEMENT){
+                    Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
+                    startActivity(i);
+                }else{
+                    Intent i = new Intent(getApplicationContext(), LanguageMenuActivity.class);
+                    startActivity(i);
+                }
                 mBitmapSplash.recycle();
                 mBitmapSplash = null;
                 finish();

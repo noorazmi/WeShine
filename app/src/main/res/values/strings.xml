@@ -5,4 +5,5 @@
     <string name="play_five">PLAY_FIVE</string>
     <string name="play_flower">PLAY_FLOWER</string>
     <string name="title_activity_baloon_animation">BaloonAnimationActivity</string>
+    <string name="title_activity_advertisement">AdvertisementActivity</string>
 </resources>

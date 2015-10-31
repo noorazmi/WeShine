@@ -41,6 +41,11 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
         mDisplay = this.getWindowManager().getDefaultDisplay();
         height = mDisplay.getHeight();
         width = mDisplay.getWidth();
+//        if(FlavourConstants.SHOW_ADVERTISEMENT){
+//            findViewById(R.id.imageview_advertisement_icon).setVisibility(View.VISIBLE);
+//        }else {
+//            findViewById(R.id.imageview_advertisement_icon).setVisibility(View.GONE);
+//        }
     }
 
     public boolean onTouch(View v, MotionEvent ev) {
@@ -95,9 +100,19 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
             if (nextImage == 0) {
                 mp.release();
                 Intent storyVideoIntent = new Intent(getApplicationContext(), VideoPlayActivity.class);
-                storyVideoIntent.putExtra(AppConstant.EXTRA_VIDEO_NAME, ImageAndMediaResources.sSoundIdStory);
                 storyVideoIntent.putExtra(AppConstant.EXTRA_VIDEO_TYPE, AppConstant.VIDEO_TYPE_STORY);
-                storyVideoIntent.putExtra(AppConstant.EXTRA_VIDEO_LOCATION, AppConstant.EXTRA_VIDEO_LOCATION_OBB);
+
+                if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
+                    storyVideoIntent.putExtra(AppConstant.EXTRA_VIDEO_NAME, ImageAndMediaResources.sSoundIdStory);
+                }else {
+                    storyVideoIntent.putExtra(AppConstant.EXTRA_VIDEO_ID, R.raw.story);
+                }
+
+                if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
+                    storyVideoIntent.putExtra(AppConstant.EXTRA_VIDEO_LOCATION, AppConstant.EXTRA_VIDEO_LOCATION_OBB);
+                }else {
+                    storyVideoIntent.putExtra(AppConstant.EXTRA_VIDEO_LOCATION, AppConstant.EXTRA_VIDEO_LOCATION_APK);
+                }
                 storyVideoIntent.putExtra(AppConstant.BUNDLE_EXTRA_VIDEO_DURATION, ImageAndMediaResources.sStoryVideoDuration);
                 startActivity(storyVideoIntent);
             }
@@ -106,6 +121,7 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
                 Intent i1 = new Intent(getApplicationContext(), GameMenuActivity.class);
                 i1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i1);
+                finish();
                 mImageViewTop.setOnTouchListener(null);
             }
             if (nextImage == 2) {
@@ -113,6 +129,7 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
                 Intent i = new Intent(getApplicationContext(), EducationMenuActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
+                finish();
                 mImageViewTop.setOnTouchListener(null);
             }
             if (nextImage == 3) {
@@ -148,8 +165,12 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
         mImageViewTop = (ImageView) findViewById(R.id.image);
         //mBitmapBottom = BitmapFactory.decodeResource(getResources(), R.drawable.home_screen_hotspot);
         mBitmapBottom = WeShineApp.getBitmapFromObb("home_screen_hotspot.png", UtilityMethods.getScreenWidth(), UtilityMethods.getScreenHeight());
-        //mBitmapTop = WeShineApp.getBitmapFromObb(ImageAndMediaResources.sImageIdHomeScreen);
-        mBitmapTop = WeShineApp.getBitmapFromObb(ImageAndMediaResources.sImageIdHomeScreen, UtilityMethods.getScreenWidth(), UtilityMethods.getScreenHeight());
+        mBitmapTop = WeShineApp.getBitmapFromObb(ImageAndMediaResources.sImageIdHomeScreen);
+//        if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
+//            mBitmapTop = WeShineApp.getBitmapFromObb(ImageAndMediaResources.sImageIdHomeScreen, UtilityMethods.getScreenWidth(), UtilityMethods.getScreenHeight());
+//        }else {
+//            mBitmapTop = BitmapFactory.decodeResource(getResources(), R.drawable.home_screen);
+//        }
 
         mImageViewTop.setImageBitmap(mBitmapTop);
         ((ImageView) findViewById(R.id.image_areas)).setImageBitmap(mBitmapBottom);
@@ -178,4 +199,10 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
         mBitmapBottom = null;
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(), LanguageMenuActivity.class);
+        startActivity(i);
+        super.onBackPressed();
+    }
 }

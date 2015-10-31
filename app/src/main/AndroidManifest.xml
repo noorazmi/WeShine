@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.moderneng" >
 
-
-
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
@@ -15,12 +13,14 @@
     <!-- Required to access Google Play Licensing -->
     <uses-permission android:name="com.android.vending.CHECK_LICENSE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- Required to keep CPU alive while downloading files
-        (NOT to keep screen awake) -->
+    <!--
+         Required to keep CPU alive while downloading files
+        (NOT to keep screen awake)
+    -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -173,5 +173,11 @@
             android:screenOrientation="landscape"
             android:theme="@style/Theme.Transparent" >
         </activity>
+        <activity
+            android:name=".activities.AdvertisementActivity"
+            android:label="@string/title_activity_advertisement"
+            android:screenOrientation="landscape">
+        </activity>
     </application>
+
 </manifest>

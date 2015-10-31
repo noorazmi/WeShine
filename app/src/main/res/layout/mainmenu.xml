@@ -15,5 +15,12 @@
         android:layout_width="fill_parent" 
         android:layout_height="fill_parent" 
         android:scaleType="fitXY"/>
-           <!--  android:scaleType="centerCrop" -->
+
+    <com.moderneng.views.AdvertisementIconImageView
+        android:layout_width="@dimen/ic_advertisement_width"
+        android:layout_height="@dimen/ic_advertisement_height"
+        android:id="@+id/imageview_advertisement_icon"
+        android:layout_gravity="right|top"
+        android:layout_marginTop="@dimen/ic_advertisement_margin_top"
+        android:layout_marginRight="@dimen/ic_addvertisement_margin_right"/>
 </FrameLayout>

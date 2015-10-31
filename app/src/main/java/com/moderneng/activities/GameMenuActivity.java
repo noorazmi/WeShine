@@ -3,7 +3,6 @@ package com.moderneng.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,9 +14,11 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.moderneng.R;
+import com.moderneng.WeShineApp;
 import com.moderneng.utils.AudioPlayer;
 import com.moderneng.utils.ColorTool;
 import com.moderneng.utils.ImageAndMediaResources;
+import com.moderneng.utils.UtilityMethods;
 
 public class GameMenuActivity extends Activity implements OnTouchListener {
     private AudioPlayer mp;
@@ -57,11 +58,13 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
                     startActivity(mazeActivity);
                     mImageViewTop.setOnTouchListener(null);
                     mImageViewTop.setOnTouchListener(null);
+                    finish();
                 } else if (ct.closeMatch(Color.BLUE, touchcolor, tolerence)) {
                     //nextimage = 1;
                     Intent match = new Intent(getApplicationContext(), MatchingMenuActivity.class);
                     match.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(match);
+                    finish();
                     mImageViewTop.setOnTouchListener(null);
                 } else if (ct.closeMatch(Color.GREEN, touchcolor, tolerence)) {
                    // nextimage = 2;
@@ -69,17 +72,20 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
                     puzzle.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(puzzle);
                     mImageViewTop.setOnTouchListener(null);
+                    finish();
                 } else if (ct.closeMatch(Color.MAGENTA, touchcolor, tolerence)) {
 //                    nextimage = 3;
                     Intent memory = new Intent(getApplicationContext(), MemoryGamesMenuActivity.class);
                     memory.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(memory);
+                    finish();
                     mImageViewTop.setOnTouchListener(null);
                 } else if (ct.closeMatch(Color.BLACK, touchcolor, tolerence)) {
                     //nextimage = 4;
                     Intent memory = new Intent(getApplicationContext(), SunCatcherActivity.class);
                     memory.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(memory);
+                    finish();
                     mImageViewTop.setOnTouchListener(null);
                 } else if (ct.closeMatch(Color.YELLOW, touchcolor, tolerence)) {
                     //nextimage = 5;
@@ -87,6 +93,7 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
                     memory.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(memory);
                     mImageViewTop.setOnTouchListener(null);
+                    finish();
                 }
 
                 break;
@@ -111,7 +118,13 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
                 return 0;
             } else {
                 spotimg.setDrawingCacheEnabled(false);
-                return spotbitmap.getPixel(x, y);
+                if(x < spotbitmap.getWidth()){
+                    //x muslt be less than image width
+                    return spotbitmap.getPixel(x, y);
+                }else{
+                    return 0;
+                }
+
             }
         }
     }
@@ -125,8 +138,11 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
 
 
         mImageViewTop = (ImageView) findViewById(R.id.frontimg);
-        mBitmapBottom = BitmapFactory.decodeResource(getResources(), R.drawable.game_home_screen_hotspot);
-        mBitmapTop = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdGameHomeScreen);
+        //mBitmapBottom = BitmapFactory.decodeResource(getResources(), R.drawable.game_home_screen_hotspot);
+        mBitmapBottom =  WeShineApp.getBitmapFromObb("game_home_screen_hotspot.png", UtilityMethods.getScreenWidth(), UtilityMethods.getScreenHeight());
+
+        //mBitmapTop = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdGameHomeScreen);
+        mBitmapTop = WeShineApp.getBitmapFromObb(ImageAndMediaResources.sImageIdGameHomeScreen, UtilityMethods.getScreenWidth(), UtilityMethods.getScreenHeight());
         mImageViewTop.setImageBitmap(mBitmapTop);
         ((ImageView) findViewById(R.id.backimg)).setImageBitmap(mBitmapBottom);
 
@@ -161,5 +177,12 @@ public class GameMenuActivity extends Activity implements OnTouchListener {
         mBitmapBottom.recycle();
         mBitmapBottom = null;
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
+        startActivity(i);
+        super.onBackPressed();
     }
 }

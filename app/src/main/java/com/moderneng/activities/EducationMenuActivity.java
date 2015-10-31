@@ -159,4 +159,11 @@ public class EducationMenuActivity extends Activity implements OnClickListener {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
+        startActivity(i);
+        super.onBackPressed();
+    }
+
 }
