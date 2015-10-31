@@ -41,11 +41,6 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
         mDisplay = this.getWindowManager().getDefaultDisplay();
         height = mDisplay.getHeight();
         width = mDisplay.getWidth();
-//        if(FlavourConstants.SHOW_ADVERTISEMENT){
-//            findViewById(R.id.imageview_advertisement_icon).setVisibility(View.VISIBLE);
-//        }else {
-//            findViewById(R.id.imageview_advertisement_icon).setVisibility(View.GONE);
-//        }
     }
 
     public boolean onTouch(View v, MotionEvent ev) {

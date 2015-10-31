@@ -42,7 +42,19 @@ public class StoryVideoActivity extends Activity {
         mVideoFileId = mIntent.getIntExtra(AppConstant.EXTRA_VIDEO_ID, 0);
         mVideoType = mIntent.getStringExtra(AppConstant.EXTRA_VIDEO_TYPE);
         mVideoViewStory = (VideoView) this.findViewById(R.id.videoview_game_end);
+    }
 
+    private void startNextLevel() {
+
+        if (mVideoType != null && mVideoType.equals(AppConstant.VIDEO_TYPE_STORY)) {
+            showStoryEndImage();
+        }
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         Uri uri = null;
         if (mIntent.getStringExtra(AppConstant.EXTRA_VIDEO_LOCATION).equals(AppConstant.EXTRA_VIDEO_LOCATION_APK)) {
@@ -81,14 +93,6 @@ public class StoryVideoActivity extends Activity {
 
     }
 
-    private void startNextLevel() {
-
-        if (mVideoType != null && mVideoType.equals(AppConstant.VIDEO_TYPE_STORY)) {
-            showStoryEndImage();
-        }
-
-    }
-
     private void showStoryEndImage() {
 
         mBitmapThankyou = WeShineApp.getBitmapFromObb(ImageAndMediaResources.sImageIdStoryEndThankYouImage);
@@ -101,6 +105,7 @@ public class StoryVideoActivity extends Activity {
             startActivity(i);
         }
     }
+
 
     @Override
     public void onBackPressed() {
