@@ -308,6 +308,8 @@ public class Puzzle5Activity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
+        startActivity(i);
         finish();
 
     }

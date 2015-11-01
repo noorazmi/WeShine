@@ -72,4 +72,13 @@
         android:layout_height="@dimen/title_text_height"
         android:layout_gravity="top|center_horizontal"
         android:layout_marginTop="0dp"/>
+
+    <com.moderneng.views.AdvertisementLogoImageView
+        android:id="@+id/imageview_advertisement_icon"
+        android:layout_width="@dimen/ic_advertisement_width"
+        android:layout_height="@dimen/ic_advertisement_height"
+        android:layout_gravity="right|top"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"/>
+
 </FrameLayout>

@@ -97,6 +97,8 @@ public class VideoPlayActivity extends Activity {
 					imatch = new Intent(VideoPlayActivity.this, Match5Activity.class);
 					break;
 				case "matching5_video":
+					Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
+					startActivity(i);
 					finish();
 					break;
 				case "story":

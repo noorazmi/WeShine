@@ -99,6 +99,8 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
                     findsame.setOnCompleteListener(new GameMusic.OnCompleteListener() {
                         @Override
                         public void onComplete() {
+                            Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
+                            startActivity(i);
                             finish();
                         }
                     });
@@ -451,6 +453,8 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
         super.onActivityResult(requestCode, resultCode, data);
         //Intent i = new Intent(Mlevel3.this, Mlevel3.class);
         //startActivity(i);
+        Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
+        startActivity(i);
         finish();
 
     }
