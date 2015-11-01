@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/frame_layout_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+    </FrameLayout>
+
+
+    <com.moderneng.views.AdvertisementLogoImageView
+        android:id="@+id/imageview_advertisement_icon"
+        android:layout_width="@dimen/ic_advertisement_width"
+        android:layout_height="@dimen/ic_advertisement_height"
+        android:layout_gravity="left|top"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"/>
+
+
+</FrameLayout>

@@ -2,12 +2,15 @@ package com.moderneng.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
+import com.moderneng.R;
 import com.moderneng.utils.AudioPlayer;
 import com.moderneng.utils.ImageAndMediaResources;
 import com.moderneng.views.HorizontalPage;
@@ -40,9 +43,22 @@ public class Horizontalpager extends Activity {
             textView.setImageResource(backgroundDrawables[i]);
             realViewSwitcher.addView(textView);
         }
-        mp = new AudioPlayer(this, backgoundmusic[count]);
+        //mp = new AudioPlayer(this, backgoundmusic[count]);
+        mp = new AudioPlayer(getApplicationContext(), backgoundmusic[count], new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
-        setContentView(realViewSwitcher);
+        //setContentView(realViewSwitcher);
+
+        setContentView(R.layout.activity_horizontal_pager);
+        ((FrameLayout)findViewById(R.id.frame_layout_container)).addView(realViewSwitcher);
+
+
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         mp.start();
         realViewSwitcher.setOnScreenSwitchListener(onScreenSwitchListener);
@@ -66,8 +82,21 @@ public class Horizontalpager extends Activity {
             } else if (screen == 4) {
                 id = count + 4;
             }
-            mp = new AudioPlayer(getApplicationContext(), backgoundmusic[id]);
+            if(screen == 4){
+                mp = new AudioPlayer(getApplicationContext(), backgoundmusic[id], new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
+                });
+            }else {
+                mp = new AudioPlayer(getApplicationContext(), backgoundmusic[id]);
+            }
+
             mp.start();
+
         }
     };
 

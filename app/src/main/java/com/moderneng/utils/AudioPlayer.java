@@ -35,6 +35,20 @@ public class AudioPlayer {
         }
 	}
 
+	public AudioPlayer(Context ctx, String fileName, MediaPlayer.OnCompletionListener onCompletionListener) {
+		this.mContext = ctx;
+		try {
+			AssetFileDescriptor fd = WeShineApp.getAssetFileDescriptor(fileName+".mp3");
+			mp = new MediaPlayer();
+			mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
+			mp.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(), fd.getLength());
+			mp.prepare();
+			mp.setOnCompletionListener(onCompletionListener);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void start() {
 		if(mp != null){
 			mp.start();
