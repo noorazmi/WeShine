@@ -63,23 +63,6 @@ public class GameMusic {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-//		mMediaPlayer = new MediaPlayer();
-//
-//		mMediaPlayer = MediaPlayer.create(mContext, id);
-//		mMediaPlayer.setOnCompletionListener(new OnCompletionListener() {
-//
-//			@Override
-//			public void onCompletion(MediaPlayer mp) {
-//				if (mOnCompleteListener != null) {
-//					mOnCompleteListener.onComplete();
-//				}
-//				mp.reset();
-//				mp.release();
-//			}
-//		});
-//		mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-//		mMediaPlayer.setLooping(false);
     }
 
     public GameMusic(HorizontalPage.OnScreenSwitchListener onScreenSwitchListener, int id) {

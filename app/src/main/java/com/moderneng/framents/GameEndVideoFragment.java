@@ -1,5 +1,6 @@
 package com.moderneng.framents;
 
+import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -10,6 +11,7 @@ import android.widget.VideoView;
 
 import com.moderneng.R;
 import com.moderneng.WeShineApp;
+import com.moderneng.activities.AdvertisementActivity;
 import com.moderneng.activities.MazeMenuActivity;
 import com.moderneng.providers.CustomAPEZProvider;
 import com.moderneng.utils.AppConstant;
@@ -73,6 +75,8 @@ public class GameEndVideoFragment extends BaseFragment {
         } else if (mVideoFileName.equals("maze4_end_video")) {
             ((MazeMenuActivity) getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_4);
         } else if (mVideoFileName.equals("maze5_end_video")) {
+            Intent i = new Intent(getActivity(), AdvertisementActivity.class);
+            startActivity(i);
             ((MazeMenuActivity) getActivity()).gotToMazeGameMenu();
         }
     }

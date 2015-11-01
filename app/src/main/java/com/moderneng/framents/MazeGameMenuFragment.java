@@ -123,8 +123,6 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
     }
 
     private void playMazeSound() {
-//        String uriPath = AppConstant.BASE_RESOURCE_PATH + ImageAndMediaResources.sSoundIdMaze;
-//        Uri uri = Uri.parse(uriPath);
         mp = new GameMusic(getActivity(), ImageAndMediaResources.sSoundIdMaze);
         mp.start();
 
@@ -137,7 +135,6 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
             }
         }, 1000);
 
-        //mBitmapBg = BitmapFactory.decodeResource(getResources(), ImageAndMediaResources.sImageIdMazeMenuBg);
         mBitmapBg = WeShineApp.getBitmapFromObb(ImageAndMediaResources.sImageIdMazeMenuBg, UtilityMethods.getScreenWidth(), UtilityMethods.getScreenHeight());
 
         getView().findViewById(R.id.linear_layout_container).setBackgroundDrawable(new BitmapDrawable(mBitmapBg));
@@ -146,8 +143,10 @@ public class MazeGameMenuFragment extends BaseFragment implements OnMazeMenuItem
     @Override
     public void onStop() {
         super.onStop();
-        mBitmapTitle.recycle();
-        mBitmapTitle = null;
+        if(mBitmapTitle != null){
+            mBitmapTitle.recycle();
+            mBitmapTitle = null;
+        }
         if (mp != null) {
             mp.release();
         }
