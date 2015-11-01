@@ -28,6 +28,7 @@ import com.moderneng.WeShineApp;
 import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
 import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.FlavourConstants;
 import com.moderneng.utils.GameMusic;
 import com.moderneng.utils.ImageAndMediaResources;
 
@@ -99,8 +100,10 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
                     findsame.setOnCompleteListener(new GameMusic.OnCompleteListener() {
                         @Override
                         public void onComplete() {
-                            Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
-                            startActivity(i);
+                            if(FlavourConstants.SHOW_ADVERTISEMENT){
+                                Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
+                                startActivity(i);
+                            }
                             finish();
                         }
                     });
@@ -453,8 +456,10 @@ public class MemoryGame3Activity extends Activity implements OnClickListener, An
         super.onActivityResult(requestCode, resultCode, data);
         //Intent i = new Intent(Mlevel3.this, Mlevel3.class);
         //startActivity(i);
-        Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
-        startActivity(i);
+        if(FlavourConstants.SHOW_ADVERTISEMENT){
+            Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
+            startActivity(i);
+        }
         finish();
 
     }

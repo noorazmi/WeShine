@@ -6,6 +6,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -32,6 +33,7 @@ import com.moderneng.animation.AnimType;
 import com.moderneng.animation.AnimationUtil;
 import com.moderneng.utils.AppConstant;
 import com.moderneng.utils.AudioPlayer;
+import com.moderneng.utils.FlavourConstants;
 import com.moderneng.utils.ImageAndMediaResources;
 import com.moderneng.utils.Logger;
 import com.moderneng.utils.UtilityMethods;
@@ -1129,6 +1131,15 @@ public class BalloonActivity extends Activity {
 					mp = null;
 				}
 				//TODO place to end the activity after game end
+				Intent i1 = new Intent(getApplicationContext(), GameMenuActivity.class);
+				i1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(i1);
+
+                if(FlavourConstants.SHOW_ADVERTISEMENT){
+                    Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
+                    startActivity(i);
+                }
+
 				finish();
 			}
 		});

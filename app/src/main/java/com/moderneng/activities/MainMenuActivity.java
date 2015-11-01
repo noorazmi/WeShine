@@ -197,8 +197,11 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), LanguageMenuActivity.class);
-        startActivity(i);
+        if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
+            Intent i = new Intent(getApplicationContext(), LanguageMenuActivity.class);
+            startActivity(i);
+        }
+
         super.onBackPressed();
     }
 }

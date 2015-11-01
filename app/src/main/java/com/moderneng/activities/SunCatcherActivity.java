@@ -37,6 +37,7 @@ import com.moderneng.R;
 import com.moderneng.WeShineApp;
 import com.moderneng.animation.AnimationUtil;
 import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.FlavourConstants;
 import com.moderneng.utils.ImageAndMediaResources;
 import com.moderneng.utils.Logger;
 import com.moderneng.utils.UtilityMethods;
@@ -603,6 +604,16 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 				public void onCompletion(MediaPlayer mp) {
 					if (mp != null) {
 						mp.release();
+
+						Intent i1 = new Intent(getApplicationContext(), GameMenuActivity.class);
+						i1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						startActivity(i1);
+
+                        if(FlavourConstants.SHOW_ADVERTISEMENT){
+                            Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
+                            startActivity(i);
+                        }
+
 						finish();
 					}
 				}
@@ -638,6 +649,10 @@ public class SunCatcherActivity extends Activity implements OnTouchListener {
 				public void onCompletion(MediaPlayer mp) {
 					if (mp != null) {
 						mp.release();
+                        if(FlavourConstants.SHOW_ADVERTISEMENT){
+                            Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
+                            startActivity(i);
+                        }
 						finish();
 					}
 				}

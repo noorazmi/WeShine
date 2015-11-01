@@ -17,6 +17,7 @@ import com.moderneng.R;
 import com.moderneng.WeShineApp;
 import com.moderneng.providers.CustomAPEZProvider;
 import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.FlavourConstants;
 import com.moderneng.utils.ImageAndMediaResources;
 
 public class VideoPlayActivity extends Activity {
@@ -97,8 +98,10 @@ public class VideoPlayActivity extends Activity {
 					imatch = new Intent(VideoPlayActivity.this, Match5Activity.class);
 					break;
 				case "matching5_video":
-					Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
-					startActivity(i);
+                    if(FlavourConstants.SHOW_ADVERTISEMENT){
+                        Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
+                        startActivity(i);
+                    }
 					finish();
 					break;
 				case "story":

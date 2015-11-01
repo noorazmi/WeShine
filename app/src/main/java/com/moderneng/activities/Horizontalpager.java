@@ -12,6 +12,7 @@ import android.widget.ImageView.ScaleType;
 
 import com.moderneng.R;
 import com.moderneng.utils.AudioPlayer;
+import com.moderneng.utils.FlavourConstants;
 import com.moderneng.utils.ImageAndMediaResources;
 import com.moderneng.views.HorizontalPage;
 
@@ -47,8 +48,10 @@ public class Horizontalpager extends Activity {
         mp = new AudioPlayer(getApplicationContext(), backgoundmusic[count], new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
-                startActivity(i);
+                if(FlavourConstants.SHOW_ADVERTISEMENT){
+                    Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
+                    startActivity(i);
+                }
                 finish();
             }
         });
@@ -86,8 +89,10 @@ public class Horizontalpager extends Activity {
                 mp = new AudioPlayer(getApplicationContext(), backgoundmusic[id], new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mp) {
-                        Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
-                        startActivity(i);
+                        if(FlavourConstants.SHOW_ADVERTISEMENT){
+                            Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
+                            startActivity(i);
+                        }
                         finish();
                     }
                 });

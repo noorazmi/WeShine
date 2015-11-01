@@ -23,6 +23,7 @@ import android.widget.RelativeLayout;
 import com.moderneng.R;
 import com.moderneng.utils.AppConstant;
 import com.moderneng.utils.AudioPlayer;
+import com.moderneng.utils.FlavourConstants;
 import com.moderneng.utils.GameMusic;
 import com.moderneng.utils.ImageAndMediaResources;
 import com.moderneng.views.ImageDragShadowBuilder;
@@ -308,8 +309,10 @@ public class Puzzle5Activity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
-        startActivity(i);
+        if(FlavourConstants.SHOW_ADVERTISEMENT){
+            Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
+            startActivity(i);
+        }
         finish();
 
     }

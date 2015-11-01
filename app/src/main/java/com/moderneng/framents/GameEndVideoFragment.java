@@ -15,6 +15,7 @@ import com.moderneng.activities.AdvertisementActivity;
 import com.moderneng.activities.MazeMenuActivity;
 import com.moderneng.providers.CustomAPEZProvider;
 import com.moderneng.utils.AppConstant;
+import com.moderneng.utils.FlavourConstants;
 
 public class GameEndVideoFragment extends BaseFragment {
 
@@ -75,8 +76,11 @@ public class GameEndVideoFragment extends BaseFragment {
         } else if (mVideoFileName.equals("maze4_end_video")) {
             ((MazeMenuActivity) getActivity()).AttachGameFragment(AppConstant.GAME_LEVEL_4);
         } else if (mVideoFileName.equals("maze5_end_video")) {
-            Intent i = new Intent(getActivity(), AdvertisementActivity.class);
-            startActivity(i);
+
+            if(FlavourConstants.SHOW_ADVERTISEMENT){
+                Intent i = new Intent(getActivity(), AdvertisementActivity.class);
+                startActivity(i);
+            }
             ((MazeMenuActivity) getActivity()).gotToMazeGameMenu();
         }
     }
