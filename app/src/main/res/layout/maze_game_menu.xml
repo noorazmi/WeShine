@@ -115,7 +115,7 @@
 
     <com.moderneng.views.AdvertisementBannerImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/banner_height"
         android:id="@+id/imageview_advertisement_banner"
         android:scaleType="fitXY"
         android:layout_gravity="bottom|center_horizontal"/>

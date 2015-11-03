@@ -1654,4 +1654,12 @@ public class BalloonActivity extends Activity {
 		}
 	}
 
+	@Override
+	public void onBackPressed() {
+		Intent i1 = new Intent(getApplicationContext(), GameMenuActivity.class);
+		i1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(i1);
+		super.onBackPressed();
+	}
+
 }

@@ -148,6 +148,9 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
                 return 0;
             } else {
                 img.setDrawingCacheEnabled(false);
+                if(x < 0 || y < 0){
+                    return 0;
+                }
                 return hotspots.getPixel(x, y);
             }
         }
@@ -197,7 +200,7 @@ public class MainMenuActivity extends Activity implements View.OnTouchListener {
 
     @Override
     public void onBackPressed() {
-        if(WeShineApp.getLanguage().equals(AppConstant.LANGUAGE_ARABIC)){
+        if(WeShineApp.getInstance().getPackageName().equals("com.moderneng.arbeng")){
             Intent i = new Intent(getApplicationContext(), LanguageMenuActivity.class);
             startActivity(i);
         }

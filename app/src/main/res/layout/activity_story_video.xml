@@ -27,14 +27,14 @@
         android:id="@+id/imageview_advertisement_icon"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="@dimen/ic_advertisement_margin_top"
-        android:layout_marginRight="@dimen/ic_addvertisement_margin_right"/>
+        android:layout_marginTop="@dimen/logo_top_margin"
+        android:layout_marginRight="@dimen/story_logo_right_margin"/>
 
 
 
     <com.moderneng.views.AdvertisementBannerImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/banner_height"
         android:id="@+id/imageview_advertisement_banner"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

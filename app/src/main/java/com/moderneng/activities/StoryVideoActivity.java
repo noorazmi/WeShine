@@ -104,6 +104,7 @@ public class StoryVideoActivity extends Activity {
         if (FlavourConstants.SHOW_ADVERTISEMENT) {
             Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
             startActivity(i);
+            finish();
         }
     }
 

@@ -48,11 +48,11 @@ public class Horizontalpager extends Activity {
         mp = new AudioPlayer(getApplicationContext(), backgoundmusic[count], new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                if(FlavourConstants.SHOW_ADVERTISEMENT){
+                if(count == 4 && FlavourConstants.SHOW_ADVERTISEMENT){
                     Intent i = new Intent(getApplicationContext(), AdvertisementActivity.class);
                     startActivity(i);
+                    finish();
                 }
-                finish();
             }
         });
 

@@ -19,7 +19,8 @@
 
             <HorizontalScrollView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -37,8 +38,8 @@
 
                         <ImageButton
                             android:id="@+id/imagebutton_menu1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_width="@dimen/scroll_menu_img_width"
+                            android:layout_height="@dimen/scroll_menu_img_height"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -50,8 +51,8 @@
 
                         <ImageButton
                             android:id="@+id/imagebutton_menu2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_width="@dimen/scroll_menu_img_width"
+                            android:layout_height="@dimen/scroll_menu_img_height"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -63,8 +64,8 @@
 
                         <ImageButton
                             android:id="@+id/imagebutton_menu3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_width="@dimen/scroll_menu_img_width"
+                            android:layout_height="@dimen/scroll_menu_img_height"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -76,8 +77,8 @@
 
                         <ImageButton
                             android:id="@+id/imagebutton_menu4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_width="@dimen/scroll_menu_img_width"
+                            android:layout_height="@dimen/scroll_menu_img_height"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -89,8 +90,8 @@
 
                         <ImageButton
                             android:id="@+id/imagebutton_menu5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_width="@dimen/scroll_menu_img_width"
+                            android:layout_height="@dimen/scroll_menu_img_height"/>
                     </LinearLayout>
                 </LinearLayout>
             </HorizontalScrollView>
@@ -107,7 +108,7 @@
 
     <com.moderneng.views.AdvertisementBannerImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/banner_height"
         android:id="@+id/imageview_advertisement_banner"
         android:scaleType="fitXY"
         android:layout_gravity="bottom|center_horizontal"/>

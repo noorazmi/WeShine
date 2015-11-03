@@ -4,9 +4,24 @@
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively). -->
     <dimen name="activity_horizontal_margin">64dp</dimen>
 
-    <dimen name="close_button_width_height">70dp</dimen>
+    <dimen name="close_button_width_height">80dp</dimen>
 
     <dimen name="ic_advertisement_width">120dp</dimen>
     <dimen name="ic_advertisement_height">170dp</dimen>
     <dimen name="ic_advertisement_margin_bottom">57dp</dimen>
+
+    <dimen name="memory1_logo_width">60dp</dimen>
+    <dimen name="memory1_logo_height">85dp</dimen>
+
+    <dimen name="memory2_logo_width">70dp</dimen>
+    <dimen name="memory2_logo_height">99dp</dimen>
+
+    <dimen name="memory3_logo_width">70dp</dimen>
+    <dimen name="memory3_logo_height">99dp</dimen>
+
+    <dimen name="banner_height">53dp</dimen>
+
+    <dimen name="story_logo_right_margin">340dp</dimen>
+    <dimen name="green_bird_margin_top">220dp</dimen>
+    <dimen name="logo_top_margin">25dp</dimen>
 </resources>

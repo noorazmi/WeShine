@@ -158,5 +158,21 @@
         android:layout_gravity="top|center_horizontal"
         android:layout_marginTop="0dp"/>
 
+    <!--<com.moderneng.views.AdvertisementLogoImageView-->
+        <!--android:id="@+id/imageview_advertisement_icon"-->
+        <!--android:layout_width="@dimen/memory3_logo_width"-->
+        <!--android:layout_height="@dimen/memory3_logo_height"-->
+        <!--android:layout_gravity="right|top"-->
+        <!--android:layout_marginRight="100dp"-->
+        <!--android:layout_marginTop="7dp"/>-->
+
+    <com.moderneng.views.AdvertisementLogoImageView
+        android:id="@+id/imageview_advertisement_icon"
+        android:layout_width="@dimen/memory1_logo_width"
+        android:layout_height="@dimen/memory1_logo_height"
+        android:layout_gravity="left|top"
+        android:layout_marginLeft="@dimen/memory_logo_margin_left"
+        android:layout_marginTop="5dp"/>
+
 </FrameLayout>
 

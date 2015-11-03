@@ -26,6 +26,17 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:scaleType="fitXY"/>
+
+            <ImageView
+                android:id="@+id/bird3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="80dp"
+                android:background="@drawable/b31"
+                android:layout_gravity="center_horizontal|bottom"/>
         </FrameLayout>
 
         <ImageView
@@ -41,18 +52,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginTop="@dimen/green_bird_margin_top"
             android:background="@drawable/b21"/>
-
-        <ImageView
-            android:id="@+id/bird3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/b31"/>
 
         <ImageView
             android:id="@+id/bee"
@@ -60,8 +62,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_marginBottom="100dp"
-            android:layout_marginRight="35dp"
+            android:layout_marginBottom="80dp"
+            android:layout_marginRight="@dimen/bee_margin_right"
             android:src="@drawable/bee1"/>
 
     </RelativeLayout>
@@ -79,6 +81,6 @@
         android:layout_height="@dimen/ic_advertisement_height"
         android:layout_gravity="right|top"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="@dimen/margin_top_logo"/>
 
 </FrameLayout>

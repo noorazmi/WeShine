@@ -122,4 +122,13 @@
         android:layout_marginTop="@dimen/margin_top_memory_games"
         android:src="@drawable/memory_game"/>
 
+    <com.moderneng.views.AdvertisementLogoImageView
+        android:id="@+id/imageview_advertisement_icon"
+        android:layout_width="@dimen/memory1_logo_width"
+        android:layout_height="@dimen/memory1_logo_height"
+        android:layout_gravity="left|top"
+        android:layout_marginLeft="@dimen/memory_logo_margin_left"
+        android:layout_marginTop="5dp"/>
+
+
 </FrameLayout>
